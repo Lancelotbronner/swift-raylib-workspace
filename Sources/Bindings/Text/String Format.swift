@@ -23,11 +23,10 @@ extension String.StringInterpolation {
 
 //MARK: - String Format
 
-
 extension String {
 	
 	public func format(_ pattern: String, _ values: Any...) -> String {
-		TextFormat(<#T##Int8#>, <#T##...#>)
+		""
 	}
 	
 }

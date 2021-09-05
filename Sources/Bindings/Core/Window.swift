@@ -35,7 +35,7 @@ public struct Window {
 	}
 	
 	@inlinable
-	public static var size: Vector2 {
+	public static var size: Vector2f {
 		.init(GetScreenWidth().toFloat, GetScreenHeight().toFloat)
 	}
 	

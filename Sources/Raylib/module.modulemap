@@ -1,4 +1,0 @@
-module CRaylib [system] {
-  umbrella header "../../Dependencies/raylib/src/raylib.h"
-  export *
-}

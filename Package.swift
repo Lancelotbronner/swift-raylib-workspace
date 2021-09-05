@@ -20,7 +20,7 @@ let package = Package(
 		
 		.systemLibrary(
 			name: "CRaylib",
-			path: "Sources/Raylib",
+			path: "Sources/SystemRaylib",
 			pkgConfig: "raylib",
 			providers: [
 				.brew(["raylib"]),
@@ -55,10 +55,20 @@ let package = Package(
 				dependencies: ["Raylib"],
 				path: "Examples/04 - Core Input Mouse Wheel"),
 		
+			.executableTarget(
+				name: "Example 08 - 2D Camera",
+				dependencies: ["Raylib"],
+				path: "Examples/08 - 2D Camera"),
+		
+			.executableTarget(
+				name: "Example 09 - 2D Camera Platformer",
+				dependencies: ["Raylib"],
+				path: "Examples/09 - 2D Camera Platformer"),
+		
 		// Tests
 		
-		//        .testTarget(
-		//            name: "Swift RaylibTests",
-		//            dependencies: ["Swift Raylib"]),
+			.testTarget(
+				name: "RaylibTests",
+				dependencies: ["Raylib"]),
 	]
 )

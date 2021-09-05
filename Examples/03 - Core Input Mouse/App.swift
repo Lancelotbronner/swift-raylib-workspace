@@ -9,9 +9,8 @@ import Raylib
 
 @main
 struct Example03: App {
-	
-	var ballPosition = Vector2(-100)
-	var ballColor = Color.darkblue
+	var ballPosition = Vector2f(-100)
+	var ballColor = Color.darkBlue
 	
 	init() {
 		Window.create(800, by: 450, title: "Example 03 - Core Input Mouse")
@@ -24,7 +23,7 @@ struct Example03: App {
 		switch true {
 		case Mouse.left.isPressed: ballColor = .maroon
 		case Mouse.middle.isPressed: ballColor = .lime
-		case Mouse.right.isPressed: ballColor = .darkblue
+		case Mouse.right.isPressed: ballColor = .darkBlue
 		case Mouse.side.isPressed: ballColor = .purple
 		case Mouse.extra.isPressed: ballColor = .yellow
 		case Mouse.forward.isPressed: ballColor = .orange
@@ -34,8 +33,7 @@ struct Example03: App {
 	}
 	
 	func draw() {
-		Renderer.text("Move ball with mouse and use mouse buttons to change color", at: 10, 10, color: .darkgray)
+		Renderer.text("Move ball with mouse and use mouse buttons to change color", at: 10, 10, color: .darkGray)
 		Renderer.circle(at: ballPosition, radius: 40, color: ballColor)
 	}
-	
 }

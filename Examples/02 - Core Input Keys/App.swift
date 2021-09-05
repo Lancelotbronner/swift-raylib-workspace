@@ -9,8 +9,7 @@ import Raylib
 
 @main
 struct Example02: App {
-	
-	var ballPosition: Vector2
+	var ballPosition: Vector2f
 	
 	init() {
 		Window.create(800, by: 450, title: "Example 02 - Core Input Keys")
@@ -35,8 +34,7 @@ struct Example02: App {
 	}
 	
 	func draw() {
-		Renderer.text("Move the ball with the arrow keys", at: 10, 10, color: .darkgray)
+		Renderer.text("Move the ball with the arrow keys", at: 10, 10, color: .darkGray)
 		Renderer.circle(at: ballPosition, radius: 50, color: .maroon)
 	}
-	
 }

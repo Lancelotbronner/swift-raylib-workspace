@@ -16,7 +16,7 @@ struct Example01: App {
 	}
 	
 	func draw() {
-		Renderer.text("Congrats! You created your first window!", at: 190, 200, color: .lightgray)
+		Renderer.text("Congrats! You created your first window!", at: 190, 200, color: .lightGray)
 	}
-	
+
 }

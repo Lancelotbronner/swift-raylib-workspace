@@ -13,7 +13,37 @@ public typealias Color = CRaylib.Color
 
 extension Color {
 	
-	//MARK: Constants
+	//MARK: Computed Properties
+	
+	public var value: UInt32 {
+		ColorToInt(self).toUInt32
+	}
+	
+	//MARK: Initialization
+	
+	public static func rgba(_ value: UInt32) -> Color {
+		GetColor(value)
+	}
+	
+	public static func rgb(_ r: UInt8, _ g: UInt8, _ b: UInt8, a: UInt8 = .max) -> Color {
+		.init(r: r, g: g, b: b, a: a)
+	}
+	
+	//MARK: Methods
+	
+	public func faded(to alpha: Float) -> Color {
+		Fade(self, alpha)
+	}
+	
+	public mutating func fade(to alpha: Float) {
+		self = faded(to: alpha)
+	}
+	
+}
+
+//MARK: - Palette
+
+extension Color {
 	
 	public static var lightGray: Self { .rgb(200, 200, 200) }
 	public static var gray: Self { .rgb(130, 130, 130) }
@@ -42,11 +72,5 @@ extension Color {
 	public static var blank: Self { .rgb(0, 0, 0) }
 	public static var magenta: Self { .rgb(255, 0, 255) }
 	public static var raywhite: Self { .rgb(245, 245, 245) }
-	
-	//MARK: Initialization
-	
-	public static func rgb(_ r: UInt8, _ g: UInt8, _ b: UInt8, a: UInt8 = .max) -> Color {
-		.init(r: r, g: g, b: b, a: a)
-	}
 	
 }
