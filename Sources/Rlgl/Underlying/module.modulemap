@@ -1,0 +1,4 @@
+module CRayGL [system] {
+  header "../../../Dependencies/raylib/src/rlgl.h"
+  export *
+}

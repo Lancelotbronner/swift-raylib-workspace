@@ -30,6 +30,23 @@ extension Renderer2D {
 		DrawRectangleLines(rect.x.toInt32, rect.y.toInt32, rect.width.toInt32, rect.height.toInt32, color)
 	}
 	
+	@inlinable
+	public static func rectangleOutline(at x: Int, _ y: Int, size width: Int, _ height: Int, thickness: Float, color: Color = Renderer.shapeColor) {
+		DrawRectangleLinesEx(Rectangle(x: x.toFloat, y: y.toFloat, width: width.toFloat, height: height.toFloat), thickness, color)
+	}
+	
+	@inlinable
+	public static func rectangleOutline(_ rect: Rectangle, thickness: Float, color: Color = Renderer.shapeColor) {
+		DrawRectangleLinesEx(rect, thickness, color)
+	}
+	
+	//MARK: Rounded Rectangle
+	
+	@inlinable
+	public static func roundedRectangleOutline(_ shape: RoundedRectangle, thickness: Float, color: Color = Renderer.shapeColor) {
+		DrawRectangleRoundedLines(shape.rectangle, shape.cornerRadius, shape.segments.toInt32, thickness, color)
+	}
+	
 	//MARK: Circle
 	
 	@inlinable
@@ -77,5 +94,27 @@ extension Renderer2D {
 	public static func ringOutline(at position: Vector2f, inner innerRadius: Float, outer outerRadius: Float, segments: Int = 0, from start: Angle, to end: Angle, color: Color = Renderer.shapeColor) {
 		DrawRingLines(position, innerRadius, outerRadius, start.toDegrees, end.toDegrees, segments.toInt32, color)
 	}
+	
+	//MARK: Polygon
+	
+	@inlinable
+	public static func polygonOutline(at x: Int, _ y: Int, sides: Int, radius: Float, rotation: Angle = .zero, color: Color = Renderer.shapeColor) {
+		DrawPolyLines(Vector2f(x.toFloat, y.toFloat), sides.toInt32, radius, rotation.toDegrees, color)
+	}
+	
+	@inlinable
+	public static func polygonOutline(at position: Vector2f, sides: Int, radius: Float, rotation: Angle = .zero, color: Color = Renderer.shapeColor) {
+		DrawPolyLines(position, sides.toInt32, radius, rotation.toDegrees, color)
+	}
+	
+	@inlinable
+	public static func polygonOutline(_ shape: Polygon, color: Color = Renderer.shapeColor) {
+		DrawPolyLines(shape.position, shape.sides.toInt32, shape.radius, shape.rotation.toDegrees, color)
+	}
+	
+//	@inlinable
+//	public static func polygonOutline(_ shape: Polygon, thickness: Float, color: Color = Renderer.shapeColor) {
+//		DrawPolyLinesEx(shape.position, shape.sides.toInt32, shape.radius, shape.rotation.toDegrees, thickness, color)
+//	}
 	
 }

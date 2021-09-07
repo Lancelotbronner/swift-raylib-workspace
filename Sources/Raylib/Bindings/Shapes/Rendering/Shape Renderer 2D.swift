@@ -37,7 +37,7 @@ extension Renderer2D {
 	
 	@inlinable
 	public static func rectangle(_ shape: Rectangle, color: Color = Renderer.shapeColor) {
-		DrawRectangle(shape.x.toInt32, shape.y.toInt32, shape.width.toInt32, shape.height.toInt32, color)
+		DrawRectangleRec(shape, color)
 	}
 	
 	@inlinable
@@ -83,6 +83,13 @@ extension Renderer2D {
 	@inlinable
 	public static func rectangle(_ shape: Rectangle, gradient topLeft: Color, _ bottomLeft: Color, _ bottomRight: Color, _ topRight: Color) {
 		DrawRectangleGradientEx(shape, topLeft, bottomLeft, bottomRight, topRight)
+	}
+	
+	//MARK: Rounded Rectangle
+	
+	@inlinable
+	public static func roundedRectangle(_ shape: RoundedRectangle, color: Color = Renderer.shapeColor) {
+		DrawRectangleRounded(shape.rectangle, shape.cornerRadius, shape.segments.toInt32, color)
 	}
 	
 	//MARK: Circle
@@ -151,6 +158,23 @@ extension Renderer2D {
 	@inlinable
 	public static func ring(at position: Vector2f, inner innerRadius: Float, outer outerRadius: Float, segments: Int = 0, from start: Angle, to end: Angle, color: Color = Renderer.shapeColor) {
 		DrawRing(position, innerRadius, outerRadius, start.toDegrees, end.toDegrees, segments.toInt32, color)
+	}
+	
+	//MARK: Polygon
+	
+	@inlinable
+	public static func polygon(at x: Int, _ y: Int, sides: Int, radius: Float, rotation: Angle = .zero, color: Color = Renderer.shapeColor) {
+		DrawPoly(Vector2f(x.toFloat, y.toFloat), sides.toInt32, radius, rotation.toDegrees, color)
+	}
+	
+	@inlinable
+	public static func polygon(at position: Vector2f, sides: Int, radius: Float, rotation: Angle = .zero, color: Color = Renderer.shapeColor) {
+		DrawPoly(position, sides.toInt32, radius, rotation.toDegrees, color)
+	}
+	
+	@inlinable
+	public static func polygon(_ shape: Polygon, color: Color = Renderer.shapeColor) {
+		DrawPoly(shape.position, shape.sides.toInt32, shape.radius, shape.rotation.toDegrees, color)
 	}
 	
 }

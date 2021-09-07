@@ -12,8 +12,12 @@ let package = Package(
 		// Libraries
 		
 		.library(
-			name: "SwiftRaylib",
-			targets: ["Raylib"]),
+			name: "SwiftRlgl",
+			targets: ["Rlgl"]),
+		
+			.library(
+				name: "SwiftRaylib",
+				targets: ["Raylib"]),
 		
 	],
 	targets: [
@@ -32,6 +36,21 @@ let package = Package(
 				name: "Raylib",
 				dependencies: ["CRaylib"],
 				path: "Sources/Raylib/Bindings"),
+		
+		// Rlgl
+		
+			.systemLibrary(
+				name: "CRlgl",
+				path: "Sources/Rlgl/Underlying",
+				pkgConfig: "raylib",
+				providers: [
+					.brew(["raylib"]),
+				]),
+		
+			.target(
+				name: "Rlgl",
+				dependencies: ["CRlgl"],
+				path: "Sources/Rlgl/Bindings"),
 		
 		// Examples
 		

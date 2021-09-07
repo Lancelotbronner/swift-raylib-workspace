@@ -16,8 +16,14 @@ extension Renderer {
 		set { currentShapeColor = newValue }
 	}
 	
+//	public static var shapeThickness: Float {
+//		get { currentShapeThickness }
+//		set { currentShapeThickness = newValue }
+//	}
+	
 }
 
 //MARK: Stores
 
+private var currentShapeThickness: Float = 1
 private var currentShapeColor = Color.gray

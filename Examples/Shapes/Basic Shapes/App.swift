@@ -35,16 +35,10 @@ struct BasicShapes: App {
 		Renderer2D.triangleOutline(Vector2f(triangleX, 160), Vector2f(triangleX - 20, 230), Vector2f(triangleX + 20, 230), color: .darkBlue)
 		
 		// Polygon shapes and lines
+		let polygonX = Window.width / 4 * 3
+		Renderer2D.polygon(at: polygonX, 320, sides: 6, radius: 80, color: .brown)
+		Renderer2D.polygonOutline(at: polygonX, 320, sides: 6, radius: 80)
 		
-		
-		/*
-		 // Polygon shapes and lines
-		 DrawPoly((Vector2){screenWidth/4*3, 320}, 6, 80, 0, BROWN);
-		 DrawPolyLinesEx((Vector2){screenWidth/4*3, 320}, 6, 80, 0, 6, BEIGE);
-		 
-		 // NOTE: We draw all LINES based shapes together to optimize internal drawing,
-		 // this way, all LINES are rendered in a single draw pass
-		 DrawLine(18, 42, screenWidth - 18, 42, BLACK);
-		 */
+		Renderer2D.line(from: 18, 42, to: Window.width - 18, 42, color: .black)
 	}
 }

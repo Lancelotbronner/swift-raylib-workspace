@@ -43,6 +43,10 @@ extension Rectangle {
 	
 	//MARK: Methods
 	
+	public func rounded(to cornerRadius: Float, segments: Int = 0) -> RoundedRectangle {
+		RoundedRectangle(round: self, by: cornerRadius, segments: segments)
+	}
+	
 	public func contains(_ x: Float, _ y: Float) -> Bool {
 		x >= startX && x <= endX && y <= endY && y >= startY
 	}

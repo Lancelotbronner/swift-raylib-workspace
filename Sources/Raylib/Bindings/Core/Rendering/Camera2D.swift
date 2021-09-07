@@ -13,6 +13,13 @@ public typealias Camera2D = CRaylib.Camera2D
 
 extension Camera2D {
 	
+	//MARK: Computed Properties
+	
+	@inlinable
+	public var matrix: Matrix4x4f {
+		GetCameraMatrix2D(self)
+	}
+	
 	//MARK: Initialization
 	
 	@inlinable
