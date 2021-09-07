@@ -3,6 +3,8 @@
 
 import PackageDescription
 
+//MARK: - Package
+
 let package = Package(
 	name: "Swift Raylib",
 	products: [
@@ -20,50 +22,31 @@ let package = Package(
 		
 		.systemLibrary(
 			name: "CRaylib",
-			path: "Sources/SystemRaylib",
+			path: "Sources/Raylib/Underlying",
 			pkgConfig: "raylib",
 			providers: [
 				.brew(["raylib"]),
 			]),
 		
-		// Bindings
-		
 			.target(
 				name: "Raylib",
 				dependencies: ["CRaylib"],
-				path: "Sources/Bindings"),
+				path: "Sources/Raylib/Bindings"),
 		
 		// Examples
 		
-			.executableTarget(
-				name: "Example 01 - Core Basic Window",
-				dependencies: ["Raylib"],
-				path: "Examples/01 - Core Basic Window"),
+			.example(.core, "Basic Window"),
+		.example(.core, "Input Keys"),
+		.example(.core, "Input Mouse"),
+		.example(.core, "Input Mouse Wheel"),
+		.example(.core, "2D Camera"),
+		.example(.core, "2D Camera Platformer"),
 		
-			.executableTarget(
-				name: "Example 02 - Core Input Keys",
-				dependencies: ["Raylib"],
-				path: "Examples/02 - Core Input Keys"),
+			.example(.shapes, "Basic Shapes"),
 		
-			.executableTarget(
-				name: "Example 03 - Core Input Mouse",
-				dependencies: ["Raylib"],
-				path: "Examples/03 - Core Input Mouse"),
-		
-			.executableTarget(
-				name: "Example 04 - Core Input Mouse Wheel",
-				dependencies: ["Raylib"],
-				path: "Examples/04 - Core Input Mouse Wheel"),
-		
-			.executableTarget(
-				name: "Example 08 - 2D Camera",
-				dependencies: ["Raylib"],
-				path: "Examples/08 - 2D Camera"),
-		
-			.executableTarget(
-				name: "Example 09 - 2D Camera Platformer",
-				dependencies: ["Raylib"],
-				path: "Examples/09 - 2D Camera Platformer"),
+			.example(.textures, "Logo Raylib", [
+				.copy("raylib_logo.png")
+			]),
 		
 		// Tests
 		
@@ -72,3 +55,26 @@ let package = Package(
 				dependencies: ["Raylib"]),
 	]
 )
+
+//MARK: - Templates
+
+extension Target {
+	private static var count = 1
+	static func example(_ module: RaylibModule, _ name: String, _ resources: [Resource]? = nil) -> Target {
+		let target = Target.executableTarget(
+			name: "Example - \(String(repeating: "0", count: 3 - count.description.count))\(count) \(module.rawValue) \(name)",
+			dependencies: ["Raylib"],
+			path: "Examples/\(module.rawValue)/\(name)",
+			resources: resources)
+		count += 1
+		return target
+	}
+}
+
+//MARK: - Utilites
+
+enum RaylibModule: String {
+	case core = "Core"
+	case shapes = "Shapes"
+	case textures = "Textures"
+}

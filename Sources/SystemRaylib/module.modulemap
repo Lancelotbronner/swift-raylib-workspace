@@ -1,5 +1,0 @@
-module CRaylib [system] {
-  header "../../Dependencies/raylib/src/raylib.h"
-  header "../../Dependencies/raylib/src/raymath.h"
-  export *
-}
