@@ -62,6 +62,7 @@ let package = Package(
 		.example(.core, "2D Camera Platformer"),
 		
 			.example(.shapes, "Basic Shapes"),
+		.example(.shapes, "Color Palette"),
 		
 			.example(.textures, "Logo Raylib", [
 				.copy("raylib_logo.png")

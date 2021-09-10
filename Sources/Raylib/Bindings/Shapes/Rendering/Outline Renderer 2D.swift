@@ -32,7 +32,7 @@ extension Renderer2D {
 	
 	@inlinable
 	public static func rectangleOutline(at x: Int, _ y: Int, size width: Int, _ height: Int, thickness: Float, color: Color = Renderer.shapeColor) {
-		DrawRectangleLinesEx(Rectangle(x: x.toFloat, y: y.toFloat, width: width.toFloat, height: height.toFloat), thickness, color)
+		DrawRectangleLinesEx(Rectangle(at: x.toFloat, y.toFloat, size: width.toFloat, height.toFloat), thickness, color)
 	}
 	
 	@inlinable

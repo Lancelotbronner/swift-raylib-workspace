@@ -72,7 +72,7 @@ extension Renderer2D {
 	
 	@inlinable
 	public static func rectangle(at x: Int, _ y: Int, size width: Int, _ height: Int, gradient topLeft: Color, _ bottomLeft: Color, _ bottomRight: Color, _ topRight: Color) {
-		DrawRectangleGradientEx(.init(x: x.toFloat, y: y.toFloat, width: width.toFloat, height: height.toFloat), topLeft, bottomLeft, bottomRight, topRight)
+		DrawRectangleGradientEx(.init(at: x.toFloat, y.toFloat, size: width.toFloat, height.toFloat), topLeft, bottomLeft, bottomRight, topRight)
 	}
 	
 	@inlinable

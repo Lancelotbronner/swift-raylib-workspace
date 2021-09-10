@@ -5,6 +5,8 @@
 //  Created by Christophe Bronner on 2021-09-06.
 //
 
+import CRaylib
+
 //MARK: - Triangle
 
 public struct Triangle {
@@ -22,6 +24,18 @@ public struct Triangle {
 		self.a = a
 		self.b = b
 		self.c = c
+	}
+	
+	//MARK: Methods
+	
+	@inlinable
+	public func contains(_ x: Int, _ y: Int) -> Bool {
+		CheckCollisionPointTriangle(Vector2f(x.toFloat, y.toFloat), a, b, c)
+	}
+	
+	@inlinable
+	public func contains(_ point: Vector2f) -> Bool {
+		CheckCollisionPointTriangle(point, a, b, c)
 	}
 	
 }

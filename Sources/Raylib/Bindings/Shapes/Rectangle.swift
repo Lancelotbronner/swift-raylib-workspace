@@ -37,22 +37,48 @@ extension Rectangle {
 	
 	//MARK: Initialization
 	
+	@inlinable
+	public init(at x: Float, _ y: Float, size width: Float, _ height: Float) {
+		self.init(x: x, y: y, width: width, height: height)
+	}
+	
+	@inlinable
 	public init(at position: Vector2f, size: Vector2f) {
 		self.init(x: position.x, y: position.y, width: size.x, height: size.y)
 	}
 	
-	//MARK: Methods
+	//MARK: Conversion Methods
 	
+	@inlinable
 	public func rounded(to cornerRadius: Float, segments: Int = 0) -> RoundedRectangle {
 		RoundedRectangle(round: self, by: cornerRadius, segments: segments)
 	}
 	
+	//MARK: Collision Methods
+	
+	@inlinable
 	public func contains(_ x: Float, _ y: Float) -> Bool {
-		x >= startX && x <= endX && y <= endY && y >= startY
+		CheckCollisionPointRec(Vector2f(x, y), self)
 	}
 	
-	public func contains(_ position: Vector2f) -> Bool {
-		contains(position.x, position.y)
+	@inlinable
+	public func contains(_ point: Vector2f) -> Bool {
+		CheckCollisionPointRec(point, self)
+	}
+	
+	@inlinable
+	public func collided(with other: Rectangle) -> Bool {
+		CheckCollisionRecs(self, other)
+	}
+	
+	@inlinable
+	public func collided(with other: Circle) -> Bool {
+		CheckCollisionCircleRec(other.position, other.radius, self)
+	}
+	
+	@inlinable
+	public func collision(with other: Rectangle) -> Rectangle {
+		GetCollisionRec(self, other)
 	}
 	
 }
