@@ -104,23 +104,6 @@ public struct Window {
 		InitWindow(width.toInt32, height.toInt32, title)
 	}
 	
-	//MARK: Deinitialization
-	
-	@inlinable
-	public static func close() {
-		CloseWindow()
-	}
-	
-	@inlinable
-	public static func close(on key: KeyboardButton) {
-		SetExitKey(key.keycode)
-	}
-	
-	@inlinable
-	public static func dontCloseOnKey() {
-		SetExitKey(KeyboardButton.null.keycode)
-	}
-	
 	//MARK: Methods
 	
 	@inlinable

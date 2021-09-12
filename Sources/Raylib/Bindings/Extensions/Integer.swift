@@ -9,44 +9,44 @@ extension BinaryInteger {
 	
 	//MARK: Integer Conversions
 	
-	@inlinable
+	@_transparent
 	public var toInt: Int {
-		.init(truncatingIfNeeded: self)
+		.init(self)
 	}
 	
-	@inlinable
+	@_transparent
 	public var toUInt: UInt {
-		.init(truncatingIfNeeded: self)
+		.init(self)
 	}
 	
-	@inlinable
+	@_transparent
 	public var toInt32: Int32 {
-		.init(truncatingIfNeeded: self)
+		.init(self)
 	}
 	
-	@inlinable
+	@_transparent
 	public var toUInt32: UInt32 {
-		.init(truncatingIfNeeded: self)
+		.init(self)
 	}
 	
-	@inlinable
+	@_transparent
 	public var toInt8: Int8 {
-		.init(truncatingIfNeeded: self)
+		.init(self)
 	}
 	
-	@inlinable
+	@_transparent
 	public var toUInt8: UInt8 {
-		.init(truncatingIfNeeded: self)
+		.init(self)
 	}
 	
 	//MARK: Floating Point Conversions
 	
-	@inlinable
+	@_transparent
 	public var toFloat: Float {
 		.init(self)
 	}
 	
-	@inlinable
+	@_transparent
 	public var toDouble: Double {
 		.init(self)
 	}

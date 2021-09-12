@@ -24,13 +24,28 @@ public struct Application {
 		set { SetTargetFPS(newValue.toInt32) }
 	}
 	
-	//MARK: Methods
+	//MARK: Lifecycle Methods
 	
 	@inlinable
 	public static func run(_ step: () -> Void) {
 		while Application.isRunning {
 			step()
 		}
+	}
+	
+	@inlinable
+	public static func quit() {
+		CloseWindow()
+	}
+	
+	@inlinable
+	public static func quit(on key: KeyboardButton) {
+		SetExitKey(key.keycode)
+	}
+	
+	@inlinable
+	public static func clearQuitShortcut() {
+		SetExitKey(KeyboardButton.null.keycode)
 	}
 	
 }

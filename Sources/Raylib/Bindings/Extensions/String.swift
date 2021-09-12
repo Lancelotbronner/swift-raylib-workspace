@@ -9,7 +9,7 @@
 
 extension UnsafePointer where Pointee == CChar {
 	
-	@inlinable
+	@_transparent
 	public var toString: String {
 		String(cString: self)
 	}

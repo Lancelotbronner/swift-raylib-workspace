@@ -45,7 +45,7 @@ extension App {
 		}
 		app.destroy()
 		
-		Window.close()
+		Application.quit()
 	}
 	
 }

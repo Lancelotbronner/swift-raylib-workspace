@@ -36,15 +36,6 @@ struct ColorPalette: App {
 	init() {
 		Window.create(800, by: 450, title: "Example - Shapes - Color Palette")
 		Application.targetFPS = 60
-		
-//		colors = []
-//		for i in namedColors.indices {
-//
-//			colors.append(PaletteItem(
-//				name: namedColors[i].name,
-//				color: namedColors[i].color,
-//				position: Vector2f(x.toFloat, y.toFloat)))
-//		}
 	}
 	
 	mutating func update() {
@@ -79,11 +70,9 @@ struct PaletteItem {
 	let position: Vector2f
 	var hovered = false
 	
-	var area: Rectangle {
-		.init(at: position, size: Self.size)
-	}
+	var area: Rectangle { Rectangle(at: position, size: Self.size) }
 	
-	public init(_ name: String, _ color: Color) {
+	init(_ name: String, _ color: Color) {
 		self.name = name
 		self.color = color
 		let x = 20 + PaletteItem.size.x * (PaletteItem.index % 7).toFloat + 10 * (PaletteItem.index % 7).toFloat
