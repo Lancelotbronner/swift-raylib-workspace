@@ -2,16 +2,16 @@
 //  File.swift
 //  File
 //
-//  Created by Christophe Bronner on 2021-09-10.
+//  Created by Christophe Bronner on 2021-09-17.
 //
 
 import CRaylib
 
-//MARK: - Image Store
+//MARK: - Store
 
 extension Image {
 	@usableFromInline
-	final class Store: Copyable {
+	internal final class Store: Copyable {
 		
 		//MARK: Properties
 		
@@ -20,9 +20,9 @@ extension Image {
 		
 		//MARK: Initialization
 		
-		@inlinable
-		init(_ raylib: CRaylib.Image) {
-			underlying = raylib
+		@usableFromInline
+		init(_ value: CRaylib.Image) {
+			underlying = value
 		}
 		
 		deinit {
@@ -31,8 +31,8 @@ extension Image {
 		
 		//MARK: Methods
 		
-		@inlinable
-		func copy() -> Store {
+		@usableFromInline
+		func copy() -> Self {
 			.init(ImageCopy(underlying))
 		}
 		

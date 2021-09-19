@@ -11,32 +11,32 @@ extension BinaryInteger {
 	
 	@_transparent
 	public var toInt: Int {
-		.init(self)
+		numericCast(self)
 	}
 	
 	@_transparent
 	public var toUInt: UInt {
-		.init(self)
+		numericCast(self)
 	}
 	
 	@_transparent
 	public var toInt32: Int32 {
-		.init(self)
+		numericCast(self)
 	}
 	
 	@_transparent
 	public var toUInt32: UInt32 {
-		.init(self)
+		numericCast(self)
 	}
 	
 	@_transparent
 	public var toInt8: Int8 {
-		.init(self)
+		numericCast(self)
 	}
 	
 	@_transparent
 	public var toUInt8: UInt8 {
-		.init(self)
+		numericCast(self)
 	}
 	
 	//MARK: Floating Point Conversions

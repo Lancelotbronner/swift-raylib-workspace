@@ -9,64 +9,46 @@ import Raylib
 
 @main
 struct ImageGeneration: App {
+	var textures: [Texture]
+	var index = 0
 	
 	init() {
 		Window.create(800, by: 450, title: "Examples - Textures - Image Generation")
 		Application.targetFPS = 60
 		
-//		Image verticalGradient = GenImageGradientV(screenWidth, screenHeight, RED, BLUE);
-//		Image horizontalGradient = GenImageGradientH(screenWidth, screenHeight, RED, BLUE);
-//		Image radialGradient = GenImageGradientRadial(screenWidth, screenHeight, 0.0f, WHITE, BLACK);
-//		Image checked = GenImageChecked(screenWidth, screenHeight, 32, 32, RED, BLUE);
-//		Image whiteNoise = GenImageWhiteNoise(screenWidth, screenHeight, 0.5f);
-//		Image perlinNoise = GenImagePerlinNoise(screenWidth, screenHeight, 50, 50, 4.0f);
-//		Image cellular = GenImageCellular(screenWidth, screenHeight, 32);
-//
-//		Texture2D textures[NUM_TEXTURES] = { 0 };
-//
-//		textures[0] = LoadTextureFromImage(verticalGradient);
-//		textures[1] = LoadTextureFromImage(horizontalGradient);
-//		textures[2] = LoadTextureFromImage(radialGradient);
-//		textures[3] = LoadTextureFromImage(checked);
-//		textures[4] = LoadTextureFromImage(whiteNoise);
-//		textures[5] = LoadTextureFromImage(perlinNoise);
-//		textures[6] = LoadTextureFromImage(cellular);
-//
-//		// Unload image data (CPU RAM)
-//		UnloadImage(verticalGradient);
-//		UnloadImage(horizontalGradient);
-//		UnloadImage(radialGradient);
-//		UnloadImage(checked);
-//		UnloadImage(whiteNoise);
-//		UnloadImage(perlinNoise);
-//		UnloadImage(cellular);
+		textures = [
+			Image.gradientV(size: Window.width, Window.height, from: .red, to: .blue),
+			Image.gradientH(size: Window.width, Window.height, from: .red, to: .blue),
+			Image.gradientRadial(size: Window.width, Window.height, from: .white, to: .black),
+			Image.checked(size: Window.width, Window.height, tiles: 32, 32, colors: .red, .blue),
+			Image.whiteNoise(size: Window.width, Window.height, factor: 0.5),
+			Image.cellular(size: Window.width, Window.height, cellSize: 32),
+		].map(\.toTexture)
 	}
 	
-	update() {
-//		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) || IsKeyPressed(KEY_RIGHT))
-//		{
-//			currentTexture = (currentTexture + 1)%NUM_TEXTURES; // Cycle between the textures
-//		}
+	mutating func update() {
+		if Mouse.left.isPressed || Keyboard.right.isPressed {
+			index = textures.roundRobin(after: index)
+		}
 	}
 	
-	draw() {
-//		DrawTexture(textures[currentTexture], 0, 0, WHITE);
-//
-//		  DrawRectangle(30, 400, 325, 30, Fade(SKYBLUE, 0.5f));
-//		  DrawRectangleLines(30, 400, 325, 30, Fade(WHITE, 0.5f));
-//		  DrawText("MOUSE LEFT BUTTON to CYCLE PROCEDURAL TEXTURES", 40, 410, 10, WHITE);
-//
-//		  switch(currentTexture)
-//		  {
-//			  case 0: DrawText("VERTICAL GRADIENT", 560, 10, 20, RAYWHITE); break;
-//			  case 1: DrawText("HORIZONTAL GRADIENT", 540, 10, 20, RAYWHITE); break;
-//			  case 2: DrawText("RADIAL GRADIENT", 580, 10, 20, LIGHTGRAY); break;
-//			  case 3: DrawText("CHECKED", 680, 10, 20, RAYWHITE); break;
-//			  case 4: DrawText("WHITE NOISE", 640, 10, 20, RED); break;
-//			  case 5: DrawText("PERLIN NOISE", 630, 10, 20, RAYWHITE); break;
-//			  case 6: DrawText("CELLULAR", 670, 10, 20, RAYWHITE); break;
-//			  default: break;
-//		  }
+	func draw() {
+		Renderer2D.texture(textures[index], at: .zero)
+		
+		Renderer2D.rectangle(at: 30, 400, size: 325, 30, color: .skyBlue.faded(to: 0.5))
+		Renderer2D.rectangleOutline(at: 30, 400, size: 325, 30, color: .white.faded(to: 0.5))
+		Renderer2D.text("MOUSE LEFT BUTTON to CYCLE PROCEDURAL TEXTURES", at: 40, 410, size: 10, color: .white)
+		
+		switch index {
+		case 0: Renderer2D.text("VERTICAL GRADIENT", at: 560, 10, color: .raywhite)
+		case 1: Renderer2D.text("HORIZONTAL GRADIENT", at: 540, 10, color: .raywhite)
+		case 2: Renderer2D.text("RADIAL GRADIENT", at: 580, 10, color: .lightGray)
+		case 3: Renderer2D.text("CHECKED", at: 680, 10, color: .raywhite)
+		case 4: Renderer2D.text("WHITE NOISE", at: 640, 10, color: .red)
+		case 5: Renderer2D.text("PERLIN NOISE", at: 630, 10, color: .raywhite)
+		case 6: Renderer2D.text("CELLULAR", at: 670, 10, color: .raywhite)
+		default: break
+		}
 	}
 	
 }

@@ -7,34 +7,35 @@
 
 //MARK: - Copy on Write
 
+@propertyWrapper
 @dynamicMemberLookup
 @usableFromInline
-struct CopyOnWrite<Value: Copyable & AnyObject> {
+internal struct CopyOnWrite<Store: Copyable & AnyObject> {
 	
 	//MARK: Properties
 	
 	@usableFromInline
-	var value: Value
+	var wrappedValue: Store
 	
 	//MARK: Initialization
 	
 	@inlinable
-	init(_ wrapped: Value) {
-		value = wrapped
+	init(_ wrappedValue: Store) {
+		self.wrappedValue = wrappedValue
 	}
 	
 	//MARK: Subscripts
 	
 	@usableFromInline
-	subscript<Member>(dynamicMember keyPath: ReferenceWritableKeyPath<Value, Member>) -> Member {
+	subscript<Member>(dynamicMember keyPath: ReferenceWritableKeyPath<Store, Member>) -> Member {
 		@_transparent
 		get {
-			value[keyPath: keyPath]
+			wrappedValue[keyPath: keyPath]
 		}
 		@_transparent
 		set {
 			copyIfNotUnique()
-			value[keyPath: keyPath] = newValue
+			wrappedValue[keyPath: keyPath] = newValue
 		}
 	}
 	
@@ -42,8 +43,8 @@ struct CopyOnWrite<Value: Copyable & AnyObject> {
 	
 	@inlinable
 	mutating func copyIfNotUnique() {
-		if !isKnownUniquelyReferenced(&value) {
-			value = value.copy()
+		if !isKnownUniquelyReferenced(&wrappedValue) {
+			wrappedValue = wrappedValue.copy()
 		}
 	}
 	
