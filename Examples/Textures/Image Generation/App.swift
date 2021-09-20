@@ -22,6 +22,7 @@ struct ImageGeneration: App {
 			Image.gradientRadial(size: Window.width, Window.height, from: .white, to: .black),
 			Image.checked(size: Window.width, Window.height, tiles: 32, 32, colors: .red, .blue),
 			Image.whiteNoise(size: Window.width, Window.height, factor: 0.5),
+			Image.perlinNoise(size: Window.width, Window.height, offset: 50, 50, scale: 4),
 			Image.cellular(size: Window.width, Window.height, cellSize: 32),
 		].map(\.toTexture)
 	}
@@ -29,6 +30,9 @@ struct ImageGeneration: App {
 	mutating func update() {
 		if Mouse.left.isPressed || Keyboard.right.isPressed {
 			index = textures.roundRobin(after: index)
+		}
+		if Mouse.right.isPressed || Keyboard.left.isPressed {
+			index = textures.roundRobin(before: index)
 		}
 	}
 	

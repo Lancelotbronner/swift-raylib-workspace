@@ -21,7 +21,7 @@ extension BidirectionalCollection where Index == Int {
 	@inlinable
 	public func roundRobin(before i: Index) -> Index {
 		let tmp = index(before: i)
-		return tmp <= 0 ? count : tmp
+		return tmp <= 0 ? count - 1 : tmp
 	}
 	
 }
