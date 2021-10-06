@@ -1,4 +1,0 @@
-module CGraphics [system] {
-  header "../../../Dependencies/raylib/src/rlgl.h"
-  export *
-}

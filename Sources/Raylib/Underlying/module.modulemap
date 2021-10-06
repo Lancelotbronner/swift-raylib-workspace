@@ -1,6 +1,0 @@
-module CRaylib [system] {
-  header "/usr/local/include/raylib.h"
-  header "/usr/local/include/raymath.h"
-  link "raylib"
-  export *
-}
