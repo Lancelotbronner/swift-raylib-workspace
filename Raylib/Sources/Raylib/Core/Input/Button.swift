@@ -9,13 +9,16 @@
 
 public protocol Button {
 	
-	var keycode: Int32 { get }
-	
+	/// Wether the button is currently pressed
 	var isPressed: Bool { get }
-	var isReleased: Bool { get }
-	var isDown: Bool { get }
-	var isUp: Bool { get }
 	
-	init(_ keycode: Int32)
+	/// Wether the button was released this frame
+	var isReleased: Bool { get }
+	
+	/// Wether the button was pushed down this frame
+	var isDown: Bool { get }
+	
+	/// Wether the button was pushed up this frame
+	var isUp: Bool { get }
 	
 }

@@ -13,6 +13,7 @@ public struct KeyboardButton: Button {
 	
 	//MARK: Constants
 	
+	/// The key to specify no keys
 	public static let null = KeyboardButton(KEY_NULL)
 	
 	//MARK: Properties
@@ -21,35 +22,29 @@ public struct KeyboardButton: Button {
 	
 	//MARK: Computed Properties
 	
-	@inlinable
-	public var isPressed: Bool {
+	@inlinable public var isPressed: Bool {
 		IsKeyPressed(keycode)
 	}
 	
-	@inlinable
-	public var isDown: Bool {
+	@inlinable public var isDown: Bool {
 		IsKeyDown(keycode)
 	}
 	
-	@inlinable
-	public var isReleased: Bool {
+	@inlinable public var isReleased: Bool {
 		IsKeyReleased(keycode)
 	}
 	
-	@inlinable
-	public var isUp: Bool {
+	@inlinable public var isUp: Bool {
 		IsKeyUp(keycode)
 	}
 	
 	//MARK: Initialization
 	
-	@inlinable
-	public init(_ keycode: Int32) {
+	@inlinable public init(_ keycode: Int32) {
 		self.keycode = keycode
 	}
 	
-	@inlinable
-	public init(_ key: KeyboardKey) {
+	@inlinable public init(_ key: KeyboardKey) {
 		keycode = key.rawValue.toInt32
 	}
 	

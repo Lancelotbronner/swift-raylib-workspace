@@ -13,40 +13,40 @@ public struct Cursor {
 	
 	//MARK: Properties
 	
-	@inlinable
-	public var isVisible: Bool {
+	/// Check if cursor is visible
+	@inlinable public var isVisible: Bool {
 		!IsCursorHidden()
 	}
 	
-	@inlinable
-	public var isHidden: Bool {
-		!IsCursorHidden()
+	/// Check if cursor is not visible
+	@inlinable public var isHidden: Bool {
+		IsCursorHidden()
 	}
 	
-	@inlinable
-	public var isOnScreen: Bool {
+	/// Check if cursor is on the screen
+	@inlinable public var isOnScreen: Bool {
 		IsCursorOnScreen()
 	}
 	
 	//MARK: Methods
 	
-	@inlinable
-	public static func show() {
+	/// Shows cursor
+	@inlinable public static func show() {
 		ShowCursor()
 	}
 	
-	@inlinable
-	public static func hide() {
+	/// Hides cursor
+	@inlinable public static func hide() {
 		HideCursor()
 	}
 	
-	@inlinable
-	public static func enable() {
+	/// Enables cursor (unlock cursor)
+	@inlinable public static func enable() {
 		EnableCursor()
 	}
 	
-	@inlinable
-	public static func disable() {
+	/// Disables cursor (lock cursor)
+	@inlinable public static func disable() {
 		DisableCursor()
 	}
 	

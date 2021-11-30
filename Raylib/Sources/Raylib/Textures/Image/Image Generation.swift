@@ -36,10 +36,10 @@ extension Image {
 		.init(underlying: GenImageWhiteNoise(width.toInt32, height.toInt32, factor))
 	}
 	
-	@inlinable
-	public static func perlinNoise(size width: Int, _ height: Int, offset offsetX: Int, _ offsetY: Int, scale: Float) -> Image {
-		.init(underlying: GenImagePerlinNoise(width.toInt32, height.toInt32, offsetX.toInt32, offsetY.toInt32, scale))
-	}
+//	@inlinable
+//	public static func perlinNoise(size width: Int, _ height: Int, offset offsetX: Int, _ offsetY: Int, scale: Float) -> Image {
+//		.init(underlying: GenImagePerlinNoise(width.toInt32, height.toInt32, offsetX.toInt32, offsetY.toInt32, scale))
+//	}
 	
 	@inlinable
 	public static func cellular(size width: Int, _ height: Int, cellSize: Int) -> Image {

@@ -8,7 +8,7 @@ import PackageDescription
 let package = Package(
 	name: "Swift Raylib Examples",
 	platforms: [
-		.macOS(.v11),
+		.macOS(.v12),
 	],
 	dependencies: [
 		
@@ -46,7 +46,7 @@ extension Target {
 		let target = Target.executableTarget(
 			name: "Example - \(String(repeating: "0", count: 3 - count.description.count))\(count) \(module.rawValue) \(name)",
 			dependencies: [
-				.product(name: "Raylib", package: "Swift Raylib"),
+				.product(name: "SwiftRaylib", package: "Raylib"),
 			],
 			path: "Sources/\(module.rawValue)/\(name)",
 			resources: resources)

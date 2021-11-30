@@ -13,39 +13,42 @@ public struct Application {
 	
 	//MARK: Computed Properties
 	
-	@inlinable
-	public static var isRunning: Bool {
+	/// Wether the application should keep running
+	@inlinable public static var isRunning: Bool {
 		!WindowShouldClose()
 	}
 	
-	@inlinable
-	public static var targetFPS: Int {
-		get { GetFPS().toInt }
-		set { SetTargetFPS(newValue.toInt32) }
+	//MARK: Methods
+	
+	// TODO: Set config flags
+	// void SetConfigFlags(unsigned int flags);			// Setup init configuration flags (view FLAGS)
+	
+	/// Set target FPS (maximum)
+	@inlinable public static func target(fps: Int) {
+		SetTargetFPS(fps.toInt32)
 	}
 	
-	//MARK: Lifecycle Methods
-	
-	@inlinable
-	public static func run(_ step: () -> Void) {
-		while Application.isRunning {
-			step()
-		}
+	/// Quit the application
+	@inlinable public static func quit() {
+		Window.close()
 	}
 	
-	@inlinable
-	public static func quit() {
-		CloseWindow()
-	}
-	
-	@inlinable
-	public static func quit(on key: KeyboardButton) {
+	/// Set a custom key to exit program (default is ESC)
+	@inlinable public static func quit(on key: KeyboardButton) {
 		SetExitKey(key.keycode)
 	}
 	
-	@inlinable
-	public static func clearQuitShortcut() {
+	/// Removes the quit shortcut, you'll have to manually quit the application
+	@inlinable public static func clearQuitShortcut() {
 		SetExitKey(KeyboardButton.null.keycode)
+	}
+	
+	//MARK: Lifecycle
+	
+	@inlinable public static func run(_ step: () -> Void) {
+		while Application.isRunning {
+			step()
+		}
 	}
 	
 }

@@ -17,37 +17,30 @@ public struct MouseButton: Button {
 	
 	//MARK: Computed Properties
 	
-	@inlinable
-	public var isPressed: Bool {
+	@inlinable public var isPressed: Bool {
 		IsMouseButtonPressed(keycode)
 	}
 	
-	@inlinable
-	public var isDown: Bool {
+	@inlinable public var isDown: Bool {
 		IsMouseButtonDown(keycode)
 	}
 	
-	@inlinable
-	public var isReleased: Bool {
+	@inlinable public var isReleased: Bool {
 		IsMouseButtonReleased(keycode)
 	}
 	
-	@inlinable
-	public var isUp: Bool {
+	@inlinable public var isUp: Bool {
 		IsMouseButtonUp(keycode)
 	}
 	
 	//MARK: Initialization
 	
-	@inlinable
-	public init(_ keycode: Int32) {
+	@inlinable public init(_ keycode: Int32) {
 		self.keycode = keycode
 	}
 	
-	@inlinable
-	public init(_ key: CRaylib.MouseButton) {
+	@inlinable public init(_ key: CRaylib.MouseButton) {
 		keycode = key.rawValue.toInt32
 	}
 	
 }
-
