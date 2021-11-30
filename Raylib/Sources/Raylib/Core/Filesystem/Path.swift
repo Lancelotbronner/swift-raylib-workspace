@@ -9,10 +9,26 @@ import CRaylib
 
 //MARK: - Path
 
-public struct Path {
+public struct Path: LosslessStringConvertible {
 	
 	//MARK: Properties
 	
-	@usableFromInline internal var underlying: String
+	public let description: String
+	
+	//MARK: Initialization
+	
+	public init(_ description: String) {
+		self.description = description
+	}
+	
+}
+
+//MARK: - Literal
+
+extension Path: ExpressibleByStringLiteral {
+	
+	public init(stringLiteral value: String) {
+		self.init(value)
+	}
 	
 }

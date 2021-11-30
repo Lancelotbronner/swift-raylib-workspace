@@ -9,8 +9,15 @@
 
 extension UnsafePointer where Pointee == CChar {
 	
-	@_transparent
-	public var toString: String {
+	@_transparent public var toString: String {
+		String(cString: self)
+	}
+	
+}
+
+extension UnsafeMutablePointer where Pointee == CChar {
+	
+	@_transparent public var toString: String {
 		String(cString: self)
 	}
 	
