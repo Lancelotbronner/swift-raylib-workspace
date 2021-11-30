@@ -51,11 +51,6 @@ public final class Texture {
 		underlying = LoadTexture(path)
 	}
 	
-	@inlinable
-	public convenience init(_ path: String, from bundle: Bundle) {
-		self.init("\(bundle.resourcePath ?? bundle.bundlePath)/\(path)")
-	}
-	
 	deinit {
 		UnloadTexture(underlying)
 	}
@@ -63,13 +58,13 @@ public final class Texture {
 	//MARK: Methods
 	
 	@inlinable
-	public func update(with data: Image) {
-		UpdateTexture(underlying, data.store.underlying.data)
+	public func update(with image: Image) {
+		UpdateTexture(underlying, image.underlying.data)
 	}
 	
 	@inlinable
-	public func update(area: Rectangle, with data: Image) {
-		UpdateTextureRec(underlying, area, data.store.underlying.data)
+	public func update(area: Rectangle, with image: Image) {
+		UpdateTextureRec(underlying, area, image.underlying.data)
 	}
 	
 }

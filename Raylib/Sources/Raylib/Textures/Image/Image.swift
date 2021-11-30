@@ -13,43 +13,42 @@ public struct Image {
 	
 	//MARK: Properties
 	
-	@usableFromInline
-	internal var store: CopyOnWrite<Store>
+	@CopyValueOnWrite
+	@usableFromInline internal var underlying: CRaylib.Image
 	
 	//MARK: Computed Properties
 	
 	@_transparent
 	public var width: Int {
-		store.underlying.width.toInt
+		underlying.width.toInt
 	}
 	
 	@_transparent
 	public var height: Int {
-		store.underlying.height.toInt
+		underlying.height.toInt
 	}
 	
 	@_transparent
 	public var size: Vector2f {
-		.init(store.underlying.width.toFloat, store.underlying.height.toFloat)
+		.init(underlying.width.toFloat, underlying.height.toFloat)
 	}
 	
 	@_transparent
 	public var mipmaps: Int {
-		store.underlying.mipmaps.toInt
+		underlying.mipmaps.toInt
 	}
 	
 	// TODO: Pixel format enum
 	
 	@inlinable
 	public var toTexture: Texture {
-		.init(underlying: LoadTextureFromImage(store.underlying))
+		.init(underlying: LoadTextureFromImage(underlying))
 	}
 	
 	//MARK: Initialization
 	
-	@_transparent
 	public init(underlying image: CRaylib.Image) {
-		store = .init(.init(image))
+		_underlying = CopyValueOnWrite(image, duplicate: ImageCopy, free: UnloadImage)
 	}
 	
 }
