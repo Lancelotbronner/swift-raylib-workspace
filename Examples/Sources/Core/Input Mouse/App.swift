@@ -14,7 +14,7 @@ struct InputMouse: App {
 	
 	init() {
 		Window.create(800, by: 450, title: "Example - Core - Input Mouse")
-		Application.targetFPS = 60
+		Application.target(fps: 60)
 	}
 	
 	mutating func update() {

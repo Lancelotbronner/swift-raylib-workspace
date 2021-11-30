@@ -35,7 +35,7 @@ struct ColorPalette: App {
 	
 	init() {
 		Window.create(800, by: 450, title: "Example - Shapes - Color Palette")
-		Application.targetFPS = 60
+		Application.target(fps: 60)
 	}
 	
 	mutating func update() {

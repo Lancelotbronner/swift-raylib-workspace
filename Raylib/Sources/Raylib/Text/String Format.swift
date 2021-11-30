@@ -6,6 +6,7 @@
 //
 
 import CRaylib
+import Foundation // TODO: Remove Foundation dependency
 
 //MARK: - Floating Point Formatting
 

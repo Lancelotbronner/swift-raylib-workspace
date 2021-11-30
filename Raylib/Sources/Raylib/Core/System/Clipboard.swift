@@ -13,7 +13,8 @@ public struct Clipboard {
 	
 	//MARK: Properties
 	
-	public static var text: String {
+	/// Get and set clipboard text content
+	@inlinable public static var text: String {
 		get { GetClipboardText().toString }
 		set { SetClipboardText(newValue) }
 	}

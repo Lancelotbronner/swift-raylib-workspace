@@ -19,8 +19,8 @@ struct ExampleCamera2D: App {
 
 	init() {
 		Window.create(800, by: 450, title: "Example - Core - 2D Camera")
-		Window.background = .darkGray
-		Application.targetFPS = 60
+		Renderer.background = .darkGray
+		Application.target(fps: 60)
 
 		player = Rectangle(at: Vector2f(400, 280), size: Vector2f(40, 40))
 		camera = Camera2D(at: player.position + 20)
@@ -80,7 +80,7 @@ struct ExampleCamera2D: App {
 
 		Renderer2D.text("SCREEN AREA", at: 640, 10, color: .red)
 		
-		Renderer2D.shapeColor = .red
+		Renderer.shapeColor = .red
 		Renderer2D.rectangle(at: 0, 0, size: Window.width, 5)
 		Renderer2D.rectangle(at: 0, 5, size: 5, Window.height - 10)
 		Renderer2D.rectangle(at: Window.width - 5, 5, size: 5, Window.height - 10)
@@ -89,8 +89,8 @@ struct ExampleCamera2D: App {
 		Renderer2D.rectangle(at: 10, 10, size: 250, 113, color: .skyBlue.faded(to: 0.5))
 		Renderer2D.rectangleOutline(at: 10, 10, size: 250, 113, color: .blue)
 		
-		Renderer2D.textColor = .darkGray
-		Renderer2D.textSize = 10
+		Renderer.textColor = .darkGray
+		Renderer.textSize = 10
 		Renderer2D.text("Free 2D camera controls:", at: 20, 20, color: .black)
 		Renderer2D.text("- Right/Left to move Offset", at: 40, 40);
 		Renderer2D.text("- Mouse Wheel to Zoom in-out", at: 40, 60);

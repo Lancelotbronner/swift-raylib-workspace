@@ -13,7 +13,7 @@ struct InputKeyboard: App {
 	
 	init() {
 		Window.create(800, by: 450, title: "Example - Core - Input Keys")
-		Application.targetFPS = 60
+		Application.target(fps: 60)
 		
 		ballPosition = Window.size / 2
 	}

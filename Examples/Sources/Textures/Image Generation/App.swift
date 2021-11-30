@@ -14,7 +14,7 @@ struct ImageGeneration: App {
 	
 	init() {
 		Window.create(800, by: 450, title: "Examples - Textures - Image Generation")
-		Application.targetFPS = 60
+		Application.target(fps: 60)
 		
 		textures = [
 			Image.gradientV(size: Window.width, Window.height, from: .red, to: .blue),
@@ -22,7 +22,8 @@ struct ImageGeneration: App {
 			Image.gradientRadial(size: Window.width, Window.height, from: .white, to: .black),
 			Image.checked(size: Window.width, Window.height, tiles: 32, 32, colors: .red, .blue),
 			Image.whiteNoise(size: Window.width, Window.height, factor: 0.5),
-			Image.perlinNoise(size: Window.width, Window.height, offset: 50, 50, scale: 4),
+			// Was removed due to license issues
+//			Image.perlinNoise(size: Window.width, Window.height, offset: 50, 50, scale: 4),
 			Image.cellular(size: Window.width, Window.height, cellSize: 32),
 		].map(\.toTexture)
 	}

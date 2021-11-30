@@ -32,14 +32,14 @@ extension App {
 		var app = Self.init()
 		
 		if !Window.isReady {
-			Window.create("raylib")
+			Window.create(title: "raylib")
 		}
 		
 		app.setup()
 		Application.run {
 			app.update()
 			Renderer.render {
-				Renderer.clear(to: Window.background)
+				Renderer.clear(to: Renderer.background)
 				app.draw()
 			}
 		}

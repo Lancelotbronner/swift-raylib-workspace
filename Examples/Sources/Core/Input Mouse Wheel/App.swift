@@ -13,7 +13,7 @@ struct InputMouseWheel: App {
 	
 	init() {
 		Window.create(800, by: 450, title: "Example - Core - Input Mouse Wheel")
-		Application.targetFPS = 60
+		Application.target(fps: 60)
 		
 		boxPositionY = Window.size.y / 2 - 40
 	}

@@ -12,11 +12,11 @@ struct BasicWindow: App {
 	
 	init() {
 		Window.create(800, by: 450, title: "Example - Core - Basic Window")
-		Application.targetFPS = 60
+		Application.target(fps: 60)
 	}
 	
 	func draw() {
-		Renderer2D.text("Congrats! You created your first window!", at: 190, 200, color: .lightGray)
+		Renderer2D.text("Congrats! You created your first window!", at: 190, 200, color: Color.lightGray)
 	}
 
 }

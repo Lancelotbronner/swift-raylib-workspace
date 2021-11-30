@@ -13,7 +13,7 @@ struct LogoRaylib: App {
 	
 	init() {
 		Window.create(800, by: 450, title: "Example - Textures - Logo Raylib")
-		Application.targetFPS = 60
+		Application.target(fps: 60)
 		
 		logo = Texture("raylib_logo.png", from: .module)
 	}

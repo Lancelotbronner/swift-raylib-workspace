@@ -23,8 +23,8 @@ struct ExamplePlatformer2D: App {
 	
 	init() {
 		Window.create(800, by: 450, title: "Example - Core - 2D Camera Platformer")
-		Window.background = .lightGray
-		Application.targetFPS = 60
+		Renderer.background = .lightGray
+		Application.target(fps: 60)
 		
 		player = Player(at: startingPosition)
 		camera = Camera2D(at: startingPosition)
@@ -50,7 +50,7 @@ struct ExamplePlatformer2D: App {
 	
 	func draw() {
 		camera.render {
-			Renderer2D.shapeColor = .gray
+			Renderer.shapeColor = .gray
 			
 			for obstacle in environment {
 				Renderer2D.rectangle(obstacle)
@@ -59,13 +59,13 @@ struct ExamplePlatformer2D: App {
 			Renderer2D.rectangle(at: player.position.x.toInt - 20, player.position.y.toInt - 40, size: 40, 40, color: .red)
 		}
 		
-		Renderer2D.textSize = 10
+		Renderer.textSize = 10
 		
-		Renderer2D.textColor = .black
+		Renderer.textColor = .black
 		Renderer2D.text("Controls:", at: 20, 20)
 		Renderer2D.text("Camera mode:", at: 20, 140)
 		
-		Renderer2D.textColor = .darkGray
+		Renderer.textColor = .darkGray
 		Renderer2D.text("- Right/Left to move", at: 40, 40)
 		Renderer2D.text("- Space to jump", at: 40, 60)
 		Renderer2D.text("- Mouse Wheel to Zoom in-out", at: 40, 80)
@@ -84,7 +84,7 @@ let GRAVITY: Float = 400
 let map = Vector2f(1000, 200)
 
 let environment = [
-	Rectangle(x: 0, y: 400, width: 1000, height: 200),
+	Rectangle(x: 0, y: 400, width: 1000, height: 600),
 	Rectangle(x: 300, y: 200, width: 400, height: 10),
 	Rectangle(x: 250, y: 300, width: 100, height: 10),
 	Rectangle(x: 650, y: 300, width: 100, height: 10),

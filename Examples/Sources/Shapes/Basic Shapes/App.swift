@@ -11,7 +11,7 @@ import Raylib
 struct BasicShapes: App {
 	init() {
 		Window.create(800, by: 450, title: "Example - Shapes - Basic Shapes")
-		Application.targetFPS = 60
+		Application.target(fps: 60)
 	}
 	
 	func draw() {
