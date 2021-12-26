@@ -23,27 +23,33 @@ public struct Mouse {
 	
 	//MARK: Computed Properties
 	
-	@inlinable
-	public static var x: Int {
+	@inlinable public static var x: Int {
 		get { GetMouseX().toInt }
 		set { SetMousePosition(newValue.toInt32, GetMouseY()) }
 	}
 	
-	@inlinable
-	public static var y: Int {
+	@inlinable public static var y: Int {
 		get { GetMouseY().toInt }
 		set { SetMousePosition(GetMouseX(), newValue.toInt32) }
 	}
 	
-	@inlinable
-	public static var position: Vector2f {
-		get { GetMousePosition() }
+	@inlinable public static var position: Vector2f {
+		get { GetMousePosition().toSwift }
 		set { SetMousePosition(newValue.x.toInt32, newValue.y.toInt32) }
 	}
 	
-	@inlinable
-	public static var wheel: Float {
+	@inlinable public static var wheel: Float {
 		GetMouseWheelMove()
+	}
+	
+	//MARK: Methods
+	
+	@inlinable public static func offset(by value: Vector2f) {
+		SetMouseOffset(value.x.toInt32, value.y.toInt32)
+	}
+	
+	@inlinable public static func scale(to value: Vector2f) {
+		SetMouseScale(value.x, value.y)
 	}
 	
 }

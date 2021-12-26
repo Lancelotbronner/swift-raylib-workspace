@@ -13,6 +13,13 @@ public typealias Color = CRaylib.Color
 
 extension Color {
 	
+	//MARK: Constants
+	
+	public static var random: Color {
+		let rnd: () -> UInt8 = { .random(in: .min ..< .max) }
+		return .rgb(rnd(), rnd(), rnd())
+	}
+	
 	//MARK: Computed Properties
 	
 	public var value: UInt32 {

@@ -7,15 +7,14 @@
 
 import Raylib
 
-@main
-struct LogoRaylib: App {
+@main struct LogoRaylib: App {
 	let logo: Texture
 	
 	init() {
 		Window.create(800, by: 450, title: "Example - Textures - Logo Raylib")
 		Application.target(fps: 60)
 		
-		logo = Texture("raylib_logo.png", from: .module)
+		logo = Filesystem.file(at: "raylib_logo.png", from: .module).texture
 	}
 	
 	func draw() {

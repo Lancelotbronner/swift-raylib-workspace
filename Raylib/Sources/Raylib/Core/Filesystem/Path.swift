@@ -25,7 +25,7 @@ public struct Path: LosslessStringConvertible {
 
 //MARK: - Literal
 
-extension Path: ExpressibleByStringLiteral {
+extension Path: ExpressibleByStringLiteral, ExpressibleByStringInterpolation {
 	
 	public init(stringLiteral value: String) {
 		self.init(value)

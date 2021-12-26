@@ -25,6 +25,8 @@ let package = Package(
 		.example(.core, "Input Mouse Wheel"),
 		.example(.core, "2D Camera"),
 		.example(.core, "2D Camera Platformer"),
+		.example(.core, "Letterboxed Window"),
+		.example(.core, "Drop Files"),
 		
 		// Shapes Module
 		.example(.shapes, "Basic Shapes"),
@@ -41,16 +43,14 @@ let package = Package(
 //MARK: - Templates
 
 extension Target {
-	private static var count = 1
 	static func example(_ module: RaylibModule, _ name: String, _ resources: [Resource]? = nil) -> Target {
 		let target = Target.executableTarget(
-			name: "Example - \(String(repeating: "0", count: 3 - count.description.count))\(count) \(module.rawValue) \(name)",
+			name: "\(module.rawValue) - \(name)",
 			dependencies: [
 				.product(name: "SwiftRaylib", package: "Raylib"),
 			],
 			path: "Sources/\(module.rawValue)/\(name)",
 			resources: resources)
-		count += 1
 		return target
 	}
 }

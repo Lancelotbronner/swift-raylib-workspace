@@ -52,7 +52,7 @@ public struct CopyValueOnWrite<Value> {
 	//MARK: Properties
 	
 	@CopyOnWrite
-	@usableFromInline internal var storage: Box<Value>
+	@usableFromInline var storage: Box<Value>
 	
 	//MARK: Computed Properties
 	

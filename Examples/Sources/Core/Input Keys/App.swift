@@ -7,8 +7,7 @@
 
 import Raylib
 
-@main
-struct InputKeyboard: App {
+@main struct InputKeyboard: App {
 	var ballPosition: Vector2f
 	
 	init() {

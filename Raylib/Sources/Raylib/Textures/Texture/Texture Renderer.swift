@@ -24,11 +24,15 @@ extension Renderer2D {
 	//MARK: Texture
 	
 	public static func texture(_ value: Texture, at x: Int, _ y: Int, tint: Color = Renderer2D.tint) {
-		DrawTexture(value.underlying, x.toInt32, y.toInt32, tint)
+		DrawTexture(value.toRaylib, x.toInt32, y.toInt32, tint)
 	}
 	
 	public static func texture(_ value: Texture, at position: Vector2f, tint: Color = Renderer2D.tint) {
-		DrawTextureV(value.underlying, position, tint)
+		DrawTextureV(value.toRaylib, position.toRaylib, tint)
+	}
+	
+	public static func texture(_ value: Texture, from source: Rectangle? = nil, at position: Vector2f, to destination: Rectangle, rotation: Angle = .zero, tint: Color = Renderer2D.tint) {
+		DrawTexturePro(value.toRaylib, source ?? Rectangle(at: .zero, size: value.size), destination, position.toRaylib, rotation.toDegrees, tint)
 	}
 	
 }

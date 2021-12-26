@@ -25,10 +25,10 @@ public struct Line {
 	
 	//MARK: Collision Methods
 	
-	@inlinable
-	public func collision(with other: Line) -> Vector2f? {
-		var tmp = Vector2f.zero
-		return CheckCollisionLines(start, end, other.start, other.end, &tmp) ? tmp : nil
+	@inlinable public func collision(with other: Line) -> Vector2f? {
+		var tmp = Vector2One()
+		let collision = CheckCollisionLines(start.toRaylib, end.toRaylib, other.start.toRaylib, other.end.toRaylib, &tmp) ? tmp : nil
+		return collision?.toSwift
 	}
 	
 }

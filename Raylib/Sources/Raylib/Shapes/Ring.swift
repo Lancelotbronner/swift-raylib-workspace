@@ -20,8 +20,7 @@ public struct Ring {
 	
 	//MARK: Initialization
 	
-	@inlinable
-	public init(at position: Vector2f, inner innerRadius: Float, outer outerRadius: Float, segments: Int? = nil, from start: Angle, to end: Angle) {
+	@inlinable public init(at position: Vector2f, inner innerRadius: Float, outer outerRadius: Float, segments: Int? = nil, from start: Angle, to end: Angle) {
 		self.position = position
 		self.innerRadius = innerRadius
 		self.outerRadius = outerRadius
@@ -30,8 +29,7 @@ public struct Ring {
 		self.end = end
 	}
 	
-	@inlinable
-	public init(at position: Vector2f, radius: Float, width: Float, segments: Int? = nil, from start: Angle, to end: Angle) {
+	@inlinable public init(at position: Vector2f, radius: Float, width: Float, segments: Int? = nil, from start: Angle, to end: Angle) {
 		self.position = position
 		self.innerRadius = radius - width
 		self.outerRadius = radius

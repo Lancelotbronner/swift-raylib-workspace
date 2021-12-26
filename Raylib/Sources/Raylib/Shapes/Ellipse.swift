@@ -16,8 +16,7 @@ public struct Ellipse {
 	
 	//MARK: Initialization
 	
-	@inlinable
-	public init(at position: Vector2f, radius: Vector2f) {
+	@inlinable public init(at position: Vector2f, radius: Vector2f) {
 		self.position = position
 		self.radius = radius
 	}

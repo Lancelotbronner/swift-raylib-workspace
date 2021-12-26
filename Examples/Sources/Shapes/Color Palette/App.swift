@@ -7,8 +7,7 @@
 
 import Raylib
 
-@main
-struct ColorPalette: App {
+@main struct ColorPalette: App {
 	var palette = [
 		PaletteItem("Dark Gray", .darkGray),
 		PaletteItem("Maroon", .maroon),

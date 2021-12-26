@@ -14,7 +14,7 @@ public struct Shader {
 	//MARK: Properties
 	
 	@CopyValueOnWrite
-	@usableFromInline internal var underlying: CRaylib.Shader
+	@usableFromInline var underlying: CRaylib.Shader
 	
 	//MARK: Computed Properties
 	
@@ -67,7 +67,7 @@ public struct BuiltinUniform {
 	
 	//MARK: Properties
 	
-	@usableFromInline internal let index: Int
+	@usableFromInline let index: Int
 	
 	//MARK: Initialization
 	

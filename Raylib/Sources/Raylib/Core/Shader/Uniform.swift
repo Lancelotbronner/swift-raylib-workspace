@@ -20,17 +20,17 @@ public struct Uniform<Scalar: UniformConvertible> {
 	
 	//MARK: Properties
 	
-	@usableFromInline internal let shader: Shader
-	@usableFromInline internal let index: Int32
+	@usableFromInline let shader: Shader
+	@usableFromInline let index: Int32
 	
 	//MARK: Initialization
 	
-	@usableFromInline internal init(at index: Int32, in shader: Shader) {
+	@usableFromInline init(at index: Int32, in shader: Shader) {
 		self.shader = shader
 		self.index = index
 	}
 	
-	@usableFromInline internal init(get name: String, in shader: Shader) {
+	@usableFromInline init(get name: String, in shader: Shader) {
 		let index = GetShaderLocation(shader.underlying, name)
 		self.init(at: index, in: shader)
 	}
@@ -90,7 +90,7 @@ extension Float: BuiltinValueUniform {
 	static var type: Int32 { SHADER_UNIFORM_FLOAT.rawValue.toInt32 }
 }
 
-extension Vector2f: BuiltinValueUniform {
+extension Vector2f: BuiltinValueUniform, UniformConvertible {
 	static var type: Int32 { SHADER_UNIFORM_VEC2.rawValue.toInt32 }
 }
 

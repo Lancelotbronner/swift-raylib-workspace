@@ -65,13 +65,23 @@ public struct File {
 		return Array(UnsafeMutableBufferPointer(start: pointer, count: count.toInt))
 	}
 	
+	/// Load file as image
+	@inlinable public var image: Image {
+		Image(underlying: LoadImage(path.description))
+	}
+	
+	/// Load file as texture
+	@inlinable public var texture: Texture {
+		LoadTexture(path.description).managed
+	}
+	
 	//MARK: Initialization
 	
-	@usableFromInline internal init(at path: Path) {
+	@usableFromInline init(at path: Path) {
 		self.path = path.description
 	}
 	
-	@usableFromInline internal init(at path: String) {
+	@usableFromInline init(at path: String) {
 		self.path = path
 	}
 	

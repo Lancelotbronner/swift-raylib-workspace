@@ -73,7 +73,7 @@ public struct Window {
 	
 	/// Get window position XY on monitor
 	@inlinable public static var position: Vector2f {
-		get { GetWindowPosition() }
+		get { GetWindowPosition().toSwift }
 		set { SetWindowPosition(newValue.x.toInt32, newValue.y.toInt32) }
 	}
 
@@ -97,10 +97,8 @@ public struct Window {
 	
 	/// Get window scale DPI factor
 	@inlinable public static var scaleDPI: Vector2f {
-		GetWindowScaleDPI()
+		GetWindowScaleDPI().toSwift
 	}
-	
-	// TODO: Implement window states using IsWindowState, SetWindowState and ClearWindowState
 	
 	/// Get native window handle
 	@inlinable public static var native: UnsafeMutableRawPointer {
@@ -127,18 +125,38 @@ public struct Window {
 	
 	//MARK: Windowing Methods
 	
+	/// Set window configuration state
+	@inlinable public static func enable(_ state: WindowFlag) {
+		state.enable()
+	}
+	
+	/// Set window configuration state
+	@inlinable public static func enable(_ state: WindowFlag...) {
+		enable(state.reduced)
+	}
+	
+	/// Clear window configuration state
+	@inlinable public static func disable(_ state: WindowFlag) {
+		state.disable()
+	}
+	
+	/// Clear window configuration state
+	@inlinable public static func disable(_ state: WindowFlag...) {
+		disable(state.reduced)
+	}
+	
 	/// Set window state: maximized, if resizable (only PLATFORM_DESKTOP)
-	@inlinable static func maximize() {
+	@inlinable public static func maximize() {
 		MaximizeWindow()
 	}
 	
 	/// Set window state: maximized, if resizable (only PLATFORM_DESKTOP)
-	@inlinable static func minimize() {
+	@inlinable public static func minimize() {
 		MinimizeWindow()
 	}
 	
 	/// Set window state: not minimized/maximized (only PLATFORM_DESKTOP)
-	@inlinable static func restore() {
+	@inlinable public static func restore() {
 		RestoreWindow()
 	}
 	
@@ -163,15 +181,8 @@ public struct Window {
 	}
 	
 	/// Set monitor for the current window (fullscreen mode)
-	public static func assign(to monitor: Monitor) {
+	@inlinable public static func assign(to monitor: Monitor) {
 		SetWindowMonitor(monitor.id)
 	}
-	
-	//MARK: Drag & Drop Methods
-	
-	// TODO: Implement Drag & Drop functionality
-	//	bool IsFileDropped(void);							// Check if a file has been dropped into window
-	//	char **GetDroppedFiles(int *count);					// Get dropped files names (memory should be freed)
-	//	void ClearDroppedFiles(void);						// Clear dropped files paths buffer (free memory)
 	
 }

@@ -9,8 +9,7 @@ import Raylib
 
 //MARK: - Application
 
-@main
-struct ExamplePlatformer2D: App {
+@main struct ExamplePlatformer2D: App {
 	let startingPosition = Vector2f(400, 280)
 	
 	var camera: Camera2D
@@ -213,7 +212,7 @@ enum CameraStyles {
 		func update(_ camera: inout Camera2D, for player: Player) {
 			camera.offset = Window.size / 2
 			let diff = player.position - camera.target
-			let length = diff.length
+			let length = diff.magnitude
 			
 			if length > minEffectLength {
 				let speed = max(fractionSpeed * length, minSpeed)

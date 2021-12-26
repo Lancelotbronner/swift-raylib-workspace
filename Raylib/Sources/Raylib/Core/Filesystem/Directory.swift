@@ -29,11 +29,11 @@ public struct Directory {
 	
 	//MARK: Initialization
 	
-	@usableFromInline internal init(at path: Path) {
+	@usableFromInline init(at path: Path) {
 		self.path = path.description
 	}
 	
-	@usableFromInline internal init(at path: String) {
+	@usableFromInline init(at path: String) {
 		self.path = path
 	}
 	
@@ -58,7 +58,7 @@ public struct Directory {
 //MARK: - Files Iterator
 
 extension Directory {
-	@usableFromInline internal struct FilesIterator: IteratorProtocol {
+	@usableFromInline struct FilesIterator: IteratorProtocol {
 		var iterator: UnsafeMutableBufferPointer<UnsafeMutablePointer<CChar>?>.Iterator
 		
 		@usableFromInline init(_ buffer: UnsafeMutableBufferPointer<UnsafeMutablePointer<CChar>?>) {

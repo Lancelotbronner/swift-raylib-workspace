@@ -13,7 +13,7 @@ public struct Camera3D {
 	
 	//MARK: Properties
 	
-	@usableFromInline internal var underlying: CRaylib.Camera3D
+	@usableFromInline var underlying: CRaylib.Camera3D
 	
 	//MARK: Computed Properties
 	
@@ -32,12 +32,12 @@ public struct Camera3D {
 	
 	/// Get the screen space position for a world space position
 	@inlinable public func toScreen(world position: Vector3f) -> Vector2f {
-		GetWorldToScreen(position, underlying)
+		GetWorldToScreen(position, underlying).toSwift
 	}
 	
 	/// Get the screen space position for a world space position
 	@inlinable public func toScreen(world position: Vector3f, size width: Int, by height: Int) -> Vector2f {
-		GetWorldToScreenEx(position, underlying, width.toInt32, height.toInt32)
+		GetWorldToScreenEx(position, underlying, width.toInt32, height.toInt32).toSwift
 	}
 	
 	// TODO: Ray hit

@@ -7,8 +7,7 @@
 
 import Raylib
 
-@main
-struct InputMouseWheel: App {
+@main struct InputMouseWheel: App {
 	var boxPositionY: Float
 	
 	init() {

@@ -7,8 +7,7 @@
 
 import Raylib
 
-@main
-struct InputMouse: App {
+@main struct InputMouse: App {
 	var ballPosition = Vector2f(-100)
 	var ballColor = Color.darkBlue
 	

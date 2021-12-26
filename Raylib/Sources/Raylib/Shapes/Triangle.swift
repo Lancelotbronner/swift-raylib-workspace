@@ -19,8 +19,7 @@ public struct Triangle {
 	
 	//MARK: Initialization
 	
-	@inlinable
-	public init(_ a: Vector2f, _ b: Vector2f, _ c: Vector2f) {
+	@inlinable public init(_ a: Vector2f, _ b: Vector2f, _ c: Vector2f) {
 		self.a = a
 		self.b = b
 		self.c = c
@@ -28,14 +27,12 @@ public struct Triangle {
 	
 	//MARK: Methods
 	
-	@inlinable
-	public func contains(_ x: Int, _ y: Int) -> Bool {
-		CheckCollisionPointTriangle(Vector2f(x.toFloat, y.toFloat), a, b, c)
+	@inlinable public func contains(_ x: Int, _ y: Int) -> Bool {
+		CheckCollisionPointTriangle(Vector2(x.toFloat, y.toFloat).toRaylib, a.toRaylib, b.toRaylib, c.toRaylib)
 	}
 	
-	@inlinable
-	public func contains(_ point: Vector2f) -> Bool {
-		CheckCollisionPointTriangle(point, a, b, c)
+	@inlinable public func contains(_ point: Vector2f) -> Bool {
+		CheckCollisionPointTriangle(point.toRaylib, a.toRaylib, b.toRaylib, c.toRaylib)
 	}
 	
 }

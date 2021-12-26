@@ -13,13 +13,11 @@ public struct Keyboard {
 	
 	//MARK: Computed Properties
 	
-	@inlinable
-	public static var current: KeyboardButton {
+	@inlinable public static var current: KeyboardButton {
 		KeyboardButton(GetKeyPressed())
 	}
 	
-	@inlinable
-	public static var character: Character {
+	@inlinable public static var character: Character {
 		Character(UnicodeScalar(GetCharPressed().toUInt32)!)
 	}
 	

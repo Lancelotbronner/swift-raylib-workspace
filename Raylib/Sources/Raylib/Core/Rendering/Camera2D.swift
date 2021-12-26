@@ -13,7 +13,7 @@ public struct Camera2D {
 	
 	//MARK: Properties
 	
-	@usableFromInline internal var underlying: CRaylib.Camera2D
+	@usableFromInline var underlying: CRaylib.Camera2D
 	
 	//MARK: Computed Properties
 	
@@ -26,15 +26,15 @@ public struct Camera2D {
 	// TODO: Validate target
 	/// The point the camera is watching
 	@inlinable public var target: Vector2f {
-		get { underlying.target }
-		set { underlying.target = newValue }
+		get { underlying.target.toSwift }
+		set { underlying.target = newValue.toRaylib }
 	}
 	
 	// TODO: Validate offset
 	/// The camera's screen offset
 	@inlinable public var offset: Vector2f {
-		get { underlying.offset }
-		set { underlying.offset = newValue }
+		get { underlying.offset.toSwift }
+		set { underlying.offset = newValue.toRaylib }
 	}
 	
 	/// How much the camera is zoomed in
@@ -51,19 +51,19 @@ public struct Camera2D {
 	//MARK: Initialization
 	
 	@inlinable public init(at position: Vector2f, offsetBy offset: Vector2f = Window.size / 2, rotation: Float = 0, zoom: Float = 1) {
-		underlying = .init(offset: position, target: offset, rotation: rotation, zoom: zoom)
+		underlying = .init(offset: position.toRaylib, target: offset.toRaylib, rotation: rotation, zoom: zoom)
 	}
 	
 	//MARK: Methods
 	
 	/// Get the screen space position for a world space position
 	@inlinable public func toScreen(world position: Vector2f) -> Vector2f {
-		GetWorldToScreen2D(position, underlying)
+		GetWorldToScreen2D(position.toRaylib, underlying).toSwift
 	}
 	
 	/// Get the world space position for a screen space position
 	@inlinable public func toWorld(screen position: Vector2f) -> Vector2f {
-		GetScreenToWorld2D(position, underlying)
+		GetScreenToWorld2D(position.toRaylib, underlying).toSwift
 	}
 	
 	/// Begin 2D mode; End 2D mode

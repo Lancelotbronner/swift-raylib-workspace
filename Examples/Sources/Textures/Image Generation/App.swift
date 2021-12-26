@@ -7,8 +7,7 @@
 
 import Raylib
 
-@main
-struct ImageGeneration: App {
+@main struct ImageGeneration: App {
 	var textures: [Texture]
 	var index = 0
 	

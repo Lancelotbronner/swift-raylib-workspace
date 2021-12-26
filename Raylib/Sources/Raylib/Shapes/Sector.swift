@@ -18,8 +18,7 @@ public struct Sector {
 	
 	//MARK: Initialization
 	
-	@inlinable
-	public init(at position: Vector2f, radius: Float, from start: Angle, to end: Angle) {
+	@inlinable public init(at position: Vector2f, radius: Float, from start: Angle, to end: Angle) {
 		self.position = position
 		self.radius = radius
 		self.start = start

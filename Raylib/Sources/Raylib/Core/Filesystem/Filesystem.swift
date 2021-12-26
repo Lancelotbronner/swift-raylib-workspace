@@ -34,3 +34,26 @@ public struct Filesystem {
 // void SetSaveFileDataCallback(SaveFileDataCallback callback);
 // void SetLoadFileTextCallback(LoadFileTextCallback callback);
 // void SetSaveFileTextCallback(SaveFileTextCallback callback);
+
+//MARK: - Foundation Integration
+
+#if canImport(Foundation)
+import Foundation
+
+extension Filesystem {
+	
+	@inlinable public static func file(at path: Path, from bundle: Bundle) -> File {
+		file(at: at(path, from: bundle))
+	}
+	
+	@inlinable public static func directory(at path: Path, from bundle: Bundle) -> File {
+		directory(at: at(path, from: bundle))
+	}
+	
+	@usableFromInline static func at(_ relative: Path, from bundle: Bundle) -> Path {
+		"\(bundle.resourcePath ?? bundle.bundlePath)/\(relative)"
+	}
+	
+}
+
+#endif

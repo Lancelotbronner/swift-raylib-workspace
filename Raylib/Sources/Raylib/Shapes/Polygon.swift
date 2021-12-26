@@ -20,8 +20,7 @@ public struct Polygon {
 	
 	//MARK: Initialization
 	
-	@inlinable
-	public init(at position: Vector2f, sides: Int, radius: Float, rotation: Angle = .zero) {
+	@inlinable public init(at position: Vector2f, sides: Int, radius: Float, rotation: Angle = .zero) {
 		self.position = position
 		self.sides = sides
 		self.radius = radius

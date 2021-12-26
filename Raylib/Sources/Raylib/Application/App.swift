@@ -13,6 +13,7 @@ public protocol App {
 	
 	mutating func setup()
 	mutating func update()
+	func render()
 	func draw()
 	mutating func destroy()
 	
@@ -24,6 +25,7 @@ extension App {
 	
 	public func setup() { }
 	public func update() { }
+	public func render() { }
 	public func destroy() { }
 	
 	//MARK: Main
@@ -38,6 +40,7 @@ extension App {
 		app.setup()
 		Application.run {
 			app.update()
+			app.render()
 			Renderer.render {
 				Renderer.clear(to: Renderer.background)
 				app.draw()

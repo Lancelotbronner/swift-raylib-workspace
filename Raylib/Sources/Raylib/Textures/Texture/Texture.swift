@@ -7,64 +7,50 @@
 
 import CRaylib
 
-
 //MARK: - Texture
 
-public final class Texture {
+public protocol Texture {
 	
-	//MARK: Properties
+	var toRaylib: CRaylib.Texture { get }
 	
-	@usableFromInline
-	internal var underlying: CRaylib.Texture
+}
+
+extension Texture {
 	
 	//MARK: Computed Properties
 	
-	@inlinable
-	public var width: Int {
-		underlying.width.toInt
+	@inlinable public var width: Int {
+		toRaylib.width.toInt
 	}
 	
-	@inlinable
-	public var height: Int {
-		underlying.height.toInt
+	@inlinable public var height: Int {
+		toRaylib.height.toInt
 	}
 	
-	@inlinable
-	public var size: Vector2f {
-		.init(underlying.width.toFloat, underlying.height.toFloat)
+	@inlinable public var size: Vector2f {
+		Vector2f(toRaylib.width.toFloat, toRaylib.height.toFloat)
 	}
 	
-	@inlinable
-	public var toImage: Image {
-		.init(underlying: LoadImageFromTexture(underlying))
-	}
-	
-	//MARK: Initialization
-	
-	@inlinable
-	public init(underlying texture: CRaylib.Texture) {
-		underlying = texture
-	}
-	
-	@inlinable
-	public init(_ path: String) {
-		underlying = LoadTexture(path)
-	}
-	
-	deinit {
-		UnloadTexture(underlying)
+	@inlinable public var toImage: Image {
+		Image(underlying: LoadImageFromTexture(toRaylib))
 	}
 	
 	//MARK: Methods
 	
-	@inlinable
-	public func update(with image: Image) {
-		UpdateTexture(underlying, image.underlying.data)
+	@inlinable public func filter(using algorithm: TextureFilter) {
+		SetTextureFilter(toRaylib, algorithm.toRaylib.toInt32)
 	}
 	
-	@inlinable
-	public func update(area: Rectangle, with image: Image) {
-		UpdateTextureRec(underlying, area, image.underlying.data)
+	@inlinable public func wrap(using algorithm: TextureWrap) {
+		SetTextureWrap(toRaylib, algorithm.toRaylib.toInt32)
+	}
+	
+	@inlinable public func update(with image: Image) {
+		UpdateTexture(toRaylib, image.underlying.data)
+	}
+	
+	@inlinable public func update(area: Rectangle, with image: Image) {
+		UpdateTextureRec(toRaylib, area, image.underlying.data)
 	}
 	
 }

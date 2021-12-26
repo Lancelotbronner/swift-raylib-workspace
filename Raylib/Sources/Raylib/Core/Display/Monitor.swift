@@ -30,7 +30,7 @@ public struct Monitor {
 	
 	//MARK: Properties
 	
-	@usableFromInline internal let id: Int32
+	@usableFromInline let id: Int32
 	
 	//MARK: Computed Properties
 	
@@ -41,7 +41,7 @@ public struct Monitor {
 	
 	/// Get monitor position
 	@inlinable public var position: Vector2f {
-		GetMonitorPosition(id)
+		GetMonitorPosition(id).toSwift
 	}
 	
 	/// Get monitor width (max available by monitor)
@@ -71,7 +71,7 @@ public struct Monitor {
 	
 	//MARK: Initialization
 	
-	@usableFromInline internal init(_ id: Int32) {
+	@usableFromInline init(_ id: Int32) {
 		self.id = id
 	}
 	

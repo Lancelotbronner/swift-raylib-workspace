@@ -14,35 +14,30 @@ public struct Image {
 	//MARK: Properties
 	
 	@CopyValueOnWrite
-	@usableFromInline internal var underlying: CRaylib.Image
+	@usableFromInline var underlying: CRaylib.Image
 	
 	//MARK: Computed Properties
 	
-	@_transparent
-	public var width: Int {
+	@_transparent public var width: Int {
 		underlying.width.toInt
 	}
 	
-	@_transparent
-	public var height: Int {
+	@_transparent public var height: Int {
 		underlying.height.toInt
 	}
 	
-	@_transparent
-	public var size: Vector2f {
+	@_transparent public var size: Vector2f {
 		.init(underlying.width.toFloat, underlying.height.toFloat)
 	}
 	
-	@_transparent
-	public var mipmaps: Int {
+	@_transparent public var mipmaps: Int {
 		underlying.mipmaps.toInt
 	}
 	
 	// TODO: Pixel format enum
 	
-	@inlinable
-	public var toTexture: Texture {
-		.init(underlying: LoadTextureFromImage(underlying))
+	@inlinable public var toTexture: Texture {
+		LoadTextureFromImage(underlying).managed
 	}
 	
 	//MARK: Initialization
