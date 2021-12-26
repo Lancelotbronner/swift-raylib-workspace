@@ -38,6 +38,10 @@ public struct Mouse {
 		set { SetMousePosition(newValue.x.toInt32, newValue.y.toInt32) }
 	}
 	
+	@inlinable public static var delta: Vector2f {
+		GetMouseDelta().toSwift
+	}
+	
 	@inlinable public static var wheel: Float {
 		GetMouseWheelMove()
 	}

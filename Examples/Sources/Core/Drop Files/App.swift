@@ -15,7 +15,7 @@ import Raylib
 	}
 	
 	func draw() {
-		let files = DragAndDrop.files
+		let files = DragAndDrop.paths
 		
 		if files.isEmpty {
 			Renderer2D.text("Drop your files to this window!", at: 100, 40, size: 20, color: .darkGray)

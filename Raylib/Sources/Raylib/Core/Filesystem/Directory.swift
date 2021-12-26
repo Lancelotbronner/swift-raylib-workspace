@@ -9,7 +9,7 @@ import CRaylib
 
 //MARK: - Directory
 
-public struct Directory {
+public struct Directory: Sequence {
 	
 	//MARK: Properties
 	
@@ -39,6 +39,13 @@ public struct Directory {
 	
 	//MARK: Methods
 	
+	public func makeIterator() -> FilesIterator {
+		var count: Int32 = 0
+		let pointer = GetDirectoryFiles(path.description, &count)
+		let buffer = UnsafeMutableBufferPointer(start: pointer, count: count.toInt)
+		return FilesIterator(buffer)
+	}
+	
 	/// Change working directory
 	@inlinable public func changeWorkingDirectory() throws {
 		ChangeDirectory(path.description)
@@ -47,10 +54,7 @@ public struct Directory {
 	
 	/// Get filenames in a directory path
 	@inlinable public func files() -> [File] {
-		var count: Int32 = 0
-		let pointer = GetDirectoryFiles(path.description, &count)
-		let buffer = UnsafeMutableBufferPointer(start: pointer, count: count.toInt)
-		return Array(IteratorSequence(FilesIterator(buffer)))
+		Array(IteratorSequence(makeIterator()))
 	}
 	
 }
@@ -58,16 +62,16 @@ public struct Directory {
 //MARK: - Files Iterator
 
 extension Directory {
-	@usableFromInline struct FilesIterator: IteratorProtocol {
-		var iterator: UnsafeMutableBufferPointer<UnsafeMutablePointer<CChar>?>.Iterator
+	public struct FilesIterator: IteratorProtocol {
+		@usableFromInline var iterator: UnsafeMutableBufferPointer<UnsafeMutablePointer<CChar>?>.Iterator
 		
 		@usableFromInline init(_ buffer: UnsafeMutableBufferPointer<UnsafeMutablePointer<CChar>?>) {
 			iterator = buffer.makeIterator()
 		}
 		
-		@usableFromInline mutating func next() -> File? {
+		@inlinable public mutating func next() -> File? {
 			if let pointer = iterator.next() {
-				return File(at: Path(String(cString: pointer!)))
+				return File(at: Path(pointer!.toString))
 			}
 			
 			ClearDirectoryFiles()

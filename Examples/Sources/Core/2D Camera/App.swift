@@ -86,7 +86,7 @@ import Raylib
 		Renderer2D.rectangle(at: 0, Window.height - 5, size: Window.width, 5)
 		
 		Renderer2D.rectangle(at: 10, 10, size: 250, 113, color: .skyBlue.faded(to: 0.5))
-		Renderer2D.rectangleOutline(at: 10, 10, size: 250, 113, color: .blue)
+		OutlineRenderer2D.rectangle(at: 10, 10, size: 250, 113, color: .blue)
 		
 		Renderer.textColor = .darkGray
 		Renderer.textSize = 10

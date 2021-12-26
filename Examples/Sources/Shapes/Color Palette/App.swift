@@ -54,7 +54,7 @@ import Raylib
 			
 			guard Keyboard.space.isDown || item.hovered else { continue }
 			Renderer2D.rectangle(at: rect.x.toInt, rect.y.toInt + rect.height.toInt - 26, size: rect.width.toInt, 20, color: .black)
-			Renderer2D.rectangleOutline(rect, thickness: 6, color: .black.faded(to: 0.3))
+			OutlineRenderer2D.rectangle(rect, thickness: 6, color: .black.faded(to: 0.3))
 			Renderer2D.text(item.name, at: rect.x.toInt + rect.width.toInt - item.measure(size: 10) - 12, rect.y.toInt + rect.height.toInt - 20, size: 10, color: item.color)
 		}
 	}

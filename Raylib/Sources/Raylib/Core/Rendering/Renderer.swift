@@ -42,4 +42,5 @@ public struct Renderer {
 //MARK: - Rendering Modes
 
 public struct Renderer2D { }
+public struct OutlineRenderer2D { }
 public struct Renderer3D { }

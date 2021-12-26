@@ -18,3 +18,5 @@ public struct Storage {
 // Maybe making you define Storage properties which will use their global order?
 // But what if like, we store strings in there?
 // Maybe DataCodable combined with the order thing?
+
+// Maybe just a codable struct which gets stored

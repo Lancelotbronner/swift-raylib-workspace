@@ -23,6 +23,8 @@ public struct Keyboard {
 	
 	//MARK: Constants
 	
+	// TODO: Switch those to inlinable computed properties
+	
 	public static let a = KeyboardButton(KEY_A)
 	public static let b = KeyboardButton(KEY_B)
 	public static let c = KeyboardButton(KEY_C)

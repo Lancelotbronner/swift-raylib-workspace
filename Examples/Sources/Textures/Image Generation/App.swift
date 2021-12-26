@@ -40,7 +40,7 @@ import Raylib
 		Renderer2D.texture(textures[index], at: .zero)
 		
 		Renderer2D.rectangle(at: 30, 400, size: 325, 30, color: .skyBlue.faded(to: 0.5))
-		Renderer2D.rectangleOutline(at: 30, 400, size: 325, 30, color: .white.faded(to: 0.5))
+		OutlineRenderer2D.rectangle(at: 30, 400, size: 325, 30, color: .white.faded(to: 0.5))
 		Renderer2D.text("MOUSE LEFT BUTTON to CYCLE PROCEDURAL TEXTURES", at: 40, 410, size: 10, color: .white)
 		
 		switch index {

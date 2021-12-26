@@ -14,8 +14,8 @@ public struct Trace {
 	//MARK: Logging Methods
 	
 	/// Log a message of the specified level
-	@inlinable public static func log(_ level: Level, _ message: String) {
-//		TraceLog(level.rawValue.toInt32, message)
+	@inlinable public static func log(_ level: TraceLevel, _ message: String) {
+		// TraceLog(level.rawValue.toInt32, message)
 		// FIXME: Find a way to call TraceLog
 		print("[\(level)] \(message)")
 	}
@@ -63,7 +63,7 @@ public struct Trace {
 	}
 	
 	/// Set the current threshold (minimum) log level
-	@inlinable public static func configure(threshold level: Level) {
+	@inlinable public static func configure(threshold level: TraceLevel) {
 		SetTraceLogLevel(level.rawValue.toInt32)
 	}
 	
@@ -74,34 +74,32 @@ public struct Trace {
 
 //MARK: - Trace Level
 
-extension Trace {
-	public enum Level: Int, Comparable {
-		
-		//MARK: Cases
-		
-		/// Trace logging, intended for internal use only
-		case trace = 1
-		
-		/// Debug logging, used for internal debugging, it should be disabled on release builds
-		case debug = 2
-		
-		/// Info logging, used for program execution info
-		case info = 3
-		
-		/// Warning logging, used on recoverable failures
-		case warning = 4
-		
-		/// Error logging, used on unrecoverable failures
-		case error = 5
-		
-		/// Fatal logging, used to abort program
-		case fatal = 6
-		
-		//MARK: Operators
-		
-		public static func < (lhs: Level, rhs: Level) -> Bool {
-			lhs.rawValue < rhs.rawValue
-		}
-		
+public enum TraceLevel: Int, Comparable {
+	
+	//MARK: Cases
+	
+	/// Trace logging, intended for internal use only
+	case trace = 1
+	
+	/// Debug logging, used for internal debugging, it should be disabled on release builds
+	case debug = 2
+	
+	/// Info logging, used for program execution info
+	case info = 3
+	
+	/// Warning logging, used on recoverable failures
+	case warning = 4
+	
+	/// Error logging, used on unrecoverable failures
+	case error = 5
+	
+	/// Fatal logging, used to abort program
+	case fatal = 6
+	
+	//MARK: Operators
+	
+	public static func < (lhs: TraceLevel, rhs: TraceLevel) -> Bool {
+		lhs.rawValue < rhs.rawValue
 	}
+	
 }

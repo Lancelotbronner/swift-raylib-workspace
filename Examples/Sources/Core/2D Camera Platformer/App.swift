@@ -17,7 +17,8 @@ import Raylib
 	var cameraStyleIndex = 0
 	
 	var cameraStyle: CameraStyle {
-		CameraStyles.all[cameraStyleIndex]
+		get { CameraStyles.all[cameraStyleIndex] }
+		nonmutating set { CameraStyles.all[cameraStyleIndex] = newValue }
 	}
 	
 	init() {
@@ -141,17 +142,17 @@ struct Player {
 
 //MARK: Camera
 
-protocol CameraStyle: AnyObject {
+protocol CameraStyle {
 	
 	var name: String { get }
 	
-	func update(_ camera: inout Camera2D, for player: Player)
+	mutating func update(_ camera: inout Camera2D, for player: Player)
 	
 }
 
 enum CameraStyles {
 	
-	static let all: [CameraStyle] = [
+	static var all: [CameraStyle] = [
 		CenterCameraStyle(),
 		ClampedCameraStyle(),
 		SmoothCameraStyle(),
@@ -159,7 +160,7 @@ enum CameraStyles {
 		PushCameraStyle()
 	]
 	
-	final class CenterCameraStyle: CameraStyle {
+	struct CenterCameraStyle: CameraStyle {
 		let name = "Follow player center"
 		
 		func update(_ camera: inout Camera2D, for player: Player) {
@@ -168,7 +169,7 @@ enum CameraStyles {
 		}
 	}
 	
-	final class ClampedCameraStyle: CameraStyle {
+	struct ClampedCameraStyle: CameraStyle {
 		let name = "Follow player center, but clamp to map edges"
 		
 		func update(_ camera: inout Camera2D, for player: Player) {
@@ -202,7 +203,7 @@ enum CameraStyles {
 		}
 	}
 	
-	final class SmoothCameraStyle: CameraStyle {
+	struct SmoothCameraStyle: CameraStyle {
 		let minSpeed: Float = 30
 		let minEffectLength: Float = 10
 		let fractionSpeed: Float = 0.8
@@ -221,7 +222,7 @@ enum CameraStyles {
 		}
 	}
 	
-	final class EvenOutOnLandingCameraStyle: CameraStyle {
+	struct EvenOutOnLandingCameraStyle: CameraStyle {
 		let speed: Float = 700
 		
 		let name = "Follow player center horizontally; updateplayer center vertically after landing"
@@ -229,7 +230,7 @@ enum CameraStyles {
 		private var active = false
 		private var target: Float = 0
 		
-		func update(_ camera: inout Camera2D, for player: Player) {
+		mutating func update(_ camera: inout Camera2D, for player: Player) {
 			camera.offset = Window.size / 2
 			camera.target.x = player.position.x
 			
@@ -256,7 +257,7 @@ enum CameraStyles {
 		}
 	}
 	
-	final class PushCameraStyle: CameraStyle {
+	struct PushCameraStyle: CameraStyle {
 		let name = "Player push camera on getting too close to screen edge"
 		
 		private var bounds = Vector2f(0.2)
