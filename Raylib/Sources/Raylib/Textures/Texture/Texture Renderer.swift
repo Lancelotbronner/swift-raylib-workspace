@@ -35,6 +35,12 @@ extension Renderer2D {
 		DrawTexturePro(value.toRaylib, source ?? Rectangle(at: .zero, size: value.size), destination, position.toRaylib, rotation.toDegrees, tint)
 	}
 	
+	//MARK: Render Texture
+	
+	public static func target(_ value: RenderTexture, at position: Vector2f, to destination: Rectangle, rotation: Angle<Float> = .zero, tint: Color = Renderer2D.tint) {
+		texture(value.texture, from: Rectangle(at: 0, 0, size: value.texture.width.toFloat, -value.texture.height.toFloat), at: position, to: destination, rotation: rotation, tint: tint)
+	}
+	
 }
 
 //MARK: Stores

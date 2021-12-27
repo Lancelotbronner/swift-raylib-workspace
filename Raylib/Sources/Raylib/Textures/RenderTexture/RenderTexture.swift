@@ -31,6 +31,10 @@ public final class RenderTexture {
 		self.init(underlying: LoadRenderTexture(width.toInt32, height.toInt32))
 	}
 	
+	@inlinable public convenience init(size: Vector2f) {
+		self.init(underlying: LoadRenderTexture(size.x.toInt32, size.y.toInt32))
+	}
+	
 	@inlinable public init(underlying texture: CRaylib.RenderTexture) {
 		underlying = texture
 	}
