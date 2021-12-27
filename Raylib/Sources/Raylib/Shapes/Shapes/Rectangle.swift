@@ -18,10 +18,6 @@ public struct Rectangle {
 	
 	//MARK: Computed Properties
 	
-	@_transparent public var toRaylib: CRaylib.Rectangle {
-		CRaylib.Rectangle(x: x, y: y, width: width, height: height)
-	}
-	
 	@usableFromInline var startX: Float { x }
 	@usableFromInline var centerX: Float { x + width / 2 }
 	@usableFromInline var endX: Float { x + width }
@@ -76,6 +72,16 @@ public struct Rectangle {
 		RoundedRectangle(round: self, by: cornerRadius, segments: segments)
 	}
 	
+	//MARK: Translation Methods
+	
+	@inlinable public mutating func translate(by step: Vector2f) {
+		position += step
+	}
+	
+	@inlinable public func translated(by step: Vector2f) -> Rectangle {
+		Rectangle(at: position + step, size: size)
+	}
+	
 	//MARK: Collision Methods
 	
 	@inlinable public func contains(_ x: Float, _ y: Float) -> Bool {
@@ -101,6 +107,14 @@ public struct Rectangle {
 }
 
 //MARK: - Raylib Integration
+
+extension Rectangle {
+	
+	@_transparent public var toRaylib: CRaylib.Rectangle {
+		CRaylib.Rectangle(x: x, y: y, width: width, height: height)
+	}
+	
+}
 
 extension CRaylib.Rectangle {
 	

@@ -22,7 +22,7 @@ extension Renderer2D {
 	}
 	
 	@inlinable public static func text(center value: String, size: Int = Renderer.textSize, color: Color = Renderer.textColor) {
-		text(value, at: Window.width - Text.measure(value, size: size) / 2, Window.height / 2, size: size, color: color)
+		text(value, at: (Window.width - Text.measure(value, size: size)) / 2, (Window.height - size) / 2, size: size, color: color)
 	}
 	
 }

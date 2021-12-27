@@ -49,6 +49,20 @@ public struct Circle {
 		self.init(at: Vector2f(x, y), radius: radius)
 	}
 	
+	//MARK: Translation Methods
+	
+	@inlinable public mutating func translate(by step: Vector2f) {
+		position += step
+	}
+	
+	@inlinable public func translated(by step: Vector2f) -> Circle {
+		Circle(at: position + step, radius: radius)
+	}
+	
+	@inlinable public func translated(by x: Float, _ y: Float) -> Circle {
+		translated(by: Vector2f(x, y))
+	}
+	
 	//MARK: Collision Methods
 	
 	@inlinable public func contains(_ x: Int, _ y: Int) -> Bool {
