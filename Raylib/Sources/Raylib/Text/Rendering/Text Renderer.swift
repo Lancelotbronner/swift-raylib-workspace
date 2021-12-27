@@ -21,4 +21,8 @@ extension Renderer2D {
 		DrawText(value, x.toInt32, y.toInt32, size.toInt32, color)
 	}
 	
+	@inlinable public static func text(center value: String, size: Int = Renderer.textSize, color: Color = Renderer.textColor) {
+		text(value, at: Window.width - Text.measure(value, size: size) / 2, Window.height / 2, size: size, color: color)
+	}
+	
 }

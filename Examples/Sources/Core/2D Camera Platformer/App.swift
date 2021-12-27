@@ -77,8 +77,6 @@ import Raylib
 
 //MARK: - Game
 
-//MARK: Environment
-
 let GRAVITY: Float = 400
 
 let map = Vector2f(1000, 200)

@@ -53,11 +53,11 @@ extension OutlineRenderer2D {
 	
 	//MARK: Sector
 	
-	@inlinable public static func sector(at x: Int, _ y: Int, radius: Float, from start: Angle, to end: Angle, segments: Int = 0, color: Color = Renderer.shapeColor) {
+	@inlinable public static func sector(at x: Int, _ y: Int, radius: Float, from start: Angle<Float>, to end: Angle<Float>, segments: Int = 0, color: Color = Renderer.shapeColor) {
 		DrawCircleSectorLines(Vector2f(x.toFloat, y.toFloat).toRaylib, radius, start.toDegrees, end.toDegrees, segments.toInt32, color)
 	}
 	
-	@inlinable public static func sector(at position: Vector2f, radius: Float, from start: Angle, to end: Angle, segments: Int = 0, color: Color = Renderer.shapeColor) {
+	@inlinable public static func sector(at position: Vector2f, radius: Float, from start: Angle<Float>, to end: Angle<Float>, segments: Int = 0, color: Color = Renderer.shapeColor) {
 		DrawCircleSectorLines(position.toRaylib, radius, start.toDegrees, end.toDegrees, segments.toInt32, color)
 	}
 	
@@ -73,21 +73,21 @@ extension OutlineRenderer2D {
 	
 	//MARK: Ring
 	
-	@inlinable public static func ring(at x: Int, _ y: Int, inner innerRadius: Float, outer outerRadius: Float, segments: Int = 0, from start: Angle, to end: Angle, color: Color = Renderer.shapeColor) {
+	@inlinable public static func ring(at x: Int, _ y: Int, inner innerRadius: Float, outer outerRadius: Float, segments: Int = 0, from start: Angle<Float>, to end: Angle<Float>, color: Color = Renderer.shapeColor) {
 		DrawRingLines(Vector2f(x.toFloat, y.toFloat).toRaylib, innerRadius, outerRadius, start.toDegrees, end.toDegrees, segments.toInt32, color)
 	}
 	
-	@inlinable public static func ring(at position: Vector2f, inner innerRadius: Float, outer outerRadius: Float, segments: Int = 0, from start: Angle, to end: Angle, color: Color = Renderer.shapeColor) {
+	@inlinable public static func ring(at position: Vector2f, inner innerRadius: Float, outer outerRadius: Float, segments: Int = 0, from start: Angle<Float>, to end: Angle<Float>, color: Color = Renderer.shapeColor) {
 		DrawRingLines(position.toRaylib, innerRadius, outerRadius, start.toDegrees, end.toDegrees, segments.toInt32, color)
 	}
 	
 	//MARK: Polygon
 	
-	@inlinable public static func polygon(at x: Int, _ y: Int, sides: Int, radius: Float, rotation: Angle = .zero, color: Color = Renderer.shapeColor) {
+	@inlinable public static func polygon(at x: Int, _ y: Int, sides: Int, radius: Float, rotation: Angle<Float> = .zero, color: Color = Renderer.shapeColor) {
 		DrawPolyLines(Vector2f(x.toFloat, y.toFloat).toRaylib, sides.toInt32, radius, rotation.toDegrees, color)
 	}
 	
-	@inlinable public static func polygon(at position: Vector2f, sides: Int, radius: Float, rotation: Angle = .zero, color: Color = Renderer.shapeColor) {
+	@inlinable public static func polygon(at position: Vector2f, sides: Int, radius: Float, rotation: Angle<Float> = .zero, color: Color = Renderer.shapeColor) {
 		DrawPolyLines(position.toRaylib, sides.toInt32, radius, rotation.toDegrees, color)
 	}
 	

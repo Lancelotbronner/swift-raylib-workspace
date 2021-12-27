@@ -7,6 +7,7 @@
 
 import Raylib
 
+// FIXME: Missing rectangles
 @main struct LetterboxedWindow: App {
 	
 	var target: RenderTexture

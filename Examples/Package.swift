@@ -27,10 +27,13 @@ let package = Package(
 		.example(.core, "2D Camera Platformer"),
 		.example(.core, "Letterboxed Window"),
 		.example(.core, "Drop Files"),
+		.example(.core, "3D First Person"),
 		
 		// Shapes Module
 		.example(.shapes, "Basic Shapes"),
+		.example(.shapes, "Bouncing Ball"),
 		.example(.shapes, "Color Palette"),
+		.example(.shapes, "Following Eyes"),
 		
 		// Textures Module
 		.example(.textures, "Logo Raylib", [

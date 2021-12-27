@@ -66,6 +66,22 @@ extension CRaylib.Vector2 {
 	
 }
 
+//MARK: - Floating Point Arithmetic
+
+extension Vector2 where Scalar: FloatingPoint & TrigonometryFunctions {
+	
+	@inlinable public func angle(with other: Self) -> Angle<Scalar> {
+		var result = Angle.radians(Scalar.atan2(other.y - y, other.x - x))
+		
+		if result < .zero {
+			result += .circle
+		}
+		
+		return result
+	}
+	
+}
+
 /*
 //----------------------------------------------------------------------------------
 // Module Functions Definition - Vector2 math

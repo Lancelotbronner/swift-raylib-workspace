@@ -29,10 +29,11 @@ extension BidirectionalCollection where Index == Int {
 extension Array {
 	
 	@inlinable public init(repeat count: Int, value: () -> Element) {
-		self.init(unsafeUninitializedCapacity: count) { buffer, count in
+		self.init(unsafeUninitializedCapacity: count) { buffer, total in
 			for i in buffer.indices {
 				buffer[i] = value()
 			}
+			total = count
 		}
 	}
 	
