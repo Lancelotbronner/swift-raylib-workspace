@@ -27,7 +27,7 @@ let package = Package(
 		.example(.core, "2D Camera Platformer"),
 		.example(.core, "Letterboxed Window"),
 		.example(.core, "Drop Files"),
-		.example(.core, "3D First Person"),
+//		.example(.core, "3D First Person"),
 		
 		// Shapes Module
 		.example(.shapes, "Basic Shapes"),
@@ -40,6 +40,9 @@ let package = Package(
 			.copy("raylib_logo.png")
 		]),
 		.example(.textures, "Image Generation"),
+		
+		// Classic Games
+//		.game("Arkanoid"),
 	]
 )
 
@@ -53,6 +56,17 @@ extension Target {
 				.product(name: "SwiftRaylib", package: "Raylib"),
 			],
 			path: "Sources/\(module.rawValue)/\(name)",
+			resources: resources)
+		return target
+	}
+	
+	static func game(_ name: String, _ resources: [Resource]? = nil) -> Target {
+		let target = Target.executableTarget(
+			name: "Game - \(name)",
+			dependencies: [
+				.product(name: "SwiftRaylib", package: "Raylib"),
+			],
+			path: "Sources/Games/\(name)",
 			resources: resources)
 		return target
 	}

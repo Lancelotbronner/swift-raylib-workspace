@@ -32,7 +32,7 @@ extension Renderer2D {
 	}
 	
 	@inlinable public static func rectangle(_ shape: Rectangle, color: Color = Renderer.shapeColor) {
-		DrawRectangleRec(shape, color)
+		DrawRectangleRec(shape.toRaylib, color)
 	}
 	
 	@inlinable public static func rectangle(at x: Int, _ y: Int, size width: Int, _ height: Int, gradientH from: Color, _ to: Color) {
@@ -60,21 +60,21 @@ extension Renderer2D {
 	}
 	
 	@inlinable public static func rectangle(at x: Int, _ y: Int, size width: Int, _ height: Int, gradient topLeft: Color, _ bottomLeft: Color, _ bottomRight: Color, _ topRight: Color) {
-		DrawRectangleGradientEx(.init(at: x.toFloat, y.toFloat, size: width.toFloat, height.toFloat), topLeft, bottomLeft, bottomRight, topRight)
+		DrawRectangleGradientEx(.init(x: x.toFloat, y: y.toFloat, width: width.toFloat, height: height.toFloat), topLeft, bottomLeft, bottomRight, topRight)
 	}
 	
 	@inlinable public static func rectangle(at position: Vector2f, size: Vector2f, gradient topLeft: Color, _ bottomLeft: Color, _ bottomRight: Color, _ topRight: Color) {
-		DrawRectangleGradientEx(.init(at: position, size: size), topLeft, bottomLeft, bottomRight, topRight)
+		DrawRectangleGradientEx(.init(x: position.x, y: position.y, width: size.x, height: size.y), topLeft, bottomLeft, bottomRight, topRight)
 	}
 	
 	@inlinable public static func rectangle(_ shape: Rectangle, gradient topLeft: Color, _ bottomLeft: Color, _ bottomRight: Color, _ topRight: Color) {
-		DrawRectangleGradientEx(shape, topLeft, bottomLeft, bottomRight, topRight)
+		DrawRectangleGradientEx(shape.toRaylib, topLeft, bottomLeft, bottomRight, topRight)
 	}
 	
 	//MARK: Rounded Rectangle
 	
 	@inlinable public static func roundedRectangle(_ shape: RoundedRectangle, color: Color = Renderer.shapeColor) {
-		DrawRectangleRounded(shape.rectangle, shape.cornerRadius, shape.segments.toInt32, color)
+		DrawRectangleRounded(shape.rectangle.toRaylib, shape.cornerRadius, shape.segments.toInt32, color)
 	}
 	
 	//MARK: Circle

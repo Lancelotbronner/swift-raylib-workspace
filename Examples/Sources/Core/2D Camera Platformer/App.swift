@@ -82,10 +82,10 @@ let GRAVITY: Float = 400
 let map = Vector2f(1000, 200)
 
 let environment = [
-	Rectangle(x: 0, y: 400, width: 1000, height: 600),
-	Rectangle(x: 300, y: 200, width: 400, height: 10),
-	Rectangle(x: 250, y: 300, width: 100, height: 10),
-	Rectangle(x: 650, y: 300, width: 100, height: 10),
+	Rectangle(at: 0, 400, size: 1000, 600),
+	Rectangle(at: 300, 200, size: 400, 10),
+	Rectangle(at: 250, 300, size: 100, 10),
+	Rectangle(at: 650, 300, size: 100, 10),
 ]
 
 //MARK: Player
@@ -119,10 +119,10 @@ struct Player {
 		
 		let newY = position.y + speed * Time.delta
 		let hit = environment.first { obstacle in
-			obstacle.startX <= position.x
-			&& obstacle.endX >= position.x
-			&& obstacle.startY >= position.y
-			&& obstacle.startY < newY
+			obstacle.left.x <= position.x
+			&& obstacle.right.x >= position.x
+			&& obstacle.bottom.y >= position.y
+			&& obstacle.bottom.y < newY
 		}
 		
 		if let obstacle = hit {

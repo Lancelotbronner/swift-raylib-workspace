@@ -9,40 +9,65 @@ import CRaylib
 
 //MARK: - Rectangle
 
-public typealias Rectangle = CRaylib.Rectangle
-
-extension Rectangle {
+public struct Rectangle {
+	
+	//MARK: Properties
+	
+	public var position: Vector2f
+	public var size: Vector2f
 	
 	//MARK: Computed Properties
 	
-	public var startX: Float { x }
-	public var centerX: Float { x + width / 2 }
-	public var endX: Float { x + width }
-	public var startY: Float { y }
-	public var centerY: Float { y + height / 2 }
-	public var endY: Float { y + height }
+	@_transparent public var toRaylib: CRaylib.Rectangle {
+		CRaylib.Rectangle(x: x, y: y, width: width, height: height)
+	}
 	
-	public var position: Vector2f { .init(x, y) }
-	public var size: Vector2f { .init(width, height) }
+	@usableFromInline var startX: Float { x }
+	@usableFromInline var centerX: Float { x + width / 2 }
+	@usableFromInline var endX: Float { x + width }
+	@usableFromInline var startY: Float { y }
+	@usableFromInline var centerY: Float { y + height / 2 }
+	@usableFromInline var endY: Float { y + height }
 	
-	public var topLeft: Vector2f { .init(startX, endY) }
-	public var top: Vector2f { .init(centerX, endY) }
-	public var topRight: Vector2f { .init(endX, endY) }
-	public var left: Vector2f { .init(startX, centerY) }
-	public var center: Vector2f { .init(centerX, centerY) }
-	public var right: Vector2f { .init(endX, centerY) }
-	public var bottomLeft: Vector2f { .init(startX, startY) }
-	public var bottom: Vector2f { .init(centerX, startY) }
-	public var bottomRight: Vector2f { .init(endX, startY) }
+	@inlinable public var topLeft: Vector2f { Vector2f(startX, endY) }
+	@inlinable public var top: Vector2f { Vector2f(centerX, endY) }
+	@inlinable public var topRight: Vector2f { Vector2f(endX, endY) }
+	@inlinable public var left: Vector2f { Vector2f(startX, centerY) }
+	@inlinable public var center: Vector2f { Vector2f(centerX, centerY) }
+	@inlinable public var right: Vector2f { Vector2f(endX, centerY) }
+	@inlinable public var bottomLeft: Vector2f { Vector2f(startX, startY) }
+	@inlinable public var bottom: Vector2f { Vector2f(centerX, startY) }
+	@inlinable public var bottomRight: Vector2f { Vector2f(endX, startY) }
+	
+	@inlinable public var x: Float {
+		get { position.x }
+		set { position.x = newValue }
+	}
+	
+	@inlinable public var y: Float {
+		get { position.y }
+		set { position.y = newValue }
+	}
+	
+	@inlinable public var width: Float {
+		get { size.x }
+		set { size.x = newValue }
+	}
+	
+	@inlinable public var height: Float {
+		get { size.y }
+		set { size.y = newValue }
+	}
 	
 	//MARK: Initialization
 	
-	@inlinable public init(at x: Float, _ y: Float, size width: Float, _ height: Float) {
-		self.init(x: x, y: y, width: width, height: height)
+	@inlinable public init(at position: Vector2f, size: Vector2f) {
+		self.position = position
+		self.size = size
 	}
 	
-	@inlinable public init(at position: Vector2f, size: Vector2f) {
-		self.init(x: position.x, y: position.y, width: size.x, height: size.y)
+	@inlinable public init(at x: Float, _ y: Float, size width: Float, _ height: Float) {
+		self.init(at: Vector2f(x, y), size: Vector2f(width, height))
 	}
 	
 	//MARK: Conversion Methods
@@ -54,23 +79,33 @@ extension Rectangle {
 	//MARK: Collision Methods
 	
 	@inlinable public func contains(_ x: Float, _ y: Float) -> Bool {
-		CheckCollisionPointRec(Vector2f(x, y).toRaylib, self)
+		CheckCollisionPointRec(Vector2f(x, y).toRaylib, toRaylib)
 	}
 	
 	@inlinable public func contains(_ point: Vector2f) -> Bool {
-		CheckCollisionPointRec(point.toRaylib, self)
+		CheckCollisionPointRec(point.toRaylib, toRaylib)
 	}
 	
 	@inlinable public func collided(with other: Rectangle) -> Bool {
-		CheckCollisionRecs(self, other)
+		CheckCollisionRecs(toRaylib, other.toRaylib)
 	}
 	
 	@inlinable public func collided(with other: Circle) -> Bool {
-		CheckCollisionCircleRec(other.position.toRaylib, other.radius, self)
+		CheckCollisionCircleRec(other.position.toRaylib, other.radius, toRaylib)
 	}
 	
 	@inlinable public func collision(with other: Rectangle) -> Rectangle {
-		GetCollisionRec(self, other)
+		GetCollisionRec(toRaylib, other.toRaylib).toSwift
+	}
+	
+}
+
+//MARK: - Raylib Integration
+
+extension CRaylib.Rectangle {
+	
+	@_transparent public var toSwift: Rectangle {
+		Rectangle(at: x, y, size: width, height)
 	}
 	
 }

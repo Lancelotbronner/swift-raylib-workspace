@@ -14,6 +14,12 @@ public typealias Vector2i = Vector2<Int>
 
 public struct Vector2<Scalar>: Vector {
 	
+	//MARK: Constants
+	
+	@inlinable public static var scalars: [WritableKeyPath<Vector2, Scalar>] {
+		[\.x, \.y]
+	}
+	
 	//MARK: Properties
 	
 	public var x: Scalar
@@ -32,11 +38,6 @@ public struct Vector2<Scalar>: Vector {
 	
 	//MARK: Utilities
 	
-	@inlinable public static func forEach(_ body: (WritableKeyPath<Vector2, Scalar>) throws -> Void) rethrows {
-		try body(\.x)
-		try body(\.y)
-	}
-	
 	@inlinable public static func map(_ transform: (WritableKeyPath<Vector2, Scalar>) throws -> Scalar) rethrows -> Vector2 {
 		Vector2(try transform(\.x), try transform(\.y))
 	}
@@ -53,22 +54,22 @@ extension Vector2: Hashable where Scalar: Hashable { }
 extension Vector2 where Scalar == Float {
 	
 	@_transparent public var toRaylib: CRaylib.Vector2 {
-		unsafeBitCast(self, to: CRaylib.Vector2.self)
+		CRaylib.Vector2(x: x, y: y)
 	}
 	
 }
 
 extension CRaylib.Vector2 {
 	
-	@_transparent public var toSwift: Vector2<Float> {
-		unsafeBitCast(self, to: Vector2.self)
+	@_transparent public var toSwift: Vector2f {
+		Vector2f(x, y)
 	}
 	
 }
 
-//MARK: - Floating Point Arithmetic
+//MARK: - Trigonometry
 
-extension Vector2 where Scalar: FloatingPoint & TrigonometryFunctions {
+extension Vector2 where Scalar: TrigonometryFunctions {
 	
 	@inlinable public func angle(with other: Self) -> Angle<Scalar> {
 		var result = Angle.radians(Scalar.atan2(other.y - y, other.x - x))
@@ -86,16 +87,6 @@ extension Vector2 where Scalar: FloatingPoint & TrigonometryFunctions {
 //----------------------------------------------------------------------------------
 // Module Functions Definition - Vector2 math
 //----------------------------------------------------------------------------------
-
-// Calculate angle from two vectors in X-axis
-RMAPI float Vector2Angle(Vector2 v1, Vector2 v2)
-{
-	float result = atan2f(v2.y - v1.y, v2.x - v1.x)*(180.0f/PI);
-	
-	if (result < 0) result += 360.0f;
-	
-	return result;
-}
 
 // Calculate reflected vector to normal
 RMAPI Vector2 Vector2Reflect(Vector2 v, Vector2 normal)

@@ -18,6 +18,22 @@ public struct Circle {
 	
 	//MARK: Computed Properties
 	
+	@inlinable public var left: Vector2f {
+		Vector2f(position.x - radius, position.y)
+	}
+	
+	@inlinable public var right: Vector2f {
+		Vector2f(position.x + radius, position.y)
+	}
+	
+	@inlinable public var top: Vector2f {
+		Vector2f(position.x, position.y - radius)
+	}
+	
+	@inlinable public var bottom: Vector2f {
+		Vector2f(position.x, position.y + radius)
+	}
+	
 	@inlinable public var diameter: Float {
 		radius * 2
 	}
@@ -44,11 +60,15 @@ public struct Circle {
 	}
 	
 	@inlinable public func collided(with other: Rectangle) -> Bool {
-		CheckCollisionCircleRec(position.toRaylib, radius, other)
+		CheckCollisionCircleRec(position.toRaylib, radius, other.toRaylib)
 	}
 	
 	@inlinable public func collided(with other: Circle) -> Bool {
 		CheckCollisionCircles(position.toRaylib, radius, other.position.toRaylib, other.radius)
 	}
+	
+//	@inlinable public func willCollide(with other: Rectangle, at velocity: Vector2f) -> Bool {
+		// TODO: Consider velocity-based collision methods?
+//	}
 	
 }

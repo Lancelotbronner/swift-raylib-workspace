@@ -94,8 +94,8 @@ extension Vector2f: BuiltinValueUniform, UniformConvertible {
 	static var type: Int32 { SHADER_UNIFORM_VEC2.rawValue.toInt32 }
 }
 
-extension Vector3f: BuiltinValueUniform {
-	static var type: Int32 { 2 }
+extension Vector3f: BuiltinValueUniform, UniformConvertible {
+	static var type: Int32 { SHADER_ATTRIB_VEC3.rawValue.toInt32 }
 }
 
 //extension Vector4f: BuiltinValueUniform {

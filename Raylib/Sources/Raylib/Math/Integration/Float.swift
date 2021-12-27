@@ -7,13 +7,21 @@
 
 import Darwin
 
-//MARK: - Float
+//MARK: - Conformances
+
+extension Float: NormalizationFunctions, RemappingFunctions { }
+
+//MARK: - Trigonometry
 
 extension Float: TrigonometryFunctions {
+	
+	//MARK: Constants
 	
 	@inlinable public static var circle: Float {
 		2 * .pi
 	}
+	
+	//MARK: Static Methods
 	
 	@inlinable public static func sin(_ value: Float) -> Float {
 		sinf(value)

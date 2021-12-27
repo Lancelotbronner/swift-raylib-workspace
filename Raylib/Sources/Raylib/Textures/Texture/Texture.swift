@@ -50,7 +50,7 @@ extension Texture {
 	}
 	
 	@inlinable public func update(area: Rectangle, with image: Image) {
-		UpdateTextureRec(toRaylib, area, image.underlying.data)
+		UpdateTextureRec(toRaylib, area.toRaylib, image.underlying.data)
 	}
 	
 }

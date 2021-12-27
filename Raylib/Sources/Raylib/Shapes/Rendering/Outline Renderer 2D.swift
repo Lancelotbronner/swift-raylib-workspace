@@ -28,17 +28,17 @@ extension OutlineRenderer2D {
 	}
 	
 	@inlinable public static func rectangle(at x: Int, _ y: Int, size width: Int, _ height: Int, thickness: Int, color: Color = Renderer.shapeColor) {
-		DrawRectangleLinesEx(Rectangle(at: x.toFloat, y.toFloat, size: width.toFloat, height.toFloat), thickness.toFloat, color)
+		DrawRectangleLinesEx(.init(x: x.toFloat, y: y.toFloat, width: width.toFloat, height: height.toFloat), thickness.toFloat, color)
 	}
 	
 	@inlinable public static func rectangle(_ rect: Rectangle, thickness: Float, color: Color = Renderer.shapeColor) {
-		DrawRectangleLinesEx(rect, thickness, color)
+		DrawRectangleLinesEx(rect.toRaylib, thickness, color)
 	}
 	
 	//MARK: Rounded Rectangle
 	
 	@inlinable public static func roundedRectangle(_ shape: RoundedRectangle, thickness: Float, color: Color = Renderer.shapeColor) {
-		DrawRectangleRoundedLines(shape.rectangle, shape.cornerRadius, shape.segments.toInt32, thickness, color)
+		DrawRectangleRoundedLines(shape.rectangle.toRaylib, shape.cornerRadius, shape.segments.toInt32, thickness, color)
 	}
 	
 	//MARK: Circle

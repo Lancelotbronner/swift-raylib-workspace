@@ -5,6 +5,70 @@
 //  Created by Christophe Bronner on 2021-11-30.
 //
 
+import CRaylib
+
+//MARK: - Vector 3
+
+public typealias Vector3f = Vector3<Float>
+public typealias Vector3i = Vector3<Int>
+
+public struct Vector3<Scalar>: Vector {
+	
+	//MARK: Constants
+	
+	@inlinable public static var scalars: [WritableKeyPath<Vector3, Scalar>] {
+		[\.x, \.y, \.z]
+	}
+	
+	//MARK: Properties
+	
+	public var x: Scalar
+	public var y: Scalar
+	public var z: Scalar
+	
+	//MARK: Initialization
+	
+	@inlinable public init(_ x: Scalar, _ y: Scalar, _ z: Scalar) {
+		self.x = x
+		self.y = y
+		self.z = z
+	}
+	
+	@inlinable public init(_ v: Scalar) {
+		self.init(v, v, v)
+	}
+	
+	//MARK: Utilities
+	
+	@inlinable public static func map(_ transform: (WritableKeyPath<Vector3, Scalar>) throws -> Scalar) rethrows -> Vector3 {
+		Vector3(try transform(\.x), try transform(\.y), try transform(\.z))
+	}
+	
+}
+
+//MARK: - Conformances
+
+extension Vector3: Equatable where Scalar: Equatable { }
+extension Vector3: Hashable where Scalar: Hashable { }
+
+//MARK: - Raylib Integration
+
+extension Vector3 where Scalar == Float {
+	
+	@_transparent public var toRaylib: CRaylib.Vector3 {
+		CRaylib.Vector3(x: x, y: y, z: z)
+	}
+	
+}
+
+extension CRaylib.Vector3 {
+	
+	@_transparent public var toSwift: Vector3f {
+		Vector3f(x, y, z)
+	}
+	
+}
+
 /*
 //----------------------------------------------------------------------------------
 // Module Functions Definition - Vector3 math

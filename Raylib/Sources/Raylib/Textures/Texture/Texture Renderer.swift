@@ -32,7 +32,7 @@ extension Renderer2D {
 	}
 	
 	public static func texture(_ value: Texture, from source: Rectangle? = nil, at position: Vector2f, to destination: Rectangle, rotation: Angle<Float> = .zero, tint: Color = Renderer2D.tint) {
-		DrawTexturePro(value.toRaylib, source ?? Rectangle(at: .zero, size: value.size), destination, position.toRaylib, rotation.toDegrees, tint)
+		DrawTexturePro(value.toRaylib, source?.toRaylib ?? .init(x: 0, y: 0, width: value.size.x, height: value.size.y), destination.toRaylib, position.toRaylib, rotation.toDegrees, tint)
 	}
 	
 	//MARK: Render Texture
