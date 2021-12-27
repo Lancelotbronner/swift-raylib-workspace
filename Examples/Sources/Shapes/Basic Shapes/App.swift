@@ -7,7 +7,7 @@
 
 import Raylib
 
-@main struct BasicShapes: App {
+@main struct BasicShapes: Applet {
 	init() {
 		Window.create(800, by: 450, title: "Example - Shapes - Basic Shapes")
 		Application.target(fps: 60)

@@ -8,7 +8,7 @@
 import Raylib
 import Darwin
 
-@main struct FollowingEyes: App {
+@main struct FollowingEyes: Applet {
 	let EYE_RADIUS: Float = 80
 	let IRIS_RADIUS: Float = 24
 	

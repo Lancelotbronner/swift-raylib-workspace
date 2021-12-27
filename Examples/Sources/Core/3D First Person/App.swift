@@ -7,7 +7,7 @@
 
 import Raylib
 
-@main struct FirstPerson3D: App {
+@main struct FirstPerson3D: Applet {
 	let camera: Camera3D
 	let columns: [Column]
 	

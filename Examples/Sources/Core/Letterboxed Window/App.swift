@@ -7,7 +7,7 @@
 
 import Raylib
 
-@main struct LetterboxedWindow: App {
+@main struct LetterboxedWindow: Applet {
 	
 	var target: RenderTexture
 	var virtualMouse = Vector2f.zero

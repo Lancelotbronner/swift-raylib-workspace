@@ -11,11 +11,9 @@ public protocol App {
 	
 	init()
 	
-	mutating func setup()
-	mutating func update()
-	func render()
-	func draw()
-	mutating func destroy()
+	mutating func load()
+	mutating func frame()
+	mutating func unload()
 	
 }
 
@@ -23,31 +21,25 @@ extension App {
 	
 	//MARK: Defaults
 	
-	public func setup() { }
-	public func update() { }
-	public func render() { }
-	public func destroy() { }
+	public func load() { }
+	public func unload() { }
 	
-	//MARK: Main
+	//MARK: @main
 	
-	public static func main() {
+	@inlinable public static func main() {
 		var app = Self.init()
 		
 		if !Window.isReady {
-			Window.create(title: "raylib")
+			Window.create(title: String(describing: Self.self))
 		}
 		
-		app.setup()
+		app.load()
+		
 		Application.run {
-			app.update()
-			app.render()
-			Renderer.render {
-				Renderer.clear(to: Renderer.background)
-				app.draw()
-			}
+			app.frame()
 		}
-		app.destroy()
 		
+		app.unload()
 		Application.quit()
 	}
 	

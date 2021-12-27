@@ -42,7 +42,7 @@ let package = Package(
 		.example(.textures, "Image Generation"),
 		
 		// Classic Games
-//		.game("Arkanoid"),
+		.game("Arkanoid"),
 	]
 )
 

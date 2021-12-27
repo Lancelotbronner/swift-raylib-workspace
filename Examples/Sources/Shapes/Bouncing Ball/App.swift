@@ -7,7 +7,7 @@
 
 import Raylib
 
-@main struct BouncingBall: App {
+@main struct BouncingBall: Applet {
 	let BALL_RADIUS = 20
 	
 	var position: Vector2f

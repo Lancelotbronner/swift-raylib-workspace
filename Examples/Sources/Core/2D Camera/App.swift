@@ -9,7 +9,7 @@ import Raylib
 
 //MARK: - Application
 
-@main struct ExampleCamera2D: App {
+@main struct ExampleCamera2D: Applet {
 	let NUMBER_OF_BUILDINGS = 100
 
 	var player: Rectangle

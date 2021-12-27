@@ -9,7 +9,7 @@ import Raylib
 
 //MARK: - Application
 
-@main struct ExamplePlatformer2D: App {
+@main struct ExamplePlatformer2D: Applet {
 	let startingPosition = Vector2f(400, 280)
 	
 	var camera: Camera2D

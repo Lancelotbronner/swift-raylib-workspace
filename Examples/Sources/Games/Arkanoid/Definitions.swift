@@ -20,9 +20,6 @@ struct Configuration {
 	/// The number of bricks per line
 	static let bricksPerLine = 20
 	
-	/// The Y position where brick lines are placed
-	static let initialBrickPosition: Float = 50
-	
 }
 
 //MARK: - Structures

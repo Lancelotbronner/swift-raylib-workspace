@@ -7,7 +7,7 @@
 
 import Raylib
 
-@main struct InputMouseWheel: App {
+@main struct InputMouseWheel: Applet {
 	var boxPositionY: Float
 	
 	init() {

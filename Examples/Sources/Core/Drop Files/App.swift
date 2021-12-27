@@ -7,7 +7,7 @@
 
 import Raylib
 
-@main struct DropFiles: App {
+@main struct DropFiles: Applet {
 	
 	init() {
 		Window.create(800, by: 450, title: "Example - Core - Drop Files")
@@ -32,7 +32,7 @@ import Raylib
 		}
 	}
 	
-	func destroy() {
+	func unload() {
 		DragAndDrop.clear()
 	}
 	

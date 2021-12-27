@@ -7,7 +7,7 @@
 
 import Raylib
 
-@main struct LogoRaylib: App {
+@main struct LogoRaylib: Applet {
 	let logo: Texture
 	
 	init() {

@@ -7,7 +7,7 @@
 
 import Raylib
 
-@main struct BasicWindow: App {
+@main struct BasicWindow: Applet {
 	
 	init() {
 		Window.create(800, by: 450, title: "Example - Core - Basic Window")
