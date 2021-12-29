@@ -54,3 +54,16 @@ extension Texture {
 	}
 	
 }
+
+//MARK: - Raylib Integration
+
+extension CRaylib.Texture: MemoryManageable {
+	
+	@inlinable public static func unload(instance: CRaylib.Texture2D) {
+		UnloadTexture(instance)
+	}
+	
+}
+
+extension Unmanaged: Texture where Subject == CRaylib.Texture { }
+extension Managed: Texture where Subject == CRaylib.Texture { }

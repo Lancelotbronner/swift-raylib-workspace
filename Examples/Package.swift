@@ -42,7 +42,8 @@ let package = Package(
 		.example(.textures, "Image Generation"),
 		
 		// Classic Games
-		.game("Arkanoid"),
+		.classic("Arkanoid"),
+		.classic("Platformer"),
 	]
 )
 
@@ -56,6 +57,17 @@ extension Target {
 				.product(name: "SwiftRaylib", package: "Raylib"),
 			],
 			path: "Sources/\(module.rawValue)/\(name)",
+			resources: resources)
+		return target
+	}
+	
+	static func classic(_ name: String, _ resources: [Resource]? = nil) -> Target {
+		let target = Target.executableTarget(
+			name: "Classic Game - \(name)",
+			dependencies: [
+				.product(name: "SwiftRaylib", package: "Raylib"),
+			],
+			path: "Sources/Classics/\(name)",
 			resources: resources)
 		return target
 	}

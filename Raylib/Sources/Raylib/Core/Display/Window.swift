@@ -18,12 +18,12 @@ public struct Window {
 		IsWindowReady()
 	}
 	
-	/// Check if KEY_ESCAPE pressed or Close icon pressed
+	/// Check if `KEY_ESCAPE` pressed or `Close` icon pressed
 	@inlinable public static var shouldClose: Bool {
 		WindowShouldClose()
 	}
 	
-	/// Check if window is currently fullscreen; Toggle window state: fullscreen/windowed (only PLATFORM_DESKTOP)
+	/// Check if window is currently fullscreen; Toggle window state: fullscreen/windowed (only `PLATFORM_DESKTOP`)
 	@inlinable public static var isFullscreen: Bool {
 		get { IsWindowFullscreen() }
 		set {
@@ -32,24 +32,24 @@ public struct Window {
 		}
 	}
 	
-	/// Check if window is currently hidden (only PLATFORM_DESKTOP)
+	/// Check if window is currently hidden (only `PLATFORM_DESKTOP`)
 	@inlinable public static var isHidden: Bool {
 		IsWindowHidden()
 	}
 	
-	/// Check if window is currently minimized (only PLATFORM_DESKTOP)
+	/// Check if window is currently minimized (only `PLATFORM_DESKTOP`)
 	@inlinable public static var isMinimized: Bool {
 		get { IsWindowMinimized() }
 		set { (newValue ? MinimizeWindow : RestoreWindow)() }
 	}
 	
-	/// Check if window is currently maximized (only PLATFORM_DESKTOP)
+	/// Check if window is currently maximized (only `PLATFORM_DESKTOP`)
 	@inlinable public static var isMaximized: Bool {
 		get { IsWindowMaximized() }
 		set { (newValue ? MaximizeWindow : RestoreWindow)() }
 	}
 	
-	/// Check if window is currently focused (only PLATFORM_DESKTOP)
+	/// Check if window is currently focused (only `PLATFORM_DESKTOP`)
 	@inlinable public static var isFocused: Bool {
 		IsWindowFocused()
 	}
@@ -123,26 +123,16 @@ public struct Window {
 		CloseWindow()
 	}
 	
-	//MARK: Windowing Methods
-	
-	/// Set window configuration state
-	@inlinable public static func enable(_ state: WindowFlag) {
-		state.enable()
-	}
+	//MARK: Flags Methods
 	
 	/// Set window configuration state
 	@inlinable public static func enable(_ state: WindowFlag...) {
-		enable(state.reduced)
-	}
-	
-	/// Clear window configuration state
-	@inlinable public static func disable(_ state: WindowFlag) {
-		state.disable()
+		state.reduced.enable()
 	}
 	
 	/// Clear window configuration state
 	@inlinable public static func disable(_ state: WindowFlag...) {
-		disable(state.reduced)
+		state.reduced.disable()
 	}
 	
 	/// Set window state: maximized, if resizable (only PLATFORM_DESKTOP)
@@ -160,6 +150,8 @@ public struct Window {
 		RestoreWindow()
 	}
 	
+	//MARK: Size Methods
+	
 	/// Set window dimensions
 	@inlinable public static func resize(to width: Int, by height: Int) {
 		SetWindowSize(width.toInt32, height.toInt32)
@@ -175,14 +167,25 @@ public struct Window {
 		SetWindowPosition(x.toInt32, y.toInt32)
 	}
 	
-	/// Set title for window (only PLATFORM_DESKTOP)
-	@inlinable public static func rename(to title: String) {
-		SetWindowTitle(title)
-	}
+	//MARK: Monitor Methods
 	
 	/// Set monitor for the current window (fullscreen mode)
 	@inlinable public static func assign(to monitor: Monitor) {
 		SetWindowMonitor(monitor.id)
+	}
+	
+	//MARK: Toolbar Methods
+	
+	/// Set icon for window
+	@inlinable public static func set(icon image: Image) {
+		SetWindowIcon(image.underlying)
+	}
+	
+	//MARK: Miscellaneous Methods
+	
+	/// Set title for window (only PLATFORM_DESKTOP)
+	@inlinable public static func rename(to title: String) {
+		SetWindowTitle(title)
 	}
 	
 }

@@ -36,6 +36,16 @@ public struct Vector2<Scalar>: Vector {
 		self.init(v, v)
 	}
 	
+	//MARK: Methods
+	
+	@inlinable public func map<T>(_ transform: (Scalar) throws -> T) rethrows -> Vector2<T> {
+		Vector2<T>(try transform(x), try transform(y))
+	}
+	
+	@inlinable public func map<O, T>(with other: Vector2<O>, _ transform: (Scalar, O) throws -> T) rethrows -> Vector2<T> {
+		Vector2<T>(try transform(x, other.x), try transform(y, other.y))
+	}
+	
 	//MARK: Utilities
 	
 	@inlinable public static func map(_ transform: (WritableKeyPath<Vector2, Scalar>) throws -> Scalar) rethrows -> Vector2 {

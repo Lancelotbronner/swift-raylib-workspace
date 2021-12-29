@@ -1,8 +1,8 @@
 //
 //  File.swift
-//  File
+//  
 //
-//  Created by Christophe Bronner on 2021-09-01.
+//  Created by Christophe Bronner on 2021-12-27.
 //
 
 //MARK: - App
@@ -11,8 +11,9 @@ public protocol App {
 	
 	init()
 	
+	var initial: Scene { get }
+	
 	mutating func load()
-	mutating func frame()
 	mutating func unload()
 	
 }
@@ -21,10 +22,10 @@ extension App {
 	
 	//MARK: Defaults
 	
-	public func load() { }
-	public func unload() { }
+	@inlinable public mutating func load() { }
+	@inlinable public mutating func unload() { }
 	
-	//MARK: @main
+	//MARK: Methods
 	
 	@inlinable public static func main() {
 		var app = Self.init()
@@ -33,10 +34,48 @@ extension App {
 			Window.create(title: String(describing: Self.self))
 		}
 		
+		var navigation = [app.initial]
+		var scene: Scene {
+			get { navigation[navigation.count - 1] }
+			set { navigation[navigation.count - 1] = newValue }
+		}
+		
 		app.load()
 		
-		Application.run {
-			app.frame()
+		var action = SceneAction.push(scene)
+		while Application.isRunning {
+			guard !navigation.isEmpty else { break }
+			
+			switch action {
+			case .push, .replace: scene.load()
+			case .dismiss: scene.wake()
+			case .continue: break
+			}
+			
+			action = scene.update()
+			scene.render()
+			
+			Renderer.render {
+				Renderer.clear(to: Renderer.background)
+				scene.draw()
+			}
+			
+			switch action {
+			case let .push(next):
+				scene.sleep()
+				navigation.append(next)
+				
+			case let .replace(with: next):
+				scene.unload()
+				navigation.append(next)
+				
+			case .dismiss:
+				scene.unload()
+				navigation.removeLast()
+				
+			case .continue:
+				break
+			}
 		}
 		
 		app.unload()
