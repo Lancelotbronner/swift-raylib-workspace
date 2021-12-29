@@ -1,0 +1,4 @@
+C				| Swift
+InitWindow		| Window/create(_:by:title:)
+
+SetWindowState	| Window/enable(_:), WindowFlag/isEnabled, WindowFlag/enable()
