@@ -20,6 +20,40 @@ struct DocumentationCommand: ParsableCommand {
 	
 	//MARK: Methods
 	
+	// TODO: Header Parsing
+	// - Comments above declarations should be parsed as documentation
+	
+	// TODO: Cleanup Map
+	// - rename to "repair-map"
+	// - Handle regex search and replace
+	
+	// TODO: Symbol Map
+	// - first column: "Declaration" for C symbol
+	// - second column: "Interpretation" for behavior
+	//     * "bind" to indicate swift symbol will follow
+	//     * "useless" to indicate symbol is managed or from the Standard Library
+	//     * "ignore" to ignore the symbol, removing it from the document
+	// - third column: "Bindings" for swift symbols
+	// - Move ignore logic from program to symbol map
+	
+	// TODO: Processing
+	// - Replace C comment symbols with Swift symbol link
+	// - Move string literal to template file using replace tokens instead (as %TOKEN%
+	//		* CONTENT
+	//		? TABLE_OF_CONTENTS
+	//		* RAYLIB_VERSION
+	//		* COVERAGE
+	//		* NUMBER_OF_SYMBOLS
+	//		* NUMBER_OF_BINDINGS
+	
+	// TODO: Rendering
+	// - Reduce the amount of characters
+	// - Table of Contents?
+	
+	// TODO: Misc
+	// - Separate steps into methods
+	// - Produce JSON metadata of API
+	
 	mutating func run() throws {
 		var stopwatch = Stopwatch()
 		
@@ -130,9 +164,15 @@ struct DocumentationCommand: ParsableCommand {
 				continue
 			}
 			
-			symbols[components[0]] = components[1]
+			var tmp = components[1]
 				.components(separatedBy: ",")
 				.map { $0.trimmingCharacters(in: .whitespaces) }
+			
+			if tmp.count == 1, tmp[0].isEmpty {
+				tmp.removeFirst()
+			}
+			
+			symbols[components[0]] = tmp
 		}
 		
 		ensureNoError("in symbol entries")
@@ -148,7 +188,11 @@ struct DocumentationCommand: ParsableCommand {
 		var coverage = 0
 		
 		func bindings(for symbol: String) -> [String]? {
-			guard let tmp = symbols[symbol] else { return nil }
+			guard let tmp = symbols[symbol] else {
+				print("\tMissing symbol: \(symbol)")
+				return nil
+			}
+			
 			coverage += 1
 			return tmp
 		}
@@ -367,14 +411,16 @@ struct DocumentationCommand: ParsableCommand {
 		stopwatch.reset()
 		print("Rendering document...")
 		
+		let coveragePercentage = Int(Double(coverage) / Double(totalNumberOfSymbols) * 100)
+		
 		var document = """
 			# Cheatsheet
 
-			**Updated for raylib v\(version)**
+			**raylib v\(version)    |    bindings \(coveragePercentage)%**
 
 			This document presents a detailed overview of the raylib cheatsheet along with its corresponding Swift symbol(s).
 
-			This document currently has a \(Int(Double(coverage) / Double(totalNumberOfSymbols) * 100))% coverage, contributions are welcome!
+			This document currently has a \(coveragePercentage)% coverage, contributions are welcome!
 
 			> Note: This file is generated (and badly so), any improvement suggestions are welcome.
 		"""
@@ -409,10 +455,15 @@ struct DocumentationCommand: ParsableCommand {
 				document.append("C | `\(value.declaration)`\n")
 				document.append("Swift | ")
 				
-				if let swift = value.bindings {
+				switch value.bindings {
+				case let .some(swift):
 					document.append(swift.map { "``\($0)``" }.formatted())
-				} else {
-					document.append("—")
+					
+				case []:
+					document.append("-")
+					
+				default:
+					document.append("*unimplemented*")
 				}
 				
 				document.append("\n\n")

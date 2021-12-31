@@ -1,10 +1,10 @@
 # Cheatsheet
 
-**Updated for raylib v4.0**
+**raylib v4.0    |    bindings 40%**
 
 This document presents a detailed overview of the raylib cheatsheet along with its corresponding Swift symbol(s).
 
-This document currently has a 33% coverage, contributions are welcome!
+This document currently has a 40% coverage, contributions are welcome!
 
 > Note: This file is generated (and badly so), any improvement suggestions are welcome.
 
@@ -15,7 +15,7 @@ This symbol has no documentation
 Language | Symbol
 --- | ---
 C | `#define RAYLIB_VERSION;`
-Swift | —
+Swift | *unimplemented*
 
 ## Some basic Defines
 
@@ -122,7 +122,7 @@ This symbol has no documentation
 Language | Symbol
 --- | ---
 C | `#define RED;`
-Swift | ``Color/red``
+Swift | ``Color/red-swift.type.property``
 
 #### MAROON
 
@@ -140,7 +140,7 @@ This symbol has no documentation
 Language | Symbol
 --- | ---
 C | `#define GREEN;`
-Swift | ``Color/green``
+Swift | ``Color/green-swift.type.property``
 
 #### LIME
 
@@ -176,7 +176,7 @@ This symbol has no documentation
 Language | Symbol
 --- | ---
 C | `#define BLUE;`
-Swift | ``Color/blue``
+Swift | ``Color/blue-swift.type.property``
 
 #### DARKBLUE
 
@@ -322,7 +322,7 @@ Quaternion, 4 components (Vector4 alias)
 Language | Symbol
 --- | ---
 C | `typedef Vector4 Quaternion;`
-Swift | ``Quaternion``
+Swift | *unimplemented*
 
 #### Matrix
 
@@ -331,7 +331,7 @@ Matrix, 4x4 components, column major, OpenGL style, right handed
 Language | Symbol
 --- | ---
 C | `struct Matrix;`
-Swift | —
+Swift | ``Matrix4x4f``
 
 #### Color
 
@@ -385,7 +385,7 @@ TextureCubemap, same as Texture
 Language | Symbol
 --- | ---
 C | `typedef Texture TextureCubemap;`
-Swift | ``Cubemap``
+Swift | *unimplemented*
 
 #### RenderTexture
 
@@ -412,7 +412,7 @@ NPatchInfo, n-patch layout info
 Language | Symbol
 --- | ---
 C | `struct NPatchInfo;`
-Swift | —
+Swift | *unimplemented*
 
 #### GlyphInfo
 
@@ -421,7 +421,7 @@ GlyphInfo, font characters glyphs info
 Language | Symbol
 --- | ---
 C | `struct GlyphInfo;`
-Swift | ``Glyph``
+Swift | *unimplemented*
 
 #### Font
 
@@ -430,7 +430,7 @@ Font, font texture and GlyphInfo array data
 Language | Symbol
 --- | ---
 C | `struct Font;`
-Swift | ``Font``
+Swift | *unimplemented*
 
 ### Camera, defines position/orientation in 3d space
 
@@ -473,7 +473,7 @@ Mesh, vertex data and vao/vbo
 Language | Symbol
 --- | ---
 C | `struct Mesh;`
-Swift | ``Mesh``
+Swift | *unimplemented*
 
 #### Shader
 
@@ -491,7 +491,7 @@ MaterialMap
 Language | Symbol
 --- | ---
 C | `struct MaterialMap;`
-Swift | ````
+Swift | *unimplemented*
 
 #### Material
 
@@ -500,7 +500,7 @@ Material, includes shader and maps
 Language | Symbol
 --- | ---
 C | `struct Material;`
-Swift | ``Material``
+Swift | *unimplemented*
 
 #### Transform
 
@@ -509,7 +509,7 @@ Transform, vectex transformation data
 Language | Symbol
 --- | ---
 C | `struct Transform;`
-Swift | ``Transform``
+Swift | *unimplemented*
 
 #### BoneInfo
 
@@ -518,7 +518,7 @@ Bone, skeletal animation bone
 Language | Symbol
 --- | ---
 C | `struct BoneInfo;`
-Swift | ``Bone``
+Swift | *unimplemented*
 
 #### Model
 
@@ -527,7 +527,7 @@ Model, meshes, materials and animation data
 Language | Symbol
 --- | ---
 C | `struct Model;`
-Swift | ``Model``
+Swift | *unimplemented*
 
 #### ModelAnimation
 
@@ -536,7 +536,7 @@ ModelAnimation
 Language | Symbol
 --- | ---
 C | `struct ModelAnimation;`
-Swift | ``ModelAnimation``
+Swift | *unimplemented*
 
 #### Ray
 
@@ -545,7 +545,7 @@ Ray, ray for raycasting
 Language | Symbol
 --- | ---
 C | `struct Ray;`
-Swift | ``Ray``
+Swift | *unimplemented*
 
 #### RayCollision
 
@@ -554,7 +554,7 @@ RayCollision, ray hit information
 Language | Symbol
 --- | ---
 C | `struct RayCollision;`
-Swift | ``Ray/Hit``
+Swift | *unimplemented*
 
 #### BoundingBox
 
@@ -563,7 +563,7 @@ BoundingBox
 Language | Symbol
 --- | ---
 C | `struct BoundingBox;`
-Swift | ``BoundingBox``
+Swift | *unimplemented*
 
 #### Wave
 
@@ -572,7 +572,7 @@ Wave, audio wave data
 Language | Symbol
 --- | ---
 C | `struct Wave;`
-Swift | ``Wave``
+Swift | *unimplemented*
 
 #### AudioStream
 
@@ -581,7 +581,7 @@ AudioStream, custom audio stream
 Language | Symbol
 --- | ---
 C | `struct AudioStream;`
-Swift | ``AudioStream``
+Swift | *unimplemented*
 
 #### Sound
 
@@ -590,7 +590,7 @@ Sound
 Language | Symbol
 --- | ---
 C | `struct Sound;`
-Swift | ``Sound``
+Swift | *unimplemented*
 
 #### Music
 
@@ -599,7 +599,7 @@ Music, audio stream, anything longer than ~10 seconds should be streamed
 Language | Symbol
 --- | ---
 C | `struct Music;`
-Swift | ``Music``
+Swift | *unimplemented*
 
 #### VrDeviceInfo
 
@@ -608,7 +608,7 @@ VrDeviceInfo, Head-Mounted-Display device parameters
 Language | Symbol
 --- | ---
 C | `struct VrDeviceInfo;`
-Swift | ``VirtualRealityDevice``
+Swift | *unimplemented*
 
 #### VrStereoConfig
 
@@ -617,7 +617,7 @@ VrStereoConfig, VR stereo rendering configuration for simulator
 Language | Symbol
 --- | ---
 C | `struct VrStereoConfig;`
-Swift | ``VirtualRealityDevice/Configuration``
+Swift | *unimplemented*
 
 ## Enumerators Definition
 
@@ -1033,7 +1033,7 @@ Key: Keypad +
 Language | Symbol
 --- | ---
 C | `KeyboardKey KEY_KP_ADD;`
-Swift | ``Keyboard/keypadAdd``
+Swift | ``Keyboard/add``
 
 #### KEY_KP_SUBTRACT
 
@@ -1042,7 +1042,7 @@ Key: Keypad -
 Language | Symbol
 --- | ---
 C | `KeyboardKey KEY_KP_SUBTRACT;`
-Swift | ``Keyboard/keypadSubstract``
+Swift | ``Keyboard/subtract``
 
 #### KEY_KP_MULTIPLY
 
@@ -1051,7 +1051,7 @@ Key: Keypad *
 Language | Symbol
 --- | ---
 C | `KeyboardKey KEY_KP_MULTIPLY;`
-Swift | ``Keyboard/keypadMultiply``
+Swift | ``Keyboard/multiply``
 
 #### KEY_KP_DIVIDE
 
@@ -1060,7 +1060,7 @@ Key: Keypad /
 Language | Symbol
 --- | ---
 C | `KeyboardKey KEY_KP_DIVIDE;`
-Swift | ``Keyboard/keypadDivide``
+Swift | ``Keyboard/divide``
 
 #### KEY_KP_DECIMAL
 
@@ -1069,7 +1069,7 @@ Key: Keypad .
 Language | Symbol
 --- | ---
 C | `KeyboardKey KEY_KP_DECIMAL;`
-Swift | ``Keyboard/keypadDecimal``
+Swift | ``Keyboard/decimal``
 
 #### KEY_KP_9
 
@@ -1177,7 +1177,7 @@ Key: Super right
 Language | Symbol
 --- | ---
 C | `KeyboardKey KEY_RIGHT_SUPER;`
-Swift | ``Keyboard/super/right``
+Swift | ``Keyboard/super``
 
 #### KEY_RIGHT_ALT
 
@@ -1186,7 +1186,7 @@ Key: Alt right
 Language | Symbol
 --- | ---
 C | `KeyboardKey KEY_RIGHT_ALT;`
-Swift | ``Keyboard/alt/right``
+Swift | ``Keyboard/alt``
 
 #### KEY_RIGHT_CONTROL
 
@@ -1195,7 +1195,7 @@ Key: Control right
 Language | Symbol
 --- | ---
 C | `KeyboardKey KEY_RIGHT_CONTROL;`
-Swift | ``Keyboard/control/right``
+Swift | ``Keyboard/control``
 
 #### KEY_RIGHT_SHIFT
 
@@ -1204,7 +1204,7 @@ Key: Shift right
 Language | Symbol
 --- | ---
 C | `KeyboardKey KEY_RIGHT_SHIFT;`
-Swift | ``Keyboard/shift/right``
+Swift | ``Keyboard/shift``
 
 #### KEY_LEFT_SUPER
 
@@ -1213,7 +1213,7 @@ Key: Super left
 Language | Symbol
 --- | ---
 C | `KeyboardKey KEY_LEFT_SUPER;`
-Swift | ``Keyboard/super/left``
+Swift | ``Keyboard/super``
 
 #### KEY_LEFT_ALT
 
@@ -1222,7 +1222,7 @@ Key: Alt left
 Language | Symbol
 --- | ---
 C | `KeyboardKey KEY_LEFT_ALT;`
-Swift | ``Keyboard/alt/left``
+Swift | ``Keyboard/alt``
 
 #### KEY_LEFT_CONTROL
 
@@ -1231,7 +1231,7 @@ Key: Control left
 Language | Symbol
 --- | ---
 C | `KeyboardKey KEY_LEFT_CONTROL;`
-Swift | ``Keyboard/control/left``
+Swift | ``Keyboard/control``
 
 #### KEY_LEFT_SHIFT
 
@@ -1240,7 +1240,7 @@ Key: Shift left
 Language | Symbol
 --- | ---
 C | `KeyboardKey KEY_LEFT_SHIFT;`
-Swift | ``Keyboard/shift/left``
+Swift | ``Keyboard/shift``
 
 #### KEY_F12
 
@@ -1825,7 +1825,7 @@ Key: 9
 Language | Symbol
 --- | ---
 C | `KeyboardKey KEY_NINE;`
-Swift | ``Keyboard/none``
+Swift | ``Keyboard/nine``
 
 #### KEY_EIGHT
 
@@ -2016,7 +2016,7 @@ Mouse button back (advanced mouse device)
 Language | Symbol
 --- | ---
 C | `MouseButton MOUSE_BUTTON_BACK;`
-Swift | ``Mouse/back``
+Swift | ``Mouse/backward``
 
 #### MOUSE_BUTTON_FORWARD
 
@@ -2217,7 +2217,7 @@ Gamepad joystick pressed button right
 Language | Symbol
 --- | ---
 C | `GamepadButton GAMEPAD_BUTTON_RIGHT_THUMB;`
-Swift | —
+Swift | *unimplemented*
 
 #### GAMEPAD_BUTTON_LEFT_THUMB
 
@@ -2226,7 +2226,7 @@ Gamepad joystick pressed button left
 Language | Symbol
 --- | ---
 C | `GamepadButton GAMEPAD_BUTTON_LEFT_THUMB;`
-Swift | —
+Swift | *unimplemented*
 
 #### GAMEPAD_BUTTON_MIDDLE_RIGHT
 
@@ -2235,7 +2235,7 @@ Gamepad center buttons, right one (i.e. PS3: Start)
 Language | Symbol
 --- | ---
 C | `GamepadButton GAMEPAD_BUTTON_MIDDLE_RIGHT;`
-Swift | —
+Swift | *unimplemented*
 
 #### GAMEPAD_BUTTON_MIDDLE
 
@@ -2244,7 +2244,7 @@ Gamepad center buttons, middle one (i.e. PS3: PS, Xbox: XBOX)
 Language | Symbol
 --- | ---
 C | `GamepadButton GAMEPAD_BUTTON_MIDDLE;`
-Swift | —
+Swift | *unimplemented*
 
 #### GAMEPAD_BUTTON_MIDDLE_LEFT
 
@@ -2253,7 +2253,7 @@ Gamepad center buttons, left one (i.e. PS3: Select)
 Language | Symbol
 --- | ---
 C | `GamepadButton GAMEPAD_BUTTON_MIDDLE_LEFT;`
-Swift | —
+Swift | *unimplemented*
 
 #### GAMEPAD_BUTTON_RIGHT_TRIGGER_2
 
@@ -2262,7 +2262,7 @@ Gamepad top/back trigger right (second), it could be a trailing button
 Language | Symbol
 --- | ---
 C | `GamepadButton GAMEPAD_BUTTON_RIGHT_TRIGGER_2;`
-Swift | —
+Swift | *unimplemented*
 
 #### GAMEPAD_BUTTON_RIGHT_TRIGGER_1
 
@@ -2271,7 +2271,7 @@ Gamepad top/back trigger right (one), it could be a trailing button
 Language | Symbol
 --- | ---
 C | `GamepadButton GAMEPAD_BUTTON_RIGHT_TRIGGER_1;`
-Swift | —
+Swift | *unimplemented*
 
 #### GAMEPAD_BUTTON_LEFT_TRIGGER_2
 
@@ -2280,7 +2280,7 @@ Gamepad top/back trigger left (second), it could be a trailing button
 Language | Symbol
 --- | ---
 C | `GamepadButton GAMEPAD_BUTTON_LEFT_TRIGGER_2;`
-Swift | —
+Swift | *unimplemented*
 
 #### GAMEPAD_BUTTON_LEFT_TRIGGER_1
 
@@ -2289,7 +2289,7 @@ Gamepad top/back trigger left (first), it could be a trailing button
 Language | Symbol
 --- | ---
 C | `GamepadButton GAMEPAD_BUTTON_LEFT_TRIGGER_1;`
-Swift | —
+Swift | *unimplemented*
 
 #### GAMEPAD_BUTTON_RIGHT_FACE_LEFT
 
@@ -2298,7 +2298,7 @@ Gamepad right button left (i.e. PS3: Circle, Xbox: B)
 Language | Symbol
 --- | ---
 C | `GamepadButton GAMEPAD_BUTTON_RIGHT_FACE_LEFT;`
-Swift | —
+Swift | *unimplemented*
 
 #### GAMEPAD_BUTTON_RIGHT_FACE_DOWN
 
@@ -2307,7 +2307,7 @@ Gamepad right button down (i.e. PS3: Cross, Xbox: A)
 Language | Symbol
 --- | ---
 C | `GamepadButton GAMEPAD_BUTTON_RIGHT_FACE_DOWN;`
-Swift | —
+Swift | *unimplemented*
 
 #### GAMEPAD_BUTTON_RIGHT_FACE_RIGHT
 
@@ -2316,7 +2316,7 @@ Gamepad right button right (i.e. PS3: Square, Xbox: X)
 Language | Symbol
 --- | ---
 C | `GamepadButton GAMEPAD_BUTTON_RIGHT_FACE_RIGHT;`
-Swift | —
+Swift | *unimplemented*
 
 #### GAMEPAD_BUTTON_RIGHT_FACE_UP
 
@@ -2325,7 +2325,7 @@ Gamepad right button up (i.e. PS3: Triangle, Xbox: Y)
 Language | Symbol
 --- | ---
 C | `GamepadButton GAMEPAD_BUTTON_RIGHT_FACE_UP;`
-Swift | —
+Swift | *unimplemented*
 
 #### GAMEPAD_BUTTON_LEFT_FACE_LEFT
 
@@ -2334,7 +2334,7 @@ Gamepad left DPAD left button
 Language | Symbol
 --- | ---
 C | `GamepadButton GAMEPAD_BUTTON_LEFT_FACE_LEFT;`
-Swift | —
+Swift | *unimplemented*
 
 #### GAMEPAD_BUTTON_LEFT_FACE_DOWN
 
@@ -2343,7 +2343,7 @@ Gamepad left DPAD down button
 Language | Symbol
 --- | ---
 C | `GamepadButton GAMEPAD_BUTTON_LEFT_FACE_DOWN;`
-Swift | —
+Swift | *unimplemented*
 
 #### GAMEPAD_BUTTON_LEFT_FACE_RIGHT
 
@@ -2352,7 +2352,7 @@ Gamepad left DPAD right button
 Language | Symbol
 --- | ---
 C | `GamepadButton GAMEPAD_BUTTON_LEFT_FACE_RIGHT;`
-Swift | —
+Swift | *unimplemented*
 
 #### GAMEPAD_BUTTON_LEFT_FACE_UP
 
@@ -2361,7 +2361,7 @@ Gamepad left DPAD up button
 Language | Symbol
 --- | ---
 C | `GamepadButton GAMEPAD_BUTTON_LEFT_FACE_UP;`
-Swift | —
+Swift | *unimplemented*
 
 #### GAMEPAD_BUTTON_UNKNOWN
 
@@ -2370,7 +2370,7 @@ Unknown button, just for error checking
 Language | Symbol
 --- | ---
 C | `GamepadButton GAMEPAD_BUTTON_UNKNOWN;`
-Swift | —
+Swift | *unimplemented*
 
 ### Gamepad axis
 
@@ -2390,7 +2390,7 @@ Gamepad back trigger right, pressure level: [1..-1]
 Language | Symbol
 --- | ---
 C | `GamepadAxis GAMEPAD_AXIS_RIGHT_TRIGGER;`
-Swift | —
+Swift | *unimplemented*
 
 #### GAMEPAD_AXIS_LEFT_TRIGGER
 
@@ -2399,7 +2399,7 @@ Gamepad back trigger left, pressure level: [1..-1]
 Language | Symbol
 --- | ---
 C | `GamepadAxis GAMEPAD_AXIS_LEFT_TRIGGER;`
-Swift | —
+Swift | *unimplemented*
 
 #### GAMEPAD_AXIS_RIGHT_Y
 
@@ -2408,7 +2408,7 @@ Gamepad right stick Y axis
 Language | Symbol
 --- | ---
 C | `GamepadAxis GAMEPAD_AXIS_RIGHT_Y;`
-Swift | —
+Swift | *unimplemented*
 
 #### GAMEPAD_AXIS_RIGHT_X
 
@@ -2417,7 +2417,7 @@ Gamepad right stick X axis
 Language | Symbol
 --- | ---
 C | `GamepadAxis GAMEPAD_AXIS_RIGHT_X;`
-Swift | —
+Swift | *unimplemented*
 
 #### GAMEPAD_AXIS_LEFT_Y
 
@@ -2426,7 +2426,7 @@ Gamepad left stick Y axis
 Language | Symbol
 --- | ---
 C | `GamepadAxis GAMEPAD_AXIS_LEFT_Y;`
-Swift | —
+Swift | *unimplemented*
 
 #### GAMEPAD_AXIS_LEFT_X
 
@@ -2435,7 +2435,7 @@ Gamepad left stick X axis
 Language | Symbol
 --- | ---
 C | `GamepadAxis GAMEPAD_AXIS_LEFT_X;`
-Swift | —
+Swift | *unimplemented*
 
 ### Material map index
 
@@ -2462,7 +2462,7 @@ Brdf material
 Language | Symbol
 --- | ---
 C | `MaterialMapIndex MATERIAL_MAP_BRDF;`
-Swift | —
+Swift | *unimplemented*
 
 #### MATERIAL_MAP_PREFILTER
 
@@ -2471,7 +2471,7 @@ Prefilter material (NOTE: Uses GL_TEXTURE_CUBE_MAP)
 Language | Symbol
 --- | ---
 C | `MaterialMapIndex MATERIAL_MAP_PREFILTER;`
-Swift | —
+Swift | *unimplemented*
 
 #### MATERIAL_MAP_IRRADIANCE
 
@@ -2480,7 +2480,7 @@ Irradiance material (NOTE: Uses GL_TEXTURE_CUBE_MAP)
 Language | Symbol
 --- | ---
 C | `MaterialMapIndex MATERIAL_MAP_IRRADIANCE;`
-Swift | —
+Swift | *unimplemented*
 
 #### MATERIAL_MAP_CUBEMAP
 
@@ -2489,7 +2489,7 @@ Cubemap material (NOTE: Uses GL_TEXTURE_CUBE_MAP)
 Language | Symbol
 --- | ---
 C | `MaterialMapIndex MATERIAL_MAP_CUBEMAP;`
-Swift | —
+Swift | *unimplemented*
 
 #### MATERIAL_MAP_HEIGHT
 
@@ -2498,7 +2498,7 @@ Heightmap material
 Language | Symbol
 --- | ---
 C | `MaterialMapIndex MATERIAL_MAP_HEIGHT;`
-Swift | —
+Swift | *unimplemented*
 
 #### MATERIAL_MAP_EMISSION
 
@@ -2507,7 +2507,7 @@ Emission material
 Language | Symbol
 --- | ---
 C | `MaterialMapIndex MATERIAL_MAP_EMISSION;`
-Swift | —
+Swift | *unimplemented*
 
 #### MATERIAL_MAP_OCCLUSION
 
@@ -2516,7 +2516,7 @@ Ambient occlusion material
 Language | Symbol
 --- | ---
 C | `MaterialMapIndex MATERIAL_MAP_OCCLUSION;`
-Swift | —
+Swift | *unimplemented*
 
 #### MATERIAL_MAP_ROUGHNESS
 
@@ -2525,7 +2525,7 @@ Roughness material
 Language | Symbol
 --- | ---
 C | `MaterialMapIndex MATERIAL_MAP_ROUGHNESS;`
-Swift | —
+Swift | *unimplemented*
 
 #### MATERIAL_MAP_NORMAL
 
@@ -2534,7 +2534,7 @@ Normal material
 Language | Symbol
 --- | ---
 C | `MaterialMapIndex MATERIAL_MAP_NORMAL;`
-Swift | —
+Swift | *unimplemented*
 
 #### MATERIAL_MAP_METALNESS
 
@@ -2543,7 +2543,7 @@ Metalness material (same as: MATERIAL_MAP_SPECULAR)
 Language | Symbol
 --- | ---
 C | `MaterialMapIndex MATERIAL_MAP_METALNESS;`
-Swift | —
+Swift | *unimplemented*
 
 #### MATERIAL_MAP_ALBEDO
 
@@ -2552,7 +2552,7 @@ Albedo material (same as: MATERIAL_MAP_DIFFUSE)
 Language | Symbol
 --- | ---
 C | `MaterialMapIndex MATERIAL_MAP_ALBEDO;`
-Swift | —
+Swift | *unimplemented*
 
 #### MATERIAL_MAP_DIFFUSE
 
@@ -2561,7 +2561,7 @@ This symbol has no documentation
 Language | Symbol
 --- | ---
 C | `#define MATERIAL_MAP_DIFFUSE;`
-Swift | —
+Swift | *unimplemented*
 
 #### MATERIAL_MAP_SPECULAR
 
@@ -2570,7 +2570,7 @@ This symbol has no documentation
 Language | Symbol
 --- | ---
 C | `#define MATERIAL_MAP_SPECULAR;`
-Swift | —
+Swift | *unimplemented*
 
 ### Shader location index
 
@@ -2612,7 +2612,7 @@ Shader location: sampler2d texture: brdf
 Language | Symbol
 --- | ---
 C | `ShaderLocationIndex SHADER_LOC_MAP_BRDF;`
-Swift | —
+Swift | *unimplemented*
 
 #### SHADER_LOC_MAP_PREFILTER
 
@@ -2621,7 +2621,7 @@ Shader location: samplerCube texture: prefilter
 Language | Symbol
 --- | ---
 C | `ShaderLocationIndex SHADER_LOC_MAP_PREFILTER;`
-Swift | —
+Swift | *unimplemented*
 
 #### SHADER_LOC_MAP_IRRADIANCE
 
@@ -2630,7 +2630,7 @@ Shader location: samplerCube texture: irradiance
 Language | Symbol
 --- | ---
 C | `ShaderLocationIndex SHADER_LOC_MAP_IRRADIANCE;`
-Swift | —
+Swift | *unimplemented*
 
 #### SHADER_LOC_MAP_CUBEMAP
 
@@ -2639,7 +2639,7 @@ Shader location: samplerCube texture: cubemap
 Language | Symbol
 --- | ---
 C | `ShaderLocationIndex SHADER_LOC_MAP_CUBEMAP;`
-Swift | —
+Swift | *unimplemented*
 
 #### SHADER_LOC_MAP_HEIGHT
 
@@ -2648,7 +2648,7 @@ Shader location: sampler2d texture: height
 Language | Symbol
 --- | ---
 C | `ShaderLocationIndex SHADER_LOC_MAP_HEIGHT;`
-Swift | —
+Swift | *unimplemented*
 
 #### SHADER_LOC_MAP_EMISSION
 
@@ -2657,7 +2657,7 @@ Shader location: sampler2d texture: emission
 Language | Symbol
 --- | ---
 C | `ShaderLocationIndex SHADER_LOC_MAP_EMISSION;`
-Swift | —
+Swift | *unimplemented*
 
 #### SHADER_LOC_MAP_OCCLUSION
 
@@ -2666,7 +2666,7 @@ Shader location: sampler2d texture: occlusion
 Language | Symbol
 --- | ---
 C | `ShaderLocationIndex SHADER_LOC_MAP_OCCLUSION;`
-Swift | —
+Swift | *unimplemented*
 
 #### SHADER_LOC_MAP_ROUGHNESS
 
@@ -2675,7 +2675,7 @@ Shader location: sampler2d texture: roughness
 Language | Symbol
 --- | ---
 C | `ShaderLocationIndex SHADER_LOC_MAP_ROUGHNESS;`
-Swift | —
+Swift | *unimplemented*
 
 #### SHADER_LOC_MAP_NORMAL
 
@@ -2684,7 +2684,7 @@ Shader location: sampler2d texture: normal
 Language | Symbol
 --- | ---
 C | `ShaderLocationIndex SHADER_LOC_MAP_NORMAL;`
-Swift | —
+Swift | *unimplemented*
 
 #### SHADER_LOC_MAP_METALNESS
 
@@ -2693,7 +2693,7 @@ Shader location: sampler2d texture: metalness (same as: SHADER_LOC_MAP_SPECULAR)
 Language | Symbol
 --- | ---
 C | `ShaderLocationIndex SHADER_LOC_MAP_METALNESS;`
-Swift | —
+Swift | *unimplemented*
 
 #### SHADER_LOC_MAP_ALBEDO
 
@@ -2702,7 +2702,7 @@ Shader location: sampler2d texture: albedo (same as: SHADER_LOC_MAP_DIFFUSE)
 Language | Symbol
 --- | ---
 C | `ShaderLocationIndex SHADER_LOC_MAP_ALBEDO;`
-Swift | —
+Swift | *unimplemented*
 
 #### SHADER_LOC_COLOR_AMBIENT
 
@@ -2711,7 +2711,7 @@ Shader location: vector uniform: ambient color
 Language | Symbol
 --- | ---
 C | `ShaderLocationIndex SHADER_LOC_COLOR_AMBIENT;`
-Swift | —
+Swift | *unimplemented*
 
 #### SHADER_LOC_COLOR_SPECULAR
 
@@ -2720,7 +2720,7 @@ Shader location: vector uniform: specular color
 Language | Symbol
 --- | ---
 C | `ShaderLocationIndex SHADER_LOC_COLOR_SPECULAR;`
-Swift | —
+Swift | *unimplemented*
 
 #### SHADER_LOC_COLOR_DIFFUSE
 
@@ -2729,7 +2729,7 @@ Shader location: vector uniform: diffuse color
 Language | Symbol
 --- | ---
 C | `ShaderLocationIndex SHADER_LOC_COLOR_DIFFUSE;`
-Swift | —
+Swift | *unimplemented*
 
 #### SHADER_LOC_VECTOR_VIEW
 
@@ -2738,7 +2738,7 @@ Shader location: vector uniform: view
 Language | Symbol
 --- | ---
 C | `ShaderLocationIndex SHADER_LOC_VECTOR_VIEW;`
-Swift | —
+Swift | *unimplemented*
 
 #### SHADER_LOC_MATRIX_NORMAL
 
@@ -2747,7 +2747,7 @@ Shader location: matrix uniform: normal
 Language | Symbol
 --- | ---
 C | `ShaderLocationIndex SHADER_LOC_MATRIX_NORMAL;`
-Swift | —
+Swift | *unimplemented*
 
 #### SHADER_LOC_MATRIX_MODEL
 
@@ -2756,7 +2756,7 @@ Shader location: matrix uniform: model (transform)
 Language | Symbol
 --- | ---
 C | `ShaderLocationIndex SHADER_LOC_MATRIX_MODEL;`
-Swift | —
+Swift | *unimplemented*
 
 #### SHADER_LOC_MATRIX_PROJECTION
 
@@ -2765,7 +2765,7 @@ Shader location: matrix uniform: projection
 Language | Symbol
 --- | ---
 C | `ShaderLocationIndex SHADER_LOC_MATRIX_PROJECTION;`
-Swift | —
+Swift | *unimplemented*
 
 #### SHADER_LOC_MATRIX_VIEW
 
@@ -2774,7 +2774,7 @@ Shader location: matrix uniform: view (camera transform)
 Language | Symbol
 --- | ---
 C | `ShaderLocationIndex SHADER_LOC_MATRIX_VIEW;`
-Swift | —
+Swift | *unimplemented*
 
 #### SHADER_LOC_MATRIX_MVP
 
@@ -2783,7 +2783,7 @@ Shader location: matrix uniform: model-view-projection
 Language | Symbol
 --- | ---
 C | `ShaderLocationIndex SHADER_LOC_MATRIX_MVP;`
-Swift | —
+Swift | *unimplemented*
 
 #### SHADER_LOC_VERTEX_COLOR
 
@@ -2792,7 +2792,7 @@ Shader location: vertex attribute: color
 Language | Symbol
 --- | ---
 C | `ShaderLocationIndex SHADER_LOC_VERTEX_COLOR;`
-Swift | —
+Swift | *unimplemented*
 
 #### SHADER_LOC_VERTEX_TANGENT
 
@@ -2801,7 +2801,7 @@ Shader location: vertex attribute: tangent
 Language | Symbol
 --- | ---
 C | `ShaderLocationIndex SHADER_LOC_VERTEX_TANGENT;`
-Swift | —
+Swift | *unimplemented*
 
 #### SHADER_LOC_VERTEX_NORMAL
 
@@ -2810,7 +2810,7 @@ Shader location: vertex attribute: normal
 Language | Symbol
 --- | ---
 C | `ShaderLocationIndex SHADER_LOC_VERTEX_NORMAL;`
-Swift | —
+Swift | *unimplemented*
 
 #### SHADER_LOC_VERTEX_TEXCOORD02
 
@@ -2819,7 +2819,7 @@ Shader location: vertex attribute: texcoord02
 Language | Symbol
 --- | ---
 C | `ShaderLocationIndex SHADER_LOC_VERTEX_TEXCOORD02;`
-Swift | —
+Swift | *unimplemented*
 
 #### SHADER_LOC_VERTEX_TEXCOORD01
 
@@ -2828,7 +2828,7 @@ Shader location: vertex attribute: texcoord01
 Language | Symbol
 --- | ---
 C | `ShaderLocationIndex SHADER_LOC_VERTEX_TEXCOORD01;`
-Swift | —
+Swift | *unimplemented*
 
 #### SHADER_LOC_VERTEX_POSITION
 
@@ -2837,7 +2837,7 @@ Shader location: vertex attribute: position
 Language | Symbol
 --- | ---
 C | `ShaderLocationIndex SHADER_LOC_VERTEX_POSITION;`
-Swift | —
+Swift | *unimplemented*
 
 #### SHADER_LOC_MAP_DIFFUSE
 
@@ -2846,7 +2846,7 @@ This symbol has no documentation
 Language | Symbol
 --- | ---
 C | `#define SHADER_LOC_MAP_DIFFUSE;`
-Swift | —
+Swift | *unimplemented*
 
 #### SHADER_LOC_MAP_SPECULAR
 
@@ -2855,7 +2855,7 @@ This symbol has no documentation
 Language | Symbol
 --- | ---
 C | `#define SHADER_LOC_MAP_SPECULAR;`
-Swift | —
+Swift | *unimplemented*
 
 ### Shader uniform data type
 
@@ -2878,7 +2878,7 @@ Shader uniform type: sampler2d
 Language | Symbol
 --- | ---
 C | `ShaderUniformDataType SHADER_UNIFORM_SAMPLER2D;`
-Swift | —
+Swift | *unimplemented*
 
 #### SHADER_UNIFORM_IVEC4
 
@@ -2887,7 +2887,7 @@ Shader uniform type: ivec4 (4 int)
 Language | Symbol
 --- | ---
 C | `ShaderUniformDataType SHADER_UNIFORM_IVEC4;`
-Swift | —
+Swift | *unimplemented*
 
 #### SHADER_UNIFORM_IVEC3
 
@@ -2896,7 +2896,7 @@ Shader uniform type: ivec3 (3 int)
 Language | Symbol
 --- | ---
 C | `ShaderUniformDataType SHADER_UNIFORM_IVEC3;`
-Swift | —
+Swift | *unimplemented*
 
 #### SHADER_UNIFORM_IVEC2
 
@@ -2905,7 +2905,7 @@ Shader uniform type: ivec2 (2 int)
 Language | Symbol
 --- | ---
 C | `ShaderUniformDataType SHADER_UNIFORM_IVEC2;`
-Swift | —
+Swift | *unimplemented*
 
 #### SHADER_UNIFORM_INT
 
@@ -2914,7 +2914,7 @@ Shader uniform type: int
 Language | Symbol
 --- | ---
 C | `ShaderUniformDataType SHADER_UNIFORM_INT;`
-Swift | —
+Swift | 
 
 #### SHADER_UNIFORM_VEC4
 
@@ -2923,7 +2923,7 @@ Shader uniform type: vec4 (4 float)
 Language | Symbol
 --- | ---
 C | `ShaderUniformDataType SHADER_UNIFORM_VEC4;`
-Swift | —
+Swift | *unimplemented*
 
 #### SHADER_UNIFORM_VEC3
 
@@ -2932,7 +2932,7 @@ Shader uniform type: vec3 (3 float)
 Language | Symbol
 --- | ---
 C | `ShaderUniformDataType SHADER_UNIFORM_VEC3;`
-Swift | —
+Swift | *unimplemented*
 
 #### SHADER_UNIFORM_VEC2
 
@@ -2941,7 +2941,7 @@ Shader uniform type: vec2 (2 float)
 Language | Symbol
 --- | ---
 C | `ShaderUniformDataType SHADER_UNIFORM_VEC2;`
-Swift | —
+Swift | *unimplemented*
 
 #### SHADER_UNIFORM_FLOAT
 
@@ -2950,7 +2950,7 @@ Shader uniform type: float
 Language | Symbol
 --- | ---
 C | `ShaderUniformDataType SHADER_UNIFORM_FLOAT;`
-Swift | —
+Swift | 
 
 ### Shader attribute data types
 
@@ -2968,7 +2968,7 @@ Shader attribute type: vec4 (4 float)
 Language | Symbol
 --- | ---
 C | `ShaderAttributeDataType SHADER_ATTRIB_VEC4;`
-Swift | —
+Swift | *unimplemented*
 
 #### SHADER_ATTRIB_VEC3
 
@@ -2977,7 +2977,7 @@ Shader attribute type: vec3 (3 float)
 Language | Symbol
 --- | ---
 C | `ShaderAttributeDataType SHADER_ATTRIB_VEC3;`
-Swift | —
+Swift | *unimplemented*
 
 #### SHADER_ATTRIB_VEC2
 
@@ -2986,7 +2986,7 @@ Shader attribute type: vec2 (2 float)
 Language | Symbol
 --- | ---
 C | `ShaderAttributeDataType SHADER_ATTRIB_VEC2;`
-Swift | —
+Swift | *unimplemented*
 
 #### SHADER_ATTRIB_FLOAT
 
@@ -2995,7 +2995,7 @@ Shader attribute type: float
 Language | Symbol
 --- | ---
 C | `ShaderAttributeDataType SHADER_ATTRIB_FLOAT;`
-Swift | —
+Swift | *unimplemented*
 
 ### Pixel formats
 
@@ -3050,7 +3050,7 @@ Swift | ``PixelFormat/astc4``
 Language | Symbol
 --- | ---
 C | `PixelFormat PIXELFORMAT_COMPRESSED_PVRT_RGBA;`
-Swift | ``PixelFormat/rgba``
+Swift | ``PixelFormat/pvrtWithAlpha``
 
 #### PIXELFORMAT_COMPRESSED_PVRT_RGB
 
@@ -3059,7 +3059,7 @@ Swift | ``PixelFormat/rgba``
 Language | Symbol
 --- | ---
 C | `PixelFormat PIXELFORMAT_COMPRESSED_PVRT_RGB;`
-Swift | ``PixelFormat/rgb``
+Swift | ``PixelFormat/pvrt``
 
 #### PIXELFORMAT_COMPRESSED_ETC2_EAC_RGBA
 
@@ -3122,7 +3122,7 @@ Swift | ``PixelFormat/dxt1WithAlpha``
 Language | Symbol
 --- | ---
 C | `PixelFormat PIXELFORMAT_COMPRESSED_DXT1_RGB;`
-Swift | —
+Swift | ``PixelFormat/dxt1``
 
 #### PIXELFORMAT_UNCOMPRESSED_R32G32B32A32
 
@@ -3254,7 +3254,7 @@ Anisotropic filtering 4x
 Language | Symbol
 --- | ---
 C | `TextureFilter TEXTURE_FILTER_ANISOTROPIC_4X;`
-Swift | —
+Swift | ``TextureFilter/anisotropic4x``
 
 #### TEXTURE_FILTER_TRILINEAR
 
@@ -3299,7 +3299,7 @@ Mirrors and clamps to border the texture in tiled mode
 Language | Symbol
 --- | ---
 C | `TextureWrap TEXTURE_WRAP_MIRROR_CLAMP;`
-Swift | ``TextureWrap/clamp``
+Swift | ``TextureWrap/mirroredClamp``
 
 #### TEXTURE_WRAP_MIRROR_REPEAT
 
@@ -3317,7 +3317,7 @@ Clamps texture to edge pixel in tiled mode
 Language | Symbol
 --- | ---
 C | `TextureWrap TEXTURE_WRAP_CLAMP;`
-Swift | —
+Swift | ``TextureWrap/clamp``
 
 #### TEXTURE_WRAP_REPEAT
 
@@ -3346,7 +3346,7 @@ Layout is defined by a panorama image (equirectangular map)
 Language | Symbol
 --- | ---
 C | `CubemapLayout CUBEMAP_LAYOUT_PANORAMA;`
-Swift | —
+Swift | *unimplemented*
 
 #### CUBEMAP_LAYOUT_CROSS_FOUR_BY_THREE
 
@@ -3355,7 +3355,7 @@ Layout is defined by a 4x3 cross with cubemap faces
 Language | Symbol
 --- | ---
 C | `CubemapLayout CUBEMAP_LAYOUT_CROSS_FOUR_BY_THREE;`
-Swift | —
+Swift | *unimplemented*
 
 #### CUBEMAP_LAYOUT_CROSS_THREE_BY_FOUR
 
@@ -3364,7 +3364,7 @@ Layout is defined by a 3x4 cross with cubemap faces
 Language | Symbol
 --- | ---
 C | `CubemapLayout CUBEMAP_LAYOUT_CROSS_THREE_BY_FOUR;`
-Swift | —
+Swift | *unimplemented*
 
 #### CUBEMAP_LAYOUT_LINE_HORIZONTAL
 
@@ -3373,7 +3373,7 @@ Layout is defined by an horizontal line with faces
 Language | Symbol
 --- | ---
 C | `CubemapLayout CUBEMAP_LAYOUT_LINE_HORIZONTAL;`
-Swift | —
+Swift | *unimplemented*
 
 #### CUBEMAP_LAYOUT_LINE_VERTICAL
 
@@ -3382,7 +3382,7 @@ Layout is defined by a vertical line with faces
 Language | Symbol
 --- | ---
 C | `CubemapLayout CUBEMAP_LAYOUT_LINE_VERTICAL;`
-Swift | —
+Swift | *unimplemented*
 
 #### CUBEMAP_LAYOUT_AUTO_DETECT
 
@@ -3391,7 +3391,7 @@ Automatically detect layout type
 Language | Symbol
 --- | ---
 C | `CubemapLayout CUBEMAP_LAYOUT_AUTO_DETECT;`
-Swift | —
+Swift | *unimplemented*
 
 ### Font type, defines generation method
 
@@ -3408,7 +3408,7 @@ SDF font generation, requires external shader
 Language | Symbol
 --- | ---
 C | `FontType FONT_SDF;`
-Swift | —
+Swift | *unimplemented*
 
 #### FONT_BITMAP
 
@@ -3417,7 +3417,7 @@ Bitmap font generation, no anti-aliasing
 Language | Symbol
 --- | ---
 C | `FontType FONT_BITMAP;`
-Swift | —
+Swift | *unimplemented*
 
 #### FONT_DEFAULT
 
@@ -3426,7 +3426,7 @@ Default font generation, anti-aliased
 Language | Symbol
 --- | ---
 C | `FontType FONT_DEFAULT;`
-Swift | —
+Swift | *unimplemented*
 
 ### Color blending modes (pre-defined)
 
@@ -3518,7 +3518,7 @@ Pinch out gesture
 Language | Symbol
 --- | ---
 C | `Gesture GESTURE_PINCH_OUT;`
-Swift | —
+Swift | *unimplemented*
 
 #### GESTURE_PINCH_IN
 
@@ -3527,7 +3527,7 @@ Pinch in gesture
 Language | Symbol
 --- | ---
 C | `Gesture GESTURE_PINCH_IN;`
-Swift | —
+Swift | *unimplemented*
 
 #### GESTURE_SWIPE_DOWN
 
@@ -3536,7 +3536,7 @@ Swipe down gesture
 Language | Symbol
 --- | ---
 C | `Gesture GESTURE_SWIPE_DOWN;`
-Swift | —
+Swift | *unimplemented*
 
 #### GESTURE_SWIPE_UP
 
@@ -3545,7 +3545,7 @@ Swipe up gesture
 Language | Symbol
 --- | ---
 C | `Gesture GESTURE_SWIPE_UP;`
-Swift | —
+Swift | *unimplemented*
 
 #### GESTURE_SWIPE_LEFT
 
@@ -3554,7 +3554,7 @@ Swipe left gesture
 Language | Symbol
 --- | ---
 C | `Gesture GESTURE_SWIPE_LEFT;`
-Swift | —
+Swift | *unimplemented*
 
 #### GESTURE_SWIPE_RIGHT
 
@@ -3563,7 +3563,7 @@ Swipe right gesture
 Language | Symbol
 --- | ---
 C | `Gesture GESTURE_SWIPE_RIGHT;`
-Swift | —
+Swift | *unimplemented*
 
 #### GESTURE_DRAG
 
@@ -3572,7 +3572,7 @@ Drag gesture
 Language | Symbol
 --- | ---
 C | `Gesture GESTURE_DRAG;`
-Swift | —
+Swift | *unimplemented*
 
 #### GESTURE_HOLD
 
@@ -3581,7 +3581,7 @@ Hold gesture
 Language | Symbol
 --- | ---
 C | `Gesture GESTURE_HOLD;`
-Swift | —
+Swift | *unimplemented*
 
 #### GESTURE_DOUBLETAP
 
@@ -3590,7 +3590,7 @@ Double tap gesture
 Language | Symbol
 --- | ---
 C | `Gesture GESTURE_DOUBLETAP;`
-Swift | —
+Swift | *unimplemented*
 
 #### GESTURE_TAP
 
@@ -3599,7 +3599,7 @@ Tap gesture
 Language | Symbol
 --- | ---
 C | `Gesture GESTURE_TAP;`
-Swift | —
+Swift | *unimplemented*
 
 #### GESTURE_NONE
 
@@ -3608,7 +3608,7 @@ No gesture
 Language | Symbol
 --- | ---
 C | `Gesture GESTURE_NONE;`
-Swift | —
+Swift | *unimplemented*
 
 ### Camera system modes
 
@@ -3627,7 +3627,7 @@ Third person camera
 Language | Symbol
 --- | ---
 C | `CameraMode CAMERA_THIRD_PERSON;`
-Swift | —
+Swift | *unimplemented*
 
 #### CAMERA_FIRST_PERSON
 
@@ -3636,7 +3636,7 @@ First person camera
 Language | Symbol
 --- | ---
 C | `CameraMode CAMERA_FIRST_PERSON;`
-Swift | —
+Swift | *unimplemented*
 
 #### CAMERA_ORBITAL
 
@@ -3645,7 +3645,7 @@ Orbital camera
 Language | Symbol
 --- | ---
 C | `CameraMode CAMERA_ORBITAL;`
-Swift | —
+Swift | *unimplemented*
 
 #### CAMERA_FREE
 
@@ -3654,7 +3654,7 @@ Free camera
 Language | Symbol
 --- | ---
 C | `CameraMode CAMERA_FREE;`
-Swift | —
+Swift | *unimplemented*
 
 #### CAMERA_CUSTOM
 
@@ -3663,7 +3663,7 @@ Custom camera
 Language | Symbol
 --- | ---
 C | `CameraMode CAMERA_CUSTOM;`
-Swift | —
+Swift | *unimplemented*
 
 ### Camera projection
 
@@ -3679,7 +3679,7 @@ Orthographic projection
 Language | Symbol
 --- | ---
 C | `CameraProjection CAMERA_ORTHOGRAPHIC;`
-Swift | —
+Swift | *unimplemented*
 
 #### CAMERA_PERSPECTIVE
 
@@ -3688,7 +3688,7 @@ Perspective projection
 Language | Symbol
 --- | ---
 C | `CameraProjection CAMERA_PERSPECTIVE;`
-Swift | —
+Swift | *unimplemented*
 
 ### N-patch layout
 
@@ -3705,7 +3705,7 @@ Npatch layout: 3x1 tiles
 Language | Symbol
 --- | ---
 C | `NPatchLayout NPATCH_THREE_PATCH_HORIZONTAL;`
-Swift | —
+Swift | *unimplemented*
 
 #### NPATCH_THREE_PATCH_VERTICAL
 
@@ -3714,7 +3714,7 @@ Npatch layout: 1x3 tiles
 Language | Symbol
 --- | ---
 C | `NPatchLayout NPATCH_THREE_PATCH_VERTICAL;`
-Swift | —
+Swift | *unimplemented*
 
 #### NPATCH_NINE_PATCH
 
@@ -3723,7 +3723,7 @@ Npatch layout: 3x3 tiles
 Language | Symbol
 --- | ---
 C | `NPatchLayout NPATCH_NINE_PATCH;`
-Swift | —
+Swift | *unimplemented*
 
 ## Window and Graphics Device Functions (Module: core)
 
@@ -3787,7 +3787,7 @@ Check if KEY_ESCAPE pressed or Close icon pressed
 Language | Symbol
 --- | ---
 C | `bool WindowShouldClose(void);`
-Swift | ``Window/shouldClose``
+Swift | ``Application/isRunning``
 
 #### CloseWindow
 
@@ -3877,7 +3877,7 @@ Set window configuration state using flags
 Language | Symbol
 --- | ---
 C | `void SetWindowState(unsigned int flags);`
-Swift | ``Window/enable(_:)``, ``WindowFlag/isEnabled``, and ``WindowFlag/enable()``
+Swift | ``Window/enable(_:)``, ``WindowFlags/isEnabled``, and ``WindowFlags/enable()``
 
 #### ClearWindowState
 
@@ -3886,7 +3886,7 @@ Clear window configuration state flags
 Language | Symbol
 --- | ---
 C | `void ClearWindowState(unsigned int flags);`
-Swift | ``Window/disable(_:)``, ``WindowFlag/isEnabled``, and ``WindowFlag/disable()``
+Swift | ``Window/disable(_:)``, ``WindowFlags/isEnabled``, and ``WindowFlags/disable()``
 
 #### ToggleFullscreen
 
@@ -3958,7 +3958,7 @@ Set monitor for the current window (fullscreen mode)
 Language | Symbol
 --- | ---
 C | `void SetWindowMonitor(int monitor);`
-Swift | —
+Swift | *unimplemented*
 
 #### SetWindowMinSize
 
@@ -4139,7 +4139,7 @@ Swap back buffer with front buffer (screen drawing)
 Language | Symbol
 --- | ---
 C | `void SwapScreenBuffer(void);`
-Swift | —
+Swift | *unimplemented*
 
 #### PollInputEvents
 
@@ -4148,7 +4148,7 @@ Register all input events
 Language | Symbol
 --- | ---
 C | `void PollInputEvents(void);`
-Swift | —
+Swift | *unimplemented*
 
 #### WaitTime
 
@@ -4157,7 +4157,7 @@ Wait for some milliseconds (halt program execution)
 Language | Symbol
 --- | ---
 C | `void WaitTime(float ms);`
-Swift | —
+Swift | *unimplemented*
 
 ### Cursor-related functions
 
@@ -4177,7 +4177,7 @@ Shows cursor
 Language | Symbol
 --- | ---
 C | `void ShowCursor(void);`
-Swift | —
+Swift | ``Cursor/show()``
 
 #### HideCursor
 
@@ -4186,7 +4186,7 @@ Hides cursor
 Language | Symbol
 --- | ---
 C | `void HideCursor(void);`
-Swift | —
+Swift | ``Cursor/hide()``
 
 #### IsCursorHidden
 
@@ -4195,7 +4195,7 @@ Check if cursor is not visible
 Language | Symbol
 --- | ---
 C | `bool IsCursorHidden(void);`
-Swift | —
+Swift | ``Cursor/isHidden``
 
 #### EnableCursor
 
@@ -4204,7 +4204,7 @@ Enables cursor (unlock cursor)
 Language | Symbol
 --- | ---
 C | `void EnableCursor(void);`
-Swift | —
+Swift | ``Cursor/enable()``
 
 #### DisableCursor
 
@@ -4213,7 +4213,7 @@ Disables cursor (lock cursor)
 Language | Symbol
 --- | ---
 C | `void DisableCursor(void);`
-Swift | —
+Swift | *unimplemented*
 
 #### IsCursorOnScreen
 
@@ -4222,7 +4222,7 @@ Check if cursor is on the screen
 Language | Symbol
 --- | ---
 C | `bool IsCursorOnScreen(void);`
-Swift | —
+Swift | ``Cursor/isOnScreen``
 
 ### Drawing-related functions
 
@@ -4253,7 +4253,7 @@ Set background color (framebuffer clear color)
 Language | Symbol
 --- | ---
 C | `void ClearBackground(Color color);`
-Swift | —
+Swift | ``Renderer/clear(to:)``
 
 #### BeginDrawing
 
@@ -4262,7 +4262,7 @@ Setup canvas (framebuffer) to start drawing
 Language | Symbol
 --- | ---
 C | `void BeginDrawing(void);`
-Swift | —
+Swift | ``Renderer/render(draw:)``
 
 #### EndDrawing
 
@@ -4271,7 +4271,7 @@ End canvas drawing and swap buffers (double buffering)
 Language | Symbol
 --- | ---
 C | `void EndDrawing(void);`
-Swift | —
+Swift | ``Renderer/render(draw:)``
 
 #### BeginMode2D
 
@@ -4280,7 +4280,7 @@ Begin 2D mode with custom camera (2D)
 Language | Symbol
 --- | ---
 C | `void BeginMode2D(Camera2D camera);`
-Swift | —
+Swift | ``Camera2D/render(draw:)``
 
 #### EndMode2D
 
@@ -4289,7 +4289,7 @@ Ends 2D mode with custom camera
 Language | Symbol
 --- | ---
 C | `void EndMode2D(void);`
-Swift | —
+Swift | ``Camera2D/render(draw:)``
 
 #### BeginMode3D
 
@@ -4298,7 +4298,7 @@ Begin 3D mode with custom camera (3D)
 Language | Symbol
 --- | ---
 C | `void BeginMode3D(Camera3D camera);`
-Swift | —
+Swift | ``Camera3D/render(draw:)``
 
 #### EndMode3D
 
@@ -4307,7 +4307,7 @@ Ends 3D mode and returns to default 2D orthographic mode
 Language | Symbol
 --- | ---
 C | `void EndMode3D(void);`
-Swift | —
+Swift | ``Camera3D/render(draw:)``
 
 #### BeginTextureMode
 
@@ -4316,7 +4316,7 @@ Begin drawing to render texture
 Language | Symbol
 --- | ---
 C | `void BeginTextureMode(RenderTexture2D target);`
-Swift | —
+Swift | ``RenderTexture/render(draw:)``
 
 #### EndTextureMode
 
@@ -4325,7 +4325,7 @@ Ends drawing to render texture
 Language | Symbol
 --- | ---
 C | `void EndTextureMode(void);`
-Swift | —
+Swift | ``RenderTexture/render(draw:)``
 
 #### BeginShaderMode
 
@@ -4334,7 +4334,7 @@ Begin custom shader drawing
 Language | Symbol
 --- | ---
 C | `void BeginShaderMode(Shader shader);`
-Swift | —
+Swift | ``Shader/render(draw:)``
 
 #### EndShaderMode
 
@@ -4343,7 +4343,7 @@ End custom shader drawing (use default shader)
 Language | Symbol
 --- | ---
 C | `void EndShaderMode(void);`
-Swift | —
+Swift | ``Shader/render(draw:)``
 
 #### BeginBlendMode
 
@@ -4352,7 +4352,7 @@ Begin blending mode (alpha, additive, multiplied, subtract, custom)
 Language | Symbol
 --- | ---
 C | `void BeginBlendMode(int mode);`
-Swift | —
+Swift | ``Blend/render(draw:)``
 
 #### EndBlendMode
 
@@ -4361,7 +4361,7 @@ End blending mode (reset to default: alpha blending)
 Language | Symbol
 --- | ---
 C | `void EndBlendMode(void);`
-Swift | —
+Swift | ``Blend/render(draw:)``
 
 #### BeginScissorMode
 
@@ -4370,7 +4370,7 @@ Begin scissor mode (define screen area for following drawing)
 Language | Symbol
 --- | ---
 C | `void BeginScissorMode(int x, int y, int width, int height);`
-Swift | —
+Swift | ``Renderer/render(at:_:size:by:draw:)``
 
 #### EndScissorMode
 
@@ -4379,7 +4379,7 @@ End scissor mode
 Language | Symbol
 --- | ---
 C | `void EndScissorMode(void);`
-Swift | —
+Swift | ``Renderer/render(at:_:size:by:draw:)``
 
 #### BeginVrStereoMode
 
@@ -4388,7 +4388,7 @@ Begin stereo rendering (requires VR simulator)
 Language | Symbol
 --- | ---
 C | `void BeginVrStereoMode(VrStereoConfig config);`
-Swift | —
+Swift | *unimplemented*
 
 #### EndVrStereoMode
 
@@ -4397,7 +4397,7 @@ End stereo rendering (requires VR simulator)
 Language | Symbol
 --- | ---
 C | `void EndVrStereoMode(void);`
-Swift | —
+Swift | *unimplemented*
 
 ### VR stereo config functions for VR simulator
 
@@ -4413,7 +4413,7 @@ Load VR stereo config for VR simulator device parameters
 Language | Symbol
 --- | ---
 C | `VrStereoConfig LoadVrStereoConfig(VrDeviceInfo device);`
-Swift | —
+Swift | *unimplemented*
 
 #### UnloadVrStereoConfig
 
@@ -4422,7 +4422,7 @@ Unload VR stereo config
 Language | Symbol
 --- | ---
 C | `void UnloadVrStereoConfig(VrStereoConfig config);`
-Swift | —
+Swift | *unimplemented*
 
 ### Shader management functions
 
@@ -4447,7 +4447,7 @@ Load shader from files and bind default locations
 Language | Symbol
 --- | ---
 C | `Shader LoadShader(const char *vsFileName, const char *fsFileName);`
-Swift | —
+Swift | ``Shader/init(path:_:)``
 
 #### LoadShaderFromMemory
 
@@ -4456,7 +4456,7 @@ Load shader from code strings and bind default locations
 Language | Symbol
 --- | ---
 C | `Shader LoadShaderFromMemory(const char *vsCode, const char *fsCode);`
-Swift | —
+Swift | ``Shader/init(memory:_:)``
 
 #### GetShaderLocation
 
@@ -4465,7 +4465,7 @@ Get shader uniform location
 Language | Symbol
 --- | ---
 C | `int GetShaderLocation(Shader shader, const char *uniformName);`
-Swift | —
+Swift | ``Shader/uniform(_:of:)``
 
 #### GetShaderLocationAttrib
 
@@ -4474,7 +4474,7 @@ Get shader attribute location
 Language | Symbol
 --- | ---
 C | `int GetShaderLocationAttrib(Shader shader, const char *attribName);`
-Swift | —
+Swift | ``Shader/attribute(_:)``
 
 #### SetShaderValue
 
@@ -4483,7 +4483,7 @@ Set shader uniform value
 Language | Symbol
 --- | ---
 C | `void SetShaderValue(Shader shader, int locIndex, const void *value, int uniformType);`
-Swift | —
+Swift | ``Uniform/write(_:)``
 
 #### SetShaderValueV
 
@@ -4492,7 +4492,7 @@ Set shader uniform value vector
 Language | Symbol
 --- | ---
 C | `void SetShaderValueV(Shader shader, int locIndex, const void *value, int uniformType, int count);`
-Swift | —
+Swift | ``Uniform/write(_:)``
 
 #### SetShaderValueMatrix
 
@@ -4501,7 +4501,7 @@ Set shader uniform value (matrix 4x4)
 Language | Symbol
 --- | ---
 C | `void SetShaderValueMatrix(Shader shader, int locIndex, Matrix mat);`
-Swift | —
+Swift | *unimplemented*
 
 #### SetShaderValueTexture
 
@@ -4510,7 +4510,7 @@ Set shader uniform value for texture (sampler2d)
 Language | Symbol
 --- | ---
 C | `void SetShaderValueTexture(Shader shader, int locIndex, Texture2D texture);`
-Swift | —
+Swift | *unimplemented*
 
 #### UnloadShader
 
@@ -4519,7 +4519,7 @@ Unload shader from GPU memory (VRAM)
 Language | Symbol
 --- | ---
 C | `void UnloadShader(Shader shader);`
-Swift | —
+Swift | 
 
 ### Screen-space-related functions
 
@@ -4540,7 +4540,7 @@ Get a ray trace from mouse position
 Language | Symbol
 --- | ---
 C | `Ray GetMouseRay(Vector2 mousePosition, Camera camera);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetCameraMatrix
 
@@ -4549,7 +4549,7 @@ Get camera transform matrix (view matrix)
 Language | Symbol
 --- | ---
 C | `Matrix GetCameraMatrix(Camera camera);`
-Swift | —
+Swift | ``Camera3D/matrix``
 
 #### GetCameraMatrix2D
 
@@ -4558,7 +4558,7 @@ Get camera 2d transform matrix
 Language | Symbol
 --- | ---
 C | `Matrix GetCameraMatrix2D(Camera2D camera);`
-Swift | —
+Swift | ``Camera2D/matrix``
 
 #### GetWorldToScreen
 
@@ -4567,7 +4567,7 @@ Get the screen space position for a 3d world space position
 Language | Symbol
 --- | ---
 C | `Vector2 GetWorldToScreen(Vector3 position, Camera camera);`
-Swift | —
+Swift | ``Camera3D/toScreen(world:)``
 
 #### GetWorldToScreenEx
 
@@ -4576,7 +4576,7 @@ Get size position for a 3d world space position
 Language | Symbol
 --- | ---
 C | `Vector2 GetWorldToScreenEx(Vector3 position, Camera camera, int width, int height);`
-Swift | —
+Swift | ``Camera3D/toScreen(world:size:by:)``
 
 #### GetWorldToScreen2D
 
@@ -4585,7 +4585,7 @@ Get the screen space position for a 2d camera world space position
 Language | Symbol
 --- | ---
 C | `Vector2 GetWorldToScreen2D(Vector2 position, Camera2D camera);`
-Swift | —
+Swift | ``Camera2D/toScreen(world:)``
 
 #### GetScreenToWorld2D
 
@@ -4594,7 +4594,7 @@ Get the world space position for a 2d camera screen space position
 Language | Symbol
 --- | ---
 C | `Vector2 GetScreenToWorld2D(Vector2 position, Camera2D camera);`
-Swift | —
+Swift | ``Camera2D/toWorld(screen:)``
 
 ### Timing-related functions
 
@@ -4612,7 +4612,7 @@ Set target FPS (maximum)
 Language | Symbol
 --- | ---
 C | `void SetTargetFPS(int fps);`
-Swift | —
+Swift | ``Application/target(fps:)``
 
 #### GetFPS
 
@@ -4621,7 +4621,7 @@ Get current FPS
 Language | Symbol
 --- | ---
 C | `int GetFPS(void);`
-Swift | —
+Swift | ``Time/fps``
 
 #### GetFrameTime
 
@@ -4630,7 +4630,7 @@ Get time in seconds for last frame drawn (delta time)
 Language | Symbol
 --- | ---
 C | `float GetFrameTime(void);`
-Swift | —
+Swift | ``Time/delta``
 
 #### GetTime
 
@@ -4639,7 +4639,7 @@ Get elapsed time in seconds since InitWindow()
 Language | Symbol
 --- | ---
 C | `double GetTime(void);`
-Swift | —
+Swift | ``Time/lifetime``
 
 ### Misc. functions
 
@@ -4662,7 +4662,7 @@ Get a random value between min and max (both included)
 Language | Symbol
 --- | ---
 C | `int GetRandomValue(int min, int max);`
-Swift | —
+Swift | ``Random/between(_:and:)``
 
 #### SetRandomSeed
 
@@ -4671,7 +4671,7 @@ Set the seed for the random number generator
 Language | Symbol
 --- | ---
 C | `void SetRandomSeed(unsigned int seed);`
-Swift | —
+Swift | ``Random/seed(using:)``
 
 #### TakeScreenshot
 
@@ -4680,7 +4680,7 @@ Takes a screenshot of current screen (filename extension defines format)
 Language | Symbol
 --- | ---
 C | `void TakeScreenshot(const char *fileName);`
-Swift | —
+Swift | ``Monitor/screenshot(as:)``
 
 #### SetConfigFlags
 
@@ -4689,7 +4689,7 @@ Setup init configuration flags (view FLAGS)
 Language | Symbol
 --- | ---
 C | `void SetConfigFlags(unsigned int flags);`
-Swift | —
+Swift | *unimplemented*
 
 #### TraceLog
 
@@ -4698,7 +4698,7 @@ Show trace log messages (LOG_DEBUG, LOG_INFO, LOG_WARNING, LOG_ERROR...)
 Language | Symbol
 --- | ---
 C | `void TraceLog(int logLevel, const char *text, ...);`
-Swift | —
+Swift | ``Trace/log(_:_:)``, ``Trace/trace(_:)``, ``Trace/debug(_:)``, ``Trace/info(_:)``, ``Trace/warning(_:)``, ``Trace/error(_:)``, and ``Trace/fatal(_:)``
 
 #### SetTraceLogLevel
 
@@ -4707,7 +4707,7 @@ Set the current threshold (minimum) log level
 Language | Symbol
 --- | ---
 C | `void SetTraceLogLevel(int logLevel);`
-Swift | —
+Swift | ``Trace/configure(threshold:)``
 
 #### MemAlloc
 
@@ -4716,7 +4716,7 @@ Internal memory allocator
 Language | Symbol
 --- | ---
 C | `void *MemAlloc(int size);`
-Swift | —
+Swift | ``Allocator/allocate(size:)``
 
 #### MemRealloc
 
@@ -4725,7 +4725,7 @@ Internal memory reallocator
 Language | Symbol
 --- | ---
 C | `void *MemRealloc(void *ptr, int size);`
-Swift | —
+Swift | ``Allocator/reallocate(_:size:)``
 
 #### MemFree
 
@@ -4734,7 +4734,7 @@ Internal memory free
 Language | Symbol
 --- | ---
 C | `void MemFree(void *ptr);`
-Swift | —
+Swift | ``Allocator/free(_:)``
 
 ### Set custom callbacks
 
@@ -4755,7 +4755,7 @@ Set custom trace log
 Language | Symbol
 --- | ---
 C | `void SetTraceLogCallback(TraceLogCallback callback);`
-Swift | —
+Swift | *unimplemented*
 
 #### SetLoadFileDataCallback
 
@@ -4764,7 +4764,7 @@ Set custom file binary data loader
 Language | Symbol
 --- | ---
 C | `void SetLoadFileDataCallback(LoadFileDataCallback callback);`
-Swift | —
+Swift | *unimplemented*
 
 #### SetSaveFileDataCallback
 
@@ -4773,7 +4773,7 @@ Set custom file binary data saver
 Language | Symbol
 --- | ---
 C | `void SetSaveFileDataCallback(SaveFileDataCallback callback);`
-Swift | —
+Swift | *unimplemented*
 
 #### SetLoadFileTextCallback
 
@@ -4782,7 +4782,7 @@ Set custom file text data loader
 Language | Symbol
 --- | ---
 C | `void SetLoadFileTextCallback(LoadFileTextCallback callback);`
-Swift | —
+Swift | *unimplemented*
 
 #### SetSaveFileTextCallback
 
@@ -4791,7 +4791,7 @@ Set custom file text data saver
 Language | Symbol
 --- | ---
 C | `void SetSaveFileTextCallback(SaveFileTextCallback callback);`
-Swift | —
+Swift | *unimplemented*
 
 ### Files management functions
 
@@ -4827,7 +4827,7 @@ Load file data as byte array (read)
 Language | Symbol
 --- | ---
 C | `unsigned char *LoadFileData(const char *fileName, unsigned int *bytesRead);`
-Swift | —
+Swift | *unimplemented*
 
 #### UnloadFileData
 
@@ -4836,7 +4836,7 @@ Unload file data allocated by LoadFileData()
 Language | Symbol
 --- | ---
 C | `void UnloadFileData(unsigned char *data);`
-Swift | —
+Swift | *unimplemented*
 
 #### SaveFileData
 
@@ -4845,7 +4845,7 @@ Save data to file from byte array (write), returns true on success
 Language | Symbol
 --- | ---
 C | `bool SaveFileData(const char *fileName, void *data, unsigned int bytesToWrite);`
-Swift | —
+Swift | *unimplemented*
 
 #### LoadFileText
 
@@ -4854,7 +4854,7 @@ Load text data from file (read), returns a '\0' terminated string
 Language | Symbol
 --- | ---
 C | `char *LoadFileText(const char *fileName);`
-Swift | —
+Swift | *unimplemented*
 
 #### UnloadFileText
 
@@ -4863,7 +4863,7 @@ Unload file text data allocated by LoadFileText()
 Language | Symbol
 --- | ---
 C | `void UnloadFileText(char *text);`
-Swift | —
+Swift | *unimplemented*
 
 #### SaveFileText
 
@@ -4872,7 +4872,7 @@ Save text data to file (write), string must be '\0' terminated, returns true on 
 Language | Symbol
 --- | ---
 C | `bool SaveFileText(const char *fileName, char *text);`
-Swift | —
+Swift | *unimplemented*
 
 #### FileExists
 
@@ -4881,7 +4881,7 @@ Check if file exists
 Language | Symbol
 --- | ---
 C | `bool FileExists(const char *fileName);`
-Swift | —
+Swift | *unimplemented*
 
 #### DirectoryExists
 
@@ -4890,7 +4890,7 @@ Check if a directory path exists
 Language | Symbol
 --- | ---
 C | `bool DirectoryExists(const char *dirPath);`
-Swift | —
+Swift | *unimplemented*
 
 #### IsFileExtension
 
@@ -4899,7 +4899,7 @@ Check file extension (including point: .png, .wav)
 Language | Symbol
 --- | ---
 C | `bool IsFileExtension(const char *fileName, const char`
-Swift | —
+Swift | *unimplemented*
 
 #### GetFileExtension
 
@@ -4908,7 +4908,7 @@ Get pointer to extension for a filename string (includes dot: '.png')
 Language | Symbol
 --- | ---
 C | `const char *GetFileExtension(const char *fileName);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetFileName
 
@@ -4917,7 +4917,7 @@ Get pointer to filename for a path string
 Language | Symbol
 --- | ---
 C | `const char *GetFileName(const char *filePath);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetFileNameWithoutExt
 
@@ -4926,7 +4926,7 @@ Get filename string without extension (uses static string)
 Language | Symbol
 --- | ---
 C | `const char *GetFileNameWithoutExt(const char *filePath);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetDirectoryPath
 
@@ -4935,7 +4935,7 @@ Get full path for a given fileName with path (uses static string)
 Language | Symbol
 --- | ---
 C | `const char *GetDirectoryPath(const char *filePath);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetPrevDirectoryPath
 
@@ -4944,7 +4944,7 @@ Get previous directory path for a given path (uses static string)
 Language | Symbol
 --- | ---
 C | `const char *GetPrevDirectoryPath(const char *dirPath);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetWorkingDirectory
 
@@ -4953,7 +4953,7 @@ Get current working directory (uses static string)
 Language | Symbol
 --- | ---
 C | `const char *GetWorkingDirectory(void);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetDirectoryFiles
 
@@ -4962,7 +4962,7 @@ Get filenames in a directory path (memory should be freed)
 Language | Symbol
 --- | ---
 C | `char **GetDirectoryFiles(const char *dirPath, int *count);`
-Swift | —
+Swift | *unimplemented*
 
 #### ClearDirectoryFiles
 
@@ -4971,7 +4971,7 @@ Clear directory files paths buffers (free memory)
 Language | Symbol
 --- | ---
 C | `void ClearDirectoryFiles(void);`
-Swift | —
+Swift | *unimplemented*
 
 #### ChangeDirectory
 
@@ -4980,7 +4980,7 @@ Change working directory, return true on success
 Language | Symbol
 --- | ---
 C | `bool ChangeDirectory(const char *dir);`
-Swift | —
+Swift | *unimplemented*
 
 #### IsFileDropped
 
@@ -4989,7 +4989,7 @@ Check if a file has been dropped into window
 Language | Symbol
 --- | ---
 C | `bool IsFileDropped(void);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetDroppedFiles
 
@@ -4998,7 +4998,7 @@ Get dropped files names (memory should be freed)
 Language | Symbol
 --- | ---
 C | `char **GetDroppedFiles(int *count);`
-Swift | —
+Swift | *unimplemented*
 
 #### ClearDroppedFiles
 
@@ -5007,7 +5007,7 @@ Clear dropped files paths buffer (free memory)
 Language | Symbol
 --- | ---
 C | `void ClearDroppedFiles(void);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetFileModTime
 
@@ -5016,7 +5016,7 @@ Get file modification time (last write time)
 Language | Symbol
 --- | ---
 C | `long GetFileModTime(const char *fileName);`
-Swift | —
+Swift | *unimplemented*
 
 ### Compression/Encoding functionality
 
@@ -5034,7 +5034,7 @@ Compress data (DEFLATE algorithm)
 Language | Symbol
 --- | ---
 C | `unsigned char *CompressData(unsigned char *data, int dataLength, int *compDataLength);`
-Swift | —
+Swift | ``Serialization/compress(_:)``
 
 #### DecompressData
 
@@ -5043,7 +5043,7 @@ Decompress data (DEFLATE algorithm)
 Language | Symbol
 --- | ---
 C | `unsigned char *DecompressData(unsigned char *compData, int compDataLength, int *dataLength);`
-Swift | —
+Swift | ``Serialization/decompress(_:)``
 
 #### EncodeDataBase64
 
@@ -5052,7 +5052,7 @@ Encode data to Base64 string
 Language | Symbol
 --- | ---
 C | `char *EncodeDataBase64(const unsigned char *data, int dataLength, int *outputLength);`
-Swift | —
+Swift | ``Serialization/encode(_:)``
 
 #### DecodeDataBase64
 
@@ -5061,7 +5061,7 @@ Decode Base64 string data
 Language | Symbol
 --- | ---
 C | `unsigned char *DecodeDataBase64(unsigned char *data, int *outputLength);`
-Swift | —
+Swift | ``Serialization/decode(_:)``
 
 ### Persistent storage management
 
@@ -5078,7 +5078,7 @@ Save integer value to storage file (to defined position), returns true on succes
 Language | Symbol
 --- | ---
 C | `bool SaveStorageValue(unsigned int position, int value);`
-Swift | —
+Swift | *unimplemented*
 
 #### LoadStorageValue
 
@@ -5087,7 +5087,7 @@ Load integer value from storage file (from defined position)
 Language | Symbol
 --- | ---
 C | `int LoadStorageValue(unsigned int position);`
-Swift | —
+Swift | *unimplemented*
 
 #### OpenURL
 
@@ -5096,7 +5096,7 @@ Open URL with default system browser (if available)
 Language | Symbol
 --- | ---
 C | `void OpenURL(const char *url);`
-Swift | —
+Swift | ``System/open(_:)-y5jl``
 
 ## Input Handling Functions (Module: core)
 
@@ -5119,7 +5119,7 @@ Check if a key has been pressed once
 Language | Symbol
 --- | ---
 C | `bool IsKeyPressed(int key);`
-Swift | —
+Swift | ``KeyboardButton/isPressed``
 
 #### IsKeyDown
 
@@ -5128,7 +5128,7 @@ Check if a key is being pressed
 Language | Symbol
 --- | ---
 C | `bool IsKeyDown(int key);`
-Swift | —
+Swift | ``KeyboardButton/isDown``
 
 #### IsKeyReleased
 
@@ -5137,7 +5137,7 @@ Check if a key has been released once
 Language | Symbol
 --- | ---
 C | `bool IsKeyReleased(int key);`
-Swift | —
+Swift | ``KeyboardButton/isReleased``
 
 #### IsKeyUp
 
@@ -5146,7 +5146,7 @@ Check if a key is NOT being pressed
 Language | Symbol
 --- | ---
 C | `bool IsKeyUp(int key);`
-Swift | —
+Swift | ``KeyboardButton/isUp``
 
 #### SetExitKey
 
@@ -5155,7 +5155,7 @@ Set a custom key to exit program (default is ESC)
 Language | Symbol
 --- | ---
 C | `void SetExitKey(int key);`
-Swift | —
+Swift | ``Application/quit(on:)``
 
 #### GetKeyPressed
 
@@ -5164,7 +5164,7 @@ Get key pressed (keycode), call it multiple times for keys queued, returns 0 whe
 Language | Symbol
 --- | ---
 C | `int GetKeyPressed(void);`
-Swift | —
+Swift | ``Keyboard/current``
 
 #### GetCharPressed
 
@@ -5173,7 +5173,7 @@ Get char pressed (unicode), call it multiple times for chars queued, returns 0 w
 Language | Symbol
 --- | ---
 C | `int GetCharPressed(void);`
-Swift | —
+Swift | ``Keyboard/character``
 
 ### Input-related functions: gamepads
 
@@ -5197,7 +5197,7 @@ Check if a gamepad is available
 Language | Symbol
 --- | ---
 C | `bool IsGamepadAvailable(int gamepad);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetGamepadName
 
@@ -5206,7 +5206,7 @@ Get gamepad internal name id
 Language | Symbol
 --- | ---
 C | `const char *GetGamepadName(int gamepad);`
-Swift | —
+Swift | *unimplemented*
 
 #### IsGamepadButtonPressed
 
@@ -5215,7 +5215,7 @@ Check if a gamepad button has been pressed once
 Language | Symbol
 --- | ---
 C | `bool IsGamepadButtonPressed(int gamepad, int button);`
-Swift | —
+Swift | *unimplemented*
 
 #### IsGamepadButtonDown
 
@@ -5224,7 +5224,7 @@ Check if a gamepad button is being pressed
 Language | Symbol
 --- | ---
 C | `bool IsGamepadButtonDown(int gamepad, int button);`
-Swift | —
+Swift | *unimplemented*
 
 #### IsGamepadButtonReleased
 
@@ -5233,7 +5233,7 @@ Check if a gamepad button has been released once
 Language | Symbol
 --- | ---
 C | `bool IsGamepadButtonReleased(int gamepad, int button);`
-Swift | —
+Swift | *unimplemented*
 
 #### IsGamepadButtonUp
 
@@ -5242,7 +5242,7 @@ Check if a gamepad button is NOT being pressed
 Language | Symbol
 --- | ---
 C | `bool IsGamepadButtonUp(int gamepad, int button);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetGamepadButtonPressed
 
@@ -5251,7 +5251,7 @@ Get the last gamepad button pressed
 Language | Symbol
 --- | ---
 C | `int GetGamepadButtonPressed(void);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetGamepadAxisCount
 
@@ -5260,7 +5260,7 @@ Get gamepad axis count for a gamepad
 Language | Symbol
 --- | ---
 C | `int GetGamepadAxisCount(int gamepad);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetGamepadAxisMovement
 
@@ -5269,7 +5269,7 @@ Get axis movement value for a gamepad axis
 Language | Symbol
 --- | ---
 C | `float GetGamepadAxisMovement(int gamepad, int axis);`
-Swift | —
+Swift | *unimplemented*
 
 #### SetGamepadMappings
 
@@ -5278,7 +5278,7 @@ Set internal gamepad mappings (SDL_GameControllerDB)
 Language | Symbol
 --- | ---
 C | `int SetGamepadMappings(const char *mappings);`
-Swift | —
+Swift | *unimplemented*
 
 ### Input-related functions: mouse
 
@@ -5305,7 +5305,7 @@ Check if a mouse button has been pressed once
 Language | Symbol
 --- | ---
 C | `bool IsMouseButtonPressed(int button);`
-Swift | —
+Swift | ``MouseButton/isPressed``
 
 #### IsMouseButtonDown
 
@@ -5314,7 +5314,7 @@ Check if a mouse button is being pressed
 Language | Symbol
 --- | ---
 C | `bool IsMouseButtonDown(int button);`
-Swift | —
+Swift | ``MouseButton/isDown``
 
 #### IsMouseButtonReleased
 
@@ -5323,7 +5323,7 @@ Check if a mouse button has been released once
 Language | Symbol
 --- | ---
 C | `bool IsMouseButtonReleased(int button);`
-Swift | —
+Swift | ``MouseButton/isReleased``
 
 #### IsMouseButtonUp
 
@@ -5332,7 +5332,7 @@ Check if a mouse button is NOT being pressed
 Language | Symbol
 --- | ---
 C | `bool IsMouseButtonUp(int button);`
-Swift | —
+Swift | ``MouseButton/isUp``
 
 #### GetMouseX
 
@@ -5341,7 +5341,7 @@ Get mouse position X
 Language | Symbol
 --- | ---
 C | `int GetMouseX(void);`
-Swift | —
+Swift | ``Mouse/x``
 
 #### GetMouseY
 
@@ -5350,7 +5350,7 @@ Get mouse position Y
 Language | Symbol
 --- | ---
 C | `int GetMouseY(void);`
-Swift | —
+Swift | ``Mouse/y``
 
 #### GetMousePosition
 
@@ -5359,7 +5359,7 @@ Get mouse position XY
 Language | Symbol
 --- | ---
 C | `Vector2 GetMousePosition(void);`
-Swift | —
+Swift | ``Mouse/position``
 
 #### GetMouseDelta
 
@@ -5368,7 +5368,7 @@ Get mouse delta between frames
 Language | Symbol
 --- | ---
 C | `Vector2 GetMouseDelta(void);`
-Swift | —
+Swift | ``Mouse/delta``
 
 #### SetMousePosition
 
@@ -5377,7 +5377,7 @@ Set mouse position XY
 Language | Symbol
 --- | ---
 C | `void SetMousePosition(int x, int y);`
-Swift | —
+Swift | ``Mouse/position``, ``Mouse/x``, and ``Mouse/y``
 
 #### SetMouseOffset
 
@@ -5386,7 +5386,7 @@ Set mouse offset
 Language | Symbol
 --- | ---
 C | `void SetMouseOffset(int offsetX, int offsetY);`
-Swift | —
+Swift | ``Mouse/offset(by:)``
 
 #### SetMouseScale
 
@@ -5395,7 +5395,7 @@ Set mouse scaling
 Language | Symbol
 --- | ---
 C | `void SetMouseScale(float scaleX, float scaleY);`
-Swift | —
+Swift | ``Mouse/scale(by:)``
 
 #### GetMouseWheelMove
 
@@ -5404,7 +5404,7 @@ Get mouse wheel movement Y
 Language | Symbol
 --- | ---
 C | `float GetMouseWheelMove(void);`
-Swift | —
+Swift | ``Mouse/wheel``
 
 #### SetMouseCursor
 
@@ -5413,7 +5413,7 @@ Set mouse cursor
 Language | Symbol
 --- | ---
 C | `void SetMouseCursor(int cursor);`
-Swift | —
+Swift | ``Cursor/style(to:)``
 
 ### Input-related functions: touch
 
@@ -5446,7 +5446,7 @@ Get touch position X for touch point 0 (relative to screen size)
 Language | Symbol
 --- | ---
 C | `int GetTouchX(void);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetTouchY
 
@@ -5455,7 +5455,7 @@ Get touch position Y for touch point 0 (relative to screen size)
 Language | Symbol
 --- | ---
 C | `int GetTouchY(void);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetTouchPosition
 
@@ -5464,7 +5464,7 @@ Get touch position XY for a touch point index (relative to screen size)
 Language | Symbol
 --- | ---
 C | `Vector2 GetTouchPosition(int index);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetTouchPointId
 
@@ -5473,7 +5473,7 @@ Get touch point identifier for given index
 Language | Symbol
 --- | ---
 C | `int GetTouchPointId(int index);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetTouchPointCount
 
@@ -5482,7 +5482,7 @@ Get number of touch points
 Language | Symbol
 --- | ---
 C | `int GetTouchPointCount(void);`
-Swift | —
+Swift | *unimplemented*
 
 ## Gestures and Touch Handling Functions (Module: rgestures)
 
@@ -5493,7 +5493,7 @@ Enable a set of gestures using flags
 Language | Symbol
 --- | ---
 C | `void SetGesturesEnabled(unsigned int flags);`
-Swift | —
+Swift | *unimplemented*
 
 #### IsGestureDetected
 
@@ -5502,7 +5502,7 @@ Check if a gesture have been detected
 Language | Symbol
 --- | ---
 C | `bool IsGestureDetected(int gesture);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetGestureDetected
 
@@ -5511,7 +5511,7 @@ Get latest detected gesture
 Language | Symbol
 --- | ---
 C | `int GetGestureDetected(void);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetGestureHoldDuration
 
@@ -5520,7 +5520,7 @@ Get gesture hold time in milliseconds
 Language | Symbol
 --- | ---
 C | `float GetGestureHoldDuration(void);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetGestureDragVector
 
@@ -5529,7 +5529,7 @@ Get gesture drag vector
 Language | Symbol
 --- | ---
 C | `Vector2 GetGestureDragVector(void);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetGestureDragAngle
 
@@ -5538,7 +5538,7 @@ Get gesture drag angle
 Language | Symbol
 --- | ---
 C | `float GetGestureDragAngle(void);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetGesturePinchVector
 
@@ -5547,7 +5547,7 @@ Get gesture pinch delta
 Language | Symbol
 --- | ---
 C | `Vector2 GetGesturePinchVector(void);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetGesturePinchAngle
 
@@ -5556,7 +5556,7 @@ Get gesture pinch angle
 Language | Symbol
 --- | ---
 C | `float GetGesturePinchAngle(void);`
-Swift | —
+Swift | *unimplemented*
 
 ## Camera System Functions (Module: rcamera)
 
@@ -5567,7 +5567,7 @@ Set camera mode (multiple camera modes available)
 Language | Symbol
 --- | ---
 C | `void SetCameraMode(Camera camera, int mode);`
-Swift | —
+Swift | *unimplemented*
 
 #### UpdateCamera
 
@@ -5576,7 +5576,7 @@ Update camera position for selected mode
 Language | Symbol
 --- | ---
 C | `void UpdateCamera(Camera *camera);`
-Swift | —
+Swift | *unimplemented*
 
 #### SetCameraPanControl
 
@@ -5585,7 +5585,7 @@ Set camera pan key to combine with mouse movement (free camera)
 Language | Symbol
 --- | ---
 C | `void SetCameraPanControl(int keyPan);`
-Swift | —
+Swift | *unimplemented*
 
 #### SetCameraAltControl
 
@@ -5594,7 +5594,7 @@ Set camera alt key to combine with mouse movement (free camera)
 Language | Symbol
 --- | ---
 C | `void SetCameraAltControl(int keyAlt);`
-Swift | —
+Swift | *unimplemented*
 
 #### SetCameraSmoothZoomControl
 
@@ -5603,7 +5603,7 @@ Set camera smooth zoom key to combine with mouse (free camera)
 Language | Symbol
 --- | ---
 C | `void SetCameraSmoothZoomControl(int keySmoothZoom);`
-Swift | —
+Swift | *unimplemented*
 
 #### SetCameraMoveControls
 
@@ -5612,7 +5612,7 @@ Set camera move controls (1st person and 3rd person cameras)
 Language | Symbol
 --- | ---
 C | `void SetCameraMoveControls(int keyFront, int keyBack, int keyRight, int keyLeft, int keyUp, int keyDown);`
-Swift | —
+Swift | *unimplemented*
 
 ## Basic Shapes Drawing Functions (Module: shapes)
 
@@ -5625,7 +5625,7 @@ Set texture and rectangle to be used on shapes drawing
 Language | Symbol
 --- | ---
 C | `void SetShapesTexture(Texture2D texture, Rectangle source);`
-Swift | —
+Swift | *unimplemented*
 
 ### Basic shapes drawing functions
 
@@ -5676,7 +5676,7 @@ Draw a pixel
 Language | Symbol
 --- | ---
 C | `void DrawPixel(int posX, int posY, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawPixelV
 
@@ -5685,7 +5685,7 @@ Draw a pixel
 Language | Symbol
 --- | ---
 C | `void DrawPixelV(Vector2 position, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawLine
 
@@ -5694,7 +5694,7 @@ Draw a line
 Language | Symbol
 --- | ---
 C | `void DrawLine(int startPosX, int startPosY, int endPosX, int endPosY, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawLineV
 
@@ -5703,7 +5703,7 @@ Draw a line
 Language | Symbol
 --- | ---
 C | `void DrawLineV(Vector2 startPos, Vector2 endPos, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawLineEx
 
@@ -5712,7 +5712,7 @@ Draw a line defining thickness
 Language | Symbol
 --- | ---
 C | `void DrawLineEx(Vector2 startPos, Vector2 endPos, float thick, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawLineBezier
 
@@ -5721,7 +5721,7 @@ Draw a line using cubic-bezier curves in-out
 Language | Symbol
 --- | ---
 C | `void DrawLineBezier(Vector2 startPos, Vector2 endPos, float thick, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawLineBezierQuad
 
@@ -5730,7 +5730,7 @@ Draw line using quadratic bezier curves with a control point
 Language | Symbol
 --- | ---
 C | `void DrawLineBezierQuad(Vector2 startPos, Vector2 endPos, Vector2 controlPos, float thick, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawLineBezierCubic
 
@@ -5739,7 +5739,7 @@ Draw line using cubic bezier curves with 2 control points
 Language | Symbol
 --- | ---
 C | `void DrawLineBezierCubic(Vector2 startPos, Vector2 endPos, Vector2 startControlPos, Vector2 endControlPos, float thick, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawLineStrip
 
@@ -5748,7 +5748,7 @@ Draw lines sequence
 Language | Symbol
 --- | ---
 C | `void DrawLineStrip(Vector2 *points, int pointCount, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawCircle
 
@@ -5757,7 +5757,7 @@ Draw a color-filled circle
 Language | Symbol
 --- | ---
 C | `void DrawCircle(int centerX, int centerY, float radius, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawCircleSector
 
@@ -5766,7 +5766,7 @@ Draw a piece of a circle
 Language | Symbol
 --- | ---
 C | `void DrawCircleSector(Vector2 center, float radius, float startAngle, float endAngle, int segments, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawCircleSectorLines
 
@@ -5775,7 +5775,7 @@ Draw circle sector outline
 Language | Symbol
 --- | ---
 C | `void DrawCircleSectorLines(Vector2 center, float radius, float startAngle, float endAngle, int segments, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawCircleGradient
 
@@ -5784,7 +5784,7 @@ Draw a gradient-filled circle
 Language | Symbol
 --- | ---
 C | `void DrawCircleGradient(int centerX, int centerY, float radius, Color color1, Color color2);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawCircleV
 
@@ -5793,7 +5793,7 @@ Draw a color-filled circle
 Language | Symbol
 --- | ---
 C | `void DrawCircleV(Vector2 center, float radius, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawCircleLines
 
@@ -5802,7 +5802,7 @@ Draw circle outline
 Language | Symbol
 --- | ---
 C | `void DrawCircleLines(int centerX, int centerY, float radius, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawEllipse
 
@@ -5811,7 +5811,7 @@ Draw ellipse
 Language | Symbol
 --- | ---
 C | `void DrawEllipse(int centerX, int centerY, float radiusH, float radiusV, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawEllipseLines
 
@@ -5820,7 +5820,7 @@ Draw ellipse outline
 Language | Symbol
 --- | ---
 C | `void DrawEllipseLines(int centerX, int centerY, float radiusH, float radiusV, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawRing
 
@@ -5829,7 +5829,7 @@ Draw ring
 Language | Symbol
 --- | ---
 C | `void DrawRing(Vector2 center, float innerRadius, float outerRadius, float startAngle, float endAngle, int segments, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawRingLines
 
@@ -5838,7 +5838,7 @@ Draw ring outline
 Language | Symbol
 --- | ---
 C | `void DrawRingLines(Vector2 center, float innerRadius, float outerRadius, float startAngle, float endAngle, int segments, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawRectangle
 
@@ -5847,7 +5847,7 @@ Draw a color-filled rectangle
 Language | Symbol
 --- | ---
 C | `void DrawRectangle(int posX, int posY, int width, int height, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawRectangleV
 
@@ -5856,7 +5856,7 @@ Draw a color-filled rectangle
 Language | Symbol
 --- | ---
 C | `void DrawRectangleV(Vector2 position, Vector2 size, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawRectangleRec
 
@@ -5865,7 +5865,7 @@ Draw a color-filled rectangle
 Language | Symbol
 --- | ---
 C | `void DrawRectangleRec(Rectangle rec, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawRectanglePro
 
@@ -5874,7 +5874,7 @@ Draw a color-filled rectangle with pro parameters
 Language | Symbol
 --- | ---
 C | `void DrawRectanglePro(Rectangle rec, Vector2 origin, float rotation, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawRectangleGradientV
 
@@ -5883,7 +5883,7 @@ Draw a vertical-gradient-filled rectangle
 Language | Symbol
 --- | ---
 C | `void DrawRectangleGradientV(int posX, int posY, int width, int height, Color color1, Color`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawRectangleGradientH
 
@@ -5892,7 +5892,7 @@ Draw a horizontal-gradient-filled rectangle
 Language | Symbol
 --- | ---
 C | `void DrawRectangleGradientH(int posX, int posY, int width, int height, Color color1, Color`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawRectangleGradientEx
 
@@ -5901,7 +5901,7 @@ Draw a gradient-filled rectangle with custom vertex colors
 Language | Symbol
 --- | ---
 C | `void DrawRectangleGradientEx(Rectangle rec, Color col1, Color col2, Color col3, Color col4);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawRectangleLines
 
@@ -5910,7 +5910,7 @@ Draw rectangle outline
 Language | Symbol
 --- | ---
 C | `void DrawRectangleLines(int posX, int posY, int width, int height, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawRectangleLinesEx
 
@@ -5919,7 +5919,7 @@ Draw rectangle outline with extended parameters
 Language | Symbol
 --- | ---
 C | `void DrawRectangleLinesEx(Rectangle rec, float lineThick, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawRectangleRounded
 
@@ -5928,7 +5928,7 @@ Draw rectangle with rounded edges
 Language | Symbol
 --- | ---
 C | `void DrawRectangleRounded(Rectangle rec, float roundness, int segments, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawRectangleRoundedLines
 
@@ -5937,7 +5937,7 @@ Draw rectangle with rounded edges outline
 Language | Symbol
 --- | ---
 C | `void DrawRectangleRoundedLines(Rectangle rec, float roundness, int segments, float lineThick, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawTriangle
 
@@ -5946,7 +5946,7 @@ Draw a color-filled triangle (vertex in counter-clockwise order!)
 Language | Symbol
 --- | ---
 C | `void DrawTriangle(Vector2 v1, Vector2 v2, Vector2 v3, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawTriangleLines
 
@@ -5955,7 +5955,7 @@ Draw triangle outline (vertex in counter-clockwise order!)
 Language | Symbol
 --- | ---
 C | `void DrawTriangleLines(Vector2 v1, Vector2 v2, Vector2 v3, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawTriangleFan
 
@@ -5964,7 +5964,7 @@ Draw a triangle fan defined by points (first vertex is the center)
 Language | Symbol
 --- | ---
 C | `void DrawTriangleFan(Vector2 *points, int pointCount, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawTriangleStrip
 
@@ -5973,7 +5973,7 @@ Draw a triangle strip defined by points
 Language | Symbol
 --- | ---
 C | `void DrawTriangleStrip(Vector2 *points, int pointCount, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawPoly
 
@@ -5982,7 +5982,7 @@ Draw a regular polygon
 Language | Symbol
 --- | ---
 C | `void DrawPoly(Vector2 center, int sides, float radius, float rotation, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawPolyLines
 
@@ -5991,7 +5991,7 @@ Draw a polygon outline of n sides
 Language | Symbol
 --- | ---
 C | `void DrawPolyLines(Vector2 center, int sides, float radius, float rotation, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawPolyLinesEx
 
@@ -6000,7 +6000,7 @@ Draw a polygon outline of n sides with extended parameters
 Language | Symbol
 --- | ---
 C | `void DrawPolyLinesEx(Vector2 center, int sides, float radius, float rotation, float lineThick, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 ### Basic shapes collision detection functions
 
@@ -6023,7 +6023,7 @@ Check collision between two rectangles
 Language | Symbol
 --- | ---
 C | `bool CheckCollisionRecs(Rectangle rec1, Rectangle rec2);`
-Swift | —
+Swift | *unimplemented*
 
 #### CheckCollisionCircles
 
@@ -6032,7 +6032,7 @@ Check collision between two circles
 Language | Symbol
 --- | ---
 C | `bool CheckCollisionCircles(Vector2 center1, float radius1, Vector2 center2, float radius2);`
-Swift | —
+Swift | *unimplemented*
 
 #### CheckCollisionCircleRec
 
@@ -6041,7 +6041,7 @@ Check collision between circle and rectangle
 Language | Symbol
 --- | ---
 C | `bool CheckCollisionCircleRec(Vector2 center, float radius, Rectangle rec);`
-Swift | —
+Swift | *unimplemented*
 
 #### CheckCollisionPointRec
 
@@ -6050,7 +6050,7 @@ Check if point is inside rectangle
 Language | Symbol
 --- | ---
 C | `bool CheckCollisionPointRec(Vector2 point, Rectangle rec);`
-Swift | —
+Swift | *unimplemented*
 
 #### CheckCollisionPointCircle
 
@@ -6059,7 +6059,7 @@ Check if point is inside circle
 Language | Symbol
 --- | ---
 C | `bool CheckCollisionPointCircle(Vector2 point, Vector2 center, float radius);`
-Swift | —
+Swift | *unimplemented*
 
 #### CheckCollisionPointTriangle
 
@@ -6068,7 +6068,7 @@ Check if point is inside a triangle
 Language | Symbol
 --- | ---
 C | `bool CheckCollisionPointTriangle(Vector2 point, Vector2 p1, Vector2 p2, Vector2 p3);`
-Swift | —
+Swift | *unimplemented*
 
 #### CheckCollisionLines
 
@@ -6077,7 +6077,7 @@ Check the collision between two lines defined by two points each, returns collis
 Language | Symbol
 --- | ---
 C | `bool CheckCollisionLines(Vector2 startPos1, Vector2 endPos1, Vector2 startPos2, Vector2 endPos2, Vector2 *collisionPoint);`
-Swift | —
+Swift | *unimplemented*
 
 #### CheckCollisionPointLine
 
@@ -6086,7 +6086,7 @@ Check if point belongs to line created between two points [p1] and [p2] with def
 Language | Symbol
 --- | ---
 C | `bool CheckCollisionPointLine(Vector2 point, Vector2 p1, Vector2 p2, int threshold);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetCollisionRec
 
@@ -6095,7 +6095,7 @@ Get collision rectangle for two rectangles collision
 Language | Symbol
 --- | ---
 C | `Rectangle GetCollisionRec(Rectangle rec1, Rectangle rec2);`
-Swift | —
+Swift | *unimplemented*
 
 ## Texture Loading and Drawing Functions (Module: textures)
 
@@ -6122,7 +6122,7 @@ Load image from file into CPU memory (RAM)
 Language | Symbol
 --- | ---
 C | `Image LoadImage(const char *fileName);`
-Swift | —
+Swift | *unimplemented*
 
 #### LoadImageRaw
 
@@ -6131,7 +6131,7 @@ Load image from RAW file data
 Language | Symbol
 --- | ---
 C | `Image LoadImageRaw(const char *fileName, int width, int height, int format, int headerSize);`
-Swift | —
+Swift | *unimplemented*
 
 #### LoadImageAnim
 
@@ -6140,7 +6140,7 @@ Load image sequence from file (frames appended to image.data)
 Language | Symbol
 --- | ---
 C | `Image LoadImageAnim(const char *fileName, int *frames);`
-Swift | —
+Swift | *unimplemented*
 
 #### LoadImageFromMemory
 
@@ -6149,7 +6149,7 @@ Load image from memory buffer, fileType refers to extension: i.e. '.png'
 Language | Symbol
 --- | ---
 C | `Image LoadImageFromMemory(const char *fileType, const unsigned char *fileData, int dataSize);`
-Swift | —
+Swift | *unimplemented*
 
 #### LoadImageFromTexture
 
@@ -6158,7 +6158,7 @@ Load image from GPU texture data
 Language | Symbol
 --- | ---
 C | `Image LoadImageFromTexture(Texture2D texture);`
-Swift | —
+Swift | *unimplemented*
 
 #### LoadImageFromScreen
 
@@ -6167,7 +6167,7 @@ Load image from screen buffer and (screenshot)
 Language | Symbol
 --- | ---
 C | `Image LoadImageFromScreen(void);`
-Swift | —
+Swift | *unimplemented*
 
 #### UnloadImage
 
@@ -6176,7 +6176,7 @@ Unload image from CPU memory (RAM)
 Language | Symbol
 --- | ---
 C | `void UnloadImage(Image image);`
-Swift | —
+Swift | *unimplemented*
 
 #### ExportImage
 
@@ -6185,7 +6185,7 @@ Export image data to file, returns true on success
 Language | Symbol
 --- | ---
 C | `bool ExportImage(Image image, const char *fileName);`
-Swift | —
+Swift | *unimplemented*
 
 #### ExportImageAsCode
 
@@ -6194,7 +6194,7 @@ Export image as code file defining an array of bytes, returns true on success
 Language | Symbol
 --- | ---
 C | `bool ExportImageAsCode(Image image, const char *fileName);`
-Swift | —
+Swift | *unimplemented*
 
 ### Image generation functions
 
@@ -6215,7 +6215,7 @@ Generate image: plain color
 Language | Symbol
 --- | ---
 C | `Image GenImageColor(int width, int height, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### GenImageGradientV
 
@@ -6224,7 +6224,7 @@ Generate image: vertical gradient
 Language | Symbol
 --- | ---
 C | `Image GenImageGradientV(int width, int height, Color top, Color bottom);`
-Swift | —
+Swift | *unimplemented*
 
 #### GenImageGradientH
 
@@ -6233,7 +6233,7 @@ Generate image: horizontal gradient
 Language | Symbol
 --- | ---
 C | `Image GenImageGradientH(int width, int height, Color left, Color right);`
-Swift | —
+Swift | *unimplemented*
 
 #### GenImageGradientRadial
 
@@ -6242,7 +6242,7 @@ Generate image: radial gradient
 Language | Symbol
 --- | ---
 C | `Image GenImageGradientRadial(int width, int height, float density, Color inner, Color outer);`
-Swift | —
+Swift | *unimplemented*
 
 #### GenImageChecked
 
@@ -6251,7 +6251,7 @@ Generate image: checked
 Language | Symbol
 --- | ---
 C | `Image GenImageChecked(int width, int height, int checksX, int checksY, Color col1, Color col2);`
-Swift | —
+Swift | *unimplemented*
 
 #### GenImageWhiteNoise
 
@@ -6260,7 +6260,7 @@ Generate image: white noise
 Language | Symbol
 --- | ---
 C | `Image GenImageWhiteNoise(int width, int height, float factor);`
-Swift | —
+Swift | *unimplemented*
 
 #### GenImageCellular
 
@@ -6269,7 +6269,7 @@ Generate image: cellular algorithm, bigger tileSize means bigger cells
 Language | Symbol
 --- | ---
 C | `Image GenImageCellular(int width, int height, int tileSize);`
-Swift | —
+Swift | *unimplemented*
 
 ### Image manipulation functions
 
@@ -6315,7 +6315,7 @@ Create an image duplicate (useful for transformations)
 Language | Symbol
 --- | ---
 C | `Image ImageCopy(Image image);`
-Swift | —
+Swift | *unimplemented*
 
 #### ImageFromImage
 
@@ -6324,7 +6324,7 @@ Create an image from another image piece
 Language | Symbol
 --- | ---
 C | `Image ImageFromImage(Image image, Rectangle rec);`
-Swift | —
+Swift | *unimplemented*
 
 #### ImageText
 
@@ -6333,7 +6333,7 @@ Create an image from text (default font)
 Language | Symbol
 --- | ---
 C | `Image ImageText(const char *text, int fontSize, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### ImageTextEx
 
@@ -6342,7 +6342,7 @@ Create an image from text (custom sprite font)
 Language | Symbol
 --- | ---
 C | `Image ImageTextEx(Font font, const char *text, float fontSize, float spacing, Color tint);`
-Swift | —
+Swift | *unimplemented*
 
 #### ImageFormat
 
@@ -6351,7 +6351,7 @@ Convert image data to desired format
 Language | Symbol
 --- | ---
 C | `void ImageFormat(Image *image, int newFormat);`
-Swift | —
+Swift | *unimplemented*
 
 #### ImageToPOT
 
@@ -6360,7 +6360,7 @@ Convert image to POT (power-of-two)
 Language | Symbol
 --- | ---
 C | `void ImageToPOT(Image *image, Color fill);`
-Swift | —
+Swift | *unimplemented*
 
 #### ImageCrop
 
@@ -6369,7 +6369,7 @@ Crop an image to a defined rectangle
 Language | Symbol
 --- | ---
 C | `void ImageCrop(Image *image, Rectangle crop);`
-Swift | —
+Swift | *unimplemented*
 
 #### ImageAlphaCrop
 
@@ -6378,7 +6378,7 @@ Crop image depending on alpha value
 Language | Symbol
 --- | ---
 C | `void ImageAlphaCrop(Image *image, float threshold);`
-Swift | —
+Swift | *unimplemented*
 
 #### ImageAlphaClear
 
@@ -6387,7 +6387,7 @@ Clear alpha channel to desired color
 Language | Symbol
 --- | ---
 C | `void ImageAlphaClear(Image *image, Color color, float threshold);`
-Swift | —
+Swift | *unimplemented*
 
 #### ImageAlphaMask
 
@@ -6396,7 +6396,7 @@ Apply alpha mask to image
 Language | Symbol
 --- | ---
 C | `void ImageAlphaMask(Image *image, Image alphaMask);`
-Swift | —
+Swift | *unimplemented*
 
 #### ImageAlphaPremultiply
 
@@ -6405,7 +6405,7 @@ Premultiply alpha channel
 Language | Symbol
 --- | ---
 C | `void ImageAlphaPremultiply(Image *image);`
-Swift | —
+Swift | *unimplemented*
 
 #### ImageResize
 
@@ -6414,7 +6414,7 @@ Resize image (Bicubic scaling algorithm)
 Language | Symbol
 --- | ---
 C | `void ImageResize(Image *image, int newWidth, int newHeight);`
-Swift | —
+Swift | *unimplemented*
 
 #### ImageResizeNN
 
@@ -6423,7 +6423,7 @@ Resize image (Nearest-Neighbor scaling algorithm)
 Language | Symbol
 --- | ---
 C | `void ImageResizeNN(Image *image, int newWidth,int newHeight);`
-Swift | —
+Swift | *unimplemented*
 
 #### ImageResizeCanvas
 
@@ -6432,7 +6432,7 @@ Resize canvas and fill with color
 Language | Symbol
 --- | ---
 C | `void ImageResizeCanvas(Image *image, int newWidth, int newHeight, int offsetX, int offsetY, Color fill);`
-Swift | —
+Swift | *unimplemented*
 
 #### ImageMipmaps
 
@@ -6441,7 +6441,7 @@ Compute all mipmap levels for a provided image
 Language | Symbol
 --- | ---
 C | `void ImageMipmaps(Image *image);`
-Swift | —
+Swift | *unimplemented*
 
 #### ImageDither
 
@@ -6450,7 +6450,7 @@ Dither image data to 16bpp or lower (Floyd-Steinberg dithering)
 Language | Symbol
 --- | ---
 C | `void ImageDither(Image *image, int rBpp, int gBpp, int bBpp, int aBpp);`
-Swift | —
+Swift | *unimplemented*
 
 #### ImageFlipVertical
 
@@ -6459,7 +6459,7 @@ Flip image vertically
 Language | Symbol
 --- | ---
 C | `void ImageFlipVertical(Image *image);`
-Swift | —
+Swift | *unimplemented*
 
 #### ImageFlipHorizontal
 
@@ -6468,7 +6468,7 @@ Flip image horizontally
 Language | Symbol
 --- | ---
 C | `void ImageFlipHorizontal(Image *image);`
-Swift | —
+Swift | *unimplemented*
 
 #### ImageRotateCW
 
@@ -6477,7 +6477,7 @@ Rotate image clockwise 90deg
 Language | Symbol
 --- | ---
 C | `void ImageRotateCW(Image *image);`
-Swift | —
+Swift | *unimplemented*
 
 #### ImageRotateCCW
 
@@ -6486,7 +6486,7 @@ Rotate image counter-clockwise 90deg
 Language | Symbol
 --- | ---
 C | `void ImageRotateCCW(Image *image);`
-Swift | —
+Swift | *unimplemented*
 
 #### ImageColorTint
 
@@ -6495,7 +6495,7 @@ Modify image color: tint
 Language | Symbol
 --- | ---
 C | `void ImageColorTint(Image *image, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### ImageColorInvert
 
@@ -6504,7 +6504,7 @@ Modify image color: invert
 Language | Symbol
 --- | ---
 C | `void ImageColorInvert(Image *image);`
-Swift | —
+Swift | *unimplemented*
 
 #### ImageColorGrayscale
 
@@ -6513,7 +6513,7 @@ Modify image color: grayscale
 Language | Symbol
 --- | ---
 C | `void ImageColorGrayscale(Image *image);`
-Swift | —
+Swift | *unimplemented*
 
 #### ImageColorContrast
 
@@ -6522,7 +6522,7 @@ Modify image color: contrast (-100 to 100)
 Language | Symbol
 --- | ---
 C | `void ImageColorContrast(Image *image, float contrast);`
-Swift | —
+Swift | *unimplemented*
 
 #### ImageColorBrightness
 
@@ -6531,7 +6531,7 @@ Modify image color: brightness (-255 to 255)
 Language | Symbol
 --- | ---
 C | `void ImageColorBrightness(Image *image, int brightness);`
-Swift | —
+Swift | *unimplemented*
 
 #### ImageColorReplace
 
@@ -6540,7 +6540,7 @@ Modify image color: replace color
 Language | Symbol
 --- | ---
 C | `void ImageColorReplace(Image *image, Color color, Color replace);`
-Swift | —
+Swift | *unimplemented*
 
 #### LoadImageColors
 
@@ -6549,7 +6549,7 @@ Load color data from image as a Color array (RGBA - 32bit)
 Language | Symbol
 --- | ---
 C | `Color *LoadImageColors(Image image);`
-Swift | —
+Swift | *unimplemented*
 
 #### LoadImagePalette
 
@@ -6558,7 +6558,7 @@ Load colors palette from image as a Color array (RGBA - 32bit)
 Language | Symbol
 --- | ---
 C | `Color *LoadImagePalette(Image image, int maxPaletteSize, int *colorCount);`
-Swift | —
+Swift | *unimplemented*
 
 #### UnloadImageColors
 
@@ -6567,7 +6567,7 @@ Unload color data loaded with LoadImageColors()
 Language | Symbol
 --- | ---
 C | `void UnloadImageColors(Color *colors);`
-Swift | —
+Swift | *unimplemented*
 
 #### UnloadImagePalette
 
@@ -6576,7 +6576,7 @@ Unload colors palette loaded with LoadImagePalette()
 Language | Symbol
 --- | ---
 C | `void UnloadImagePalette(Color *colors);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetImageAlphaBorder
 
@@ -6585,7 +6585,7 @@ Get image alpha border rectangle
 Language | Symbol
 --- | ---
 C | `Rectangle GetImageAlphaBorder(Image image, float threshold);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetImageColor
 
@@ -6594,7 +6594,7 @@ Get image pixel color at (x, y) position
 Language | Symbol
 --- | ---
 C | `Color GetImageColor(Image image, int x, int y);`
-Swift | —
+Swift | *unimplemented*
 
 ### Image drawing functions
 
@@ -6624,7 +6624,7 @@ Clear image background with given color
 Language | Symbol
 --- | ---
 C | `void ImageClearBackground(Image *dst, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### ImageDrawPixel
 
@@ -6633,7 +6633,7 @@ Draw pixel within an image
 Language | Symbol
 --- | ---
 C | `void ImageDrawPixel(Image *dst, int posX, int posY, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### ImageDrawPixelV
 
@@ -6642,7 +6642,7 @@ Draw pixel within an image
 Language | Symbol
 --- | ---
 C | `void ImageDrawPixelV(Image *dst, Vector2 position, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### ImageDrawLine
 
@@ -6651,7 +6651,7 @@ Draw line within an image
 Language | Symbol
 --- | ---
 C | `void ImageDrawLine(Image *dst, int startPosX, int startPosY, int endPosX, int endPosY, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### ImageDrawLineV
 
@@ -6660,7 +6660,7 @@ Draw line within an image
 Language | Symbol
 --- | ---
 C | `void ImageDrawLineV(Image *dst, Vector2 start, Vector2 end, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### ImageDrawCircle
 
@@ -6669,7 +6669,7 @@ Draw circle within an image
 Language | Symbol
 --- | ---
 C | `void ImageDrawCircle(Image *dst, int centerX, int centerY, int radius, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### ImageDrawCircleV
 
@@ -6678,7 +6678,7 @@ Draw circle within an image
 Language | Symbol
 --- | ---
 C | `void ImageDrawCircleV(Image *dst, Vector2 center, int radius, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### ImageDrawRectangle
 
@@ -6687,7 +6687,7 @@ Draw rectangle within an image
 Language | Symbol
 --- | ---
 C | `void ImageDrawRectangle(Image *dst, int posX, int posY, int width, int height, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### ImageDrawRectangleV
 
@@ -6696,7 +6696,7 @@ Draw rectangle within an image
 Language | Symbol
 --- | ---
 C | `void ImageDrawRectangleV(Image *dst, Vector2 position, Vector2 size, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### ImageDrawRectangleRec
 
@@ -6705,7 +6705,7 @@ Draw rectangle within an image
 Language | Symbol
 --- | ---
 C | `void ImageDrawRectangleRec(Image *dst, Rectangle rec, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### ImageDrawRectangleLines
 
@@ -6714,7 +6714,7 @@ Draw rectangle lines within an image
 Language | Symbol
 --- | ---
 C | `void ImageDrawRectangleLines(Image *dst, Rectangle rec, int thick, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### ImageDraw
 
@@ -6723,7 +6723,7 @@ Draw a source image within a destination image (tint applied to source)
 Language | Symbol
 --- | ---
 C | `void ImageDraw(Image *dst, Image src, Rectangle srcRec, Rectangle dstRec, Color tint);`
-Swift | —
+Swift | *unimplemented*
 
 #### ImageDrawText
 
@@ -6732,7 +6732,7 @@ Draw text (using default font) within an image (destination)
 Language | Symbol
 --- | ---
 C | `void ImageDrawText(Image *dst, const char *text, int posX, int posY, int fontSize, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### ImageDrawTextEx
 
@@ -6741,7 +6741,7 @@ Draw text (custom sprite font) within an image (destination)
 Language | Symbol
 --- | ---
 C | `void ImageDrawTextEx(Image *dst, Font font, const char *text, Vector2 position, float fontSize, float spacing, Color tint);`
-Swift | —
+Swift | *unimplemented*
 
 ### Texture loading functions
 
@@ -6765,7 +6765,7 @@ Load texture from file into GPU memory (VRAM)
 Language | Symbol
 --- | ---
 C | `Texture2D LoadTexture(const char *fileName);`
-Swift | —
+Swift | *unimplemented*
 
 #### LoadTextureFromImage
 
@@ -6774,7 +6774,7 @@ Load texture from image data
 Language | Symbol
 --- | ---
 C | `Texture2D LoadTextureFromImage(Image image);`
-Swift | —
+Swift | *unimplemented*
 
 #### LoadTextureCubemap
 
@@ -6783,7 +6783,7 @@ Load cubemap from image, multiple image cubemap layouts supported
 Language | Symbol
 --- | ---
 C | `TextureCubemap LoadTextureCubemap(Image image, int layout);`
-Swift | —
+Swift | *unimplemented*
 
 #### LoadRenderTexture
 
@@ -6792,7 +6792,7 @@ Load texture for rendering (framebuffer)
 Language | Symbol
 --- | ---
 C | `RenderTexture2D LoadRenderTexture(int width, int height);`
-Swift | —
+Swift | *unimplemented*
 
 #### UnloadTexture
 
@@ -6801,7 +6801,7 @@ Unload texture from GPU memory (VRAM)
 Language | Symbol
 --- | ---
 C | `void UnloadTexture(Texture2D texture);`
-Swift | —
+Swift | *unimplemented*
 
 #### UnloadRenderTexture
 
@@ -6810,7 +6810,7 @@ Unload render texture from GPU memory (VRAM)
 Language | Symbol
 --- | ---
 C | `void UnloadRenderTexture(RenderTexture2D target);`
-Swift | —
+Swift | *unimplemented*
 
 #### UpdateTexture
 
@@ -6819,7 +6819,7 @@ Update GPU texture with new data
 Language | Symbol
 --- | ---
 C | `void UpdateTexture(Texture2D texture, const void *pixels);`
-Swift | —
+Swift | *unimplemented*
 
 #### UpdateTextureRec
 
@@ -6828,7 +6828,7 @@ Update GPU texture rectangle with new data
 Language | Symbol
 --- | ---
 C | `void UpdateTextureRec(Texture2D texture, Rectangle rec, const void *pixels);`
-Swift | —
+Swift | *unimplemented*
 
 ### Texture configuration functions
 
@@ -6845,7 +6845,7 @@ Generate GPU mipmaps for a texture
 Language | Symbol
 --- | ---
 C | `void GenTextureMipmaps(Texture2D *texture);`
-Swift | —
+Swift | *unimplemented*
 
 #### SetTextureFilter
 
@@ -6854,7 +6854,7 @@ Set texture scaling filter mode
 Language | Symbol
 --- | ---
 C | `void SetTextureFilter(Texture2D texture, int filter);`
-Swift | —
+Swift | *unimplemented*
 
 #### SetTextureWrap
 
@@ -6863,7 +6863,7 @@ Set texture wrapping mode
 Language | Symbol
 --- | ---
 C | `void SetTextureWrap(Texture2D texture, int wrap);`
-Swift | —
+Swift | *unimplemented*
 
 ### Texture drawing functions
 
@@ -6886,7 +6886,7 @@ Draw a Texture2D
 Language | Symbol
 --- | ---
 C | `void DrawTexture(Texture2D texture, int posX, int posY, Color tint);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawTextureV
 
@@ -6895,7 +6895,7 @@ Draw a Texture2D with position defined as Vector2
 Language | Symbol
 --- | ---
 C | `void DrawTextureV(Texture2D texture, Vector2 position, Color tint);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawTextureEx
 
@@ -6904,7 +6904,7 @@ Draw a Texture2D with extended parameters
 Language | Symbol
 --- | ---
 C | `void DrawTextureEx(Texture2D texture, Vector2 position, float rotation, float scale, Color tint);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawTextureRec
 
@@ -6913,7 +6913,7 @@ Draw a part of a texture defined by a rectangle
 Language | Symbol
 --- | ---
 C | `void DrawTextureRec(Texture2D texture, Rectangle source, Vector2 position, Color tint);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawTextureQuad
 
@@ -6922,7 +6922,7 @@ Draw texture quad with tiling and offset parameters
 Language | Symbol
 --- | ---
 C | `void DrawTextureQuad(Texture2D texture, Vector2 tiling, Vector2 offset, Rectangle quad, Color tint);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawTextureTiled
 
@@ -6931,7 +6931,7 @@ Draw part of a texture (defined by a rectangle) with rotation and scale tiled in
 Language | Symbol
 --- | ---
 C | `void DrawTextureTiled(Texture2D texture, Rectangle source, Rectangle dest, Vector2 origin, float rotation, float scale, Color tint);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawTexturePro
 
@@ -6940,7 +6940,7 @@ Draw a part of a texture defined by a rectangle with 'pro' parameters
 Language | Symbol
 --- | ---
 C | `void DrawTexturePro(Texture2D texture, Rectangle source, Rectangle dest, Vector2 origin, float rotation, Color tint);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawTextureNPatch
 
@@ -6949,7 +6949,7 @@ Draws a texture (or part of it) that stretches or shrinks nicely
 Language | Symbol
 --- | ---
 C | `void DrawTextureNPatch(Texture2D texture, NPatchInfo nPatchInfo, Rectangle dest, Vector2 origin, float rotation, Color tint);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawTexturePoly
 
@@ -6958,7 +6958,7 @@ Draw a textured polygon
 Language | Symbol
 --- | ---
 C | `void DrawTexturePoly(Texture2D texture, Vector2 center, Vector2 *points, Vector2 *texcoords, int pointCount, Color tint);`
-Swift | —
+Swift | *unimplemented*
 
 ### Color/pixel related functions
 
@@ -6984,7 +6984,7 @@ Get color with alpha applied, alpha goes from 0.0f to 1.0f
 Language | Symbol
 --- | ---
 C | `Color Fade(Color color, float alpha);`
-Swift | —
+Swift | *unimplemented*
 
 #### ColorToInt
 
@@ -6993,7 +6993,7 @@ Get hexadecimal value for a Color
 Language | Symbol
 --- | ---
 C | `int ColorToInt(Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### ColorNormalize
 
@@ -7002,7 +7002,7 @@ Get Color normalized as float [0..1]
 Language | Symbol
 --- | ---
 C | `Vector4 ColorNormalize(Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### ColorFromNormalized
 
@@ -7011,7 +7011,7 @@ Get Color from normalized values [0..1]
 Language | Symbol
 --- | ---
 C | `Color ColorFromNormalized(Vector4 normalized);`
-Swift | —
+Swift | *unimplemented*
 
 #### ColorToHSV
 
@@ -7020,7 +7020,7 @@ Get HSV values for a Color, hue [0..360], saturation/value [0..1]
 Language | Symbol
 --- | ---
 C | `Vector3 ColorToHSV(Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### ColorFromHSV
 
@@ -7029,7 +7029,7 @@ Get a Color from HSV values, hue [0..360], saturation/value [0..1]
 Language | Symbol
 --- | ---
 C | `Color ColorFromHSV(float hue, float saturation, float value);`
-Swift | —
+Swift | *unimplemented*
 
 #### ColorAlpha
 
@@ -7038,7 +7038,7 @@ Get color with alpha applied, alpha goes from 0.0f to 1.0f
 Language | Symbol
 --- | ---
 C | `Color ColorAlpha(Color color, float alpha);`
-Swift | —
+Swift | *unimplemented*
 
 #### ColorAlphaBlend
 
@@ -7047,7 +7047,7 @@ Get src alpha-blended into dst color with tint
 Language | Symbol
 --- | ---
 C | `Color ColorAlphaBlend(Color dst, Color src, Color tint);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetColor
 
@@ -7056,7 +7056,7 @@ Get Color structure from hexadecimal value
 Language | Symbol
 --- | ---
 C | `Color GetColor(unsigned int hexValue);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetPixelColor
 
@@ -7065,7 +7065,7 @@ Get Color from a source pixel pointer of certain format
 Language | Symbol
 --- | ---
 C | `Color GetPixelColor(void *srcPtr, int format);`
-Swift | —
+Swift | *unimplemented*
 
 #### SetPixelColor
 
@@ -7074,7 +7074,7 @@ Set color formatted into destination pixel pointer
 Language | Symbol
 --- | ---
 C | `void SetPixelColor(void *dstPtr, Color color, int format);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetPixelDataSize
 
@@ -7083,7 +7083,7 @@ Get pixel data size in bytes for certain format
 Language | Symbol
 --- | ---
 C | `int GetPixelDataSize(int width, int height, int format);`
-Swift | —
+Swift | *unimplemented*
 
 ## Font Loading and Text Drawing Functions (Module: text)
 
@@ -7108,7 +7108,7 @@ Get the default Font
 Language | Symbol
 --- | ---
 C | `Font GetFontDefault(void);`
-Swift | —
+Swift | *unimplemented*
 
 #### LoadFont
 
@@ -7117,7 +7117,7 @@ Load font from file into GPU memory (VRAM)
 Language | Symbol
 --- | ---
 C | `Font LoadFont(const char *fileName);`
-Swift | —
+Swift | *unimplemented*
 
 #### LoadFontEx
 
@@ -7126,7 +7126,7 @@ Load font from file with extended parameters
 Language | Symbol
 --- | ---
 C | `Font LoadFontEx(const char *fileName, int fontSize, int *fontChars, int glyphCount);`
-Swift | —
+Swift | *unimplemented*
 
 #### LoadFontFromImage
 
@@ -7135,7 +7135,7 @@ Load font from Image (XNA style)
 Language | Symbol
 --- | ---
 C | `Font LoadFontFromImage(Image image, Color key, int firstChar);`
-Swift | —
+Swift | *unimplemented*
 
 #### LoadFontFromMemory
 
@@ -7144,7 +7144,7 @@ Load font from memory buffer, fileType refers to extension: i.e. '.ttf'
 Language | Symbol
 --- | ---
 C | `Font LoadFontFromMemory(const char *fileType, const unsigned char *fileData, int dataSize, int fontSize, int *fontChars, int glyphCount);`
-Swift | —
+Swift | *unimplemented*
 
 #### LoadFontData
 
@@ -7153,7 +7153,7 @@ Load font data for further use
 Language | Symbol
 --- | ---
 C | `GlyphInfo *LoadFontData(const unsigned char *fileData, int dataSize, int fontSize, int *fontChars, int glyphCount, int type);`
-Swift | —
+Swift | *unimplemented*
 
 #### GenImageFontAtlas
 
@@ -7162,7 +7162,7 @@ Generate image font atlas using chars info
 Language | Symbol
 --- | ---
 C | `Image GenImageFontAtlas(const GlyphInfo *chars, Rectangle **recs, int glyphCount, int fontSize, int padding, int packMethod);`
-Swift | —
+Swift | *unimplemented*
 
 #### UnloadFontData
 
@@ -7171,7 +7171,7 @@ Unload font chars info data (RAM)
 Language | Symbol
 --- | ---
 C | `void UnloadFontData(GlyphInfo *chars, int glyphCount);`
-Swift | —
+Swift | *unimplemented*
 
 #### UnloadFont
 
@@ -7180,7 +7180,7 @@ Unload Font from GPU memory (VRAM)
 Language | Symbol
 --- | ---
 C | `void UnloadFont(Font font);`
-Swift | —
+Swift | *unimplemented*
 
 ### Text drawing functions
 
@@ -7199,7 +7199,7 @@ Draw current FPS
 Language | Symbol
 --- | ---
 C | `void DrawFPS(int posX, int posY);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawText
 
@@ -7208,7 +7208,7 @@ Draw text (using default font)
 Language | Symbol
 --- | ---
 C | `void DrawText(const char *text, int posX, int posY, int fontSize, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawTextEx
 
@@ -7217,7 +7217,7 @@ Draw text using font and additional parameters
 Language | Symbol
 --- | ---
 C | `void DrawTextEx(Font font, const char *text, Vector2 position, float fontSize, float spacing, Color tint);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawTextPro
 
@@ -7226,7 +7226,7 @@ Draw text using Font and pro parameters (rotation)
 Language | Symbol
 --- | ---
 C | `void DrawTextPro(Font font, const char *text, Vector2 position, Vector2 origin, float rotation, float fontSize, float spacing, Color tint);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawTextCodepoint
 
@@ -7235,7 +7235,7 @@ Draw one character (codepoint)
 Language | Symbol
 --- | ---
 C | `void DrawTextCodepoint(Font font, int codepoint, Vector2 position, float fontSize, Color tint);`
-Swift | —
+Swift | *unimplemented*
 
 ### Text font info functions
 
@@ -7254,7 +7254,7 @@ Measure string width for default font
 Language | Symbol
 --- | ---
 C | `int MeasureText(const char *text, int fontSize);`
-Swift | —
+Swift | *unimplemented*
 
 #### MeasureTextEx
 
@@ -7263,7 +7263,7 @@ Measure string size for Font
 Language | Symbol
 --- | ---
 C | `Vector2 MeasureTextEx(Font font, const char *text, float fontSize, float spacing);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetGlyphIndex
 
@@ -7272,7 +7272,7 @@ Get glyph index position in font for a codepoint (unicode character), fallback t
 Language | Symbol
 --- | ---
 C | `int GetGlyphIndex(Font font, int codepoint);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetGlyphInfo
 
@@ -7281,7 +7281,7 @@ Get glyph font info data for a codepoint (unicode character), fallback to '?' if
 Language | Symbol
 --- | ---
 C | `GlyphInfo GetGlyphInfo(Font font, int codepoint);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetGlyphAtlasRec
 
@@ -7290,7 +7290,7 @@ Get glyph rectangle in font atlas for a codepoint (unicode character), fallback 
 Language | Symbol
 --- | ---
 C | `Rectangle GetGlyphAtlasRec(Font font, int codepoint);`
-Swift | —
+Swift | *unimplemented*
 
 ### Text codepoints management functions (unicode characters)
 
@@ -7310,7 +7310,7 @@ Load all codepoints from a UTF-8 text string, codepoints count returned by param
 Language | Symbol
 --- | ---
 C | `int *LoadCodepoints(const char *text, int *count);`
-Swift | —
+Swift | *unimplemented*
 
 #### UnloadCodepoints
 
@@ -7319,7 +7319,7 @@ Unload codepoints data from memory
 Language | Symbol
 --- | ---
 C | `void UnloadCodepoints(int *codepoints);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetCodepointCount
 
@@ -7328,7 +7328,7 @@ Get total number of codepoints in a UTF-8 encoded string
 Language | Symbol
 --- | ---
 C | `int GetCodepointCount(const char *text);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetCodepoint
 
@@ -7337,7 +7337,7 @@ Get next codepoint in a UTF-8 encoded string, 0x3f('?') is returned on failure
 Language | Symbol
 --- | ---
 C | `int GetCodepoint(const char *text, int *bytesProcessed);`
-Swift | —
+Swift | *unimplemented*
 
 #### CodepointToUTF8
 
@@ -7346,7 +7346,7 @@ Encode one codepoint into UTF-8 byte array (array length returned as parameter)
 Language | Symbol
 --- | ---
 C | `const char *CodepointToUTF8(int codepoint, int *byteSize);`
-Swift | —
+Swift | *unimplemented*
 
 #### TextCodepointsToUTF8
 
@@ -7355,7 +7355,7 @@ Encode text as codepoints array into UTF-8 text string (WARNING: memory must be 
 Language | Symbol
 --- | ---
 C | `char *TextCodepointsToUTF8(int *codepoints, int length);`
-Swift | —
+Swift | *unimplemented*
 
 ### Text strings management functions (no UTF-8 strings, only byte chars)
 
@@ -7386,7 +7386,7 @@ Copy one string to another, returns bytes copied
 Language | Symbol
 --- | ---
 C | `int TextCopy(char *dst, const char *src);`
-Swift | —
+Swift | *unimplemented*
 
 #### TextIsEqual
 
@@ -7395,7 +7395,7 @@ Check if two text string are equal
 Language | Symbol
 --- | ---
 C | `bool TextIsEqual(const char *text1, const char *text2);`
-Swift | —
+Swift | *unimplemented*
 
 #### TextLength
 
@@ -7404,7 +7404,7 @@ Get text length, checks for '\0' ending
 Language | Symbol
 --- | ---
 C | `unsigned int TextLength(const char *text);`
-Swift | —
+Swift | *unimplemented*
 
 #### TextFormat
 
@@ -7413,7 +7413,7 @@ Text formatting with variables (sprintf() style)
 Language | Symbol
 --- | ---
 C | `const char *TextFormat(const char *text, ...);`
-Swift | —
+Swift | *unimplemented*
 
 #### TextSubtext
 
@@ -7422,7 +7422,7 @@ Get a piece of a text string
 Language | Symbol
 --- | ---
 C | `const char *TextSubtext(const char *text, int position, int length);`
-Swift | —
+Swift | *unimplemented*
 
 #### TextReplace
 
@@ -7431,7 +7431,7 @@ Replace text string (WARNING: memory must be freed!)
 Language | Symbol
 --- | ---
 C | `char *TextReplace(char *text, const char *replace, const char *by);`
-Swift | —
+Swift | *unimplemented*
 
 #### TextInsert
 
@@ -7440,7 +7440,7 @@ Insert text in a position (WARNING: memory must be freed!)
 Language | Symbol
 --- | ---
 C | `char *TextInsert(const char *text, const char *insert, int position);`
-Swift | —
+Swift | *unimplemented*
 
 #### TextJoin
 
@@ -7449,7 +7449,7 @@ Join text strings with delimiter
 Language | Symbol
 --- | ---
 C | `const char *TextJoin(const char **textList, int count, const char *delimiter);`
-Swift | —
+Swift | *unimplemented*
 
 #### TextSplit
 
@@ -7458,7 +7458,7 @@ Split text into multiple strings
 Language | Symbol
 --- | ---
 C | `const char **TextSplit(const char *text, char delimiter, int *count);`
-Swift | —
+Swift | *unimplemented*
 
 #### TextAppend
 
@@ -7467,7 +7467,7 @@ Append text at specific position and move cursor!
 Language | Symbol
 --- | ---
 C | `void TextAppend(char *text, const char *append, int *position);`
-Swift | —
+Swift | *unimplemented*
 
 #### TextFindIndex
 
@@ -7476,7 +7476,7 @@ Find first text occurrence within a string
 Language | Symbol
 --- | ---
 C | `int TextFindIndex(const char *text, const char *find);`
-Swift | —
+Swift | *unimplemented*
 
 #### TextToUpper
 
@@ -7485,7 +7485,7 @@ Get upper case version of provided string
 Language | Symbol
 --- | ---
 C | `const char *TextToUpper(const char *text);`
-Swift | —
+Swift | *unimplemented*
 
 #### TextToLower
 
@@ -7494,7 +7494,7 @@ Get lower case version of provided string
 Language | Symbol
 --- | ---
 C | `const char *TextToLower(const char *text);`
-Swift | —
+Swift | *unimplemented*
 
 #### TextToPascal
 
@@ -7503,7 +7503,7 @@ Get Pascal case notation version of provided string
 Language | Symbol
 --- | ---
 C | `const char *TextToPascal(const char *text);`
-Swift | —
+Swift | *unimplemented*
 
 #### TextToInteger
 
@@ -7512,7 +7512,7 @@ Get integer value from text (negative values not supported)
 Language | Symbol
 --- | ---
 C | `int TextToInteger(const char *text);`
-Swift | —
+Swift | *unimplemented*
 
 ## Basic 3d Shapes Drawing Functions (Module: models)
 
@@ -7549,7 +7549,7 @@ Draw a line in 3D world space
 Language | Symbol
 --- | ---
 C | `void DrawLine3D(Vector3 startPos, Vector3 endPos, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawPoint3D
 
@@ -7558,7 +7558,7 @@ Draw a point in 3D space, actually a small line
 Language | Symbol
 --- | ---
 C | `void DrawPoint3D(Vector3 position, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawCircle3D
 
@@ -7567,7 +7567,7 @@ Draw a circle in 3D world space
 Language | Symbol
 --- | ---
 C | `void DrawCircle3D(Vector3 center, float radius, Vector3 rotationAxis, float rotationAngle, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawTriangle3D
 
@@ -7576,7 +7576,7 @@ Draw a color-filled triangle (vertex in counter-clockwise order!)
 Language | Symbol
 --- | ---
 C | `void DrawTriangle3D(Vector3 v1, Vector3 v2, Vector3 v3, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawTriangleStrip3D
 
@@ -7585,7 +7585,7 @@ Draw a triangle strip defined by points
 Language | Symbol
 --- | ---
 C | `void DrawTriangleStrip3D(Vector3 *points, int pointCount, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawCube
 
@@ -7594,7 +7594,7 @@ Draw cube
 Language | Symbol
 --- | ---
 C | `void DrawCube(Vector3 position, float width, float height, float length, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawCubeV
 
@@ -7603,7 +7603,7 @@ Draw cube
 Language | Symbol
 --- | ---
 C | `void DrawCubeV(Vector3 position, Vector3 size, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawCubeWires
 
@@ -7612,7 +7612,7 @@ Draw cube wires
 Language | Symbol
 --- | ---
 C | `void DrawCubeWires(Vector3 position, float width, float height, float length, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawCubeWiresV
 
@@ -7621,7 +7621,7 @@ Draw cube wires
 Language | Symbol
 --- | ---
 C | `void DrawCubeWiresV(Vector3 position, Vector3 size, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawCubeTexture
 
@@ -7630,7 +7630,7 @@ Draw cube textured
 Language | Symbol
 --- | ---
 C | `void DrawCubeTexture(Texture2D texture, Vector3 position, float width, float height, float length, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawCubeTextureRec
 
@@ -7639,7 +7639,7 @@ Draw cube with a region of a texture
 Language | Symbol
 --- | ---
 C | `void DrawCubeTextureRec(Texture2D texture, Rectangle source, Vector3 position, float width, float height, float length, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawSphere
 
@@ -7648,7 +7648,7 @@ Draw sphere
 Language | Symbol
 --- | ---
 C | `void DrawSphere(Vector3 centerPos, float radius, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawSphereEx
 
@@ -7657,7 +7657,7 @@ Draw sphere with extended parameters
 Language | Symbol
 --- | ---
 C | `void DrawSphereEx(Vector3 centerPos, float radius, int rings, int slices, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawSphereWires
 
@@ -7666,7 +7666,7 @@ Draw sphere wires
 Language | Symbol
 --- | ---
 C | `void DrawSphereWires(Vector3 centerPos, float radius, int rings, int slices, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawCylinder
 
@@ -7675,7 +7675,7 @@ Draw a cylinder/cone
 Language | Symbol
 --- | ---
 C | `void DrawCylinder(Vector3 position, float radiusTop, float radiusBottom, float height, int slices, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawCylinderEx
 
@@ -7684,7 +7684,7 @@ Draw a cylinder with base at startPos and top at endPos
 Language | Symbol
 --- | ---
 C | `void DrawCylinderEx(Vector3 startPos, Vector3 endPos, float startRadius, float endRadius, int sides, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawCylinderWires
 
@@ -7693,7 +7693,7 @@ Draw a cylinder/cone wires
 Language | Symbol
 --- | ---
 C | `void DrawCylinderWires(Vector3 position, float radiusTop, float radiusBottom, float height, int slices, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawCylinderWiresEx
 
@@ -7702,7 +7702,7 @@ Draw a cylinder wires with base at startPos and top at endPos
 Language | Symbol
 --- | ---
 C | `void DrawCylinderWiresEx(Vector3 startPos, Vector3 endPos, float startRadius, float endRadius, int sides, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawPlane
 
@@ -7711,7 +7711,7 @@ Draw a plane XZ
 Language | Symbol
 --- | ---
 C | `void DrawPlane(Vector3 centerPos, Vector2 size, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawRay
 
@@ -7720,7 +7720,7 @@ Draw a ray line
 Language | Symbol
 --- | ---
 C | `void DrawRay(Ray ray, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawGrid
 
@@ -7729,7 +7729,7 @@ Draw a grid (centered at (0, 0, 0))
 Language | Symbol
 --- | ---
 C | `void DrawGrid(int slices, float spacing);`
-Swift | —
+Swift | *unimplemented*
 
 ## Model 3d Loading and Drawing Functions (Module: models)
 
@@ -7750,7 +7750,7 @@ Load model from files (meshes and materials)
 Language | Symbol
 --- | ---
 C | `Model LoadModel(const char *fileName);`
-Swift | —
+Swift | *unimplemented*
 
 #### LoadModelFromMesh
 
@@ -7759,7 +7759,7 @@ Load model from generated mesh (default material)
 Language | Symbol
 --- | ---
 C | `Model LoadModelFromMesh(Mesh mesh);`
-Swift | —
+Swift | *unimplemented*
 
 #### UnloadModel
 
@@ -7768,7 +7768,7 @@ Unload model (including meshes) from memory (RAM and/or VRAM)
 Language | Symbol
 --- | ---
 C | `void UnloadModel(Model model);`
-Swift | —
+Swift | *unimplemented*
 
 #### UnloadModelKeepMeshes
 
@@ -7777,7 +7777,7 @@ Unload model (but not meshes) from memory (RAM and/or VRAM)
 Language | Symbol
 --- | ---
 C | `void UnloadModelKeepMeshes(Model model);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetModelBoundingBox
 
@@ -7786,7 +7786,7 @@ Compute model bounding box limits (considers all meshes)
 Language | Symbol
 --- | ---
 C | `BoundingBox GetModelBoundingBox(Model model);`
-Swift | —
+Swift | *unimplemented*
 
 ### Model drawing functions
 
@@ -7808,7 +7808,7 @@ Draw a model (with texture if set)
 Language | Symbol
 --- | ---
 C | `void DrawModel(Model model, Vector3 position, float scale, Color tint);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawModelEx
 
@@ -7817,7 +7817,7 @@ Draw a model with extended parameters
 Language | Symbol
 --- | ---
 C | `void DrawModelEx(Model model, Vector3 position, Vector3 rotationAxis, float rotationAngle, Vector3 scale, Color tint);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawModelWires
 
@@ -7826,7 +7826,7 @@ Draw a model wires (with texture if set)
 Language | Symbol
 --- | ---
 C | `void DrawModelWires(Model model, Vector3 position, float scale, Color tint);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawModelWiresEx
 
@@ -7835,7 +7835,7 @@ Draw a model wires (with texture if set) with extended parameters
 Language | Symbol
 --- | ---
 C | `void DrawModelWiresEx(Model model, Vector3 position, Vector3 rotationAxis, float rotationAngle, Vector3 scale, Color tint);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawBoundingBox
 
@@ -7844,7 +7844,7 @@ Draw bounding box (wires)
 Language | Symbol
 --- | ---
 C | `void DrawBoundingBox(BoundingBox box, Color color);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawBillboard
 
@@ -7853,7 +7853,7 @@ Draw a billboard texture
 Language | Symbol
 --- | ---
 C | `void DrawBillboard(Camera camera, Texture2D texture, Vector3 position, float size, Color tint);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawBillboardRec
 
@@ -7862,7 +7862,7 @@ Draw a billboard texture defined by source
 Language | Symbol
 --- | ---
 C | `void DrawBillboardRec(Camera camera, Texture2D texture, Rectangle source, Vector3 position, Vector2 size, Color tint);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawBillboardPro
 
@@ -7871,7 +7871,7 @@ Draw a billboard texture defined by source and rotation
 Language | Symbol
 --- | ---
 C | `void DrawBillboardPro(Camera camera, Texture2D texture, Rectangle source, Vector3 position, Vector3 up, Vector2 size, Vector2 origin, float rotation, Color tint);`
-Swift | —
+Swift | *unimplemented*
 
 ### Mesh management functions
 
@@ -7894,7 +7894,7 @@ Upload mesh vertex data in GPU and provide VAO/VBO ids
 Language | Symbol
 --- | ---
 C | `void UploadMesh(Mesh *mesh, bool dynamic);`
-Swift | —
+Swift | *unimplemented*
 
 #### UpdateMeshBuffer
 
@@ -7903,7 +7903,7 @@ Update mesh vertex data in GPU for a specific buffer index
 Language | Symbol
 --- | ---
 C | `void UpdateMeshBuffer(Mesh mesh, int index, void *data, int dataSize, int offset);`
-Swift | —
+Swift | *unimplemented*
 
 #### UnloadMesh
 
@@ -7912,7 +7912,7 @@ Unload mesh data from CPU and GPU
 Language | Symbol
 --- | ---
 C | `void UnloadMesh(Mesh mesh);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawMesh
 
@@ -7921,7 +7921,7 @@ Draw a 3d mesh with material and transform
 Language | Symbol
 --- | ---
 C | `void DrawMesh(Mesh mesh, Material material, Matrix transform);`
-Swift | —
+Swift | *unimplemented*
 
 #### DrawMeshInstanced
 
@@ -7930,7 +7930,7 @@ Draw multiple mesh instances with material and different transforms
 Language | Symbol
 --- | ---
 C | `void DrawMeshInstanced(Mesh mesh, Material material, Matrix *transforms, int instances);`
-Swift | —
+Swift | *unimplemented*
 
 #### ExportMesh
 
@@ -7939,7 +7939,7 @@ Export mesh data to file, returns true on success
 Language | Symbol
 --- | ---
 C | `bool ExportMesh(Mesh mesh, const char *fileName);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetMeshBoundingBox
 
@@ -7948,7 +7948,7 @@ Compute mesh bounding box limits
 Language | Symbol
 --- | ---
 C | `BoundingBox GetMeshBoundingBox(Mesh mesh);`
-Swift | —
+Swift | *unimplemented*
 
 #### GenMeshTangents
 
@@ -7957,7 +7957,7 @@ Compute mesh tangents
 Language | Symbol
 --- | ---
 C | `void GenMeshTangents(Mesh *mesh);`
-Swift | —
+Swift | *unimplemented*
 
 #### GenMeshBinormals
 
@@ -7966,7 +7966,7 @@ Compute mesh binormals
 Language | Symbol
 --- | ---
 C | `void GenMeshBinormals(Mesh *mesh);`
-Swift | —
+Swift | *unimplemented*
 
 ### Mesh generation functions
 
@@ -7991,7 +7991,7 @@ Generate polygonal mesh
 Language | Symbol
 --- | ---
 C | `Mesh GenMeshPoly(int sides, float radius);`
-Swift | —
+Swift | *unimplemented*
 
 #### GenMeshPlane
 
@@ -8000,7 +8000,7 @@ Generate plane mesh (with subdivisions)
 Language | Symbol
 --- | ---
 C | `Mesh GenMeshPlane(float width, float length, int resX, int resZ);`
-Swift | —
+Swift | *unimplemented*
 
 #### GenMeshCube
 
@@ -8009,7 +8009,7 @@ Generate cuboid mesh
 Language | Symbol
 --- | ---
 C | `Mesh GenMeshCube(float width, float height, float length);`
-Swift | —
+Swift | *unimplemented*
 
 #### GenMeshSphere
 
@@ -8018,7 +8018,7 @@ Generate sphere mesh (standard sphere)
 Language | Symbol
 --- | ---
 C | `Mesh GenMeshSphere(float radius, int rings, int slices);`
-Swift | —
+Swift | *unimplemented*
 
 #### GenMeshHemiSphere
 
@@ -8027,7 +8027,7 @@ Generate half-sphere mesh (no bottom cap)
 Language | Symbol
 --- | ---
 C | `Mesh GenMeshHemiSphere(float radius, int rings, int slices);`
-Swift | —
+Swift | *unimplemented*
 
 #### GenMeshCylinder
 
@@ -8036,7 +8036,7 @@ Generate cylinder mesh
 Language | Symbol
 --- | ---
 C | `Mesh GenMeshCylinder(float radius, float height, int slices);`
-Swift | —
+Swift | *unimplemented*
 
 #### GenMeshCone
 
@@ -8045,7 +8045,7 @@ Generate cone/pyramid mesh
 Language | Symbol
 --- | ---
 C | `Mesh GenMeshCone(float radius, float height, int slices);`
-Swift | —
+Swift | *unimplemented*
 
 #### GenMeshTorus
 
@@ -8054,7 +8054,7 @@ Generate torus mesh
 Language | Symbol
 --- | ---
 C | `Mesh GenMeshTorus(float radius, float size, int radSeg, int sides);`
-Swift | —
+Swift | *unimplemented*
 
 #### GenMeshKnot
 
@@ -8063,7 +8063,7 @@ Generate trefoil knot mesh
 Language | Symbol
 --- | ---
 C | `Mesh GenMeshKnot(float radius, float size, int radSeg, int sides);`
-Swift | —
+Swift | *unimplemented*
 
 #### GenMeshHeightmap
 
@@ -8072,7 +8072,7 @@ Generate heightmap mesh from image data
 Language | Symbol
 --- | ---
 C | `Mesh GenMeshHeightmap(Image heightmap, Vector3 size);`
-Swift | —
+Swift | *unimplemented*
 
 #### GenMeshCubicmap
 
@@ -8081,7 +8081,7 @@ Generate cubes-based map mesh from image data
 Language | Symbol
 --- | ---
 C | `Mesh GenMeshCubicmap(Image cubicmap, Vector3 cubeSize);`
-Swift | —
+Swift | *unimplemented*
 
 ### Material loading/unloading functions
 
@@ -8100,7 +8100,7 @@ Load materials from model file
 Language | Symbol
 --- | ---
 C | `Material *LoadMaterials(const char *fileName, int *materialCount);`
-Swift | —
+Swift | *unimplemented*
 
 #### LoadMaterialDefault
 
@@ -8109,7 +8109,7 @@ Load default material (Supports: DIFFUSE, SPECULAR, NORMAL maps)
 Language | Symbol
 --- | ---
 C | `Material LoadMaterialDefault(void);`
-Swift | —
+Swift | *unimplemented*
 
 #### UnloadMaterial
 
@@ -8118,7 +8118,7 @@ Unload material from GPU memory (VRAM)
 Language | Symbol
 --- | ---
 C | `void UnloadMaterial(Material material);`
-Swift | —
+Swift | *unimplemented*
 
 #### SetMaterialTexture
 
@@ -8127,7 +8127,7 @@ Set texture for a material map type (MATERIAL_MAP_DIFFUSE, MATERIAL_MAP_SPECULAR
 Language | Symbol
 --- | ---
 C | `void SetMaterialTexture(Material *material, int mapType, Texture2D texture);`
-Swift | —
+Swift | *unimplemented*
 
 #### SetModelMeshMaterial
 
@@ -8136,7 +8136,7 @@ Set material for a mesh
 Language | Symbol
 --- | ---
 C | `void SetModelMeshMaterial(Model *model, int meshId, int materialId);`
-Swift | —
+Swift | *unimplemented*
 
 ### Model animations loading/unloading functions
 
@@ -8155,7 +8155,7 @@ Load model animations from file
 Language | Symbol
 --- | ---
 C | `ModelAnimation *LoadModelAnimations(const char *fileName, unsigned int *animCount);`
-Swift | —
+Swift | *unimplemented*
 
 #### UpdateModelAnimation
 
@@ -8164,7 +8164,7 @@ Update model animation pose
 Language | Symbol
 --- | ---
 C | `void UpdateModelAnimation(Model model, ModelAnimation anim, int frame);`
-Swift | —
+Swift | *unimplemented*
 
 #### UnloadModelAnimation
 
@@ -8173,7 +8173,7 @@ Unload animation data
 Language | Symbol
 --- | ---
 C | `void UnloadModelAnimation(ModelAnimation anim);`
-Swift | —
+Swift | *unimplemented*
 
 #### UnloadModelAnimations
 
@@ -8182,7 +8182,7 @@ Unload animation array data
 Language | Symbol
 --- | ---
 C | `void UnloadModelAnimations(ModelAnimation* animations, unsigned int count);`
-Swift | —
+Swift | *unimplemented*
 
 #### IsModelAnimationValid
 
@@ -8191,7 +8191,7 @@ Check model animation skeleton match
 Language | Symbol
 --- | ---
 C | `bool IsModelAnimationValid(Model model, ModelAnimation anim);`
-Swift | —
+Swift | *unimplemented*
 
 ### Collision detection functions
 
@@ -8214,7 +8214,7 @@ Check collision between two spheres
 Language | Symbol
 --- | ---
 C | `bool CheckCollisionSpheres(Vector3 center1, float radius1, Vector3 center2, float radius2);`
-Swift | —
+Swift | *unimplemented*
 
 #### CheckCollisionBoxes
 
@@ -8223,7 +8223,7 @@ Check collision between two bounding boxes
 Language | Symbol
 --- | ---
 C | `bool CheckCollisionBoxes(BoundingBox box1, BoundingBox box2);`
-Swift | —
+Swift | *unimplemented*
 
 #### CheckCollisionBoxSphere
 
@@ -8232,7 +8232,7 @@ Check collision between box and sphere
 Language | Symbol
 --- | ---
 C | `bool CheckCollisionBoxSphere(BoundingBox box, Vector3 center, float radius);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetRayCollisionSphere
 
@@ -8241,7 +8241,7 @@ Get collision info between ray and sphere
 Language | Symbol
 --- | ---
 C | `RayCollision GetRayCollisionSphere(Ray ray, Vector3 center, float radius);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetRayCollisionBox
 
@@ -8250,7 +8250,7 @@ Get collision info between ray and box
 Language | Symbol
 --- | ---
 C | `RayCollision GetRayCollisionBox(Ray ray, BoundingBox box);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetRayCollisionModel
 
@@ -8259,7 +8259,7 @@ Get collision info between ray and model
 Language | Symbol
 --- | ---
 C | `RayCollision GetRayCollisionModel(Ray ray, Model model);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetRayCollisionMesh
 
@@ -8268,7 +8268,7 @@ Get collision info between ray and mesh
 Language | Symbol
 --- | ---
 C | `RayCollision GetRayCollisionMesh(Ray ray, Mesh mesh, Matrix transform);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetRayCollisionTriangle
 
@@ -8277,7 +8277,7 @@ Get collision info between ray and triangle
 Language | Symbol
 --- | ---
 C | `RayCollision GetRayCollisionTriangle(Ray ray, Vector3 p1, Vector3 p2, Vector3 p3);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetRayCollisionQuad
 
@@ -8286,7 +8286,7 @@ Get collision info between ray and quad
 Language | Symbol
 --- | ---
 C | `RayCollision GetRayCollisionQuad(Ray ray, Vector3 p1, Vector3 p2, Vector3 p3, Vector3 p4);`
-Swift | —
+Swift | *unimplemented*
 
 ## Audio Loading and Playing Functions (Module: audio)
 
@@ -8306,7 +8306,7 @@ Initialize audio device and context
 Language | Symbol
 --- | ---
 C | `void InitAudioDevice(void);`
-Swift | —
+Swift | *unimplemented*
 
 #### CloseAudioDevice
 
@@ -8315,7 +8315,7 @@ Close the audio device and context
 Language | Symbol
 --- | ---
 C | `void CloseAudioDevice(void);`
-Swift | —
+Swift | *unimplemented*
 
 #### IsAudioDeviceReady
 
@@ -8324,7 +8324,7 @@ Check if audio device has been initialized successfully
 Language | Symbol
 --- | ---
 C | `bool IsAudioDeviceReady(void);`
-Swift | —
+Swift | *unimplemented*
 
 #### SetMasterVolume
 
@@ -8333,7 +8333,7 @@ Set master volume (listener)
 Language | Symbol
 --- | ---
 C | `void SetMasterVolume(float volume);`
-Swift | —
+Swift | *unimplemented*
 
 ### Wave/Sound loading/unloading functions
 
@@ -8356,7 +8356,7 @@ Load wave data from file
 Language | Symbol
 --- | ---
 C | `Wave LoadWave(const char *fileName);`
-Swift | —
+Swift | *unimplemented*
 
 #### LoadWaveFromMemory
 
@@ -8365,7 +8365,7 @@ Load wave from memory buffer, fileType refers to extension: i.e. '.wav'
 Language | Symbol
 --- | ---
 C | `Wave LoadWaveFromMemory(const char *fileType, const unsigned char *fileData, int dataSize);`
-Swift | —
+Swift | *unimplemented*
 
 #### LoadSound
 
@@ -8374,7 +8374,7 @@ Load sound from file
 Language | Symbol
 --- | ---
 C | `Sound LoadSound(const char *fileName);`
-Swift | —
+Swift | *unimplemented*
 
 #### LoadSoundFromWave
 
@@ -8383,7 +8383,7 @@ Load sound from wave data
 Language | Symbol
 --- | ---
 C | `Sound LoadSoundFromWave(Wave wave);`
-Swift | —
+Swift | *unimplemented*
 
 #### UpdateSound
 
@@ -8392,7 +8392,7 @@ Update sound buffer with new data
 Language | Symbol
 --- | ---
 C | `void UpdateSound(Sound sound, const void *data, int sampleCount);`
-Swift | —
+Swift | *unimplemented*
 
 #### UnloadWave
 
@@ -8401,7 +8401,7 @@ Unload wave data
 Language | Symbol
 --- | ---
 C | `void UnloadWave(Wave wave);`
-Swift | —
+Swift | *unimplemented*
 
 #### UnloadSound
 
@@ -8410,7 +8410,7 @@ Unload sound
 Language | Symbol
 --- | ---
 C | `void UnloadSound(Sound sound);`
-Swift | —
+Swift | *unimplemented*
 
 #### ExportWave
 
@@ -8419,7 +8419,7 @@ Export wave data to file, returns true on success
 Language | Symbol
 --- | ---
 C | `bool ExportWave(Wave wave, const char *fileName);`
-Swift | —
+Swift | *unimplemented*
 
 #### ExportWaveAsCode
 
@@ -8428,7 +8428,7 @@ Export wave sample data to code (.h), returns true on success
 Language | Symbol
 --- | ---
 C | `bool ExportWaveAsCode(Wave wave, const char *fileName);`
-Swift | —
+Swift | *unimplemented*
 
 ### Wave/Sound management functions
 
@@ -8457,7 +8457,7 @@ Play a sound
 Language | Symbol
 --- | ---
 C | `void PlaySound(Sound sound);`
-Swift | —
+Swift | *unimplemented*
 
 #### StopSound
 
@@ -8466,7 +8466,7 @@ Stop playing a sound
 Language | Symbol
 --- | ---
 C | `void StopSound(Sound sound);`
-Swift | —
+Swift | *unimplemented*
 
 #### PauseSound
 
@@ -8475,7 +8475,7 @@ Pause a sound
 Language | Symbol
 --- | ---
 C | `void PauseSound(Sound sound);`
-Swift | —
+Swift | *unimplemented*
 
 #### ResumeSound
 
@@ -8484,7 +8484,7 @@ Resume a paused sound
 Language | Symbol
 --- | ---
 C | `void ResumeSound(Sound sound);`
-Swift | —
+Swift | *unimplemented*
 
 #### PlaySoundMulti
 
@@ -8493,7 +8493,7 @@ Play a sound (using multichannel buffer pool)
 Language | Symbol
 --- | ---
 C | `void PlaySoundMulti(Sound sound);`
-Swift | —
+Swift | *unimplemented*
 
 #### StopSoundMulti
 
@@ -8502,7 +8502,7 @@ Stop any sound playing (using multichannel buffer pool)
 Language | Symbol
 --- | ---
 C | `void StopSoundMulti(void);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetSoundsPlaying
 
@@ -8511,7 +8511,7 @@ Get number of sounds playing in the multichannel
 Language | Symbol
 --- | ---
 C | `int GetSoundsPlaying(void);`
-Swift | —
+Swift | *unimplemented*
 
 #### IsSoundPlaying
 
@@ -8520,7 +8520,7 @@ Check if a sound is currently playing
 Language | Symbol
 --- | ---
 C | `bool IsSoundPlaying(Sound sound);`
-Swift | —
+Swift | *unimplemented*
 
 #### SetSoundVolume
 
@@ -8529,7 +8529,7 @@ Set volume for a sound (1.0 is max level)
 Language | Symbol
 --- | ---
 C | `void SetSoundVolume(Sound sound, float volume);`
-Swift | —
+Swift | *unimplemented*
 
 #### SetSoundPitch
 
@@ -8538,7 +8538,7 @@ Set pitch for a sound (1.0 is base level)
 Language | Symbol
 --- | ---
 C | `void SetSoundPitch(Sound sound, float pitch);`
-Swift | —
+Swift | *unimplemented*
 
 #### WaveFormat
 
@@ -8547,7 +8547,7 @@ Convert wave data to desired format
 Language | Symbol
 --- | ---
 C | `void WaveFormat(Wave *wave, int sampleRate, int sampleSize, int channels);`
-Swift | —
+Swift | *unimplemented*
 
 #### WaveCopy
 
@@ -8556,7 +8556,7 @@ Copy a wave to a new wave
 Language | Symbol
 --- | ---
 C | `Wave WaveCopy(Wave wave);`
-Swift | —
+Swift | *unimplemented*
 
 #### WaveCrop
 
@@ -8565,7 +8565,7 @@ Crop a wave to defined samples range
 Language | Symbol
 --- | ---
 C | `void WaveCrop(Wave *wave, int initSample, int finalSample);`
-Swift | —
+Swift | *unimplemented*
 
 #### LoadWaveSamples
 
@@ -8574,7 +8574,7 @@ Load samples data from wave as a floats array
 Language | Symbol
 --- | ---
 C | `float *LoadWaveSamples(Wave wave);`
-Swift | —
+Swift | *unimplemented*
 
 #### UnloadWaveSamples
 
@@ -8583,7 +8583,7 @@ Unload samples data loaded with LoadWaveSamples()
 Language | Symbol
 --- | ---
 C | `void UnloadWaveSamples(float *samples);`
-Swift | —
+Swift | *unimplemented*
 
 ### Music management functions
 
@@ -8611,7 +8611,7 @@ Load music stream from file
 Language | Symbol
 --- | ---
 C | `Music LoadMusicStream(const char *fileName);`
-Swift | —
+Swift | *unimplemented*
 
 #### LoadMusicStreamFromMemory
 
@@ -8620,7 +8620,7 @@ Load music stream from data
 Language | Symbol
 --- | ---
 C | `Music LoadMusicStreamFromMemory(const char *fileType, unsigned char *data, int dataSize);`
-Swift | —
+Swift | *unimplemented*
 
 #### UnloadMusicStream
 
@@ -8629,7 +8629,7 @@ Unload music stream
 Language | Symbol
 --- | ---
 C | `void UnloadMusicStream(Music music);`
-Swift | —
+Swift | *unimplemented*
 
 #### PlayMusicStream
 
@@ -8638,7 +8638,7 @@ Start music playing
 Language | Symbol
 --- | ---
 C | `void PlayMusicStream(Music music);`
-Swift | —
+Swift | *unimplemented*
 
 #### IsMusicStreamPlaying
 
@@ -8647,7 +8647,7 @@ Check if music is playing
 Language | Symbol
 --- | ---
 C | `bool IsMusicStreamPlaying(Music music);`
-Swift | —
+Swift | *unimplemented*
 
 #### UpdateMusicStream
 
@@ -8656,7 +8656,7 @@ Updates buffers for music streaming
 Language | Symbol
 --- | ---
 C | `void UpdateMusicStream(Music music);`
-Swift | —
+Swift | *unimplemented*
 
 #### StopMusicStream
 
@@ -8665,7 +8665,7 @@ Stop music playing
 Language | Symbol
 --- | ---
 C | `void StopMusicStream(Music music);`
-Swift | —
+Swift | *unimplemented*
 
 #### PauseMusicStream
 
@@ -8674,7 +8674,7 @@ Pause music playing
 Language | Symbol
 --- | ---
 C | `void PauseMusicStream(Music music);`
-Swift | —
+Swift | *unimplemented*
 
 #### ResumeMusicStream
 
@@ -8683,7 +8683,7 @@ Resume playing paused music
 Language | Symbol
 --- | ---
 C | `void ResumeMusicStream(Music music);`
-Swift | —
+Swift | *unimplemented*
 
 #### SeekMusicStream
 
@@ -8692,7 +8692,7 @@ Seek music to a position (in seconds)
 Language | Symbol
 --- | ---
 C | `void SeekMusicStream(Music music, float position);`
-Swift | —
+Swift | *unimplemented*
 
 #### SetMusicVolume
 
@@ -8701,7 +8701,7 @@ Set volume for music (1.0 is max level)
 Language | Symbol
 --- | ---
 C | `void SetMusicVolume(Music music, float volume);`
-Swift | —
+Swift | *unimplemented*
 
 #### SetMusicPitch
 
@@ -8710,7 +8710,7 @@ Set pitch for a music (1.0 is base level)
 Language | Symbol
 --- | ---
 C | `void SetMusicPitch(Music music, float pitch);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetMusicTimeLength
 
@@ -8719,7 +8719,7 @@ Get music time length (in seconds)
 Language | Symbol
 --- | ---
 C | `float GetMusicTimeLength(Music music);`
-Swift | —
+Swift | *unimplemented*
 
 #### GetMusicTimePlayed
 
@@ -8728,7 +8728,7 @@ Get current music time played (in seconds)
 Language | Symbol
 --- | ---
 C | `float GetMusicTimePlayed(Music music);`
-Swift | —
+Swift | *unimplemented*
 
 ### AudioStream management functions
 
@@ -8754,7 +8754,7 @@ Load audio stream (to stream raw audio pcm data)
 Language | Symbol
 --- | ---
 C | `AudioStream LoadAudioStream(unsigned int sampleRate, unsigned int sampleSize, unsigned int channels);`
-Swift | —
+Swift | *unimplemented*
 
 #### UnloadAudioStream
 
@@ -8763,7 +8763,7 @@ Unload audio stream and free memory
 Language | Symbol
 --- | ---
 C | `void UnloadAudioStream(AudioStream stream);`
-Swift | —
+Swift | *unimplemented*
 
 #### UpdateAudioStream
 
@@ -8772,7 +8772,7 @@ Update audio stream buffers with data
 Language | Symbol
 --- | ---
 C | `void UpdateAudioStream(AudioStream stream, const void *data, int frameCount);`
-Swift | —
+Swift | *unimplemented*
 
 #### IsAudioStreamProcessed
 
@@ -8781,7 +8781,7 @@ Check if any audio stream buffers requires refill
 Language | Symbol
 --- | ---
 C | `bool IsAudioStreamProcessed(AudioStream stream);`
-Swift | —
+Swift | *unimplemented*
 
 #### PlayAudioStream
 
@@ -8790,7 +8790,7 @@ Play audio stream
 Language | Symbol
 --- | ---
 C | `void PlayAudioStream(AudioStream stream);`
-Swift | —
+Swift | *unimplemented*
 
 #### PauseAudioStream
 
@@ -8799,7 +8799,7 @@ Pause audio stream
 Language | Symbol
 --- | ---
 C | `void PauseAudioStream(AudioStream stream);`
-Swift | —
+Swift | *unimplemented*
 
 #### ResumeAudioStream
 
@@ -8808,7 +8808,7 @@ Resume audio stream
 Language | Symbol
 --- | ---
 C | `void ResumeAudioStream(AudioStream stream);`
-Swift | —
+Swift | *unimplemented*
 
 #### IsAudioStreamPlaying
 
@@ -8817,7 +8817,7 @@ Check if audio stream is playing
 Language | Symbol
 --- | ---
 C | `bool IsAudioStreamPlaying(AudioStream stream);`
-Swift | —
+Swift | *unimplemented*
 
 #### StopAudioStream
 
@@ -8826,7 +8826,7 @@ Stop audio stream
 Language | Symbol
 --- | ---
 C | `void StopAudioStream(AudioStream stream);`
-Swift | —
+Swift | *unimplemented*
 
 #### SetAudioStreamVolume
 
@@ -8835,7 +8835,7 @@ Set volume for audio stream (1.0 is max level)
 Language | Symbol
 --- | ---
 C | `void SetAudioStreamVolume(AudioStream stream, float volume);`
-Swift | —
+Swift | *unimplemented*
 
 #### SetAudioStreamPitch
 
@@ -8844,7 +8844,7 @@ Set pitch for audio stream (1.0 is base level)
 Language | Symbol
 --- | ---
 C | `void SetAudioStreamPitch(AudioStream stream, float pitch);`
-Swift | —
+Swift | *unimplemented*
 
 #### SetAudioStreamBufferSizeDefault
 
@@ -8853,5 +8853,5 @@ Default size for new audio streams
 Language | Symbol
 --- | ---
 C | `void SetAudioStreamBufferSizeDefault(int size);`
-Swift | —
+Swift | *unimplemented*
 

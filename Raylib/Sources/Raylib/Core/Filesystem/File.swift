@@ -58,7 +58,7 @@ public struct File {
 	// TODO: Improve data integrations (closure, Foundation)
 	
 	///  Load file data as byte array
-	@inlinable public var data: [UInt8]? {
+	@inlinable public var bytes: [UInt8]? {
 		var count: UInt32 = 0
 		guard let pointer = LoadFileData(path, &count) else {
 			return nil
@@ -113,3 +113,23 @@ public struct File {
 	// TODO: Add image and texture writes
 	
 }
+
+//MARK: - Foundation Integration
+
+#if canImport(Foundation)
+import Foundation
+
+extension File {
+	
+	///  Load file data
+	@inlinable public var data: Data? {
+		var count: UInt32 = 0
+		guard let pointer = LoadFileData(path, &count) else {
+			return nil
+		}
+		defer { UnloadFileData(pointer) }
+		return Data(buffer: UnsafeMutableBufferPointer(start: pointer, count: count.toInt))
+	}
+	
+}
+#endif

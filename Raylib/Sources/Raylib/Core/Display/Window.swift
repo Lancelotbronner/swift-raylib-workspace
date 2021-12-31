@@ -18,11 +18,6 @@ public struct Window {
 		IsWindowReady()
 	}
 	
-	/// Check if `KEY_ESCAPE` pressed or `Close` icon pressed
-	@inlinable public static var shouldClose: Bool {
-		WindowShouldClose()
-	}
-	
 	/// Check if window is currently fullscreen; Toggle window state: fullscreen/windowed (only `PLATFORM_DESKTOP`)
 	@inlinable public static var isFullscreen: Bool {
 		get { IsWindowFullscreen() }
@@ -126,12 +121,12 @@ public struct Window {
 	//MARK: Flags Methods
 	
 	/// Set window configuration state
-	@inlinable public static func enable(_ state: WindowFlag...) {
+	@inlinable public static func enable(_ state: WindowFlags...) {
 		state.reduced.enable()
 	}
 	
 	/// Clear window configuration state
-	@inlinable public static func disable(_ state: WindowFlag...) {
+	@inlinable public static func disable(_ state: WindowFlags...) {
 		state.reduced.disable()
 	}
 	

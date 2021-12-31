@@ -18,3 +18,18 @@ public struct System {
 	}
 	
 }
+
+//MARK: - Foundation Integration
+
+#if canImport(Foundation)
+import Foundation
+
+extension System {
+	
+	/// Open URL with default system browser (if available)
+	@inlinable public static func open(_ url: URL) {
+		OpenURL(url.absoluteString)
+	}
+	
+}
+#endif

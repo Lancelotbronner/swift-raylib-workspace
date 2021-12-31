@@ -1,4 +1,4 @@
-C						| Swift
+C | Swift
 
 RAYWHITE | Color/raywhite
 MAGENTA | Color/magenta
@@ -12,13 +12,13 @@ DARKPURPLE | Color/darkPurple
 VIOLET | Color/violet
 PURPLE | Color/purple
 DARKBLUE | Color/darkBlue
-BLUE | Color/blue
+BLUE | Color/blue-swift.type.property
 SKYBLUE | Color/skyBlue
 DARKGREEN | Color/darkGreen
 LIME | Color/lime
-GREEN | Color/green
+GREEN | Color/green-swift.type.property
 MAROON | Color/maroon
-RED | Color/red
+RED | Color/red-swift.type.property
 PINK | Color/pink
 ORANGE | Color/orange
 GOLD | Color/gold
@@ -27,41 +27,24 @@ DARKGRAY | Color/darkGray
 GRAY | Color/gray
 LIGHTGRAY | Color/lightGray
 
+SHADER_UNIFORM_INT |
+SHADER_UNIFORM_FLOAT |
+
 Vector2 | Vector2f
 Vector3 | Vector3f
 Vector4 | Vector4f
-Quaternion | Quaternion
-Matrix4x4 | Matrix4x4f
+Matrix | Matrix4x4f
 Color | Color
 Rectangle | Rectangle
 Image | Texture
 Texture | Texture
 Texture2D | Texture
-TextureCubemap | Cubemap
 RenderTexture | RenderTexture
 RenderTexture2D | RenderTexture
-GlyphInfo | Glyph
-Font | Font
 Camera | Camera3D
 Camera3D | Camera3D
 Camera2D | Camera2D
-Mesh | Mesh
 Shader | Shader
-MaterialMap |
-Material | Material
-Transform | Transform
-BoneInfo | Bone
-Model | Model
-ModelAnimation | ModelAnimation
-Ray | Ray
-RayCollision | Ray/Hit
-BoundingBox | BoundingBox
-Wave | Wave
-AudioStream | AudioStream
-Sound | Sound
-Music | Music
-VrDeviceInfo | VirtualRealityDevice
-VrStereoConfig | VirtualRealityDevice/Configuration
 
 FLAG_INTERLACED_HINT | WindowFlags/interlaced
 FLAG_MSAA_4X_HINT | WindowFlags/msaa4x
@@ -93,11 +76,11 @@ KEY_MENU | Keyboard/menu
 KEY_BACK | Keyboard/back
 KEY_KP_EQUAL | Keyboard/keypadEqual
 KEY_KP_ENTER | Keyboard/keypadEnter
-KEY_KP_ADD | Keyboard/keypadAdd
-KEY_KP_SUBTRACT | Keyboard/keypadSubstract
-KEY_KP_MULTIPLY | Keyboard/keypadMultiply
-KEY_KP_DIVIDE | Keyboard/keypadDivide
-KEY_KP_DECIMAL | Keyboard/keypadDecimal
+KEY_KP_ADD | Keyboard/add
+KEY_KP_SUBTRACT | Keyboard/subtract
+KEY_KP_MULTIPLY | Keyboard/multiply
+KEY_KP_DIVIDE | Keyboard/divide
+KEY_KP_DECIMAL | Keyboard/decimal
 KEY_KP_9 | Keyboard/keypadNine
 KEY_KP_8 | Keyboard/keypadEight
 KEY_KP_7 | Keyboard/keypadSeven
@@ -109,14 +92,14 @@ KEY_KP_2 | Keyboard/keypadTwo
 KEY_KP_1 | Keyboard/keypadOne
 KEY_KP_0 | Keyboard/keypadZero
 KEY_KB_MENU | Keyboard/menu
-KEY_RIGHT_SUPER | Keyboard/super/right
-KEY_RIGHT_ALT | Keyboard/alt/right
-KEY_RIGHT_CONTROL | Keyboard/control/right
-KEY_RIGHT_SHIFT | Keyboard/shift/right
-KEY_LEFT_SUPER | Keyboard/super/left
-KEY_LEFT_ALT | Keyboard/alt/left
-KEY_LEFT_CONTROL | Keyboard/control/left
-KEY_LEFT_SHIFT | Keyboard/shift/left
+KEY_RIGHT_SUPER | Keyboard/super
+KEY_RIGHT_ALT | Keyboard/alt
+KEY_RIGHT_CONTROL | Keyboard/control
+KEY_RIGHT_SHIFT | Keyboard/shift
+KEY_LEFT_SUPER | Keyboard/super
+KEY_LEFT_ALT | Keyboard/alt
+KEY_LEFT_CONTROL | Keyboard/control
+KEY_LEFT_SHIFT | Keyboard/shift
 KEY_F12 | Keyboard/f12
 KEY_F11 | Keyboard/f11
 KEY_F10 | Keyboard/f10
@@ -181,7 +164,7 @@ KEY_B | Keyboard/b
 KEY_A | Keyboard/a
 KEY_EQUAL | Keyboard/equal
 KEY_SEMICOLON | Keyboard/semicolon
-KEY_NINE | Keyboard/none
+KEY_NINE | Keyboard/nine
 KEY_EIGHT | Keyboard/eight
 KEY_SEVEN | Keyboard/seven
 KEY_SIX | Keyboard/six
@@ -204,7 +187,7 @@ MOUSE_RIGHT_BUTTON | Mouse/right
 MOUSE_BUTTON_RIGHT | Mouse/right
 MOUSE_LEFT_BUTTON | Mouse/left
 MOUSE_BUTTON_LEFT | Mouse/left
-MOUSE_BUTTON_BACK | Mouse/back
+MOUSE_BUTTON_BACK | Mouse/backward
 MOUSE_BUTTON_FORWARD | Mouse/forward
 MOUSE_BUTTON_EXTRA | Mouse/extra
 MOUSE_BUTTON_SIDE | Mouse/side
@@ -223,14 +206,15 @@ MOUSE_CURSOR_DEFAULT | MouseCursor/default
 
 PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA | PixelFormat/astc8
 PIXELFORMAT_COMPRESSED_ASTC_4x4_RGBA | PixelFormat/astc4
-PIXELFORMAT_COMPRESSED_PVRT_RGBA | PixelFormat/rgba
-PIXELFORMAT_COMPRESSED_PVRT_RGB | PixelFormat/rgb
+PIXELFORMAT_COMPRESSED_PVRT_RGBA | PixelFormat/pvrtWithAlpha
+PIXELFORMAT_COMPRESSED_PVRT_RGB | PixelFormat/pvrt
 PIXELFORMAT_COMPRESSED_ETC2_EAC_RGBA | PixelFormat/etc2WithAlpha
 PIXELFORMAT_COMPRESSED_ETC2_RGB | PixelFormat/etc2
 PIXELFORMAT_COMPRESSED_ETC1_RGB | PixelFormat/etc1
 PIXELFORMAT_COMPRESSED_DXT5_RGBA | PixelFormat/dxt5WithAlpha
 PIXELFORMAT_COMPRESSED_DXT3_RGBA | PixelFormat/dxt3WithAlpha
 PIXELFORMAT_COMPRESSED_DXT1_RGBA | PixelFormat/dxt1WithAlpha
+PIXELFORMAT_COMPRESSED_DXT1_RGB | PixelFormat/dxt1
 PIXELFORMAT_UNCOMPRESSED_R32G32B32A32 | PixelFormat/rgba32f
 PIXELFORMAT_UNCOMPRESSED_R32G32B32 | PixelFormat/rgb32f
 PIXELFORMAT_UNCOMPRESSED_R32 | PixelFormat/r32f
@@ -244,14 +228,14 @@ PIXELFORMAT_UNCOMPRESSED_GRAYSCALE | PixelFormat/w8
 
 TEXTURE_FILTER_ANISOTROPIC_16X | TextureFilter/anisotropic16x
 TEXTURE_FILTER_ANISOTROPIC_8X | TextureFilter/anisotropic8x
-TEXTURE_FILTER_ANISOTROPIC_2X | TextureFilter/anisotropic4x
+TEXTURE_FILTER_ANISOTROPIC_4X | TextureFilter/anisotropic4x
 TEXTURE_FILTER_TRILINEAR | TextureFilter/trilinear
 TEXTURE_FILTER_BILINEAR | TextureFilter/bilinear
 TEXTURE_FILTER_POINT | TextureFilter/point
 
 TEXTURE_WRAP_MIRROR_CLAMP | TextureWrap/mirroredClamp
 TEXTURE_WRAP_MIRROR_REPEAT | TextureWrap/mirroredRepeat
-TEXTURE_WRAP_MIRROR_CLAMP | TextureWrap/clamp
+TEXTURE_WRAP_CLAMP | TextureWrap/clamp
 TEXTURE_WRAP_REPEAT | TextureWrap/repeat
 
 BLEND_ALPHA | Blend/alpha
@@ -262,42 +246,122 @@ BLEND_ADD_COLORS | Blend/add
 BLEND_SUBTRACT_COLORS | Blend/subtract
 BLEND_CUSTOM | Blend/custom
 
-InitWindow				| Window/create(_:by:title:)
-WindowShouldClose		| Window/shouldClose
-CloseWindow				| Window/close()
-IsWindowReady			| Window/isReady
-IsWindowFullscreen		| Window/isFullscreen
-IsWindowHidden			| Window/isHidden
-IsWindowMinimized		| Window/isMinimized
-IsWindowMaximized		| Window/isMaximized
-IsWindowFocused			| Window/isFocused
-IsWindowResized			| Window/wasResized
-IsWindowState			| WindowFlags/isEnabled
-SetWindowState			| Window/enable(_:), WindowFlag/isEnabled, WindowFlag/enable()
-ClearWindowState		| Window/disable(_:), WindowFlag/isEnabled, WindowFlag/disable()
-ToggleFullscreen		| Window/isFullscreen
-MaximizeWindow			| Window/maximize()
-MinimizeWindow			| Window/minimize()
-RestoreWindow			| Window/restore()
-SetWindowIcon			| Window/set(icon:)
-SetWindowTitle			| Window/rename(to:)
-SetWindowPosition		| Window/place(at:_:)
-SetWindowonitor			| Window/assign(to:)
-SetWindowMinSize		| Window/resize(minimum:by:)
-SetWindowSize			| Window/resize(to:by:)
-GetWindowHandle			| Window/native
-GetScreenWidth			| Window/width, Window/size
-GetScreenHeight			| Window/height, Window/size
-GetMonitorCount			| Monitor/count, Monitor/all
-GetCurrentMonitor		| Monitor/current
-GetMonitorPosition		| Monitor/position
-GetMonitorWidth			| Monitor/width
-GetMonitorHeight		| Monitor/height
-GetMonitorPhysicalWidth	| Monitor/physicalWidth
+InitWindow | Window/create(_:by:title:)
+WindowShouldClose | Application/isRunning
+CloseWindow | Window/close()
+IsWindowReady | Window/isReady
+IsWindowFullscreen | Window/isFullscreen
+IsWindowHidden | Window/isHidden
+IsWindowMinimized | Window/isMinimized
+IsWindowMaximized | Window/isMaximized
+IsWindowFocused | Window/isFocused
+IsWindowResized | Window/wasResized
+IsWindowState | WindowFlags/isEnabled
+SetWindowState | Window/enable(_:), WindowFlags/isEnabled, WindowFlags/enable()
+ClearWindowState | Window/disable(_:), WindowFlags/isEnabled, WindowFlags/disable()
+ToggleFullscreen | Window/isFullscreen
+MaximizeWindow | Window/maximize()
+MinimizeWindow | Window/minimize()
+RestoreWindow | Window/restore()
+SetWindowIcon | Window/set(icon:)
+SetWindowTitle | Window/rename(to:)
+SetWindowPosition | Window/place(at:_:)
+SetWindowonitor | Window/assign(to:)
+SetWindowMinSize | Window/resize(minimum:by:)
+SetWindowSize | Window/resize(to:by:)
+GetWindowHandle | Window/native
+GetScreenWidth | Window/width, Window/size
+GetScreenHeight | Window/height, Window/size
+GetMonitorCount | Monitor/count, Monitor/all
+GetCurrentMonitor | Monitor/current
+GetMonitorPosition | Monitor/position
+GetMonitorWidth | Monitor/width
+GetMonitorHeight | Monitor/height
+GetMonitorPhysicalWidth | Monitor/physicalWidth
 GetMonitorPhysicalHeight| Monitor/physicalHeight
-GetMonitorRefreshRate	| Monitor/refreshRate
-GetWindowPosition		| Window/position
-GetWindowScaleDPI		| Window/scaleDPI
-GetMonitorName			| Monitor/name
-SetClipboardText		| Clipboard/text
-GetClipboardText		| Clipboard/text
+GetMonitorRefreshRate | Monitor/refreshRate
+GetWindowPosition | Window/position
+GetWindowScaleDPI | Window/scaleDPI
+GetMonitorName | Monitor/name
+SetClipboardText | Clipboard/text
+GetClipboardText | Clipboard/text
+
+ShowCursor | Cursor/show()
+HideCursor | Cursor/hide()
+IsCursorHidden | Cursor/isHidden
+EnableCursor | Cursor/enable()
+IsCursorOnScreen | Cursor/isOnScreen
+
+ClearBackground | Renderer/clear(to:)
+BeginDrawing | Renderer/render(draw:)
+EndDrawing | Renderer/render(draw:)
+BeginMode2D | Camera2D/render(draw:)
+EndMode2D | Camera2D/render(draw:)
+BeginMode3D | Camera3D/render(draw:)
+EndMode3D | Camera3D/render(draw:)
+BeginTextureMode | RenderTexture/render(draw:)
+EndTextureMode | RenderTexture/render(draw:)
+BeginShaderMode | Shader/render(draw:)
+EndShaderMode | Shader/render(draw:)
+BeginBlendMode | Blend/render(draw:)
+EndBlendMode | Blend/render(draw:)
+BeginScissorMode | Renderer/render(at:_:size:by:draw:)
+EndScissorMode | Renderer/render(at:_:size:by:draw:)
+
+LoadShader | Shader/init(path:_:)
+LoadShaderFromMemory | Shader/init(memory:_:)
+GetShaderLocation | Shader/uniform(_:of:)
+GetShaderLocationAttrib | Shader/attribute(_:)
+SetShaderValue | Uniform/write(_:)
+SetShaderValueV | Uniform/write(_:)
+UnloadShader |
+
+GetCameraMatrix | Camera3D/matrix
+GetCameraMatrix2D | Camera2D/matrix
+GetWorldToScreen | Camera3D/toScreen(world:)
+GetWorldToScreenEx | Camera3D/toScreen(world:size:by:)
+GetWorldToScreen2D | Camera2D/toScreen(world:)
+GetScreenToWorld2D | Camera2D/toWorld(screen:)
+
+SetTargetFPS | Application/target(fps:)
+GetFPS | Time/fps
+GetFrameTime | Time/delta
+GetTime | Time/lifetime
+
+GetRandomValue | Random/between(_:and:)
+SetRandomSeed | Random/seed(using:)
+TakeScreenshot | Monitor/screenshot(as:)
+TraceLog | Trace/log(_:_:), Trace/trace(_:), Trace/debug(_:), Trace/info(_:), Trace/warning(_:), Trace/error(_:), Trace/fatal(_:)
+SetTraceLogLevel | Trace/configure(threshold:)
+MemAlloc | Allocator/allocate(size:)
+MemRealloc | Allocator/reallocate(_:size:)
+MemFree | Allocator/free(_:)
+
+CompressData | Serialization/compress(_:)
+DecompressData | Serialization/decompress(_:)
+EncodeDataBase64 | Serialization/encode(_:)
+DecodeDataBase64 | Serialization/decode(_:)
+
+OpenURL | System/open(_:)-y5jl
+
+IsKeyPressed | KeyboardButton/isPressed
+IsKeyDown | KeyboardButton/isDown
+IsKeyReleased | KeyboardButton/isReleased
+IsKeyUp | KeyboardButton/isUp
+SetExitKey | Application/quit(on:)
+GetKeyPressed | Keyboard/current
+GetCharPressed | Keyboard/character
+
+IsMouseButtonPressed | MouseButton/isPressed
+IsMouseButtonDown | MouseButton/isDown
+IsMouseButtonReleased | MouseButton/isReleased
+IsMouseButtonUp | MouseButton/isUp
+GetMouseX | Mouse/x
+GetMouseY | Mouse/y
+GetMousePosition | Mouse/position
+GetMouseDelta | Mouse/delta
+SetMousePosition | Mouse/position, Mouse/x, Mouse/y
+SetMouseOffset | Mouse/offset(by:)
+SetMouseScale | Mouse/scale(by:)
+GetMouseWheelMove | Mouse/wheel
+SetMouseCursor | Cursor/style(to:)

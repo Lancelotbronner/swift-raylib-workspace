@@ -45,7 +45,7 @@ public final class RenderTexture {
 	
 	//MARK: Methods
 	
-	@inlinable public func render(_ block: () -> Void) {
+	@inlinable public func render(draw block: () -> Void) {
 		BeginTextureMode(underlying)
 		block()
 		EndTextureMode()

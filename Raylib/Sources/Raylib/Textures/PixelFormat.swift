@@ -7,119 +7,101 @@
 
 import CRaylib
 
-public typealias PixelFormat = CRaylib.PixelFormat
-
 //MARK: - Pixel Format
 
-extension PixelFormat {
+public enum PixelFormat {
 	
-	//MARK: Uncompressed Formats
+	//MARK: Cases
 	
 	/// Grayscale, no alpha, 8 bpp, uncompressed
-	@_transparent public static var w8: PixelFormat {
-		PIXELFORMAT_UNCOMPRESSED_GRAYSCALE
-	}
+	case w8
 	
 	/// Grayscale, 8-bit alpha, 16 bpp, uncompressed
-	@_transparent public static var wa8: PixelFormat {
-		PIXELFORMAT_UNCOMPRESSED_GRAY_ALPHA
-	}
+	case wa8
 	
 	/// RGB, no alpha, 16 bpp, uncompressed
-	@_transparent public static var r5g6b5: PixelFormat {
-		PIXELFORMAT_UNCOMPRESSED_R5G6B5
-	}
+	case r5g6b5
 	
 	/// RGB, no alpha, 24 bpp, uncompressed
-	@_transparent public static var rgb8: PixelFormat {
-		PIXELFORMAT_UNCOMPRESSED_R8G8B8
-	}
+	case rgb8
 	
 	/// RGBA, 1-bit alpha, 16 bpp, uncompressed
-	@_transparent public static var rgb5a1: PixelFormat {
-		PIXELFORMAT_UNCOMPRESSED_R5G5B5A1
-	}
+	case rgb5a1
 	
 	/// RGBA, 4-bit alpha, 16 bpp, uncompressed
-	@_transparent public static var rgba4: PixelFormat {
-		PIXELFORMAT_UNCOMPRESSED_R4G4B4A4
-	}
+	case rgba4
 	
 	/// RGBA, 8-bit alpha, 32 bpp, uncompressed
-	@_transparent public static var rgba8: PixelFormat {
-		PIXELFORMAT_UNCOMPRESSED_R8G8B8A8
-	}
+	case rgba8
 	
 	/// red float, no alpha, 32 bpp, uncompressed
-	@_transparent public static var r32f: PixelFormat {
-		PIXELFORMAT_UNCOMPRESSED_R32
-	}
+	case r32f
 	
 	/// RGB floats, no alpha, 96 bpp, uncompressed
-	@_transparent public static var rgb32f: PixelFormat {
-		PIXELFORMAT_UNCOMPRESSED_R32G32B32
-	}
+	case rgb32f
 	
-	/// RGBA floats, 32-bit alpha, 128 bpp, uncompressed
-	@_transparent public static var rgba32f: PixelFormat {
-		PIXELFORMAT_UNCOMPRESSED_R32G32B32A32
-	}
-	
-	//MARK: Compressed Formats
+	/// RGBA floats, no alpha, 112 bpp, uncompressed
+	case rgba32f
 	
 	/// RGB, no alpha, 4 bpp, DXT1 compression
-	@_transparent public static var dxt1: PixelFormat {
-		PIXELFORMAT_COMPRESSED_DXT1_RGB
-	}
+	case dxt1
 	
 	/// RGBA, 1-bit alpha, 4 bpp, DXT1 compression
-	@_transparent public static var dxt1WithAlpha: PixelFormat {
-		PIXELFORMAT_COMPRESSED_DXT1_RGBA
-	}
+	case dxt1WithAlpha
 	
 	/// RGBA, 4-bit alpha, 8 bpp, DXT3 compression
-	@_transparent public static var dxt3WithAlpha: PixelFormat {
-		PIXELFORMAT_COMPRESSED_DXT3_RGBA
-	}
+	case dxt3WithAlpha
 	
 	/// RGBA, 4-bit alpha, 8 bpp, DXT5 compression
-	@_transparent public static var dxt5WithAlpha: PixelFormat {
-		PIXELFORMAT_COMPRESSED_DXT5_RGBA
-	}
+	case dxt5WithAlpha
 	
 	/// RGB, no alpha, 4 bpp, ETC1 compression
-	@_transparent public static var etc1: PixelFormat {
-		PIXELFORMAT_COMPRESSED_ETC1_RGB
-	}
+	case etc1
 	
 	/// RGB, no alpha, 4 bpp, ETC2 compression
-	@_transparent public static var etc2: PixelFormat {
-		PIXELFORMAT_COMPRESSED_ETC2_RGB
-	}
+	case etc2
 	
 	/// RGB, 4-bit alpha, 8 bpp, ETC2 compression
-	@_transparent public static var etc2WithAlpha: PixelFormat {
-		PIXELFORMAT_COMPRESSED_ETC2_EAC_RGBA
-	}
+	case etc2WithAlpha
 	
 	/// RGB, no alpha, 4 bpp, PVRT compression
-	@_transparent public static var pvrt: PixelFormat {
-		PIXELFORMAT_COMPRESSED_PVRT_RGB
-	}
+	case pvrt
 	
 	/// RGBA, 1-bit alpha, 4 bpp, PVRT compression
-	@_transparent public static var pvrtWithAlpha: PixelFormat {
-		PIXELFORMAT_COMPRESSED_PVRT_RGBA
-	}
+	case pvrtWithAlpha
 	
 	/// RGBA, alpha, 8 bpp, ASTC 4x4 compression
-	@_transparent public static var astc4: PixelFormat {
-		PIXELFORMAT_COMPRESSED_ASTC_4x4_RGBA
-	}
+	case astc4
 	
 	/// RGBA, alpha, 2 bpp, ASTC 8x8 compression
-	@_transparent public static var astc8: PixelFormat {
-		PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA
+	case astc8
+	
+	//MARK: Computed Properties
+	
+	@inlinable public var toRaylib: UInt32 {
+		switch self {
+		case .w8: return PIXELFORMAT_UNCOMPRESSED_GRAYSCALE.rawValue
+		case .wa8: return PIXELFORMAT_UNCOMPRESSED_GRAY_ALPHA.rawValue
+		case .r5g6b5: return PIXELFORMAT_UNCOMPRESSED_R5G6B5.rawValue
+		case .rgb8: return PIXELFORMAT_UNCOMPRESSED_R8G8B8.rawValue
+		case .rgb5a1: return PIXELFORMAT_UNCOMPRESSED_R5G5B5A1.rawValue
+		case .rgba4: return PIXELFORMAT_UNCOMPRESSED_R4G4B4A4.rawValue
+		case .rgba8: return PIXELFORMAT_UNCOMPRESSED_R8G8B8A8.rawValue
+		case .r32f: return PIXELFORMAT_UNCOMPRESSED_R32.rawValue
+		case .rgb32f: return PIXELFORMAT_UNCOMPRESSED_R32G32B32.rawValue
+		case .rgba32f: return PIXELFORMAT_UNCOMPRESSED_R32G32B32A32.rawValue
+		case .dxt1: return PIXELFORMAT_COMPRESSED_DXT1_RGB.rawValue
+		case .dxt1WithAlpha: return PIXELFORMAT_COMPRESSED_DXT1_RGBA.rawValue
+		case .dxt3WithAlpha: return PIXELFORMAT_COMPRESSED_DXT3_RGBA.rawValue
+		case .dxt5WithAlpha: return PIXELFORMAT_COMPRESSED_DXT5_RGBA.rawValue
+		case .etc1: return PIXELFORMAT_COMPRESSED_ETC1_RGB.rawValue
+		case .etc2: return PIXELFORMAT_COMPRESSED_ETC2_RGB.rawValue
+		case .etc2WithAlpha: return PIXELFORMAT_COMPRESSED_ETC2_EAC_RGBA.rawValue
+		case .pvrt: return PIXELFORMAT_COMPRESSED_PVRT_RGB.rawValue
+		case .pvrtWithAlpha: return PIXELFORMAT_COMPRESSED_PVRT_RGBA.rawValue
+		case .astc4: return PIXELFORMAT_COMPRESSED_ASTC_4x4_RGBA.rawValue
+		case .astc8: return PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA.rawValue
+		}
 	}
 	
 }

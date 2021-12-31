@@ -26,7 +26,7 @@ public enum Blend: Int {
 	case add = 3
 	
 	/// Blend textures subtracting colors (alternative)
-	case substract = 4
+	case subtract = 4
 	
 	/// Blend textures using custom src/dst factors (use rlSetBlendMode())
 	case custom = 5

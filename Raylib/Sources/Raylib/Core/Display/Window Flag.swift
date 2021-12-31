@@ -7,56 +7,56 @@
 
 import CRaylib
 
-//MARK: - Window Flag
+//MARK: - Window Flags
 
-public struct WindowFlag: OptionSet {
+public struct WindowFlags: OptionSet {
 	
 	//MARK: Constants
 	
 	/// No flags
-	public static let none: WindowFlag = []
+	public static let none: WindowFlags = []
 	
 	/// Set to run program in fullscreen
-	public static let fullscreen = WindowFlag(FLAG_FULLSCREEN_MODE)
+	public static let fullscreen = WindowFlags(FLAG_FULLSCREEN_MODE)
 	
 	/// Set to allow resizable window
-	public static let resizable = WindowFlag(FLAG_WINDOW_RESIZABLE)
+	public static let resizable = WindowFlags(FLAG_WINDOW_RESIZABLE)
 	
 	/// Set to disable window decoration (frame and buttons)
-	public static let undecorated = WindowFlag(FLAG_WINDOW_UNDECORATED)
+	public static let undecorated = WindowFlags(FLAG_WINDOW_UNDECORATED)
 	
 	/// Set to hide window
-	public static let hidden = WindowFlag(FLAG_WINDOW_HIDDEN)
+	public static let hidden = WindowFlags(FLAG_WINDOW_HIDDEN)
 	
 	/// Set to minimize window (iconify)
-	public static let minimized = WindowFlag(FLAG_WINDOW_MINIMIZED)
+	public static let minimized = WindowFlags(FLAG_WINDOW_MINIMIZED)
 	
 	/// Set to maximize window (expanded to monitor)
-	public static let maximized = WindowFlag(FLAG_WINDOW_MAXIMIZED)
+	public static let maximized = WindowFlags(FLAG_WINDOW_MAXIMIZED)
 	
 	/// Set to window non focused
-	public static let unfocused = WindowFlag(FLAG_WINDOW_UNFOCUSED)
+	public static let unfocused = WindowFlags(FLAG_WINDOW_UNFOCUSED)
 	
 	/// Set to window always on top
-	public static let stayOnTop = WindowFlag(FLAG_WINDOW_TOPMOST)
+	public static let stayOnTop = WindowFlags(FLAG_WINDOW_TOPMOST)
 	
 	/// Set to allow windows running while minimized
-	public static let runInBackground = WindowFlag(FLAG_WINDOW_ALWAYS_RUN)
+	public static let runInBackground = WindowFlags(FLAG_WINDOW_ALWAYS_RUN)
 	
 	/// Set to allow transparent framebuffer
-	public static let transparent = WindowFlag(FLAG_WINDOW_TRANSPARENT)
+	public static let transparent = WindowFlags(FLAG_WINDOW_TRANSPARENT)
 	
 	/// Set to support HighDPI
-	public static let highDPI = WindowFlag(FLAG_WINDOW_HIGHDPI)
+	public static let highDPI = WindowFlags(FLAG_WINDOW_HIGHDPI)
 	
 	/// Set to try enabling V-Sync on GPU
-	public static let vsync = WindowFlag(FLAG_VSYNC_HINT)
+	public static let vsync = WindowFlags(FLAG_VSYNC_HINT)
 	
 	/// Set to try enabling MSAA 4X
-	public static let msaa4x = WindowFlag(FLAG_MSAA_4X_HINT)
+	public static let msaa4x = WindowFlags(FLAG_MSAA_4X_HINT)
 	
 	/// Set to try enabling interlaced video format (for V3D)
-	public static let interlaced = WindowFlag(FLAG_INTERLACED_HINT)
+	public static let interlaced = WindowFlags(FLAG_INTERLACED_HINT)
 	
 	//MARK: Properties
 	
@@ -96,10 +96,10 @@ public struct WindowFlag: OptionSet {
 
 //MARK: - Integration
 
-extension Sequence where Element == WindowFlag {
+extension Sequence where Element == WindowFlags {
 	
-	@usableFromInline var reduced: WindowFlag {
-		WindowFlag(self)
+	@usableFromInline var reduced: WindowFlags {
+		WindowFlags(self)
 	}
 	
 }

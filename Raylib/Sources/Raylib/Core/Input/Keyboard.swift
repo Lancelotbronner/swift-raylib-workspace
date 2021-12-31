@@ -129,6 +129,7 @@ public struct Keyboard {
 	
 	public static let capsLock = KeyboardButton(KEY_CAPS_LOCK)
 	public static let numLock = KeyboardButton(KEY_NUM_LOCK)
+	public static let scrollLock = KeyboardButton(KEY_SCROLL_LOCK)
 	public static let printScreen = KeyboardButton(KEY_PRINT_SCREEN)
 	public static let pause = KeyboardButton(KEY_PAUSE)
 	

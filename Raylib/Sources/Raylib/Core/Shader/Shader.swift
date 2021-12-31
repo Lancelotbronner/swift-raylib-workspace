@@ -48,6 +48,13 @@ public struct Shader {
 		Uniform(get: name, in: self)
 	}
 	
+	/// BeginShaderMode; EndShaderMode
+	@inlinable public func render(draw: () -> Void) {
+		BeginShaderMode(underlying)
+		draw()
+		EndShaderMode()
+	}
+	
 	// TODO: Make attribute wrapper
 	
 	/// Get attributes location

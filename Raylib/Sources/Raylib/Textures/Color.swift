@@ -64,7 +64,7 @@ public struct Color {
 
 extension Color {
 	
-	public static var lightGray: Color { .rgb(200, 200, 200) }
+	@inlinable public static var lightGray: Color { .rgb(200, 200, 200) }
 	@inlinable public static var gray: Color { .rgb(130, 130, 130) }
 	@inlinable public static var darkGray: Color { .rgb(80, 80, 80) }
 	@inlinable public static var yellow: Color { .rgb(253, 249, 0) }

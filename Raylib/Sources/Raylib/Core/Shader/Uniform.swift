@@ -12,7 +12,7 @@ import CRaylib
 public protocol UniformConvertible {
 	
 	/// Writes a value for the specified shader at the specified index
-	static func write(_ value: Self, at index: Int32, to shader: Shader)
+	func write(_ value: Self, at index: Int32, to shader: Shader)
 	
 }
 
@@ -41,7 +41,7 @@ public struct Uniform<Scalar: UniformConvertible> {
 	///
 	/// - Parameter value: The value to write
 	@inlinable public func write(_ value: Scalar) {
-		Scalar.write(value, at: index, to: shader)
+		value.write(value, at: index, to: shader)
 	}
 	
 	@inlinable public func identify(as builtin: BuiltinUniform) {
@@ -52,80 +52,98 @@ public struct Uniform<Scalar: UniformConvertible> {
 
 //MARK: - Uniform Conformances
 
-internal protocol BuiltinValueUniform: UniformConvertible {
-	static var type: Int32 { get }
+internal protocol BuiltinUniformInstance: UniformConvertible {
+	var UNIFORM_TYPE: Int32 { get }
 }
 
-extension BuiltinValueUniform {
+extension BuiltinUniformInstance {
 	
-	@inlinable public static func write(_ value: Self, at index: Int32, to shader: Shader) {
+	@inlinable public func write(_ value: Self, at index: Int32, to shader: Shader) {
 		withUnsafePointer(to: value) { pointer in
-			SetShaderValue(shader.underlying, index, pointer, type)
+			SetShaderValue(shader.underlying, index, pointer, UNIFORM_TYPE)
 		}
 	}
 	
 }
 
-internal protocol BuiltinCollectionUniform: UniformConvertible, Collection {
-	static var type: Int32 { get }
+internal protocol BuiltinUniformType: BuiltinUniformInstance {
+	static var UNIFORM_TYPE: Int32 { get }
 }
 
-extension BuiltinCollectionUniform {
+extension BuiltinUniformType {
 	
-	@inlinable public static func write(_ value: Self, at index: Int32, to shader: Shader) {
+	@inlinable public var UNIFORM_TYPE: Int32 { Self.UNIFORM_TYPE }
+	
+}
+
+internal protocol BuiltinUniformSequence: UniformConvertible, Collection {
+	static var UNIFORM_TYPE: Int32 { get }
+}
+
+extension BuiltinUniformSequence {
+	
+	@inlinable public func write(_ value: Self, at index: Int32, to shader: Shader) {
 		withUnsafePointer(to: value) { pointer in
-			SetShaderValueV(shader.underlying, index, pointer, type, value.count.toInt32)
+			SetShaderValueV(shader.underlying, index, pointer, Self.UNIFORM_TYPE, value.count.toInt32)
 		}
 	}
 	
 }
 
-extension Collection where Element: BuiltinValueUniform {
-	static var type: Int32 { Element.type }
+extension Sequence where Element: BuiltinUniformType {
+	
+	@usableFromInline static var UNIFORM_TYPE: Int32 { Element.UNIFORM_TYPE }
+	
+}
+
+internal protocol BuiltinUniformVector2 {
+	static var UNIFORM_VECTOR_2_TYPE: Int32 { get }
+}
+
+extension Vector2: BuiltinUniformInstance, UniformConvertible where Scalar: BuiltinUniformVector2 {
+	var UNIFORM_TYPE: Int32 { Scalar.UNIFORM_VECTOR_2_TYPE }
+}
+
+internal protocol BuiltinUniformVector3 {
+	static var UNIFORM_VECTOR_3_TYPE: Int32 { get }
+}
+
+extension Vector3: BuiltinUniformInstance, UniformConvertible where Scalar: BuiltinUniformVector3 {
+	var UNIFORM_TYPE: Int32 { Scalar.UNIFORM_VECTOR_3_TYPE }
+}
+
+internal protocol BuiltinUniformVector4 {
+	static var UNIFORM_VECTOR_4_TYPE: Int32 { get }
+}
+
+extension Vector4: BuiltinUniformInstance, UniformConvertible where Scalar: BuiltinUniformVector4 {
+	var UNIFORM_TYPE: Int32 { Scalar.UNIFORM_VECTOR_4_TYPE }
 }
 
 //MARK: - Uniform Data Types
 
-extension Float: BuiltinValueUniform {
-	static var type: Int32 { SHADER_UNIFORM_FLOAT.rawValue.toInt32 }
+extension Float: BuiltinUniformType, BuiltinUniformVector2, BuiltinUniformVector3, BuiltinUniformVector4 {
+	
+	static var UNIFORM_TYPE: Int32 { SHADER_UNIFORM_FLOAT.rawValue.toInt32 }
+	static var UNIFORM_VECTOR_2_TYPE: Int32 { SHADER_UNIFORM_VEC2.rawValue.toInt32 }
+	static var UNIFORM_VECTOR_3_TYPE: Int32 { SHADER_UNIFORM_VEC3.rawValue.toInt32 }
+	static var UNIFORM_VECTOR_4_TYPE: Int32 { SHADER_UNIFORM_VEC4.rawValue.toInt32 }
+	
 }
 
-extension Vector2f: BuiltinValueUniform, UniformConvertible {
-	static var type: Int32 { SHADER_UNIFORM_VEC2.rawValue.toInt32 }
+extension Int32: BuiltinUniformType, BuiltinUniformVector2, BuiltinUniformVector3, BuiltinUniformVector4 {
+	static var UNIFORM_TYPE: Int32 { SHADER_UNIFORM_INT.rawValue.toInt32 }
+	static var UNIFORM_VECTOR_2_TYPE: Int32 { SHADER_UNIFORM_IVEC2.rawValue.toInt32 }
+	static var UNIFORM_VECTOR_3_TYPE: Int32 { SHADER_UNIFORM_IVEC3.rawValue.toInt32 }
+	static var UNIFORM_VECTOR_4_TYPE: Int32 { SHADER_UNIFORM_IVEC4.rawValue.toInt32 }
 }
-
-extension Vector3f: BuiltinValueUniform, UniformConvertible {
-	static var type: Int32 { SHADER_ATTRIB_VEC3.rawValue.toInt32 }
-}
-
-//extension Vector4f: BuiltinValueUniform {
-//	static var type: Int32 { 3 }
-//}
-
-extension Int32: BuiltinValueUniform {
-	static var type: Int32 { 4 }
-}
-
-//extension Vector2i: UniformConvertible {
-//	public static var type: Int32 { 5 }
-//}
-
-//extension Vector3i: UniformConvertible {
-//	public static var type: Int32 { 6 }
-//}
-
-//extension Vector4i: UniformConvertible {
-//	public static var type: Int32 { 7 }
-//}
-
-//extension Sampler2D: UniformConvertible {
-//	public static var type: Int32 { 78}
-//}
 
 // TODO: Matrix & Texture uniform convertible
 // void SetShaderValueMatrix(Shader shader, int locIndex, Matrix mat);
 // void SetShaderValueTexture(Shader shader, int locIndex, Texture2D texture);
 
-extension Array: BuiltinCollectionUniform, UniformConvertible where Element: BuiltinValueUniform { }
-extension ContiguousArray: BuiltinCollectionUniform, UniformConvertible where Element: BuiltinValueUniform { }
-extension Set: BuiltinCollectionUniform, UniformConvertible where Element: BuiltinValueUniform { }
+//MARK: - Sequence Integrations
+
+extension Array: BuiltinUniformSequence, UniformConvertible where Element: BuiltinUniformType { }
+extension ContiguousArray: BuiltinUniformSequence, UniformConvertible where Element: BuiltinUniformType { }
+extension Set: BuiltinUniformSequence, UniformConvertible where Element: BuiltinUniformType { }
