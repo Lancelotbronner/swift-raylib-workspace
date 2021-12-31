@@ -20,7 +20,7 @@ public struct WindowFlag: OptionSet {
 	public static let fullscreen = WindowFlag(FLAG_FULLSCREEN_MODE)
 	
 	/// Set to allow resizable window
-	public static let resizeable = WindowFlag(FLAG_WINDOW_RESIZABLE)
+	public static let resizable = WindowFlag(FLAG_WINDOW_RESIZABLE)
 	
 	/// Set to disable window decoration (frame and buttons)
 	public static let undecorated = WindowFlag(FLAG_WINDOW_UNDECORATED)
@@ -38,10 +38,10 @@ public struct WindowFlag: OptionSet {
 	public static let unfocused = WindowFlag(FLAG_WINDOW_UNFOCUSED)
 	
 	/// Set to window always on top
-	public static let topmost = WindowFlag(FLAG_WINDOW_TOPMOST)
+	public static let stayOnTop = WindowFlag(FLAG_WINDOW_TOPMOST)
 	
 	/// Set to allow windows running while minimized
-	public static let active = WindowFlag(FLAG_WINDOW_ALWAYS_RUN)
+	public static let runInBackground = WindowFlag(FLAG_WINDOW_ALWAYS_RUN)
 	
 	/// Set to allow transparent framebuffer
 	public static let transparent = WindowFlag(FLAG_WINDOW_TRANSPARENT)

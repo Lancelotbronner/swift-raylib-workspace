@@ -16,12 +16,12 @@ extension PixelFormat {
 	//MARK: Uncompressed Formats
 	
 	/// Grayscale, no alpha, 8 bpp, uncompressed
-	@_transparent public static var grayscale: PixelFormat {
+	@_transparent public static var w8: PixelFormat {
 		PIXELFORMAT_UNCOMPRESSED_GRAYSCALE
 	}
 	
 	/// Grayscale, 8-bit alpha, 16 bpp, uncompressed
-	@_transparent public static var grayscaleWithAlpha: PixelFormat {
+	@_transparent public static var wa8: PixelFormat {
 		PIXELFORMAT_UNCOMPRESSED_GRAY_ALPHA
 	}
 	

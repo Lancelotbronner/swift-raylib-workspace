@@ -9,9 +9,7 @@ import CRaylib
 
 //MARK: - Color
 
-public typealias Color = CRaylib.Color
-
-extension Color {
+public struct Color {
 	
 	//MARK: Constants
 	
@@ -20,26 +18,40 @@ extension Color {
 		return .rgb(rnd(), rnd(), rnd())
 	}
 	
+	//MARK: Properties
+	
+	public var red: UInt8
+	public var green: UInt8
+	public var blue: UInt8
+	public var alpha: UInt8
+	
 	//MARK: Computed Properties
 	
 	@inlinable public var value: UInt32 {
-		ColorToInt(self).toUInt32
+		ColorToInt(toRaylib).toUInt32
 	}
 	
 	//MARK: Initialization
 	
+	@usableFromInline init(_ r: UInt8, _ g: UInt8, _ b: UInt8, _ a: UInt8) {
+		red = r
+		green = g
+		blue = b
+		alpha = a
+	}
+	
 	@inlinable public static func rgba(_ value: UInt32) -> Color {
-		GetColor(value)
+		GetColor(value).toSwift
 	}
 	
 	@inlinable public static func rgb(_ r: UInt8, _ g: UInt8, _ b: UInt8, a: UInt8 = .max) -> Color {
-		.init(r: r, g: g, b: b, a: a)
+		Color(r, g, b, a)
 	}
 	
 	//MARK: Methods
 	
 	@inlinable public func faded(to alpha: Float) -> Color {
-		Fade(self, alpha)
+		Fade(toRaylib, alpha).toSwift
 	}
 	
 	@inlinable public mutating func fade(to alpha: Float) {
@@ -52,7 +64,7 @@ extension Color {
 
 extension Color {
 	
-	@inlinable public static var lightGray: Color { .rgb(200, 200, 200) }
+	public static var lightGray: Color { .rgb(200, 200, 200) }
 	@inlinable public static var gray: Color { .rgb(130, 130, 130) }
 	@inlinable public static var darkGray: Color { .rgb(80, 80, 80) }
 	@inlinable public static var yellow: Color { .rgb(253, 249, 0) }
@@ -79,5 +91,23 @@ extension Color {
 	@inlinable public static var blank: Color { .rgb(0, 0, 0) }
 	@inlinable public static var magenta: Color { .rgb(255, 0, 255) }
 	@inlinable public static var raywhite: Color { .rgb(245, 245, 245) }
+	
+}
+
+//MARK: - Raylib Integration
+
+extension CRaylib.Color {
+	
+	@inlinable public var toSwift: Color {
+		Color.rgb(r, g, b, a: a)
+	}
+	
+}
+
+extension Color {
+	
+	@inlinable public var toRaylib: CRaylib.Color {
+		CRaylib.Color(r: red, g: green, b: blue, a: alpha)
+	}
 	
 }

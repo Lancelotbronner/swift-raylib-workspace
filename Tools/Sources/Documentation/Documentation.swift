@@ -130,7 +130,9 @@ struct DocumentationCommand: ParsableCommand {
 				continue
 			}
 			
-			symbols[components[0]] = components[1].components(separatedBy: ",")
+			symbols[components[0]] = components[1]
+				.components(separatedBy: ",")
+				.map { $0.trimmingCharacters(in: .whitespaces) }
 		}
 		
 		ensureNoError("in symbol entries")
@@ -142,9 +144,18 @@ struct DocumentationCommand: ParsableCommand {
 		print("Parsing header file...")
 
 		var components: [Component] = []
+		var totalNumberOfSymbols = 0
+		var coverage = 0
+		
+		func bindings(for symbol: String) -> [String]? {
+			guard let tmp = symbols[symbol] else { return nil }
+			coverage += 1
+			return tmp
+		}
 		
 		func append(symbol title: String, c declaration: String, _ documentation: String? = nil) {
-			components.append(.symbol(Symbol(title: title, documentation: documentation, declaration: declaration, bindings: symbols[title])))
+			totalNumberOfSymbols += 1
+			components.append(.symbol(Symbol(title: title, documentation: documentation, declaration: declaration, bindings: bindings(for: title))))
 		}
 		
 		func isAside(_ line: [String]) -> String? {
@@ -182,17 +193,17 @@ struct DocumentationCommand: ParsableCommand {
 			
 			switch line[0] {
 			case "#define":
-				if ["RAYLIB_H", "RLAPI"].contains(line[1]) || line[1].contains("(") || line[1].hasPrefix("RL_") {
+				if ["RAYLIB_H", "RLAPI", "PI", "DEG2RAD", "RAD2DEG"].contains(line[1]) || line[1].contains("(") || line[1].hasPrefix("RL_") {
 					break
 				}
 				
-				append(symbol: line[1], c: line[1])
+				append(symbol: line[1], c: "#define \(line[1]);")
 				
 			case "typedef":
 				switch line[1] {
 				case "struct":
 					guard line.contains("{") else { break }
-					append(symbol: line[2], c: line[2])
+					append(symbol: line[2], c: "struct \(line[2]);")
 					
 					repeat { i += 1 }
 					while !line.contains("}")
@@ -200,32 +211,39 @@ struct DocumentationCommand: ParsableCommand {
 				case "enum":
 					guard !["bool"].contains(line[2]) else { break }
 					
-					var c: [(String, String?)] = []
+					var cases: [(String, String?)] = []
 					i += 1
 					
 					while line[0] != "}" {
-						var tmp = (line[0].trimmingCharacters(in: .alphanumerics.inverted), String?.none)
+						let title = line[0].trimmingCharacters(in: .alphanumerics.inverted)
+						var documentation: String? = nil
 						
-						if let indexOfDocumentation = line.firstIndex(of: "//") {
-							var documentation = line[line.index(after: indexOfDocumentation)...].joined(separator: " ")
-							clean(comment: &documentation)
-							tmp.1 = documentation
+						if let indexOfComment = line.firstIndex(of: "//") {
+							var comment = line[line.index(after: indexOfComment)...].joined(separator: " ")
+							clean(comment: &comment)
+							documentation = comment
 						}
 						
-						c.append(tmp)
+						if !title.isEmpty {
+							cases.append((title, documentation))
+						}
+						
 						i += 1
 					}
 					
 					let type = line[1].trimmingCharacters(in: .alphanumerics.inverted)
 					
-					for (name, comment) in c {
-						append(symbol: name, c: "\(type) \(name)", comment)
+					for (name, comment) in cases.reversed() {
+						append(symbol: name, c: "\(type) \(name);", comment)
 					}
 					
 				default:
 					let end = line.firstIndex(of: "//") ?? line.endIndex
 					guard end == 3 else { break }
-					components.append(.symbol(Symbol(title: line[1], declaration: line[2], bindings: symbols[line[2]])))
+					
+					let title = line[2].trimmingCharacters(in: .alphanumerics.inverted)
+					let declaration = line[0..<3].joined(separator: " ")
+					append(symbol: title, c: declaration)
 				}
 				
 			case "RLAPI":
@@ -250,14 +268,16 @@ struct DocumentationCommand: ParsableCommand {
 				
 				while line[0] == "//" && isAside(line) == nil {
 					content.append(" ")
-					content.append(line.dropFirst().joined(separator: " "))
+					content.append(line.dropFirst(2).joined(separator: " "))
 					i += 1
 				}
 				
-				content = content.trimmingCharacters(in: .whitespaces)
-				if let category = aside {
+				if let category = aside, let indexOfColon = content.firstIndex(of: ":") {
+					content = content[content.index(after: indexOfColon)...].trimmingCharacters(in: .whitespaces)
 					components.append(.aside(Aside(category: category, content: content)))
+					
 				} else {
+					content = content.trimmingCharacters(in: .whitespaces)
 					components.append(.section(Group(title: content)))
 				}
 				continue
@@ -291,7 +311,7 @@ struct DocumentationCommand: ParsableCommand {
 					break
 				}
 				
-				value.groups = declarationsOfGroups
+				value.groups = declarationsOfGroups.reversed()
 				components[i] = .module(value)
 				
 				declarationsOfGroups = []
@@ -304,7 +324,25 @@ struct DocumentationCommand: ParsableCommand {
 					break
 				}
 				
-				value.symbols = declarationsOfSymbols
+				if declarationsOfSymbols.count == 1 {
+					if let indexOfSymbol = components[i...].firstIndex(where: {
+						if case .symbol = $0 {
+							return true
+						}
+						return false
+					}) {
+						if case var .symbol(valueOfSymbol) = components[indexOfSymbol] {
+							valueOfSymbol.documentation = valueOfSymbol.documentation ?? value.title
+							components[indexOfSymbol] = .symbol(valueOfSymbol)
+						}
+					}
+					
+					components.remove(at: i)
+					declarationsOfSymbols = []
+					break
+				}
+				
+				value.symbols = declarationsOfSymbols.reversed()
 				components[i] = .section(value)
 				
 				declarationsOfGroups.append(value)
@@ -336,14 +374,18 @@ struct DocumentationCommand: ParsableCommand {
 
 			This document presents a detailed overview of the raylib cheatsheet along with its corresponding Swift symbol(s).
 
+			This document currently has a \(Int(Double(coverage) / Double(totalNumberOfSymbols) * 100))% coverage, contributions are welcome!
+
+			> Note: This file is generated (and badly so), any improvement suggestions are welcome.
 		"""
 		
+		document.append("\n\n")
 		for component in components {
+			print(component.debugDescription, terminator: "\n\n")
+			
 			switch component {
 			case let .module(value):
 				document.append("## \(value.title)\n\n")
-				document.append("This module contains \(value.groups.map(\.title).formatted()) for a total of \(value.groups.map(\.symbols.count).reduce(0, +)) functions.")
-				document.append("\n\n")
 				
 			case let .section(value):
 				document.append("### \(value.title)\n\n")
@@ -364,7 +406,7 @@ struct DocumentationCommand: ParsableCommand {
 				document.append("#### \(value.title)\n\n")
 				document.append(value.documentation ?? "This symbol has no documentation")
 				document.append("\n\nLanguage | Symbol\n --- | ---\n")
-				document.append("C | `\(value.declaration)`")
+				document.append("C | `\(value.declaration)`\n")
 				document.append("Swift | ")
 				
 				if let swift = value.bindings {

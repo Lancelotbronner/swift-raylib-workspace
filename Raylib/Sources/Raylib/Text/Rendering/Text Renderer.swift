@@ -18,7 +18,7 @@ extension Renderer2D {
 	}
 	
 	@inlinable public static func text(_ value: String, at x: Int, _ y: Int, size: Int = Renderer.textSize, alignment: TextAlignment = Renderer.textAlignment, color: Color = Renderer.textColor) {
-		DrawText(value, (x + alignment.offset(of: value, at: size)).toInt32, y.toInt32, size.toInt32, color)
+		DrawText(value, (x + alignment.offset(of: value, at: size)).toInt32, y.toInt32, size.toInt32, color.toRaylib)
 	}
 	
 	@inlinable public static func text(center value: String, offset x: Int = 0, _ y: Int = 0, size: Int = Renderer.textSize, color: Color = Renderer.textColor) {

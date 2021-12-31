@@ -40,12 +40,36 @@ public struct KeyboardButton: Button {
 	
 	//MARK: Initialization
 	
-	@inlinable public init(_ keycode: Int32) {
+	@usableFromInline init(_ keycode: Int32) {
 		self.keycode = keycode
 	}
 	
 	@inlinable public init(_ key: KeyboardKey) {
-		keycode = key.rawValue.toInt32
+		self.init(key.rawValue.toInt32)
+	}
+	
+}
+
+//MARK: - Keyboard Mirrored Button
+
+public struct KeyboardMirroredButton: Sequence {
+	
+	//MARK: Properties
+	
+	public let left: KeyboardButton
+	public let right: KeyboardButton
+	
+	//MARK: Methods
+	
+	public func makeIterator() -> Array<KeyboardButton>.Iterator {
+		[left, right].makeIterator()
+	}
+	
+	//MARK: Initialization
+	
+	@inlinable public init(_ left: KeyboardKey, _ right: KeyboardKey) {
+		self.left = KeyboardButton(left)
+		self.right = KeyboardButton(right)
 	}
 	
 }

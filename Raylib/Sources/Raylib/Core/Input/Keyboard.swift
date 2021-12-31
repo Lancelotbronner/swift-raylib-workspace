@@ -23,8 +23,6 @@ public struct Keyboard {
 	
 	//MARK: Constants
 	
-	// TODO: Switch those to inlinable computed properties
-	
 	public static let a = KeyboardButton(KEY_A)
 	public static let b = KeyboardButton(KEY_B)
 	public static let c = KeyboardButton(KEY_C)
@@ -106,16 +104,16 @@ public struct Keyboard {
 	public static let up = KeyboardButton(KEY_UP)
 	public static let down = KeyboardButton(KEY_DOWN)
 	
-	public static let keypad0 = KeyboardButton(KEY_KP_0)
-	public static let keypad1 = KeyboardButton(KEY_KP_1)
-	public static let keypad2 = KeyboardButton(KEY_KP_2)
-	public static let keypad3 = KeyboardButton(KEY_KP_3)
-	public static let keypad4 = KeyboardButton(KEY_KP_4)
-	public static let keypad5 = KeyboardButton(KEY_KP_5)
-	public static let keypad6 = KeyboardButton(KEY_KP_6)
-	public static let keypad7 = KeyboardButton(KEY_KP_7)
-	public static let keypad8 = KeyboardButton(KEY_KP_8)
-	public static let keypad9 = KeyboardButton(KEY_KP_9)
+	public static let keypadZero = KeyboardButton(KEY_KP_0)
+	public static let keypadOne = KeyboardButton(KEY_KP_1)
+	public static let keypadTwo = KeyboardButton(KEY_KP_2)
+	public static let keypadThree = KeyboardButton(KEY_KP_3)
+	public static let keypadFour = KeyboardButton(KEY_KP_4)
+	public static let keypadFive = KeyboardButton(KEY_KP_5)
+	public static let keypadSix = KeyboardButton(KEY_KP_6)
+	public static let keypadSeven = KeyboardButton(KEY_KP_7)
+	public static let keypadEight = KeyboardButton(KEY_KP_8)
+	public static let keypadNine = KeyboardButton(KEY_KP_9)
 	public static let decimal = KeyboardButton(KEY_KP_DECIMAL)
 	public static let divide = KeyboardButton(KEY_KP_DIVIDE)
 	public static let multiply = KeyboardButton(KEY_KP_MULTIPLY)
@@ -124,23 +122,19 @@ public struct Keyboard {
 	public static let keypadEnter = KeyboardButton(KEY_KP_ENTER)
 	public static let keypadEqual = KeyboardButton(KEY_KP_EQUAL)
 	
-	public static let lShift = KeyboardButton(KEY_LEFT_SHIFT)
-	public static let rShift = KeyboardButton(KEY_RIGHT_SHIFT)
-	public static let lControl = KeyboardButton(KEY_LEFT_CONTROL)
-	public static let rControl = KeyboardButton(KEY_RIGHT_CONTROL)
-	public static let lSuper = KeyboardButton(KEY_LEFT_SUPER)
-	public static let rSuper = KeyboardButton(KEY_RIGHT_SUPER)
-	public static let lAlt = KeyboardButton(KEY_LEFT_ALT)
-	public static let rAlt = KeyboardButton(KEY_RIGHT_ALT)
+	public static let shift = KeyboardMirroredButton(KEY_LEFT_SHIFT, KEY_RIGHT_SHIFT)
+	public static let control = KeyboardMirroredButton(KEY_LEFT_CONTROL, KEY_RIGHT_CONTROL)
+	public static let `super` = KeyboardMirroredButton(KEY_LEFT_SUPER, KEY_RIGHT_SUPER)
+	public static let alt = KeyboardMirroredButton(KEY_LEFT_ALT, KEY_RIGHT_ALT)
 	
 	public static let capsLock = KeyboardButton(KEY_CAPS_LOCK)
 	public static let numLock = KeyboardButton(KEY_NUM_LOCK)
 	public static let printScreen = KeyboardButton(KEY_PRINT_SCREEN)
 	public static let pause = KeyboardButton(KEY_PAUSE)
-	public static let keyboardMenu = KeyboardButton(KEY_KB_MENU)
 	
 	public static let back = KeyboardButton(KEY_BACK)
 	public static let menu = KeyboardButton(KEY_MENU)
+	public static let keyboardMenu = KeyboardButton(KEY_KB_MENU)
 	public static let volumeUp = KeyboardButton(KEY_VOLUME_UP)
 	public static let volumeDown = KeyboardButton(KEY_VOLUME_DOWN)
 	

@@ -30,6 +30,7 @@ public enum Blend: Int {
 	
 	/// Blend textures using custom src/dst factors (use rlSetBlendMode())
 	case custom = 5
+	// TODO: Implement custom with rlSetBlendMode()
 	
 	//MARK: Constants
 	

@@ -18,7 +18,7 @@ public struct Renderer {
 	
 	/// Set background color (framebuffer clear color)
 	@inlinable public static func clear(to color: Color) {
-		ClearBackground(color)
+		ClearBackground(color.toRaylib)
 	}
 	
 	//MARK: Commands

@@ -52,16 +52,6 @@ public struct Trace {
 	
 	//MARK: Configuration Methods
 	
-	/// Display all logs
-	@inlinable public static func enable() {
-		SetTraceLogLevel(0)
-	}
-	
-	/// Disable logging
-	@inlinable public static func disable() {
-		SetTraceLogLevel(7)
-	}
-	
 	/// Set the current threshold (minimum) log level
 	@inlinable public static func configure(threshold level: TraceLevel) {
 		SetTraceLogLevel(level.rawValue.toInt32)
@@ -74,32 +64,52 @@ public struct Trace {
 
 //MARK: - Trace Level
 
-public enum TraceLevel: Int, Comparable {
+public struct TraceLevel: RawRepresentable, Comparable {
 	
-	//MARK: Cases
+	//MARK: Constants
+	
+	/// Disables logging
+	public static let none = TraceLevel(rawValue: LOG_NONE.rawValue)
 	
 	/// Trace logging, intended for internal use only
-	case trace = 1
+	public static let trace = TraceLevel(rawValue: LOG_TRACE.rawValue)
 	
 	/// Debug logging, used for internal debugging, it should be disabled on release builds
-	case debug = 2
+	public static let debug = TraceLevel(rawValue: LOG_DEBUG.rawValue)
 	
 	/// Info logging, used for program execution info
-	case info = 3
+	public static let info = TraceLevel(rawValue: LOG_INFO.rawValue)
 	
 	/// Warning logging, used on recoverable failures
-	case warning = 4
+	public static let warning = TraceLevel(rawValue: LOG_WARNING.rawValue)
 	
 	/// Error logging, used on unrecoverable failures
-	case error = 5
+	public static let error = TraceLevel(rawValue: LOG_ERROR.rawValue)
 	
 	/// Fatal logging, used to abort program
-	case fatal = 6
+	public static let fatal = TraceLevel(rawValue: LOG_FATAL.rawValue)
+	
+	/// Displays all logs
+	public static let all = TraceLevel(rawValue: LOG_ALL.rawValue)
+	
+	//MARK: Properties
+	
+	public var rawValue: UInt32
+	
+	//MARK: Initialization
+	
+	@inlinable public init(rawValue: UInt32) {
+		self.rawValue = rawValue
+	}
 	
 	//MARK: Operators
 	
 	public static func < (lhs: TraceLevel, rhs: TraceLevel) -> Bool {
 		lhs.rawValue < rhs.rawValue
+	}
+	
+	public static func > (lhs: TraceLevel, rhs: TraceLevel) -> Bool {
+		lhs.rawValue > rhs.rawValue
 	}
 	
 }
