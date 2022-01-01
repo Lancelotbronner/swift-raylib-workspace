@@ -119,10 +119,10 @@ struct Player {
 		
 		let newY = position.y + speed * Time.delta
 		let hit = environment.first { obstacle in
-			obstacle.left.x <= position.x
-			&& obstacle.right.x >= position.x
-			&& obstacle.bottom.y >= position.y
-			&& obstacle.bottom.y < newY
+			obstacle.left.x <= position.x + 20
+			&& obstacle.right.x >= position.x - 20
+			&& obstacle.top.y >= position.y
+			&& obstacle.top.y < newY
 		}
 		
 		if let obstacle = hit {
@@ -178,8 +178,8 @@ enum CameraStyles {
 			var max = map
 			
 			for obstacle in environment {
-				min.maximum(of: obstacle.bottomLeft)
-				max.minimum(of: obstacle.topRight)
+				min.maximum(of: obstacle.topLeft)
+				max.minimum(of: obstacle.bottomRight)
 			}
 			
 			min = camera.toScreen(world: min)
@@ -223,7 +223,7 @@ enum CameraStyles {
 	struct EvenOutOnLandingCameraStyle: CameraStyle {
 		let speed: Float = 700
 		
-		let name = "Follow player center horizontally; updateplayer center vertically after landing"
+		let name = "Follow player center horizontally; update player center vertically after landing"
 		
 		private var active = false
 		private var target: Float = 0

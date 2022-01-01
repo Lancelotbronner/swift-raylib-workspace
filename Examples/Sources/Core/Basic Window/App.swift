@@ -15,7 +15,7 @@ import Raylib
 	}
 	
 	func draw() {
-		Renderer2D.text("Congrats! You created your first window!", at: 190, 200, color: Color.lightGray)
+		Renderer2D.text(center: "Congrats! You created your first window!", color: Color.lightGray)
 	}
 
 }

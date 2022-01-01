@@ -17,6 +17,11 @@ let package = Package(
 			name: "SwiftRaylib",
 			targets: ["Raylib"]),
 		
+		.library(
+			name: "SwiftRaylib-Dynamic",
+			type: .dynamic,
+			targets: ["Raylib"])
+		
 	],
 	targets: [
 		
@@ -29,15 +34,16 @@ let package = Package(
 				.brew(["raylib"]),
 			]),
 		
-			.target(
-				name: "Raylib",
-				dependencies: ["CRaylib"],
-				path: "Sources/Raylib"),
+		.target(
+			name: "Raylib",
+			dependencies: ["CRaylib"],
+			path: "Sources/Raylib"),
 		
 		// Tests
 		
-			.testTarget(
-				name: "RaylibTests",
-				dependencies: ["Raylib"]),
+		.testTarget(
+			name: "RaylibTests",
+			dependencies: ["Raylib"]),
+		
 	]
 )

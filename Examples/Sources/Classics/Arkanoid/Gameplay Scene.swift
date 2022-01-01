@@ -67,12 +67,12 @@ struct GameplayScene: Scene {
 		
 		if Keyboard.left.isDown {
 			player.body.x -= 5
-			player.body.x.minimum(of: player.body.width / 2)
+			player.body.x.minimum(of: 0)
 		}
 		
 		if Keyboard.right.isDown {
 			player.body.x += 5
-			player.body.x.maximum(of: Window.width.toFloat - player.body.width / 2)
+			player.body.x.maximum(of: Window.width.toFloat - player.body.width)
 		}
 		
 		// Ball: Launching Logic
@@ -110,7 +110,7 @@ struct GameplayScene: Scene {
 		
 		if ball.body.collided(with: player.body), ball.speed.y > 0 {
 			ball.speed.y.negate()
-			ball.speed.x = (ball.body.position.x - player.body.center.x) / player.body.size.x / 2 * 5
+			ball.speed.x = (ball.body.position.x - player.body.center.x) / (player.body.size.x / 2) * 5
 		}
 			
 		// Collision Logic: Ball & Brick

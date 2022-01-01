@@ -19,7 +19,7 @@ import Raylib
 			Image.gradientV(size: Window.width, Window.height, from: .red, to: .blue),
 			Image.gradientH(size: Window.width, Window.height, from: .red, to: .blue),
 			Image.gradientRadial(size: Window.width, Window.height, from: .white, to: .black),
-			Image.checked(size: Window.width, Window.height, tiles: 32, 32, colors: .red, .blue),
+			Image.checked(size: Window.width, Window.height, tiles: 32, 32, colors: .maroon, .darkBlue),
 			Image.whiteNoise(size: Window.width, Window.height, factor: 0.5),
 			// Was removed due to license issues
 //			Image.perlinNoise(size: Window.width, Window.height, offset: 50, 50, scale: 4),
@@ -49,8 +49,9 @@ import Raylib
 		case 2: Renderer2D.text("RADIAL GRADIENT", at: 580, 10, color: .lightGray)
 		case 3: Renderer2D.text("CHECKED", at: 680, 10, color: .raywhite)
 		case 4: Renderer2D.text("WHITE NOISE", at: 640, 10, color: .red)
-		case 5: Renderer2D.text("PERLIN NOISE", at: 630, 10, color: .raywhite)
-		case 6: Renderer2D.text("CELLULAR", at: 670, 10, color: .raywhite)
+			// was removed due to license issues
+//		case 5: Renderer2D.text("PERLIN NOISE", at: 630, 10, color: .raywhite)
+		case 5: Renderer2D.text("CELLULAR", at: 670, 10, color: .raywhite)
 		default: break
 		}
 	}

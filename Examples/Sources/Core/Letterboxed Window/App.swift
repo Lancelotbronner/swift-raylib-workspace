@@ -18,7 +18,7 @@ import Raylib
 	
 	init() {
 		Window.create(800, by: 450, title: "Example - Core - Letterboxed Window")
-		Window.enable(.resizeable, .vsync)
+		Window.enable(.resizable, .vsync)
 		Window.resize(minimum: 320, by: 240)
 		Renderer.background = .black
 		Application.target(fps: 60)
@@ -44,7 +44,7 @@ import Raylib
 		virtualMouse.clamp(between: .zero, and: game)
 		
 		Mouse.offset(by: transformation)
-		Mouse.scale(to: .one / scale)
+		Mouse.scale(by: .one / scale)
 	}
 	
 	func render() {
