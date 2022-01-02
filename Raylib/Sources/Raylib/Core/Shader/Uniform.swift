@@ -44,10 +44,6 @@ public struct Uniform<Scalar: UniformConvertible> {
 		value.write(value, at: index, to: shader)
 	}
 	
-	@inlinable public func identify(as builtin: BuiltinUniform) {
-		shader.underlying.locs[builtin.index] = index
-	}
-	
 }
 
 //MARK: - Uniform Conformances

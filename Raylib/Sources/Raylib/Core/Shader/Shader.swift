@@ -43,9 +43,16 @@ public struct Shader {
 	
 	//MARK: Methods
 	
-	/// Get uniform location
+	/// Get uniform
 	@inlinable public func uniform<T>(_ name: String, of type: T.Type = T.self) -> Uniform<T> {
 		Uniform(get: name, in: self)
+	}
+	
+	/// Bind builtin uniform to a shader variable
+	@inlinable public func bind<T>(_ builtin: BuiltinUniform<T>, to variable: String) -> Uniform<T> {
+		let tmp = uniform(variable, of: T.self)
+		underlying.locs[builtin.index] = tmp.index
+		return tmp
 	}
 	
 	/// BeginShaderMode; EndShaderMode
@@ -66,11 +73,7 @@ public struct Shader {
 
 //MARK: - Builtin Uniforms
 
-public struct BuiltinUniform {
-	
-	//MARK: Constants
-	
-	public static let position = BuiltinUniform(0)
+public struct BuiltinUniform<T> {
 	
 	//MARK: Properties
 	
@@ -78,9 +81,16 @@ public struct BuiltinUniform {
 	
 	//MARK: Initialization
 	
-	internal init(_ index: Int) {
+	@usableFromInline init(_ index: Int) {
 		self.index = index
 	}
+	
+}
+
+extension BuiltinUniform where T == Vector3f {
+	 
+	@inlinable public static var position: BuiltinUniform { .init(0) }
+	@inlinable public static var normal: BuiltinUniform { .init(3) }
 	
 }
 
