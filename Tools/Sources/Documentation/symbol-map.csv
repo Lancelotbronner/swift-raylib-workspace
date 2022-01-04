@@ -342,7 +342,7 @@ GetTime | Time/lifetime
 
 GetRandomValue | Random/between(_:and:)
 SetRandomSeed | Random/seed(using:)
-TakeScreenshot | Monitor/screenshot(as:)
+TakeScreenshot | Screen/screenshot(as:)
 TraceLog | Trace/log(_:_:), Trace/trace(_:), Trace/debug(_:), Trace/info(_:), Trace/warning(_:), Trace/error(_:), Trace/fatal(_:)
 SetTraceLogLevel | Trace/configure(threshold:)
 MemAlloc | Allocator/allocate(size:)
@@ -418,3 +418,21 @@ CheckCollisionPointCircle | Rectangle/contains(_:)
 CheckCollisionPointTriangle | Triangle/contains(_:)
 CheckCollisionLines | Line/collision(with:)
 GetCollisionRec | Rectangle/collision(with:)
+
+LoadImage | File/loadAsImage()
+LoadImageRaw | File/loadAsRawImage(size:by:format:offset:)
+LoadImageAnim | File/loadAsAnimation(frames:)
+LoadImageFromMemory |
+LoadImageFromTexture | Texture/convertToImage()
+LoadImageFromScreen | Screen/screenshot()
+UnloadImage |
+ExportImage | File/write(image:)
+ExportImageAsCode |
+
+GenImageColor | BuiltinImage/color(size:by:of:)
+GenImageGradientV | BuiltinImage/gradientV(size:by:from:to:)
+GenImageGradientH | BuiltinImage/gradientH(size:by:from:to:)
+GenImageGradientRadial | BuiltinImage/gradientRadial(size:by:density:from:to:)
+GenImageChecked | BuiltinImage/checked(size:by:tiles:_:colors:_:)
+GenImageWhiteNoise | BuiltinImage/whiteNoise(size:by:factor:)
+GenImageCellular | BuiltinImage/cellular(size:by:cell:)

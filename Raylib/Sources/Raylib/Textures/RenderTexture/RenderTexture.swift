@@ -18,11 +18,11 @@ public final class RenderTexture {
 	//MARK: Computed Properties
 	
 	@inlinable public var depth: Texture {
-		underlying.depth.unmanaged
+		underlying.depth.toUnmanaged
 	}
 	
 	@inlinable public var texture: Texture {
-		underlying.texture.unmanaged
+		underlying.texture.toUnmanaged
 	}
 	
 	//MARK: Initialization

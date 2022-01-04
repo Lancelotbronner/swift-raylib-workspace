@@ -67,16 +67,6 @@ public struct File {
 		return Array(UnsafeMutableBufferPointer(start: pointer, count: count.toInt))
 	}
 	
-	/// Load file as image
-	@inlinable public var image: Image {
-		Image(underlying: LoadImage(path.description))
-	}
-	
-	/// Load file as texture
-	@inlinable public var texture: Texture {
-		LoadTexture(path.description).managed
-	}
-	
 	//MARK: Initialization
 	
 	@usableFromInline init(at path: Path) {
@@ -94,8 +84,33 @@ public struct File {
 		IsFileExtension(path, ext)
 	}
 	
+	//MARK: Reading Methods
+	
+	/// Load file as image
+	@inlinable public func loadAsImage() -> Image {
+		LoadImage(path.description).toManaged
+	}
+	
+	/// Load raw file data as image
+	@inlinable public func loadAsRawImage(size width: Int, by height: Int, format: PixelFormat, offset: Int) -> Image {
+		LoadImageRaw(path.description, width.toInt32, height.toInt32, format.toRaylib.toInt32, offset.toInt32).toManaged
+	}
+	
+	/// Load file as animation
+	@inlinable public func loadAsAnimation(frames: Int) -> Image {
+		var frames = frames.toInt32
+		return LoadImageAnim(path.description, &frames).toManaged
+	}
+	
+	/// Load file as texture
+	@inlinable public func loadAsTexture() -> Texture {
+		LoadTexture(path.description).toManaged
+	}
+	
+	//MARK: Writing Methods
+	
 	/// Save text data to file
-	@inlinable public func write(_ text: String) throws {
+	@inlinable public func write(text: String) throws {
 		_ = text.withCString { pointer in
 			SaveFileText(path, UnsafeMutablePointer(mutating: pointer))
 		}
@@ -103,14 +118,17 @@ public struct File {
 	}
 	
 	/// Save data to file
-	@inlinable public func write(_ data: [UInt8]) throws {
+	@inlinable public func write(data: [UInt8]) throws {
 		_ = data.withUnsafeBytes { buffer in
 			SaveFileData(path, UnsafeMutableRawPointer(mutating: buffer.baseAddress), buffer.count.toUInt32)
 		}
 		// TODO: Handle error
 	}
 	
-	// TODO: Add image and texture writes
+	@inlinable public func write(image: Image) {
+		// TODO: Error Handling
+		ExportImage(image.toRaylib, path.description)
+	}
 	
 }
 

@@ -9,41 +9,60 @@ import CRaylib
 
 //MARK: - Image
 
-public struct Image {
+public protocol Image {
 	
-	//MARK: Properties
+	var toRaylib: CRaylib.Image { get }
 	
-	@CopyValueOnWrite
-	@usableFromInline var underlying: CRaylib.Image
+}
+
+extension Image {
 	
 	//MARK: Computed Properties
 	
-	@_transparent public var width: Int {
-		underlying.width.toInt
+	@inlinable public var width: Int {
+		toRaylib.width.toInt
 	}
 	
-	@_transparent public var height: Int {
-		underlying.height.toInt
+	@inlinable public var height: Int {
+		toRaylib.height.toInt
 	}
 	
-	@_transparent public var size: Vector2f {
-		.init(underlying.width.toFloat, underlying.height.toFloat)
+	@inlinable public var size: Vector2f {
+		.init(toRaylib.width.toFloat, toRaylib.height.toFloat)
 	}
 	
-	@_transparent public var mipmaps: Int {
-		underlying.mipmaps.toInt
+	@inlinable public var mipmaps: Int {
+		toRaylib.mipmaps.toInt
 	}
 	
-	// TODO: Pixel format enum
-	
-	@inlinable public var toTexture: Texture {
-		LoadTextureFromImage(underlying).managed
+	@inlinable public var format: PixelFormat {
+		PixelFormat(raylib: toRaylib.format)
 	}
 	
-	//MARK: Initialization
+	//MARK: Methods
 	
-	public init(underlying image: CRaylib.Image) {
-		_underlying = CopyValueOnWrite(image, duplicate: ImageCopy, free: UnloadImage)
+	/// Upload to GPU
+	@inlinable public func convertToTexture() -> Texture {
+		LoadTextureFromImage(toRaylib).toManaged
 	}
 	
 }
+
+//MARK: - Raylib Integration
+
+extension CRaylib.Image: MemoryManageable {
+	
+	@inlinable public static func unload(instance: CRaylib.Image) {
+		UnloadImage(instance)
+	}
+	
+}
+
+extension Unmanaged: Image where Subject == CRaylib.Image {
+	@inlinable public var toRaylib: Subject { underlying }
+}
+
+extension Managed: Image where Subject == CRaylib.Image {
+	@inlinable public var toRaylib: Subject { underlying }
+}
+

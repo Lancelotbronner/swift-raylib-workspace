@@ -74,7 +74,7 @@ extension Renderer2D {
 	//MARK: Rounded Rectangle
 	
 	@inlinable public static func roundedRectangle(_ shape: RoundedRectangle, color: Color = Renderer.shapeColor) {
-		DrawRectangleRounded(shape.rectangle.toRaylib, shape.cornerRadius, shape.segments.toInt32, color.toRaylib)
+		DrawRectangleRounded(shape.frame.toRaylib, shape.cornerRadius, shape.segments.toInt32, color.toRaylib)
 	}
 	
 	//MARK: Circle
@@ -141,10 +141,6 @@ extension Renderer2D {
 	
 	@inlinable public static func polygon(at position: Vector2f, sides: Int, radius: Float, rotation: Angle<Float> = .zero, color: Color = Renderer.shapeColor) {
 		DrawPoly(position.toRaylib, sides.toInt32, radius, rotation.toDegrees, color.toRaylib)
-	}
-	
-	@inlinable public static func polygon(_ shape: Polygon, color: Color = Renderer.shapeColor) {
-		DrawPoly(shape.position.toRaylib, shape.sides.toInt32, shape.radius, shape.rotation.toDegrees, color.toRaylib)
 	}
 	
 }

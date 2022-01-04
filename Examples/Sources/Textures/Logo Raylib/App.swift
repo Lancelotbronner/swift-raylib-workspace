@@ -14,7 +14,7 @@ import Raylib
 		Window.create(800, by: 450, title: "Example - Textures - Logo Raylib")
 		Application.target(fps: 60)
 		
-		logo = Filesystem.file(at: "raylib_logo.png", from: .module).texture
+		logo = Filesystem.file(at: "raylib_logo.png", from: .module).loadAsTexture()
 	}
 	
 	func draw() {

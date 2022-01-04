@@ -16,15 +16,15 @@ import Raylib
 		Application.target(fps: 60)
 		
 		textures = [
-			Image.gradientV(size: Window.width, Window.height, from: .red, to: .blue),
-			Image.gradientH(size: Window.width, Window.height, from: .red, to: .blue),
-			Image.gradientRadial(size: Window.width, Window.height, from: .white, to: .black),
-			Image.checked(size: Window.width, Window.height, tiles: 32, 32, colors: .maroon, .darkBlue),
-			Image.whiteNoise(size: Window.width, Window.height, factor: 0.5),
+			BuiltinImage.gradientV(size: Window.width, by: Window.height, from: .red, to: .blue),
+			BuiltinImage.gradientH(size: Window.width, by: Window.height, from: .red, to: .blue),
+			BuiltinImage.gradientRadial(size: Window.width, by: Window.height, from: .white, to: .black),
+			BuiltinImage.checked(size: Window.width, by: Window.height, tiles: 32, 32, colors: .maroon, .darkBlue),
+			BuiltinImage.whiteNoise(size: Window.width, by: Window.height, factor: 0.5),
 			// Was removed due to license issues
 //			Image.perlinNoise(size: Window.width, Window.height, offset: 50, 50, scale: 4),
-			Image.cellular(size: Window.width, Window.height, cellSize: 32),
-		].map(\.toTexture)
+			BuiltinImage.cellular(size: Window.width, by: Window.height, cell: 32),
+		].map { $0.convertToTexture() }
 	}
 	
 	mutating func update() {

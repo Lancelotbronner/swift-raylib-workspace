@@ -15,11 +15,11 @@ public protocol MemoryManageable {
 
 extension MemoryManageable {
 	
-	@inlinable public var managed: Managed<Self> {
+	@inlinable public var toManaged: Managed<Self> {
 		Managed(underlying: self)
 	}
 	
-	@inlinable public var unmanaged: Unmanaged<Self> {
+	@inlinable public var toUnmanaged: Unmanaged<Self> {
 		Unmanaged(underlying: self)
 	}
 	
@@ -31,18 +31,12 @@ public struct Unmanaged<Subject: MemoryManageable> {
 	
 	//MARK: Properties
 	
-	@usableFromInline let underlying: Subject
-	
-	//MARK: Computed Properties
-	
-	@inlinable public var toRaylib: Subject {
-		underlying
-	}
+	@usableFromInline var underlying: Subject
 	
 	//MARK: Initialization
 	
-	@usableFromInline init(underlying raylib: Subject) {
-		underlying = raylib
+	@usableFromInline init(underlying value: Subject) {
+		underlying = value
 	}
 	
 }
@@ -53,18 +47,12 @@ public final class Managed<Subject: MemoryManageable> {
 	
 	//MARK: Properties
 	
-	@usableFromInline let underlying: Subject
-	
-	//MARK: Computed Properties
-	
-	@inlinable public var toRaylib: Subject {
-		underlying
-	}
+	@usableFromInline var underlying: Subject
 	
 	//MARK: Initialization
 	
-	@usableFromInline init(underlying raylib: Subject) {
-		underlying = raylib
+	@usableFromInline init(underlying value: Subject) {
+		underlying = value
 	}
 	
 	deinit {
