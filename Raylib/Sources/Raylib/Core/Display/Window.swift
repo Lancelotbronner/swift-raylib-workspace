@@ -173,7 +173,7 @@ public struct Window {
 	
 	/// Set icon for window
 	@inlinable public static func set(icon image: Image) {
-		SetWindowIcon(image.toRaylib)
+		SetWindowIcon(image.implementation.raylib)
 	}
 	
 	//MARK: Miscellaneous Methods

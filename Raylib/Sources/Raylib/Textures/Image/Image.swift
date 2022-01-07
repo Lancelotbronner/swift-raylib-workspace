@@ -1,68 +1,81 @@
 //
 //  File.swift
-//  File
+//  
 //
-//  Created by Christophe Bronner on 2021-09-07.
+//  Created by Christophe Bronner on 2022-01-06.
 //
 
 import CRaylib
 
-//MARK: - Image
-
-public protocol Image {
+public struct Image {
 	
-	var toRaylib: CRaylib.Image { get }
+	//MARK: Properties
 	
-}
-
-extension Image {
+	@usableFromInline var implementation: ImplementationOfImage
 	
 	//MARK: Computed Properties
 	
 	@inlinable public var width: Int {
-		toRaylib.width.toInt
+		implementation.raylib.width.toInt
 	}
 	
 	@inlinable public var height: Int {
-		toRaylib.height.toInt
+		implementation.raylib.height.toInt
 	}
 	
 	@inlinable public var size: Vector2f {
-		.init(toRaylib.width.toFloat, toRaylib.height.toFloat)
+		Vector2f(implementation.raylib.width.toFloat, implementation.raylib.height.toFloat)
 	}
 	
 	@inlinable public var mipmaps: Int {
-		toRaylib.mipmaps.toInt
+		implementation.raylib.mipmaps.toInt
 	}
 	
 	@inlinable public var format: PixelFormat {
-		PixelFormat(raylib: toRaylib.format)
+		PixelFormat(raylib: implementation.raylib.format)
 	}
 	
-	//MARK: Methods
+	//MARK: Initialization
+	
+	@usableFromInline init(_ implementation: ImplementationOfImage) {
+		self.implementation = implementation
+	}
+	
+	//	/// Create an image from text (default font)
+	//	@inlinable public init(of text: String, size: Int, color: Color) {
+	//
+	//	}
+	
+	//MARK: Conversion Methods
 	
 	/// Upload to GPU
 	@inlinable public func convertToTexture() -> Texture {
-		LoadTextureFromImage(toRaylib).toManaged
+		LoadTextureFromImage(implementation.raylib).toManaged
 	}
 	
-}
-
-//MARK: - Raylib Integration
-
-extension CRaylib.Image: MemoryManageable {
+	//	/// Convert image data to desired format
+	//	@inlinable public func convert(to format: PixelFormat) {
+	//
+	//	}
 	
-	@inlinable public static func unload(instance: CRaylib.Image) {
-		UnloadImage(instance)
+	//MARK: Copy Methods
+	
+	/// Create an image duplicate (useful for transformations)
+	@inlinable public func copy() -> Image {
+		ImageCopy(implementation.raylib).toManaged.toSwift
 	}
 	
-}
-
-extension Unmanaged: Image where Subject == CRaylib.Image {
-	@inlinable public var toRaylib: Subject { underlying }
-}
-
-extension Managed: Image where Subject == CRaylib.Image {
-	@inlinable public var toRaylib: Subject { underlying }
+	/// Create an image duplicate (useful for transformations)
+	@inlinable public func copy(_ area: Rectangle, into other: Image) -> Image {
+		ImageCopy(implementation.raylib).toManaged.toSwift
+	}
+	
+	//MARK: Reading Methods
+	
+	/// Create an image from another image piece
+	@inlinable public func sub(_ area: Rectangle) -> Image {
+		ImageFromImage(implementation.raylib, area.toRaylib).toManaged.toSwift
+	}
+	
 }
 

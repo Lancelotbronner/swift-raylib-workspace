@@ -88,18 +88,18 @@ public struct File {
 	
 	/// Load file as image
 	@inlinable public func loadAsImage() -> Image {
-		LoadImage(path.description).toManaged
+		LoadImage(path.description).toManaged.toSwift
 	}
 	
 	/// Load raw file data as image
 	@inlinable public func loadAsRawImage(size width: Int, by height: Int, format: PixelFormat, offset: Int) -> Image {
-		LoadImageRaw(path.description, width.toInt32, height.toInt32, format.toRaylib.toInt32, offset.toInt32).toManaged
+		LoadImageRaw(path.description, width.toInt32, height.toInt32, format.toRaylib.toInt32, offset.toInt32).toManaged.toSwift
 	}
 	
 	/// Load file as animation
 	@inlinable public func loadAsAnimation(frames: Int) -> Image {
 		var frames = frames.toInt32
-		return LoadImageAnim(path.description, &frames).toManaged
+		return LoadImageAnim(path.description, &frames).toManaged.toSwift
 	}
 	
 	/// Load file as texture
@@ -127,7 +127,7 @@ public struct File {
 	
 	@inlinable public func write(image: Image) {
 		// TODO: Error Handling
-		ExportImage(image.toRaylib, path.description)
+		ExportImage(image.implementation.raylib, path.description)
 	}
 	
 }

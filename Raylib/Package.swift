@@ -35,8 +35,12 @@ let package = Package(
 			]),
 		
 		.target(
+			name: "CRaylibCompatibility",
+			dependencies: ["CRaylib"]),
+		
+		.target(
 			name: "Raylib",
-			dependencies: ["CRaylib"],
+			dependencies: ["CRaylib", "CRaylibCompatibility"],
 			path: "Sources/Raylib"),
 		
 		// Tests

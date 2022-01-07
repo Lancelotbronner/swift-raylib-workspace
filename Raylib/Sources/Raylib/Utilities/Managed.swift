@@ -33,6 +33,13 @@ public struct Unmanaged<Subject: MemoryManageable> {
 	
 	@usableFromInline var underlying: Subject
 	
+	//MARK: Computed Properties
+	
+	@inlinable public var raylib: Subject {
+		get { underlying }
+		set { underlying = newValue }
+	}
+	
 	//MARK: Initialization
 	
 	@usableFromInline init(underlying value: Subject) {
@@ -48,6 +55,13 @@ public final class Managed<Subject: MemoryManageable> {
 	//MARK: Properties
 	
 	@usableFromInline var underlying: Subject
+	
+	//MARK: Computed Properties
+	
+	@inlinable public var raylib: Subject {
+		get { underlying }
+		set { underlying = newValue }
+	}
 	
 	//MARK: Initialization
 	

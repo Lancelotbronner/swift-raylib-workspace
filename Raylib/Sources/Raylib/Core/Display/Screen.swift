@@ -15,7 +15,7 @@ public struct Screen {
 	
 	/// Load image from screen buffer and (screenshot)
 	@inlinable public static func screenshot() -> Image {
-		LoadImageFromScreen().toManaged
+		LoadImageFromScreen().toManaged.toSwift
 	}
 	
 	/// Takes a screenshot of current screen (filename extension defines format)
