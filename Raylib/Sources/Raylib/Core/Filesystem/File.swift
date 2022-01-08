@@ -55,8 +55,6 @@ public struct File {
 		return pointer.toString
 	}
 	
-	// TODO: Improve data integrations (closure, Foundation)
-	
 	///  Load file data as byte array
 	@inlinable public var bytes: [UInt8]? {
 		var count: UInt32 = 0

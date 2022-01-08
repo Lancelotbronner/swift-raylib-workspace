@@ -9,7 +9,7 @@ import CRaylib
 
 //MARK: - Implementation of Shader
 
-public protocol ImplementationOfShader {
+@usableFromInline protocol ImplementationOfShader {
 	
 	var raylib: CRaylib.Shader { get set }
 	
