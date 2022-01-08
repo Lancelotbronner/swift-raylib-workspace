@@ -35,3 +35,11 @@ extension CRaylib.Image: MemoryManageable {
 
 extension Unmanaged: ImplementationOfImage where Subject == CRaylib.Image { }
 extension Managed: ImplementationOfImage where Subject == CRaylib.Image { }
+
+extension Image {
+	
+	@inlinable public var toRaylib: CRaylib.Image {
+		implementation.raylib
+	}
+	
+}

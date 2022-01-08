@@ -13,15 +13,15 @@ public struct Shader {
 	
 	//MARK: Properties
 	
-	@CopyValueOnWrite
-	@usableFromInline var underlying: CRaylib.Shader
+	@usableFromInline var implementation: ImplementationOfShader
 	
 	//MARK: Computed Properties
 	
+	
 	//MARK: Initialization
 	
-	private init(underlying shader: CRaylib.Shader) {
-		_underlying = CopyValueOnWrite(shader, free: UnloadShader)
+	@usableFromInline init(_ implementation: ImplementationOfShader) {
+		self.implementation = implementation
 	}
 	
 	/// Load shader from files and bind default locations
@@ -29,8 +29,8 @@ public struct Shader {
 	/// - Parameters:
 	///   - vertex: The filename of the vertex shader
 	///   - fragment: The filename of the fragment shader
-	public init(path vertex: String, _ fragment: String) {
-		self.init(underlying: LoadShader(vertex, fragment))
+	public init(path vertex: Path, _ fragment: Path) {
+		implementation = LoadShader(vertex, fragment).toManaged
 	}
 	
 	/// Load shader from strings and bind default locations
@@ -38,7 +38,7 @@ public struct Shader {
 	///   - vertex: The code for the vertex shader
 	///   - fragment: The code for the fragment shader
 	public init(memory vertex: String, _ fragment: String) {
-		self.init(underlying: LoadShaderFromMemory(vertex, fragment))
+		implementation = LoadShaderFromMemory(vertex, fragment).toManaged
 	}
 	
 	//MARK: Methods
@@ -51,22 +51,22 @@ public struct Shader {
 	/// Bind builtin uniform to a shader variable
 	@inlinable public func bind<T>(_ builtin: BuiltinUniform<T>, to variable: String) -> Uniform<T> {
 		let tmp = uniform(variable, of: T.self)
-		underlying.locs[builtin.index] = tmp.index
+		implementation.raylib.locs[builtin.index] = tmp.index
 		return tmp
-	}
-	
-	/// BeginShaderMode; EndShaderMode
-	@inlinable public func render(draw: () -> Void) {
-		BeginShaderMode(underlying)
-		draw()
-		EndShaderMode()
 	}
 	
 	// TODO: Make attribute wrapper
 	
 	/// Get attributes location
 	@inlinable public func attribute(_ name: String) -> Int {
-		GetShaderLocationAttrib(underlying, name).toInt
+		GetShaderLocationAttrib(implementation.raylib, name).toInt
+	}
+	
+	/// BeginShaderMode; EndShaderMode
+	@inlinable public func render(draw: () -> Void) {
+		BeginShaderMode(implementation.raylib)
+		draw()
+		EndShaderMode()
 	}
 	
 }
