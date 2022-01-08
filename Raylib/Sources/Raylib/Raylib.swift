@@ -18,3 +18,7 @@ public struct Raylib {
 	}
 	
 }
+
+//MARK: - Global
+
+public typealias Path = String
