@@ -65,6 +65,23 @@ public struct Image {
 		}
 	}
 	
+	/// Premultiply alpha channel
+	@inlinable public func premultiply() {
+		withMutablePointer(ImageAlphaPremultiply)
+	}
+	
+	/// Compute all mipmap levels for a provided image
+	@inlinable public func mipmap() {
+		withMutablePointer(ImageMipmaps)
+	}
+	
+	/// Dither image data to 16bpp or lower (Floyd-Steinberg dithering)
+	@inlinable public func dither(_ rbpp: Int, _ gbpp: Int, _ bbpp: Int, _ abpp: Int) {
+		withMutablePointer { ptr in
+			ImageDither(ptr, rbpp.toInt32, gbpp.toInt32, bbpp.toInt32, abpp.toInt32)
+		}
+	}
+	
 	//MARK: Resize Methods
 	
 	/// Resize image according to the specified algorithm
@@ -118,9 +135,97 @@ public struct Image {
 		ImageFromImage(implementation.raylib, area.toRaylib).toManaged.toSwift
 	}
 	
+	/// Get image pixel color at (x, y) position
+	@inlinable public func pixel(at x: Int, _ y: Int) -> Color {
+		GetImageColor(implementation.raylib, x.toInt32, y.toInt32).toSwift
+	}
+	
+	/// Get image alpha border rectangle
+	@inlinable public func border(alpha threshold: Float) -> Rectangle {
+		GetImageAlphaBorder(implementation.raylib, threshold).toSwift
+	}
+	
 	//MARK: Transform Methods
 	
+	/// Flip image vertically
+	@inlinable public func flipVertically() {
+		withMutablePointer(ImageFlipVertical)
+	}
+	
+	/// Flip image horizontally
+	@inlinable public func flipHorizontally() {
+		withMutablePointer(ImageFlipHorizontal)
+	}
+	
+	/// Rotate image clockwise 90deg
+	@inlinable public func rotateRight() {
+		withMutablePointer(ImageRotateCW)
+	}
+	
+	/// Rotate image counter-clockwise 90deg
+	@inlinable public func rotateLeft() {
+		withMutablePointer(ImageRotateCCW)
+	}
+	
+	//MARK: Color Methods
+	
+	/// Modify image color: tint
+	@inlinable public func tint(with color: Color) {
+		withMutablePointer { ptr in
+			ImageColorTint(ptr, color.toRaylib)
+		}
+	}
+	
+	/// Modify image color: invert
+	@inlinable public func invert() {
+		withMutablePointer(ImageColorInvert)
+	}
+	
+	/// Modify image color: grayscale
+	@inlinable public func grayscale() {
+		withMutablePointer(ImageColorGrayscale)
+	}
+	
+	/// Modify image color: contrast (-100 to 100)
+	@inlinable public func contrast(of ratio: Float) {
+		withMutablePointer { ptr in
+			ImageColorContrast(ptr, ratio)
+		}
+	}
+	
+	/// Modify image color: brightness (-255 to 255)
+	@inlinable public func brightness(of ratio: Int) {
+		withMutablePointer { ptr in
+			ImageColorBrightness(ptr, ratio.toInt32)
+		}
+	}
+	
+	/// Modify image color: replace color
+	@inlinable public func replace(_ color: Color, with other: Color) {
+		withMutablePointer { ptr in
+			ImageColorReplace(ptr, color.toRaylib, other.toRaylib)
+		}
+	}
+	
 	//MARK: Draw Methods
+	
+	/// Clear alpha channel to desired color
+	@inlinable public func clear(alpha threshold: Float, to color: Color) {
+		withMutablePointer { ptr in
+			ImageAlphaClear(ptr, color.toRaylib, threshold)
+		}
+	}
+	
+	/// Apply alpha mask to image
+	@inlinable public func mask(using alpha: Image) {
+		withMutablePointer { ptr in
+			ImageAlphaMask(ptr, alpha.toRaylib)
+		}
+	}
+	
+//	@inlinable public func render(draw: (ImageRenderer) -> Void) {
+//		draw(ImageRenderer(for: implementation))
+//	}
 	
 	//MARK: Utilities
 	
@@ -132,26 +237,14 @@ public struct Image {
 	
 }
 
+#warning("TODO: Image color data")
 /*
- RLAPI void ImageAlphaClear(Image *image, Color color, float threshold);                                  // Clear alpha channel to desired color
- RLAPI void ImageAlphaMask(Image *image, Image alphaMask);                                                // Apply alpha mask to image
- RLAPI void ImageAlphaPremultiply(Image *image);                                                          // Premultiply alpha channel
- RLAPI void ImageMipmaps(Image *image);                                                                   // Compute all mipmap levels for a provided image
- RLAPI void ImageDither(Image *image, int rBpp, int gBpp, int bBpp, int aBpp);                            // Dither image data to 16bpp or lower (Floyd-Steinberg dithering)
- RLAPI void ImageFlipVertical(Image *image);                                                              // Flip image vertically
- RLAPI void ImageFlipHorizontal(Image *image);                                                            // Flip image horizontally
- RLAPI void ImageRotateCW(Image *image);                                                                  // Rotate image clockwise 90deg
- RLAPI void ImageRotateCCW(Image *image);                                                                 // Rotate image counter-clockwise 90deg
- RLAPI void ImageColorTint(Image *image, Color color);                                                    // Modify image color: tint
- RLAPI void ImageColorInvert(Image *image);                                                               // Modify image color: invert
- RLAPI void ImageColorGrayscale(Image *image);                                                            // Modify image color: grayscale
- RLAPI void ImageColorContrast(Image *image, float contrast);                                             // Modify image color: contrast (-100 to 100)
- RLAPI void ImageColorBrightness(Image *image, int brightness);                                           // Modify image color: brightness (-255 to 255)
- RLAPI void ImageColorReplace(Image *image, Color color, Color replace);                                  // Modify image color: replace color
  RLAPI Color *LoadImageColors(Image image);                                                               // Load color data from image as a Color array (RGBA - 32bit)
- RLAPI Color *LoadImagePalette(Image image, int maxPaletteSize, int *colorCount);                         // Load colors palette from image as a Color array (RGBA - 32bit)
  RLAPI void UnloadImageColors(Color *colors);                                                             // Unload color data loaded with LoadImageColors()
+ */
+
+#warning("TODO: Image color palette")
+/*
+ RLAPI Color *LoadImagePalette(Image image, int maxPaletteSize, int *colorCount);                         // Load colors palette from image as a Color array (RGBA - 32bit)
  RLAPI void UnloadImagePalette(Color *colors);                                                            // Unload colors palette loaded with LoadImagePalette()
- RLAPI Rectangle GetImageAlphaBorder(Image image, float threshold);                                       // Get image alpha border rectangle
- RLAPI Color GetImageColor(Image image, int x, int y);                                                    // Get image pixel color at (x, y) position
  */

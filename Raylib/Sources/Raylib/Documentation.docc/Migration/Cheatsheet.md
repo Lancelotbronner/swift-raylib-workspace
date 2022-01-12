@@ -5775,7 +5775,7 @@ Draw circle sector outline
 Language | Symbol
 --- | ---
 C | `void DrawCircleSectorLines(Vector2 center, float radius, float startAngle, float endAngle, int segments, Color color);`
-Swift | ``OutlineRenderer2D/sector(at:radius:from:to:segments:color:)`` and ``OutlineRenderer2D/sector(at:_:radius:from:to:segments:color:)``
+Swift | ``WireRenderer2D/sector(at:radius:from:to:segments:color:)`` and ``WireRenderer2D/sector(at:_:radius:from:to:segments:color:)``
 
 #### DrawCircleGradient
 
@@ -5802,7 +5802,7 @@ Draw circle outline
 Language | Symbol
 --- | ---
 C | `void DrawCircleLines(int centerX, int centerY, float radius, Color color);`
-Swift | ``OutlineRenderer2D/circle(at:_:radius:color:)``
+Swift | ``WireRenderer2D/circle(at:_:radius:color:)``
 
 #### DrawEllipse
 
@@ -5820,7 +5820,7 @@ Draw ellipse outline
 Language | Symbol
 --- | ---
 C | `void DrawEllipseLines(int centerX, int centerY, float radiusH, float radiusV, Color color);`
-Swift | ``OutlineRenderer2D/ellipse(at:_:radius:_:color:)``
+Swift | ``WireRenderer2D/ellipse(at:_:radius:_:color:)``
 
 #### DrawRing
 
@@ -5838,7 +5838,7 @@ Draw ring outline
 Language | Symbol
 --- | ---
 C | `void DrawRingLines(Vector2 center, float innerRadius, float outerRadius, float startAngle, float endAngle, int segments, Color color);`
-Swift | ``OutlineRenderer2D/ring(at:inner:outer:segments:from:to:color:)`` and ``OutlineRenderer2D/ring(at:_:inner:outer:segments:from:to:color:)``
+Swift | ``WireRenderer2D/ring(at:inner:outer:segments:from:to:color:)`` and ``WireRenderer2D/ring(at:_:inner:outer:segments:from:to:color:)``
 
 #### DrawRectangle
 
@@ -5910,7 +5910,7 @@ Draw rectangle outline
 Language | Symbol
 --- | ---
 C | `void DrawRectangleLines(int posX, int posY, int width, int height, Color color);`
-Swift | ``OutlineRenderer2D/rectangle(at:_:size:_:color:)``
+Swift | ``WireRenderer2D/rectangle(at:_:size:_:color:)``
 
 #### DrawRectangleLinesEx
 
@@ -5919,7 +5919,7 @@ Draw rectangle outline with extended parameters
 Language | Symbol
 --- | ---
 C | `void DrawRectangleLinesEx(Rectangle rec, float lineThick, Color color);`
-Swift | ``OutlineRenderer2D/rectangle(at:_:size:_:thickness:color:)``
+Swift | ``WireRenderer2D/rectangle(at:_:size:_:thickness:color:)``
 
 #### DrawRectangleRounded
 
@@ -5955,7 +5955,7 @@ Draw triangle outline (vertex in counter-clockwise order!)
 Language | Symbol
 --- | ---
 C | `void DrawTriangleLines(Vector2 v1, Vector2 v2, Vector2 v3, Color color);`
-Swift | ``OutlineRenderer2D/triangle(_:_:_:color:)`` and ``Renderer2D/triangle(_:_:_:color:)``
+Swift | ``WireRenderer2D/triangle(_:_:_:color:)`` and ``Renderer2D/triangle(_:_:_:color:)``
 
 #### DrawTriangleFan
 
@@ -5991,7 +5991,7 @@ Draw a polygon outline of n sides
 Language | Symbol
 --- | ---
 C | `void DrawPolyLines(Vector2 center, int sides, float radius, float rotation, Color color);`
-Swift | ``OutlineRenderer2D/polygon(at:sides:radius:rotation:color:)``
+Swift | ``WireRenderer2D/polygon(at:sides:radius:rotation:color:)``
 
 #### DrawPolyLinesEx
 

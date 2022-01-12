@@ -7,9 +7,9 @@
 
 import CRaylib
 
-//MARK: - Outline 2D Renderer
+//MARK: - Wire 2D Renderer
 
-extension OutlineRenderer2D {
+extension WireRenderer2D {
 	
 	//MARK: Triangle
 	

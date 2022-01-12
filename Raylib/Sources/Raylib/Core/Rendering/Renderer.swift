@@ -39,8 +39,10 @@ public struct Renderer {
 	
 }
 
-//MARK: - Rendering Modes
+//MARK: - Renderers
 
 public struct Renderer2D { }
-public struct OutlineRenderer2D { }
+public struct WireRenderer2D { }
 public struct Renderer3D { }
+public struct WireRenderer3D { }
+public struct ImageRenderer { }
