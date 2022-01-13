@@ -45,4 +45,3 @@ public struct Renderer2D { }
 public struct WireRenderer2D { }
 public struct Renderer3D { }
 public struct WireRenderer3D { }
-public struct ImageRenderer { }

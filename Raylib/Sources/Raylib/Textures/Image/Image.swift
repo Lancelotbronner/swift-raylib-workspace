@@ -223,9 +223,9 @@ public struct Image {
 		}
 	}
 	
-//	@inlinable public func render(draw: (ImageRenderer) -> Void) {
-//		draw(ImageRenderer(for: implementation))
-//	}
+	@inlinable public func render(draw: (RendererImage) -> Void) {
+		draw(RendererImage(for: self))
+	}
 	
 	//MARK: Utilities
 	
