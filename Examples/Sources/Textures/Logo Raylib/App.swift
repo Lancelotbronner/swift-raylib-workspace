@@ -17,8 +17,8 @@ import Raylib
 		logo = Filesystem.file(at: "raylib_logo.png", from: .module).loadAsTexture()
 	}
 	
-	func draw() {
-		Renderer2D.texture(logo, at: Window.size / 2 - logo.size / 2)
-		Renderer2D.text("this IS a texture!", at: 360, 370, size: 10, color: .gray)
+	func draw(using renderer: Renderer2D) {
+		renderer.texture(logo, at: Window.size / 2 - logo.size / 2)
+		renderer.text("this IS a texture!", at: 360, 370, size: 10, color: .gray)
 	}
 }

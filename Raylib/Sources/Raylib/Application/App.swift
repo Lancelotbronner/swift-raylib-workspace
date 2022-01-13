@@ -55,9 +55,9 @@ extension App {
 			action = scene.update()
 			scene.render()
 			
-			Renderer.render {
-				Renderer.clear(to: Renderer.background)
-				scene.draw()
+			Renderer.render { renderer in
+				renderer.clear(to: Renderer.background)
+				scene.draw(using: renderer)
 			}
 			
 			switch action {

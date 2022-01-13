@@ -149,23 +149,23 @@ struct GameplayScene: Scene {
 	
 	//MARK: Drawing Methods
 	
-	func draw() {
-		Renderer2D.rectangle(player.body, color: .black)
-		Renderer2D.circle(ball.body, color: .maroon)
+	func draw(using renderer: Renderer2D) {
+		renderer.rectangle(player.body, color: .black)
+		renderer.circle(ball.body, color: .maroon)
 		
 		for i in 0 ..< player.lives {
-			Renderer2D.rectangle(at: 20 + 40 * i, Window.height - 30, size: 35, 10, color: .lightGray)
+			renderer.rectangle(at: 20 + 40 * i, Window.height - 30, size: 35, 10, color: .lightGray)
 		}
 		
 		for i in bricks.indices {
 			for j in bricks[i].indices where bricks[i][j].isActive {
 				let color: Color = (i + j) % 2 == 0 ? .gray : .darkGray
-				Renderer2D.rectangle(at: bricks[i][j].position, size: sizeOfBrick, color: color)
+				renderer.rectangle(at: bricks[i][j].position, size: sizeOfBrick, color: color)
 			}
 		}
 		
 		if isPaused {
-			Renderer2D.text(center: "GAME PAUSED", size: 40, color: .gray)
+			renderer.text(center: "GAME PAUSED", size: 40, color: .gray)
 		}
 	}
 	

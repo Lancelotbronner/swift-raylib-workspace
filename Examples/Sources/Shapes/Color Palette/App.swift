@@ -44,17 +44,17 @@ import Raylib
 		}
 	}
 	
-	func draw() {
-		Renderer2D.text("raylib color palette", at: 28, 42)
-		Renderer2D.text("press SPACE to see all colors", at: Window.width - 180, Window.height - 40, size: 10, color: .gray)
+	func draw(using renderer: Renderer2D) {
+		renderer.text("raylib color palette", at: 28, 42)
+		renderer.text("press SPACE to see all colors", at: Window.width - 180, Window.height - 40, size: 10, color: .gray)
 		
 		for item in palette {
-			Renderer2D.rectangle(item.frame, color: item.color.faded(to: item.hovered ? 0.6 : 1))
+			renderer.rectangle(item.frame, color: item.color.faded(to: item.hovered ? 0.6 : 1))
 			
 			guard Keyboard.space.isDown || item.hovered else { continue }
-			Renderer2D.rectangle(at: item.frame.x.toInt, item.frame.bottom.y.toInt - 26, size: item.frame.width.toInt, 20, color: .black)
-			OutlineRenderer2D.rectangle(item.frame, thickness: 6, color: .black.faded(to: 0.3))
-			Renderer2D.text(item.name, at: item.frame.right.x.toInt - 12, item.frame.y.toInt + item.frame.height.toInt - 20, size: 10, alignment: .right, color: item.color)
+			renderer.rectangle(at: item.frame.x.toInt, item.frame.bottom.y.toInt - 26, size: item.frame.width.toInt, 20, color: .black)
+			renderer.wire.rectangle(item.frame, thickness: 6, color: .black.faded(to: 0.3))
+			renderer.text(item.name, at: item.frame.right.x.toInt - 12, item.frame.y.toInt + item.frame.height.toInt - 20, size: 10, alignment: .right, color: item.color)
 		}
 	}
 }
