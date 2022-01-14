@@ -13,18 +13,25 @@ public struct Renderer {
 	
 	//MARK: Properties
 	
+	/// Window background color when using ``Applet`` or ``App``
 	public static var background = Color.raywhite
 	
-	public static var pointSize = 20
+	/// Default line thickness
+	public static var thickness: Float = 1
 	
-	public static var thickness = 1
-	
+	/// Default color
 	public static var color = Color.gray
 	
-	public static var textColor = Color.black
-	
+	/// Default image and texture tint
 	public static var tint = Color.white
 	
+	/// Default text size
+	public static var pointSize = 20
+	
+	/// Default text color
+	public static var textColor = Color.black
+	
+	/// Default text alignment
 	public static var textAlignment = TextAlignment.left
 	
 	//MARK: Commands
