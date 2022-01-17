@@ -51,6 +51,9 @@ public struct Image {
 		implementation = ImageTextEx(font.toRaylib, text, size.toFloat, spacing.toFloat, color.toRaylib).toManaged
 	}
 	
+	// TODO: LoadImageFromMemory
+	// Image LoadImageFromMemory(const char *fileType, const unsigned char *fileData, int dataSize);
+	
 	//MARK: Conversion Methods
 	
 	/// Upload to GPU
@@ -237,13 +240,13 @@ public struct Image {
 	
 }
 
-#warning("TODO: Image color data")
+// TODO: Image color data
 /*
  RLAPI Color *LoadImageColors(Image image);                                                               // Load color data from image as a Color array (RGBA - 32bit)
  RLAPI void UnloadImageColors(Color *colors);                                                             // Unload color data loaded with LoadImageColors()
  */
 
-#warning("TODO: Image color palette")
+// TODO: Image color palette
 /*
  RLAPI Color *LoadImagePalette(Image image, int maxPaletteSize, int *colorCount);                         // Load colors palette from image as a Color array (RGBA - 32bit)
  RLAPI void UnloadImagePalette(Color *colors);                                                            // Unload colors palette loaded with LoadImagePalette()

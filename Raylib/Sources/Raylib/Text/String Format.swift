@@ -6,10 +6,11 @@
 //
 
 import CRaylib
-import Foundation
-#warning("Remove or conditionalize Foundation dependency")
 
-//MARK: - Floating Point Formatting
+//MARK: - Foundation Integration
+
+#if canImport(Foundation)
+import Foundation
 
 extension String.StringInterpolation {
 	
@@ -22,3 +23,5 @@ extension String.StringInterpolation {
 	}
 	
 }
+
+#endif
