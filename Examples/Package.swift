@@ -40,6 +40,10 @@ let package = Package(
 			.copy("raylib_logo.png")
 		]),
 		.example(.textures, "Image Generation"),
+		.example(.textures, "Blend Modes", [
+			.copy("background.png"),
+			.copy("foreground.png"),
+		], ["LICENSE.md"]),
 		
 		// Classic Games
 		.classic("Arkanoid"),
@@ -50,13 +54,14 @@ let package = Package(
 //MARK: - Templates
 
 extension Target {
-	static func example(_ module: RaylibModule, _ name: String, _ resources: [Resource]? = nil) -> Target {
+	static func example(_ module: RaylibModule, _ name: String, _ resources: [Resource]? = nil, _ exclude: [String]? = nil) -> Target {
 		let target = Target.executableTarget(
 			name: "\(module.rawValue) - \(name)",
 			dependencies: [
 				.product(name: "SwiftRaylib", package: "Raylib"),
 			],
 			path: "Sources/\(module.rawValue)/\(name)",
+			exclude: exclude ?? [],
 			resources: resources)
 		return target
 	}

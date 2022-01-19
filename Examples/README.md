@@ -20,6 +20,7 @@ As always contributions are welcome, feel free to send new examples or translate
 - 🖼 Textures
     - [Image Generation](#image-generation)
     - [Logo Raylib](#logo-raylib)
+    - [Blend Modes](#blend-mode)
 - 👾 Classics
     - [Arkanoid](#arkanoid)
 
@@ -119,6 +120,12 @@ Written by ![C] [ray], translated by ![Swift] [Lancelot]
 
 ![Screenshot of the example](../Assets/Screenshots/logo-raylib.png)
 
+### [Blend Modes](Sources/Core/Blend%20Modes/App.swift)
+
+Written by ![C] [Karlo Licudine], translated by ![Swift] [Lancelot]
+
+![Screenshot of the example](../Assets/Screenshots/blend-modes.png)
+
 ### 👾 Category: Classic Games
 
 Classic games implemented using raylib!
@@ -129,10 +136,13 @@ Written by ![C] [ray], translated by ![Swift] [Lancelot]
 
 ![Screenshot of the example](../Assets/Screenshots/arkanoid.png)
 
+<!-- Footnotes & References -->
+
 [ray]: https://github.com/raysan5
 [lancelot]: https://github.com/Lancelotbronner
 [avyy]: https://github.com/avyy
 [Anata]: https://github.com/anatagawa
+[Karlo Licudine]: https://github.com/accidentalrebel
 
 [C]: ../Assets/Icons/c.png
 [Swift]: ../Assets/Icons/swift.png
