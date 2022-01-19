@@ -43,11 +43,4 @@ public struct Renderer {
 		EndDrawing()
 	}
 	
-	/// Begin scissor mode (define screen area for following drawing); End scissor mode
-	@inlinable public static func render(at x: Int, _ y: Int, size width: Int, by height: Int, draw: (Renderer2D) -> Void) {
-		BeginScissorMode(x.toInt32, y.toInt32, width.toInt32, height.toInt32)
-		draw(Renderer2D())
-		EndScissorMode()
-	}
-	
 }

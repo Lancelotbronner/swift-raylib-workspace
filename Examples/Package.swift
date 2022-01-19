@@ -27,6 +27,7 @@ let package = Package(
 		.example(.core, "2D Camera Platformer"),
 		.example(.core, "Letterboxed Window"),
 		.example(.core, "Drop Files"),
+		.example(.core, "Scissor Test"),
 //		.example(.core, "3D First Person"),
 		
 		// Shapes Module
@@ -48,6 +49,7 @@ let package = Package(
 		// Classic Games
 		.classic("Arkanoid"),
 		.classic("Platformer"),
+		.classic("Snake"),
 	]
 )
 
