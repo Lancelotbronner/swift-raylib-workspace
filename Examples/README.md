@@ -136,6 +136,12 @@ Written by ![C] [ray], translated by ![Swift] [Lancelot]
 
 ![Screenshot of the example](../Assets/Screenshots/arkanoid.png)
 
+### [Snake](Sources/Classics/Snake/App.swift)
+
+Written by ![C] [ray], translated by ![Swift] [Lancelot]
+
+![Screenshot of the example](../Assets/Screenshots/snake.png)
+
 <!-- Footnotes & References -->
 
 [ray]: https://github.com/raysan5
