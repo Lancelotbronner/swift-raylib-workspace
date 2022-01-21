@@ -1,9 +1,6 @@
-//
-//  File.swift
-//  
-//
-//  Created by Christophe Bronner on 2021-12-27.
-//
+// TODO: Find a way to plug an async load() method
+// TODO: Find a way to make scenes use an async load() method
+// TODO: Turn filesystem loads into async methods
 
 //MARK: - App
 

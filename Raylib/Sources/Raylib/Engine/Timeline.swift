@@ -13,6 +13,12 @@ public struct Timeline {
 	
 	@usableFromInline var counter: UInt32 = 0
 	
+	//MARK: Computed Properties
+	
+	@inlinable public var time: Int {
+		counter.toInt
+	}
+	
 	//MARK: Initialization
 	
 	@inlinable public init() { }

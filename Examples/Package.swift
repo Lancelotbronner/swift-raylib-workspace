@@ -50,6 +50,11 @@ let package = Package(
 		.classic("Arkanoid"),
 		.classic("Platformer"),
 		.classic("Snake"),
+		
+		// Games
+		.game("RPG Example", [
+			.copy("Resources"),
+		]),
 	]
 )
 
