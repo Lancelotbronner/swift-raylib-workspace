@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <raylib.h>
 
-typedef int THIS_IS_A_TEST;
+// TraceLog(level.rawValue.toInt32, message)
+// FIXME: Find a way to call TraceLog
 
 #endif /* raylib_compatibility_h */

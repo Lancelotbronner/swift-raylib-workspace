@@ -62,25 +62,25 @@ public struct Image {
 	}
 	
 	/// Convert image data to desired format
-	@inlinable public func convert(to format: PixelFormat) {
-		withMutablePointer { ptr in
+	@inlinable public mutating func convert(to format: PixelFormat) {
+		withUnsafeMutablePointer(to: &implementation.raylib) { ptr in
 			ImageFormat(ptr, format.toRaylib.toInt32)
 		}
 	}
 	
 	/// Premultiply alpha channel
-	@inlinable public func premultiply() {
-		withMutablePointer(ImageAlphaPremultiply)
+	@inlinable public mutating func premultiply() {
+		withUnsafeMutablePointer(to: &implementation.raylib, ImageAlphaPremultiply)
 	}
 	
 	/// Compute all mipmap levels for a provided image
-	@inlinable public func mipmap() {
-		withMutablePointer(ImageMipmaps)
+	@inlinable public mutating func mipmap() {
+		withUnsafeMutablePointer(to: &implementation.raylib, ImageMipmaps)
 	}
 	
 	/// Dither image data to 16bpp or lower (Floyd-Steinberg dithering)
-	@inlinable public func dither(_ rbpp: Int, _ gbpp: Int, _ bbpp: Int, _ abpp: Int) {
-		withMutablePointer { ptr in
+	@inlinable public mutating func dither(_ rbpp: Int, _ gbpp: Int, _ bbpp: Int, _ abpp: Int) {
+		withUnsafeMutablePointer(to: &implementation.raylib) { ptr in
 			ImageDither(ptr, rbpp.toInt32, gbpp.toInt32, bbpp.toInt32, abpp.toInt32)
 		}
 	}
@@ -88,8 +88,8 @@ public struct Image {
 	//MARK: Resize Methods
 	
 	/// Resize image according to the specified algorithm
-	@inlinable public func resize(to width: Int, _ height: Int, using algorithm: ResizeAlgorithm) {
-		withMutablePointer { ptr in
+	@inlinable public mutating func resize(to width: Int, _ height: Int, using algorithm: ResizeAlgorithm) {
+		withUnsafeMutablePointer(to: &implementation.raylib) { ptr in
 			switch algorithm {
 			case .bicubic: ImageResize(ptr, width.toInt32, height.toInt32)
 			case .nearest: ImageResizeNN(ptr, width.toInt32, height.toInt32)
@@ -99,22 +99,22 @@ public struct Image {
 	}
 	
 	/// Convert image to power-of-two
-	@inlinable public func resizeToNextPowerOfTwo(fill: Color) {
-		withMutablePointer { ptr in
+	@inlinable public mutating func resizeToNextPowerOfTwo(fill: Color) {
+		withUnsafeMutablePointer(to: &implementation.raylib) { ptr in
 			ImageToPOT(ptr, fill.toRaylib)
 		}
 	}
 	
 	/// Crop an image to a defined rectangle
-	@inlinable public func crop(to frame: Rectangle) {
-		withMutablePointer { ptr in
+	@inlinable public mutating func crop(to frame: Rectangle) {
+		withUnsafeMutablePointer(to: &implementation.raylib) { ptr in
 			ImageCrop(ptr, frame.toRaylib)
 		}
 	}
 	
 	/// Crop image depending on alpha value
-	@inlinable public func cropAlpha(under threshold: Float) {
-		withMutablePointer { ptr in
+	@inlinable public mutating func cropAlpha(under threshold: Float) {
+		withUnsafeMutablePointer(to: &implementation.raylib) { ptr in
 			ImageAlphaCrop(ptr, threshold)
 		}
 	}
@@ -151,61 +151,61 @@ public struct Image {
 	//MARK: Transform Methods
 	
 	/// Flip image vertically
-	@inlinable public func flipVertically() {
-		withMutablePointer(ImageFlipVertical)
+	@inlinable public mutating func flipVertically() {
+		withUnsafeMutablePointer(to: &implementation.raylib, ImageFlipVertical)
 	}
 	
 	/// Flip image horizontally
-	@inlinable public func flipHorizontally() {
-		withMutablePointer(ImageFlipHorizontal)
+	@inlinable public mutating func flipHorizontally() {
+		withUnsafeMutablePointer(to: &implementation.raylib, ImageFlipHorizontal)
 	}
 	
 	/// Rotate image clockwise 90deg
-	@inlinable public func rotateRight() {
-		withMutablePointer(ImageRotateCW)
+	@inlinable public mutating func rotateRight() {
+		withUnsafeMutablePointer(to: &implementation.raylib, ImageRotateCW)
 	}
 	
 	/// Rotate image counter-clockwise 90deg
-	@inlinable public func rotateLeft() {
-		withMutablePointer(ImageRotateCCW)
+	@inlinable public mutating func rotateLeft() {
+		withUnsafeMutablePointer(to: &implementation.raylib, ImageRotateCCW)
 	}
 	
 	//MARK: Color Methods
 	
 	/// Modify image color: tint
-	@inlinable public func tint(with color: Color) {
-		withMutablePointer { ptr in
+	@inlinable public mutating func tint(with color: Color) {
+		withUnsafeMutablePointer(to: &implementation.raylib) { ptr in
 			ImageColorTint(ptr, color.toRaylib)
 		}
 	}
 	
 	/// Modify image color: invert
-	@inlinable public func invert() {
-		withMutablePointer(ImageColorInvert)
+	@inlinable public mutating func invert() {
+		withUnsafeMutablePointer(to: &implementation.raylib, ImageColorInvert)
 	}
 	
 	/// Modify image color: grayscale
-	@inlinable public func grayscale() {
-		withMutablePointer(ImageColorGrayscale)
+	@inlinable public mutating func grayscale() {
+		withUnsafeMutablePointer(to: &implementation.raylib, ImageColorGrayscale)
 	}
 	
 	/// Modify image color: contrast (-100 to 100)
-	@inlinable public func contrast(of ratio: Float) {
-		withMutablePointer { ptr in
+	@inlinable public mutating func contrast(of ratio: Float) {
+		withUnsafeMutablePointer(to: &implementation.raylib) { ptr in
 			ImageColorContrast(ptr, ratio)
 		}
 	}
 	
 	/// Modify image color: brightness (-255 to 255)
-	@inlinable public func brightness(of ratio: Int) {
-		withMutablePointer { ptr in
+	@inlinable public mutating func brightness(of ratio: Int) {
+		withUnsafeMutablePointer(to: &implementation.raylib) { ptr in
 			ImageColorBrightness(ptr, ratio.toInt32)
 		}
 	}
 	
 	/// Modify image color: replace color
-	@inlinable public func replace(_ color: Color, with other: Color) {
-		withMutablePointer { ptr in
+	@inlinable public mutating func replace(_ color: Color, with other: Color) {
+		withUnsafeMutablePointer(to: &implementation.raylib) { ptr in
 			ImageColorReplace(ptr, color.toRaylib, other.toRaylib)
 		}
 	}
@@ -213,29 +213,23 @@ public struct Image {
 	//MARK: Draw Methods
 	
 	/// Clear alpha channel to desired color
-	@inlinable public func clear(alpha threshold: Float, to color: Color) {
-		withMutablePointer { ptr in
+	@inlinable public mutating func clear(alpha threshold: Float, to color: Color) {
+		withUnsafeMutablePointer(to: &implementation.raylib) { ptr in
 			ImageAlphaClear(ptr, color.toRaylib, threshold)
 		}
 	}
 	
 	/// Apply alpha mask to image
-	@inlinable public func mask(using alpha: Image) {
-		withMutablePointer { ptr in
+	@inlinable public mutating func mask(using alpha: Image) {
+		withUnsafeMutablePointer(to: &implementation.raylib) { ptr in
 			ImageAlphaMask(ptr, alpha.toRaylib)
 		}
 	}
 	
-	@inlinable public func render(draw: (RendererImage) -> Void) {
-		draw(RendererImage(for: self))
-	}
-	
-	//MARK: Utilities
-	
-	@usableFromInline func withMutablePointer<Result>(_ body: (UnsafeMutablePointer<CRaylib.Image>) throws -> Result) rethrows -> Result {
-		try withUnsafePointer(to: implementation.raylib) { ptr in
-			try body(UnsafeMutablePointer(mutating: ptr))
-		}
+	@inlinable public mutating func render(draw: (inout RendererImage) -> Void) {
+		var renderer = RendererImage(for: self)
+		draw(&renderer)
+		self = renderer.underlying
 	}
 	
 }

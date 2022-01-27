@@ -18,16 +18,17 @@ import Raylib
 		Application.target(fps: 144)
 		
 		// Load a window icon
-		let appIcon = Filesystem
+		var appIcon = Filesystem
 			.file(at: "Resources/Icons/AppIcon.png", from: .module)
 			.loadAsImage()
 		appIcon.convert(to: .rgba8)
-//		appIcon.replace(.black, with: .clear)
-//		appIcon.replace(Color.rgb(136, 136, 136), with: .clear)
+		appIcon.replace(.black, with: .clear)
+		appIcon.replace(Color.rgb(136, 136, 136), with: .clear)
 		Window.set(icon: appIcon)
 		
 		// Configure rendering defaults
 		Renderer.background = .black
+		Renderer.textColor = .white
 	}
 	
 }

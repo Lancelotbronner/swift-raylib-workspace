@@ -24,8 +24,8 @@ public struct WireRendererImage {
 	//MARK: Rectangle Methods
 	
 	/// Draw rectangle lines within an image
-	@inlinable public func rectangle(_ shape: Rectangle, thickness: Int, color: Color) {
-		underlying.withMutablePointer { ptr in
+	@inlinable public mutating func rectangle(_ shape: Rectangle, thickness: Int, color: Color) {
+		withUnsafeMutablePointer(to: &underlying.implementation.raylib) { ptr in
 			ImageDrawRectangleLines(ptr, shape.toRaylib, thickness.toInt32, color.toRaylib)
 		}
 	}
