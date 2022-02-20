@@ -4,10 +4,16 @@ import Raylib
 
 struct MenuScene: Scene {
 	
+	//MARK: Properties
+	
+	var demo: Level?
+	
 	//MARK: Lifecycle
 	
-	func load() {
-		// TODO: Load demo map
+	mutating func load() {
+		demo = try! Filesystem
+			.file(at: "Levels/Demo.json", from: .module)
+			.loadAsJSON()
 	}
 	
 	//MARK: Simulation Methods
@@ -19,6 +25,9 @@ struct MenuScene: Scene {
 	//MARK: Rendering Methods
 	
 	func draw(using renderer: Renderer2D) {
+		// Draw the map
+		demo?.draw(using: renderer)
+		
 		// Dim the background
 		// TODO: Dim background method
 		

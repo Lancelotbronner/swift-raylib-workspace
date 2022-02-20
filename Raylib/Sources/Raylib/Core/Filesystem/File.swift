@@ -143,5 +143,16 @@ extension File {
 		return Data(buffer: UnsafeMutableBufferPointer(start: pointer, count: count.toInt))
 	}
 	
+	/// Load file as JSON
+	@inlinable public func loadAsJSON<T: Decodable>(of entity: T.Type = T.self, using decoder: JSONDecoder = .init()) throws -> T? {
+		guard let data = data else { return nil }
+		return try decoder.decode(T.self, from: data)
+	}
+	
+	/// Save json data to file
+	@inlinable public func write<T: Encodable>(json entity: T, using encoder: JSONEncoder = .init()) throws {
+		try write(data: Array(encoder.encode(entity)))
+	}
+	
 }
 #endif

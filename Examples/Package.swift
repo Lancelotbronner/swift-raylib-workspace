@@ -53,7 +53,11 @@ let package = Package(
 		
 		// Games
 		.game("RPG Example", [
-			.copy("Resources"),
+			.copy("Resources/Icons"),
+			.copy("Resources/Levels"),
+			.copy("Resources/Music"),
+			.copy("Resources/Sounds"),
+			.copy("Resources/tilemap.png"),
 		]),
 	]
 )

@@ -55,7 +55,7 @@ struct LoadingScene: Scene {
 		case !texturesToLoad.isEmpty:
 			let (path, name) = texturesToLoad.removeLast()
 			let texture = Filesystem
-				.file(at: "Resources/\(path)", from: .module)
+				.file(at: path, from: .module)
 				.loadAsTexture()
 			Resources.textures.register(texture, for: name)
 			
