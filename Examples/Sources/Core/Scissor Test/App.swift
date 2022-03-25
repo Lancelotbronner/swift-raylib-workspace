@@ -18,14 +18,14 @@ import Raylib
 		area.position = Mouse.position - area.size / 2
 	}
 	
-	func draw(using renderer: Renderer2D) {
-		renderer.wire.rectangle(area, color: .black)
-		renderer.text("Press S to toggle scissor test", at: 10, 10)
+	func draw() {
+		WireRenderer2D.rectangle(area, color: .black)
+		Renderer2D.text("Press S to toggle scissor test", at: 10, 10)
 		
 		guard isScissorEnabled else { return }
-		renderer.scissor(at: area.position, size: area.size) {
-			renderer.rectangle(at: .zero, size: Window.size, color: .red)
-			renderer.text("Move the mouse around to reveal this text!", at: 190, 200, color: .lightGray)
+		Renderer.scissor(at: area.position, size: area.size) {
+			Renderer2D.rectangle(at: .zero, size: Window.size, color: .red)
+			Renderer2D.text("Move the mouse around to reveal this text!", at: 190, 200, color: .lightGray)
 		}
 	}
 	

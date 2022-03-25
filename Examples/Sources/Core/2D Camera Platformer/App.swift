@@ -48,30 +48,30 @@ import Raylib
 		cameraStyle.update(&camera, for: player)
 	}
 	
-	func draw(using renderer: Renderer2D) {
-		camera.render { view in
+	func draw() {
+		Renderer.camera(camera) {
 			Renderer.color = .gray
 			
 			for obstacle in environment {
-				view.rectangle(obstacle)
+				Renderer2D.rectangle(obstacle)
 			}
 			
-			view.rectangle(at: player.position.x.toInt - 20, player.position.y.toInt - 40, size: 40, 40, color: .red)
+			Renderer2D.rectangle(at: player.position.x.toInt - 20, player.position.y.toInt - 40, size: 40, 40, color: .red)
 		}
 		
 		Renderer.pointSize = 10
 		
 		Renderer.textColor = .black
-		renderer.text("Controls:", at: 20, 20)
-		renderer.text("Camera mode:", at: 20, 140)
+		Renderer2D.text("Controls:", at: 20, 20)
+		Renderer2D.text("Camera mode:", at: 20, 140)
 		
 		Renderer.textColor = .darkGray
-		renderer.text("- Right/Left to move", at: 40, 40)
-		renderer.text("- Space to jump", at: 40, 60)
-		renderer.text("- Mouse Wheel to Zoom in-out", at: 40, 80)
-		renderer.text("- R to reset zoom and position", at: 40, 100)
-		renderer.text("- C to change camera mode", at: 40, 120)
-		renderer.text(cameraStyle.name, at: 40, 160)
+		Renderer2D.text("- Right/Left to move", at: 40, 40)
+		Renderer2D.text("- Space to jump", at: 40, 60)
+		Renderer2D.text("- Mouse Wheel to Zoom in-out", at: 40, 80)
+		Renderer2D.text("- R to reset zoom and position", at: 40, 100)
+		Renderer2D.text("- C to change camera mode", at: 40, 120)
+		Renderer2D.text(cameraStyle.name, at: 40, 160)
 	}
 }
 

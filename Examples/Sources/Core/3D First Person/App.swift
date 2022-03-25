@@ -30,7 +30,7 @@ import Raylib
 //		camera.update()
 	}
 	
-	func draw(using renderer: Renderer2D) {
+	func draw() {
 		camera.render {
 //			DrawPlane((Vector3){ 0.0f, 0.0f, 0.0f }, (Vector2){ 32.0f, 32.0f }, LIGHTGRAY); // Draw ground
 //			DrawCube((Vector3){ -16.0f, 2.5f, 0.0f }, 1.0f, 5.0f, 32.0f, BLUE);     // Draw a blue wall
@@ -45,14 +45,14 @@ import Raylib
 //			}
 		}
 		
-		renderer.rectangle(at: 10, 10, size: 220, 70, color: .skyBlue.faded(to: 0.5))
-		renderer.wire.rectangle(at: 10, 10, size: 220, 70, color: .blue)
+		Renderer2D.rectangle(at: 10, 10, size: 220, 70, color: .skyBlue.faded(to: 0.5))
+		WireRenderer2D.rectangle(at: 10, 10, size: 220, 70, color: .blue)
 		
 		Renderer.pointSize = 10
 		Renderer.textColor = .darkGray
-		renderer.text("First person camera default controls:", at: 20, 20, color: .black)
-		renderer.text("- Move with keys: W, A, S, D", at: 40, 40)
-		renderer.text("- Mouse move to look around", at: 40, 60)
+		Renderer2D.text("First person camera default controls:", at: 20, 20, color: .black)
+		Renderer2D.text("- Move with keys: W, A, S, D", at: 40, 40)
+		Renderer2D.text("- Mouse move to look around", at: 40, 60)
 	}
 	
 }

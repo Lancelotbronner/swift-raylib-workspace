@@ -42,7 +42,7 @@ extension Applet {
 		Application.run {
 			app.update()
 			app.render()
-			Renderer.render {
+			Renderer.frame {
 				Renderer.clear(to: Renderer.background)
 				app.draw()
 			}

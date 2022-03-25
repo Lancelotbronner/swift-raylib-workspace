@@ -22,8 +22,8 @@ struct GameOverScene: Scene {
 	
 	//MARK: Drawing Methods
 	
-	func draw(using renderer: Renderer2D) {
-		renderer.text(center: "PRESS [ENTER] TO PLAY AGAIN", size: 40, color: .gray)
+	func draw() {
+		Renderer2D.text(center: "PRESS [ENTER] TO PLAY AGAIN", size: 40, color: .gray)
 	}
 	
 }

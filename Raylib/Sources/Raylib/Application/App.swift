@@ -52,7 +52,7 @@ extension App {
 			action = scene.update()
 			scene.render()
 			
-			Renderer.render {
+			Renderer.frame {
 				Renderer.clear(to: Renderer.background)
 				scene.draw()
 			}

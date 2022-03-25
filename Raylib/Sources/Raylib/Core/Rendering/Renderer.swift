@@ -34,43 +34,65 @@ public struct Renderer {
 	/// Default text alignment
 	public static var textAlignment = TextAlignment.left
 	
-	//MARK: Rendering Modes
+	//MARK: Commands
+	
+	/// Set background color (framebuffer clear color)
+	@inlinable public static func clear(to color: Color) {
+		ClearBackground(color.toRaylib)
+	}
+	
+	//MARK: Target Methods
 	
 	/// Setup canvas (framebuffer) to start drawing; End canvas drawing and swap buffers (double buffering)
-	@inlinable public static func render(draw: () -> Void) {
+	@inlinable public static func frame(draw: () -> Void) {
 		BeginDrawing()
 		draw()
 		EndDrawing()
 	}
 	
+	@inlinable public func target(_ texture: RenderTexture, draw: () -> Void) {
+		BeginTextureMode(texture.underlying)
+		draw()
+		EndTextureMode()
+	}
+	
+	@inlinable public func target(_ image: inout Image, draw: (inout RendererImage) -> Void) {
+		var renderer = RendererImage(for: image)
+		draw(&renderer)
+		image = renderer.underlying
+	}
+	
+	//MARK: Drawing Mode Methods
+	
+	/// Begin blending mode; End blending mode (reset to default: alpha blending)
+	@inlinable public static func blend(_ mode: Blend, draw: () -> Void) {
+		BeginBlendMode(mode.toRaylib.toInt32)
+		draw()
+		EndBlendMode()
+	}
+	
 	/// Begin 2D mode; End 2D mode
-	@inlinable public func camera(_ camera: Camera2D, draw: () -> Void) {
+	@inlinable public static func camera(_ camera: Camera2D, draw: () -> Void) {
 		BeginMode2D(camera.underlying)
 		draw()
 		EndMode2D()
 	}
 	
-	// Begin 3D mode; End 3D mode
-	@inlinable public func camera(_ camera: Camera3D, draw: () -> Void) {
+	/// Begin 3D mode; End 3D mode
+	@inlinable public static func camera(_ camera: Camera3D, draw: () -> Void) {
 		BeginMode3D(camera.underlying)
 		draw()
 		EndMode3D()
 	}
 	
-	@inlinable public func offscreen(_ texture: RenderTexture, draw block: () -> Void) {
-		BeginTextureMode(texture.underlying)
-		block()
-		EndTextureMode()
-	}
-	
-	//MARK: Rendering Commands
-	
-	/// Begin blending mode; End blending mode (reset to default: alpha blending)
-	@inlinable public func blend(_ mode: BlendMode, draw: () -> Void) {
-		BeginBlendMode(mode.rawValue.toInt32)
+	/// BeginShaderMode; EndShaderMode
+	@inlinable public func shader(_ shader: Shader, draw: () -> Void) {
+		BeginShaderMode(shader.implementation.raylib)
 		draw()
-		EndBlendMode()
+		EndShaderMode()
 	}
+	
+	//MARK: Scissor Methods
 	
 	/// Begin scissor mode (define screen area for following drawing); End scissor mode
 	@inlinable public static func scissor(at x: Int, _ y: Int, size width: Int, by height: Int, draw: () -> Void) {
@@ -87,13 +109,6 @@ public struct Renderer {
 	/// Begin scissor mode (define screen area for following drawing); End scissor mode
 	@inlinable public static func scissor(in area: Rectangle, draw: () -> Void) {
 		scissor(at: area.position, size: area.size, draw: draw)
-	}
-	
-	//MARK: Drawing Methods
-	
-	/// Set background color (framebuffer clear color)
-	@inlinable public static func clear(to color: Color) {
-		ClearBackground(color.toRaylib)
 	}
 	
 }
