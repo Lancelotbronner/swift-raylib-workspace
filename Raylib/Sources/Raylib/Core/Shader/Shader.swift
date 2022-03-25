@@ -29,8 +29,8 @@ public struct Shader {
 	/// - Parameters:
 	///   - vertex: The filename of the vertex shader
 	///   - fragment: The filename of the fragment shader
-	public init(path vertex: Path, _ fragment: Path) {
-		implementation = LoadShader(vertex, fragment).toManaged
+	public init(path vertex: File, _ fragment: File) {
+		implementation = LoadShader(vertex.path.underlying, fragment.path.underlying).toManaged
 	}
 	
 	/// Load shader from strings and bind default locations
@@ -60,13 +60,6 @@ public struct Shader {
 	/// Get attributes location
 	@inlinable public func attribute(_ name: String) -> Int {
 		GetShaderLocationAttrib(implementation.raylib, name).toInt
-	}
-	
-	/// BeginShaderMode; EndShaderMode
-	@inlinable public func render(draw: () -> Void) {
-		BeginShaderMode(implementation.raylib)
-		draw()
-		EndShaderMode()
 	}
 	
 }

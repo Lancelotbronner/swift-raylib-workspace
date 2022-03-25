@@ -9,41 +9,45 @@ import CRaylib
 
 //MARK: - Blend Modes
 
-public enum Blend: Int {
-	
-	//MARK: Cases
-	
-	/// Blend textures considering alpha (default)
-	case alpha = 0
-	
-	/// Blend textures adding colors
-	case additive = 1
-	
-	/// Blend textures multiplying colors
-	case multiplied = 2
-	
-	/// Blend textures adding colors (alternative)
-	case add = 3
-	
-	/// Blend textures subtracting colors (alternative)
-	case subtract = 4
-	
-	/// Blend textures using custom src/dst factors (use rlSetBlendMode())
-	case custom = 5
-	// TODO: Implement custom with rlSetBlendMode()
+public enum Blend {
 	
 	//MARK: Constants
 	
 	/// The default blend mode
 	public static let `default` = Blend.alpha
 	
-	//MARK: Methods
+	//MARK: Cases
 	
-	/// Begin blending mode; End blending mode (reset to default: alpha blending)
-	@inlinable public func render(draw: () -> Void) {
-		BeginBlendMode(rawValue.toInt32)
-		draw()
-		EndBlendMode()
+	/// Blend textures considering alpha (default)
+	case alpha
+	
+	/// Blend textures adding colors
+	case additive
+	
+	/// Blend textures multiplying colors
+	case multiplied
+	
+	/// Blend textures adding colors (alternative)
+	case add
+	
+	/// Blend textures subtracting colors (alternative)
+	case subtract
+	
+	/// Blend textures using custom src/dst factors (use rlSetBlendMode())
+	case custom
+	// TODO: Implement custom with rlSetBlendMode()
+	
+	//MARK: Computed Properties
+	
+	@usableFromInline var toRaylib: UInt32 {
+		switch self {
+		case .alpha: return BLEND_ALPHA.rawValue
+		case .additive: return BLEND_ADDITIVE.rawValue
+		case .multiplied: return BLEND_MULTIPLIED.rawValue
+		case .add: return BLEND_ADD_COLORS.rawValue
+		case .subtract: return BLEND_SUBTRACT_COLORS.rawValue
+		case .custom: return BLEND_CUSTOM.rawValue
+		}
 	}
 
 }

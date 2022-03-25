@@ -14,17 +14,17 @@ public struct Filesystem {
 	//MARK: Constants
 	
 	public static var current: Directory {
-		Directory(at: GetWorkingDirectory().toString)
+		GetWorkingDirectory().toPath.directory
 	}
 	
 	//MARK: Methods
 	
 	@inlinable public static func file(at path: Path) -> File {
-		File(at: path)
+		path.file
 	}
 	
-	@inlinable public static func directory(at path: Path) -> File {
-		File(at: path)
+	@inlinable public static func directory(at path: Path) -> Directory {
+		path.directory
 	}
 	
 }
@@ -43,15 +43,15 @@ import Foundation
 extension Filesystem {
 	
 	@inlinable public static func file(at path: Path, from bundle: Bundle) -> File {
-		file(at: at(path, from: bundle))
+		at(path, from: bundle).file
 	}
 	
-	@inlinable public static func directory(at path: Path, from bundle: Bundle) -> File {
-		directory(at: at(path, from: bundle))
+	@inlinable public static func directory(at path: Path, from bundle: Bundle) -> Directory {
+		at(path, from: bundle).directory
 	}
 	
 	@usableFromInline static func at(_ relative: Path, from bundle: Bundle) -> Path {
-		"\(bundle.resourcePath ?? bundle.bundlePath)/\(relative)"
+		Path(at: "\(bundle.resourcePath ?? bundle.bundlePath)/\(relative.underlying)")
 	}
 	
 }

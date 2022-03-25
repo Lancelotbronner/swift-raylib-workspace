@@ -188,26 +188,26 @@ struct GameplayScene: Scene {
 	
 	//MARK: Drawing Methods
 	
-	func draw(using renderer: Renderer2D) {
+	func draw() {
 //		camera.render {
 			level.iterate { position, tile in
 				switch tile {
 				case .block:
 					let tmp = position * Map.TILE_SIZE
-					renderer.rectangle(at: tmp.x, tmp.y, size: Map.TILE_SIZE, Map.TILE_SIZE, color: .gray)
+					Renderer2D.rectangle(at: tmp.x, tmp.y, size: Map.TILE_SIZE, Map.TILE_SIZE, color: .gray)
 					
 				case .coin:
 					let tmp = position * Map.TILE_SIZE + Map.TILE_SIZE / 2 - 2
-					renderer.circle(at: tmp.x, tmp.y + 6, radius: 2, color: .gold)
+					Renderer2D.circle(at: tmp.x, tmp.y + 6, radius: 2, color: .gold)
 					
 				case .empty: break
 				}
 			}
 			
-			renderer.rectangle(at: Vector2f(position.x - PLAYER_SIZE.x / 2, position.y - PLAYER_SIZE.y), size: PLAYER_SIZE, color: .red)
+			Renderer2D.rectangle(at: Vector2f(position.x - PLAYER_SIZE.x / 2, position.y - PLAYER_SIZE.y), size: PLAYER_SIZE, color: .red)
 //		}
 		
-		renderer.text("SCORE: \(score)", at: Window.width / 2, 50, size: 40, alignment: .center, color: .black)
+		Renderer2D.text("SCORE: \(score)", at: Window.width / 2, 50, size: 40, alignment: .center, color: .black)
 	}
 	
 	//MARK: Utilities

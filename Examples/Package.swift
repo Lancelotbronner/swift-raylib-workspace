@@ -19,6 +19,7 @@ let package = Package(
 	targets: [
 		
 		// Core Module
+		
 		.example(.core, "Basic Window"),
 		.example(.core, "Input Keys"),
 		.example(.core, "Input Mouse"),
@@ -31,12 +32,14 @@ let package = Package(
 //		.example(.core, "3D First Person"),
 		
 		// Shapes Module
+		
 		.example(.shapes, "Basic Shapes"),
 		.example(.shapes, "Bouncing Ball"),
 		.example(.shapes, "Color Palette"),
 		.example(.shapes, "Following Eyes"),
 		
 		// Textures Module
+		
 		.example(.textures, "Logo Raylib", [
 			.copy("raylib_logo.png")
 		]),
@@ -47,17 +50,19 @@ let package = Package(
 		], ["LICENSE.md"]),
 		
 		// Classic Games
+		
 		.classic("Arkanoid"),
 		.classic("Platformer"),
 		.classic("Snake"),
 		
 		// Games
+		
 		.game("RPG Example", [
-			.copy("Resources/Icons"),
-			.copy("Resources/Levels"),
-			.copy("Resources/Music"),
-			.copy("Resources/Sounds"),
-			.copy("Resources/tilemap.png"),
+			.copy("Resources"),
+		]),
+
+		.game("Spaceshooter", [
+			.copy("Resources"),
 		]),
 	]
 )

@@ -9,15 +9,9 @@
 
 public struct Renderer3D {
 	
-	//MARK: Computed Properties
-	
-	@inlinable public var wire: WireRenderer3D {
-		WireRenderer3D()
-	}
-	
 	//MARK: Initialization
 	
-	@usableFromInline init() { }
+	private init() { }
 	
 }
 
@@ -27,7 +21,7 @@ public struct WireRenderer3D {
 	
 	//MARK: Initialization
 	
-	@usableFromInline init() { }
+	private init() { }
 	
 }
 

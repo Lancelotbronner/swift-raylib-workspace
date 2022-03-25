@@ -9,22 +9,35 @@ import CRaylib
 
 //MARK: - Directory
 
-public struct Directory: Sequence {
+public struct Directory {
 	
 	//MARK: Properties
 	
-	public let path: String
+	/// The directory's path
+	public let path: Path
 	
 	//MARK: Computed Properties
 	
 	/// Check if a directory path exists
 	@inlinable public var exists: Bool {
-		DirectoryExists(path.description)
+		path.isDirectory
 	}
 	
 	/// Get previous directory path for a given path
 	@inlinable public var parent: Directory {
-		Directory(at: GetPrevDirectoryPath(path.description).toString)
+		.init(at: path.parent)
+	}
+	
+	/// Retrieves the subpaths of this directory
+	@inlinable public var contents: [Path] {
+		var count: Int32 = 0
+		let pointer = GetDirectoryFiles(path.underlying, &count)
+		let buffer = UnsafeBufferPointer(start: pointer?.advanced(by: 2), count: count.toInt - 2)
+		let files = buffer.compactMap { pointer in
+			pointer.map { Path(at: $0.toString) }
+		}
+		ClearDirectoryFiles()
+		return files
 	}
 	
 	//MARK: Initialization
@@ -35,44 +48,20 @@ public struct Directory: Sequence {
 	
 	//MARK: Methods
 	
-	public func makeIterator() -> FilesIterator {
-		var count: Int32 = 0
-		let pointer = GetDirectoryFiles(path.description, &count)
-		let buffer = UnsafeMutableBufferPointer(start: pointer, count: count.toInt)
-		return FilesIterator(buffer)
-	}
-	
 	/// Change working directory
-	@inlinable public func changeWorkingDirectory() throws {
-		ChangeDirectory(path.description)
+	@inlinable public func useAsWorkingDirectory() throws {
+		ChangeDirectory(path.underlying)
 		// TODO: Handle error
 	}
 	
-	/// Get filenames in a directory path
-	@inlinable public func files() -> [File] {
-		Array(IteratorSequence(makeIterator()))
+	/// Point to a file within the directory
+	@inlinable public func file(_ filename: String) -> File {
+		path[filename].file
 	}
 	
-}
-
-//MARK: - Files Iterator
-
-extension Directory {
-	public struct FilesIterator: IteratorProtocol {
-		@usableFromInline var iterator: UnsafeMutableBufferPointer<UnsafeMutablePointer<CChar>?>.Iterator
-		
-		@usableFromInline init(_ buffer: UnsafeMutableBufferPointer<UnsafeMutablePointer<CChar>?>) {
-			iterator = buffer.makeIterator()
-		}
-		
-		@inlinable public mutating func next() -> File? {
-			if let pointer = iterator.next() {
-				return File(at: Path(pointer!.toString))
-			}
-			
-			ClearDirectoryFiles()
-			return nil
-		}
-		
+	/// Point to a subdirectory within the directory
+	@inlinable public func directory(_ filename: String) -> Directory {
+		path[filename].directory
 	}
+	
 }

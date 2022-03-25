@@ -59,13 +59,13 @@ extension File {
 	
 	/// Load font from file into GPU memory (VRAM)
 	@inlinable public func loadAsFont() -> Font {
-		LoadFont(path).toManaged.toSwift
+		LoadFont(path.underlying).toManaged.toSwift
 	}
 	
 	/// Load font from file into GPU memory (VRAM)
 	@inlinable public func loadAsFont(size: Int, characters: [Int32]) -> Font {
 		characters.withContiguousStorageIfAvailable { buffer in
-			LoadFontEx(path, size.toInt32, buffer.baseAddress.map(UnsafeMutablePointer.init(mutating:)), characters.count.toInt32)
+			LoadFontEx(path.underlying, size.toInt32, buffer.baseAddress.map(UnsafeMutablePointer.init), characters.count.toInt32)
 		}!.toManaged.toSwift
 	}
 	

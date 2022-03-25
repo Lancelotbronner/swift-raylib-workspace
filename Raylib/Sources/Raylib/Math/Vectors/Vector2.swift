@@ -58,6 +58,8 @@ public struct Vector2<Scalar>: Vector {
 
 extension Vector2: Equatable where Scalar: Equatable { }
 extension Vector2: Hashable where Scalar: Hashable { }
+extension Vector2: Encodable where Scalar: Encodable { }
+extension Vector2: Decodable where Scalar: Decodable { }
 
 //MARK: - Raylib Integration
 

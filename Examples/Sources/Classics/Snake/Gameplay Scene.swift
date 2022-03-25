@@ -132,39 +132,39 @@ struct GameplayScene: Scene {
 	
 	//MARK: Drawing
 	
-	func draw(using renderer: Renderer2D) {
+	func draw() {
 		// Draw grid lines
 		
 		Renderer.color = .lightGray
 		
 		for i in 0 ..< grid.x + 1 {
-			renderer.line(from: (i.toFloat * Constants.sizeOfTile.x + area.x).toInt, area.y.toInt, to: (i.toFloat * Constants.sizeOfTile.y + area.x).toInt, area.bottom.y.toInt)
+			Renderer2D.line(from: (i.toFloat * Constants.sizeOfTile.x + area.x).toInt, area.y.toInt, to: (i.toFloat * Constants.sizeOfTile.y + area.x).toInt, area.bottom.y.toInt)
 		}
 		
 		for i in 0 ..< grid.y + 1 {
-			renderer.line(from: area.x.toInt, (i.toFloat * Constants.sizeOfTile.y + area.y).toInt, to: area.right.x.toInt, (i.toFloat * Constants.sizeOfTile.y + area.y).toInt)
+			Renderer2D.line(from: area.x.toInt, (i.toFloat * Constants.sizeOfTile.y + area.y).toInt, to: area.right.x.toInt, (i.toFloat * Constants.sizeOfTile.y + area.y).toInt)
 		}
 		
 		// Draw snake
 		
-		renderer.rectangle(at: head, size: Constants.sizeOfTile, color: .darkBlue)
+		Renderer2D.rectangle(at: head, size: Constants.sizeOfTile, color: .darkBlue)
 		
 		for segment in body {
-			renderer.rectangle(at: segment, size: Constants.sizeOfTile, color: .blue)
+			Renderer2D.rectangle(at: segment, size: Constants.sizeOfTile, color: .blue)
 		}
 		
 		// Draw Food
 		
 		if let food = food {
-			renderer.rectangle(at: food, size: Constants.sizeOfTile, color: .skyBlue)
+			Renderer2D.rectangle(at: food, size: Constants.sizeOfTile, color: .skyBlue)
 		}
 		
 		// User Interface
 		
-		renderer.text("SCORE: \(score)", at: 8, 8, color: .red)
+		Renderer2D.text("SCORE: \(score)", at: 8, 8, color: .red)
 	
 		if isPaused {
-			renderer.text(center: "GAME PAUSED", size: 40, color: .maroon)
+			Renderer2D.text(center: "GAME PAUSED", size: 40, color: .maroon)
 		}
 	}
 	

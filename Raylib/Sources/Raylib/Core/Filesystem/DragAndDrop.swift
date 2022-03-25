@@ -21,16 +21,11 @@ public struct DragAndDrop {
 	//MARK: Methods
 	
 	/// Check if a file has been dropped into window
-	@inlinable public static var paths: [String] {
+	@inlinable public static var paths: [Path] {
 		var count: Int32 = 0
 		guard let tmp = GetDroppedFiles(&count) else { return [] }
 		return UnsafeMutableBufferPointer(start: tmp, count: count.toInt)
-			.lazy
-			.compactMap { $0?.toString }
-	}
-	
-	@inlinable public static var files: [File] {
-		paths.map { Filesystem.file(at: Path($0)) }
+			.compactMap(\.?.toPath)
 	}
 	
 	/// Clear dropped files paths buffer (free memory)

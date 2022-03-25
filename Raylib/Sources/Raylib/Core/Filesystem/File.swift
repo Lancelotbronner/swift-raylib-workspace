@@ -13,56 +13,39 @@ public struct File {
 	
 	//MARK: Properties
 	
-	public let path: String
+	/// The file's path
+	public let path: Path
 	
 	//MARK: Computed Properties
 	
 	/// Check if file exists
 	@inlinable public var exists: Bool {
-		FileExists(path)
+		path.isFile
 	}
 	
 	/// Get filename
 	@inlinable public var filename: String {
-		GetFileName(path).toString
+		GetFileName(path.underlying).toString
 	}
 	
 	/// Get filename string without extension
 	@inlinable public var name: String {
-		GetFileNameWithoutExt(path).toString
+		GetFileNameWithoutExt(path.underlying).toString
 	}
 	
 	/// Get extension for a filename string (includes dot: '.png')
 	@inlinable public var `extension`: String {
-		GetFileExtension(path).toString
+		GetFileExtension(path.underlying).toString
 	}
 	
 	/// Get file modification time (last write time)
 	@inlinable public var modification: Int {
-		GetFileModTime(path)
+		GetFileModTime(path.underlying)
 	}
 	
+	/// Get the files' parent directory
 	@inlinable public var directory: Directory {
-		Directory(at: GetDirectoryPath(path).toString)
-	}
-	
-	/// Load text data from file
-	@inlinable public var text: String? {
-		guard let pointer = LoadFileText(path) else {
-			return nil
-		}
-		defer { UnloadFileText(pointer) }
-		return pointer.toString
-	}
-	
-	///  Load file data as byte array
-	@inlinable public var bytes: [UInt8]? {
-		var count: UInt32 = 0
-		guard let pointer = LoadFileData(path, &count) else {
-			return nil
-		}
-		defer { UnloadFileData(pointer) }
-		return Array(UnsafeMutableBufferPointer(start: pointer, count: count.toInt))
+		.init(at: GetDirectoryPath(path.underlying).toPath)
 	}
 	
 	//MARK: Initialization
@@ -75,30 +58,49 @@ public struct File {
 	
 	/// Check file extension (including point: .png, .wav)
 	@inlinable public func `is`(extension ext: String) -> Bool {
-		IsFileExtension(path, ext)
+		IsFileExtension(path.underlying, ext)
 	}
 	
 	//MARK: Reading Methods
 	
+	/// Load file as bytes
+	@inlinable public func loadAsBytes() -> [UInt8] {
+		var count: UInt32 = 0
+		guard let pointer = LoadFileData(path.underlying, &count) else {
+			return []
+		}
+		defer { UnloadFileData(pointer) }
+		return Array(UnsafeMutableBufferPointer(start: pointer, count: count.toInt))
+	}
+	
+	/// Load file as text
+	@inlinable public func loadAsText() -> String {
+		guard let pointer = LoadFileText(path.underlying) else {
+			return ""
+		}
+		defer { UnloadFileText(pointer) }
+		return pointer.toString
+	}
+	
 	/// Load file as image
 	@inlinable public func loadAsImage() -> Image {
-		LoadImage(path.description).toManaged.toSwift
+		LoadImage(path.underlying).toManaged.toSwift
 	}
 	
 	/// Load raw file data as image
 	@inlinable public func loadAsRawImage(size width: Int, by height: Int, format: PixelFormat, offset: Int) -> Image {
-		LoadImageRaw(path.description, width.toInt32, height.toInt32, format.toRaylib.toInt32, offset.toInt32).toManaged.toSwift
+		LoadImageRaw(path.underlying, width.toInt32, height.toInt32, format.toRaylib.toInt32, offset.toInt32).toManaged.toSwift
 	}
 	
 	/// Load file as animation
 	@inlinable public func loadAsAnimation(frames: Int) -> Image {
 		var frames = frames.toInt32
-		return LoadImageAnim(path.description, &frames).toManaged.toSwift
+		return LoadImageAnim(path.underlying, &frames).toManaged.toSwift
 	}
 	
 	/// Load file as texture
 	@inlinable public func loadAsTexture() -> Texture {
-		LoadTexture(path.description).toManaged
+		LoadTexture(path.underlying).toManaged
 	}
 	
 	//MARK: Writing Methods
@@ -106,7 +108,7 @@ public struct File {
 	/// Save text data to file
 	@inlinable public func write(text: String) throws {
 		_ = text.withCString { pointer in
-			SaveFileText(path, UnsafeMutablePointer(mutating: pointer))
+			SaveFileText(path.underlying, UnsafeMutablePointer(mutating: pointer))
 		}
 		// TODO: Handle error
 	}
@@ -114,14 +116,14 @@ public struct File {
 	/// Save data to file
 	@inlinable public func write(data: [UInt8]) throws {
 		_ = data.withUnsafeBytes { buffer in
-			SaveFileData(path, UnsafeMutableRawPointer(mutating: buffer.baseAddress), buffer.count.toUInt32)
+			SaveFileData(path.underlying, UnsafeMutableRawPointer(mutating: buffer.baseAddress), buffer.count.toUInt32)
 		}
 		// TODO: Handle error
 	}
 	
 	@inlinable public func write(image: Image) {
 		// TODO: Error Handling
-		ExportImage(image.implementation.raylib, path.description)
+		ExportImage(image.implementation.raylib, path.underlying)
 	}
 	
 }
@@ -136,7 +138,7 @@ extension File {
 	///  Load file data
 	@inlinable public var data: Data? {
 		var count: UInt32 = 0
-		guard let pointer = LoadFileData(path, &count) else {
+		guard let pointer = LoadFileData(path.underlying, &count) else {
 			return nil
 		}
 		defer { UnloadFileData(pointer) }
@@ -144,8 +146,10 @@ extension File {
 	}
 	
 	/// Load file as JSON
-	@inlinable public func loadAsJSON<T: Decodable>(of entity: T.Type = T.self, using decoder: JSONDecoder = .init()) throws -> T? {
-		guard let data = data else { return nil }
+	@inlinable public func loadAsJSON<T: Decodable>(of entity: T.Type = T.self, using decoder: JSONDecoder = .init()) throws -> T {
+		guard let data = data else {
+			throw DecodingError.dataCorrupted(.init(codingPath: [], debugDescription: "Unable to load file", underlyingError: nil))
+		}
 		return try decoder.decode(T.self, from: data)
 	}
 	

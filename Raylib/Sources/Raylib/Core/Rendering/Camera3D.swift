@@ -43,11 +43,4 @@ public struct Camera3D {
 	// TODO: Ray hit
 	// Ray GetMouseRay(Vector2 mousePosition, Camera camera);
 	
-	/// Begin 3D mode; End 3D mode
-	@inlinable public func render(draw: (Renderer3D) -> Void) {
-		BeginMode3D(underlying)
-		draw(Renderer3D())
-		EndMode3D()
-	}
-	
 }

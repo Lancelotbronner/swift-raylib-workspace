@@ -226,12 +226,6 @@ public struct Image {
 		}
 	}
 	
-	@inlinable public mutating func render(draw: (inout RendererImage) -> Void) {
-		var renderer = RendererImage(for: self)
-		draw(&renderer)
-		self = renderer.underlying
-	}
-	
 }
 
 // TODO: Image color data

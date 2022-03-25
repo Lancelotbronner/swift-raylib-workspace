@@ -14,21 +14,21 @@ import Raylib
 		Application.target(fps: 60)
 	}
 	
-	func draw(using renderer: Renderer2D) {
+	func draw() {
 		let files = DragAndDrop.paths
 		
 		if files.isEmpty {
-			renderer.text("Drop your files to this window!", at: 100, 40, size: 20, color: .darkGray)
+			Renderer2D.text("Drop your files to this window!", at: 100, 40, size: 20, color: .darkGray)
 			
 		} else {
-			renderer.text("Drop your files to this window!", at: 100, 40, size: 20, color: .darkGray)
+			Renderer2D.text("Drop your files to this window!", at: 100, 40, size: 20, color: .darkGray)
 			
 			for i in files.indices {
-				renderer.rectangle(at: 0, 85 + 40 * i, size: Window.width, 40, color: .lightGray.faded(to: i % 2 == 0 ? 0.5 : 0.3))
-				renderer.text(files[i], at: 120, 100 + 40 * i, size: 10, color: .gray)
+				Renderer2D.rectangle(at: 0, 85 + 40 * i, size: Window.width, 40, color: .lightGray.faded(to: i % 2 == 0 ? 0.5 : 0.3))
+				Renderer2D.text(files[i].toString, at: 120, 100 + 40 * i, size: 10, color: .gray)
 			}
 			
-			renderer.text("Drop new files...", at: 100, 110 + 40 * files.count, size: 20, color: .darkGray)
+			Renderer2D.text("Drop new files...", at: 100, 110 + 40 * files.count, size: 20, color: .darkGray)
 		}
 	}
 	
