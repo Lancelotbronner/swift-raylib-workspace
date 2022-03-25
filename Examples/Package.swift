@@ -52,13 +52,8 @@ let package = Package(
 		.classic("Snake"),
 		
 		// Games
-		.game("RPG Example", [
-			.copy("Resources/Icons"),
-			.copy("Resources/Levels"),
-			.copy("Resources/Music"),
-			.copy("Resources/Sounds"),
-			.copy("Resources/tilemap.png"),
-		]),
+		.game("HexTrader", resources: true, assets: true),
+		.game("RPG Example", resources: true),
 	]
 )
 
@@ -88,14 +83,20 @@ extension Target {
 		return target
 	}
 	
-	static func game(_ name: String, _ resources: [Resource]? = nil) -> Target {
+	static func game(_ name: String, resources: Bool = false, assets: Bool = false) -> Target {
 		let target = Target.executableTarget(
 			name: "Game - \(name)",
 			dependencies: [
 				.product(name: "SwiftRaylib", package: "Raylib"),
 			],
 			path: "Sources/Games/\(name)",
-			resources: resources)
+			resources: [])
+		if resources {
+			target.resources?.append(.copy("Resources/"))
+		}
+		if assets {
+			target.exclude.append("Assets")
+		}
 		return target
 	}
 }

@@ -36,14 +36,5 @@ public enum Blend: Int {
 	
 	/// The default blend mode
 	public static let `default` = Blend.alpha
-	
-	//MARK: Methods
-	
-	/// Begin blending mode; End blending mode (reset to default: alpha blending)
-	@inlinable public func render(draw: () -> Void) {
-		BeginBlendMode(rawValue.toInt32)
-		draw()
-		EndBlendMode()
-	}
 
 }

@@ -11,9 +11,9 @@ struct MenuScene: Scene {
 	//MARK: Lifecycle
 	
 	mutating func load() {
-		demo = try! Filesystem
-			.file(at: "Levels/Demo.json", from: .module)
-			.loadAsJSON()
+//		demo = try! Filesystem
+//			.file(at: "Levels/Demo.json", from: .module)
+//			.loadAsJSON()
 	}
 	
 	//MARK: Simulation Methods
@@ -24,20 +24,20 @@ struct MenuScene: Scene {
 	
 	//MARK: Rendering Methods
 	
-	func draw(using renderer: Renderer2D) {
+	func draw() {
 		// Draw the map
-		demo?.draw(using: renderer)
+//		demo?.draw(using: renderer)
 		
 		// Dim the background
 		// TODO: Dim background method
 		
 		// Draw the title
-		renderer.text(center: "Raylib RPG Example", offset: 0, -40, size: 40, color: .blue)
+		Renderer2D.text(center: "Raylib RPG Example", offset: 0, -40, size: 40, color: .blue)
 		
 		// Version and Copyright
-		renderer.text("C © 2022 Jeffery Myers", at: 10, Window.height - 20, size: 10, color: .gray)
-		renderer.text("Swift © 2022 Christophe Bronner", at: 10, Window.height - 40, size: 10, color: .gray)
-		renderer.text("v4.0-dev", at: 10, Window.height - 70, size: 20)
+		Renderer2D.text("C © 2022 Jeffery Myers", at: 10, Window.height - 20, size: 10, color: .gray)
+		Renderer2D.text("Swift © 2022 Christophe Bronner", at: 10, Window.height - 40, size: 10, color: .gray)
+		Renderer2D.text("v4.0-dev", at: 10, Window.height - 70, size: 20)
 		
 		// Play Button
 //		if (CenteredButton(GetScreenHeight() / 4, "Play"))

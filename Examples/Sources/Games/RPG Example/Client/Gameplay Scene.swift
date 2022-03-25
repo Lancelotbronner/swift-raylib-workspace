@@ -1,8 +1,19 @@
-//
-//  File.swift
-//  
-//
-//  Created by Christophe Bronner on 2022-01-20.
-//
+import Raylib
 
-import Foundation
+struct GameplayScene: Scene {
+	
+	//MARK: Properties
+	
+	//MARK: Simultation Methods
+	
+	func update() -> SceneAction {
+		.continue
+	}
+	
+	//MARK: Drawing Methods
+	
+	func draw() {
+		
+	}
+	
+}

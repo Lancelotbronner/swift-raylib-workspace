@@ -57,7 +57,7 @@ struct LoadingScene: Scene {
 			let texture = Filesystem
 				.file(at: path, from: .module)
 				.loadAsTexture()
-			Resources.textures.register(texture, for: name)
+//			Resources.textures.register(texture, for: name)
 			
 		case !soundsToLoad.isEmpty:
 			let sound = soundsToLoad.removeLast()
@@ -72,20 +72,20 @@ struct LoadingScene: Scene {
 	
 	//MARK: Drawing
 	
-	func draw(using renderer: Renderer2D) {
+	func draw() {
 		// Loading messages
 		
-		renderer.text(center: "Loading...", offset: 0, -40)
+		Renderer2D.text(center: "Loading...", offset: 0, -40)
 		
 		// Animation to let users know the app hasn't frozen
 		
-		renderer.rectangle(at: Window.size - Vector2(20), size: Vector2f(timeline.time.toFloat.sin() * 10), color: .blue)
+		Renderer2D.rectangle(at: Window.size - Vector2(20), size: Vector2f(timeline.time.toFloat.sin() * 10), color: .blue)
 		
 		// Progress bar
 		
 		let progressWidth = (Window.width * 3 / 5).toDouble * progress
-		renderer.rectangle(at: Window.width / 5, Window.height / 2, size: progressWidth.toInt, 5, color: .raywhite)
-		renderer.wire.rectangle(at: Window.width / 5, Window.height / 2, size: progressWidth.toInt, 5, thickness: 2, color: .white)
+		Renderer2D.rectangle(at: Window.width / 5, Window.height / 2, size: progressWidth.toInt, 5, color: .raywhite)
+		WireRenderer2D.rectangle(at: Window.width / 5, Window.height / 2, size: progressWidth.toInt, 5, thickness: 2, color: .white)
 	}
 	
 }

@@ -66,11 +66,4 @@ public struct Camera2D {
 		GetScreenToWorld2D(position.toRaylib, underlying).toSwift
 	}
 	
-	/// Begin 2D mode; End 2D mode
-	@inlinable public func render(draw: (Renderer2D) -> Void) {
-		BeginMode2D(underlying)
-		draw(Renderer2D())
-		EndMode2D()
-	}
-	
 }

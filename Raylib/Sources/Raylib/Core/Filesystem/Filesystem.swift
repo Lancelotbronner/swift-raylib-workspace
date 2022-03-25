@@ -23,8 +23,8 @@ public struct Filesystem {
 		File(at: path)
 	}
 	
-	@inlinable public static func directory(at path: Path) -> File {
-		File(at: path)
+	@inlinable public static func directory(at path: Path) -> Directory {
+		Directory(at: path)
 	}
 	
 }
@@ -46,7 +46,7 @@ extension Filesystem {
 		file(at: at(path, from: bundle))
 	}
 	
-	@inlinable public static func directory(at path: Path, from bundle: Bundle) -> File {
+	@inlinable public static func directory(at path: Path, from bundle: Bundle) -> Directory {
 		directory(at: at(path, from: bundle))
 	}
 	

@@ -63,6 +63,9 @@ extension Directory {
 		
 		@usableFromInline init(_ buffer: UnsafeMutableBufferPointer<UnsafeMutablePointer<CChar>?>) {
 			iterator = buffer.makeIterator()
+			// Skip .. and .
+			_ = iterator.next()
+			_ = iterator.next()
 		}
 		
 		@inlinable public mutating func next() -> File? {
