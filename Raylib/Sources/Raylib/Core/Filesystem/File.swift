@@ -83,23 +83,24 @@ public struct File {
 	}
 	
 	/// Load file as image
-	@inlinable public func loadAsImage() -> Image {
+	@inlinable public func loadAsImage() throws -> Image {
 		LoadImage(path.underlying).toManaged.toSwift
 	}
 	
 	/// Load raw file data as image
-	@inlinable public func loadAsRawImage(size width: Int, by height: Int, format: PixelFormat, offset: Int) -> Image {
+	@inlinable public func loadAsRawImage(size width: Int, by height: Int, format: PixelFormat, offset: Int) throws -> Image {
 		LoadImageRaw(path.underlying, width.toInt32, height.toInt32, format.toRaylib.toInt32, offset.toInt32).toManaged.toSwift
 	}
 	
 	/// Load file as animation
-	@inlinable public func loadAsAnimation(frames: Int) -> Image {
+	@inlinable public func loadAsAnimation(frames: Int) throws -> Image {
 		var frames = frames.toInt32
 		return LoadImageAnim(path.underlying, &frames).toManaged.toSwift
 	}
 	
 	/// Load file as texture
-	@inlinable public func loadAsTexture() -> Texture {
+	@inlinable public func loadAsTexture() throws -> Texture {
+		// TODO: Error handling
 		LoadTexture(path.underlying).toManaged
 	}
 	

@@ -30,15 +30,28 @@ public struct Directory {
 	
 	/// Retrieves the subpaths of this directory
 	@inlinable public var contents: [Path] {
+		// TODO: Maybe make a DirectoryContentIterator for lazy processing
+		// TODO: Make a DirectoryRecursiveContentIterator for recursive iteration
 		var count: Int32 = 0
 		let pointer = GetDirectoryFiles(path.underlying, &count)
+		
+		guard pointer?.pointee!.pointee != 0 else {
+			return []
+		}
+		
 		let buffer = UnsafeBufferPointer(start: pointer?.advanced(by: 2), count: count.toInt - 2)
 		let files = buffer.compactMap { pointer in
-			pointer.map { Path(at: $0.toString) }
+			pointer.map { path[$0.toString] }
 		}
 		ClearDirectoryFiles()
 		return files
 	}
+	
+	// TODO: Add method to retrieve contents
+	// - Paths
+	// - Recursive paths
+	// - Files
+	// - Recursive files
 	
 	//MARK: Initialization
 	
@@ -62,6 +75,47 @@ public struct Directory {
 	/// Point to a subdirectory within the directory
 	@inlinable public func directory(_ filename: String) -> Directory {
 		path[filename].directory
+	}
+	
+	//MARK: ForEach Methods
+	
+	@inlinable public func forEachFiles(do block: (File) throws -> Void) rethrows {
+		try walk(path: { _ in }, file: block, directory: { _ in }, paths: { _ in })
+	}
+	
+	//MARK: Map Methods
+	
+	@inlinable public func mapFiles<NewValue>(_ transform: (File) -> NewValue) -> [NewValue] {
+		var mapped: [NewValue] = []
+		walk(path: { _ in }, file: { mapped.append(transform($0)) }, directory: { _ in }, paths: { mapped.reserveCapacity(mapped.count + $0.count) })
+		return mapped
+	}
+	
+	//MARK: Utilities
+	
+	@usableFromInline func walk(
+		path processPath: (Path) throws -> Void,
+		file processFile: (File) throws -> Void,
+		directory processDirectory: (Directory) throws -> Void,
+		paths processPaths: ([Path]) throws -> Void
+	) rethrows {
+		var paths = contents
+		try processPaths(paths)
+		
+		while !paths.isEmpty {
+			let path = paths.removeLast()
+			try processPath(path)
+			
+			switch true {
+			case path.isFile: try processFile(path.file)
+			case path.isDirectory:
+				try processDirectory(path.directory)
+				let subpaths = path.directory.contents
+				try processPaths(subpaths)
+				paths.append(contentsOf: subpaths)
+			default: continue
+			}
+		}
 	}
 	
 }

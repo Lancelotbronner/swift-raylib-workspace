@@ -13,11 +13,15 @@ public struct Filesystem {
 	
 	//MARK: Constants
 	
+//	public static var application: Directory {
+//		GetApplicationDirectory().toPath.directory
+//	}
+	
 	public static var current: Directory {
 		GetWorkingDirectory().toPath.directory
 	}
 	
-	//MARK: Methods
+	//MARK: Accessor Methods
 	
 	@inlinable public static func file(at path: Path) -> File {
 		path.file
@@ -25,6 +29,15 @@ public struct Filesystem {
 	
 	@inlinable public static func directory(at path: Path) -> Directory {
 		path.directory
+	}
+	
+	//MARK: Operation Methods
+	
+	@inlinable public static func work(within path: Path, do block: () throws -> Void) rethrows {
+		let tmp = GetWorkingDirectory()
+		ChangeDirectory(path.underlying)
+		try block()
+		ChangeDirectory(tmp)
 	}
 	
 }

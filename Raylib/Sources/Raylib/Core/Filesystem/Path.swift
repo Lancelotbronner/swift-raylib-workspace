@@ -2,7 +2,7 @@ import CRaylib
 
 //MARK: - Path
 
-public struct Path: ExpressibleByStringLiteral, ExpressibleByArrayLiteral {
+public struct Path: ExpressibleByStringLiteral, ExpressibleByArrayLiteral, CustomStringConvertible {
 	
 	//MARK: Properties
 	
@@ -10,7 +10,7 @@ public struct Path: ExpressibleByStringLiteral, ExpressibleByArrayLiteral {
 	
 	//MARK: Computed Properties
 	
-	@inlinable public var toString: String {
+	@inlinable public var description: String {
 		underlying
 	}
 	
@@ -54,7 +54,7 @@ public struct Path: ExpressibleByStringLiteral, ExpressibleByArrayLiteral {
 	
 	//MARK: Initialization
 	
-	@inlinable public init(at filepath: String) {
+	@inlinable internal init(at filepath: String) {
 		underlying = filepath
 	}
 	

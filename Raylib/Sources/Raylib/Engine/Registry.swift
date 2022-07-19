@@ -5,12 +5,25 @@ public struct Registry<Kind> {
 	
 	//MARK: Properties
 	
-	@usableFromInline var ids: [String : Int] = [:]
-	@usableFromInline var loaded: [Kind] = []
+	@usableFromInline var resources: [String : Kind] = [:]
 	
 	//MARK: Initialization
 	
-	public init() { }
+	@inlinable public init() { }
+	
+	//MARK: Computed Properties
+	
+	@inlinable public var identifiers: Dictionary<String, Kind>.Keys {
+		resources.keys
+	}
+	
+	@inlinable public var values: Dictionary<String, Kind>.Values {
+		resources.values
+	}
+	
+	@inlinable public var count: Int {
+		resources.count
+	}
 	
 	//MARK: Methods
 	
@@ -21,33 +34,61 @@ public struct Registry<Kind> {
 	/// - Parameters:
 	///   - resource: The resource to register
 	///   - identifier: The identifier with which the resource will be registered
-	@discardableResult
-	@inlinable public mutating func register(_ resource: Kind, for identifier: String) -> Int {
-		ids[identifier] = loaded.count
-		defer { loaded.append(resource) }
-		return loaded.count
+	@inlinable public mutating func register(_ resource: Kind, for identifier: String) throws {
+		if let existing = resources[identifier] {
+			throw log(Errors.duplicate(identifier: identifier, existing: existing, new: resource))
+		}
+		resources[identifier] = resource
 	}
 	
-	@inlinable public func retrieve(_ id: Int) -> Kind {
-		loaded[id]
+	@inlinable public func retrieve(_ identifier: String) throws -> Kind {
+		guard let resource = resources[identifier] else {
+			throw log(Errors.missing(identifier: identifier))
+		}
+		return resource
 	}
 	
 	@inlinable public func contains(_ identifier: String) -> Bool {
-		ids.keys.contains(identifier)
+		resources.keys.contains(identifier)
 	}
 	
-	@inlinable public func lookup(_ identifier: String) -> Int? {
-		ids[identifier]
+	@inlinable public func lookup(_ identifier: String) -> Kind? {
+		resources[identifier]
+	}
+	
+	//MARK: Errors
+	
+	public enum Errors: Error, CustomStringConvertible {
+		case duplicate(identifier: String, existing: Kind, new: Kind)
+		case missing(identifier: String)
+		
+		public var description: String {
+			switch self {
+			case let .missing(identifier): return "Unknown \(Kind.self) with identifier '\(identifier)'"
+			case let .duplicate(identifier, existing, new): return "Cannot overwrite \(Kind.self) with identifier '\(identifier)' '\(existing)' with '\(new)'"
+			}
+		}
 	}
 
 	//MARK: Utilities
 	
 	@inlinable public mutating func reserveCapacity(_ minimumCapacity: Int) {
-		loaded.reserveCapacity(minimumCapacity)
+		resources.reserveCapacity(minimumCapacity)
 	}
 	
-	@inlinable public mutating func reserveAdditionalCapacity(_ additionalCapacity: Int) {
-		loaded.reserveCapacity(loaded.capacity + additionalCapacity)
+	@usableFromInline func log(_ error: Error) -> Error {
+		print("[Registry<\(Kind.self)>] \(error)")
+		return error
+	}
+	
+}
+
+//MARK: - Sequence
+
+extension Registry: Sequence {
+	
+	public func makeIterator() -> Dictionary<String, Kind>.Iterator {
+		resources.makeIterator()
 	}
 	
 }

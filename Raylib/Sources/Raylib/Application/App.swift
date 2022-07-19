@@ -6,12 +6,12 @@
 
 public protocol App {
 	
-	init()
+	init() throws
 	
 	var initial: Scene { get }
 	
-	mutating func load()
-	mutating func unload()
+	mutating func load() throws
+	mutating func unload() throws
 	
 }
 
@@ -24,8 +24,8 @@ extension App {
 	
 	//MARK: Methods
 	
-	@inlinable public static func main() {
-		var app = Self.init()
+	@usableFromInline static func tryMain() throws {
+		var app = try Self.init()
 		
 		if !Window.isReady {
 			Window.create(title: String(describing: Self.self))
@@ -37,7 +37,7 @@ extension App {
 			set { navigation[navigation.count - 1] = newValue }
 		}
 		
-		app.load()
+		try app.load()
 		
 		var action = SceneAction.push(scene)
 		while Application.isRunning {
@@ -75,7 +75,15 @@ extension App {
 			}
 		}
 		
-		app.unload()
+		try app.unload()
+	}
+	
+	@inlinable public static func main() {
+		do {
+			try tryMain()
+		} catch {
+			print("ERROR: \(error)")
+		}
 		Application.quit()
 	}
 	
