@@ -1,6 +1,6 @@
 # Cheatsheet
 
-**raylib v4.0    |    bindings 46%**
+**raylib v4.2    |    bindings 46%**
 
 This document presents a detailed overview of the raylib cheatsheet along with its corresponding Swift symbol(s).
 
@@ -619,25 +619,35 @@ Language | Symbol
 C | `struct VrStereoConfig;`
 Swift | *unimplemented*
 
+#### FilePathList
+
+File path list
+
+Language | Symbol
+--- | ---
+C | `struct FilePathList;`
+Swift | *unimplemented*
+
 ## Enumerators Definition
 
 ### System/Window config flags
 
 ```mm
-ConfigFlags FLAG_INTERLACED_HINT;    // Set to try enabling interlaced video format (for V3D)
-ConfigFlags FLAG_MSAA_4X_HINT;       // Set to try enabling MSAA 4X
-ConfigFlags FLAG_WINDOW_HIGHDPI;     // Set to support HighDPI
-ConfigFlags FLAG_WINDOW_TRANSPARENT; // Set to allow transparent framebuffer
-ConfigFlags FLAG_WINDOW_ALWAYS_RUN;  // Set to allow windows running while minimized
-ConfigFlags FLAG_WINDOW_TOPMOST;     // Set to window always on top
-ConfigFlags FLAG_WINDOW_UNFOCUSED;   // Set to window non focused
-ConfigFlags FLAG_WINDOW_MAXIMIZED;   // Set to maximize window (expanded to monitor)
-ConfigFlags FLAG_WINDOW_MINIMIZED;   // Set to minimize window (iconify)
-ConfigFlags FLAG_WINDOW_HIDDEN;      // Set to hide window
-ConfigFlags FLAG_WINDOW_UNDECORATED; // Set to disable window decoration (frame and buttons)
-ConfigFlags FLAG_WINDOW_RESIZABLE;   // Set to allow resizable window
-ConfigFlags FLAG_FULLSCREEN_MODE;    // Set to run program in fullscreen
-ConfigFlags FLAG_VSYNC_HINT;         // Set to try enabling V-Sync on GPU
+ConfigFlags FLAG_INTERLACED_HINT;          // Set to try enabling interlaced video format (for V3D)
+ConfigFlags FLAG_MSAA_4X_HINT;             // Set to try enabling MSAA 4X
+ConfigFlags FLAG_WINDOW_MOUSE_PASSTHROUGH; // Set to support mouse passthrough, only supported when FLAG_WINDOW_UNDECORATED
+ConfigFlags FLAG_WINDOW_HIGHDPI;           // Set to support HighDPI
+ConfigFlags FLAG_WINDOW_TRANSPARENT;       // Set to allow transparent framebuffer
+ConfigFlags FLAG_WINDOW_ALWAYS_RUN;        // Set to allow windows running while minimized
+ConfigFlags FLAG_WINDOW_TOPMOST;           // Set to window always on top
+ConfigFlags FLAG_WINDOW_UNFOCUSED;         // Set to window non focused
+ConfigFlags FLAG_WINDOW_MAXIMIZED;         // Set to maximize window (expanded to monitor)
+ConfigFlags FLAG_WINDOW_MINIMIZED;         // Set to minimize window (iconify)
+ConfigFlags FLAG_WINDOW_HIDDEN;            // Set to hide window
+ConfigFlags FLAG_WINDOW_UNDECORATED;       // Set to disable window decoration (frame and buttons)
+ConfigFlags FLAG_WINDOW_RESIZABLE;         // Set to allow resizable window
+ConfigFlags FLAG_FULLSCREEN_MODE;          // Set to run program in fullscreen
+ConfigFlags FLAG_VSYNC_HINT;               // Set to try enabling V-Sync on GPU
 ```
 
 > Note: Every bit registers one state (use it with bit masks) default all flags are set to 0
@@ -659,6 +669,15 @@ Language | Symbol
 --- | ---
 C | `ConfigFlags FLAG_MSAA_4X_HINT;`
 Swift | ``WindowFlags/msaa4x``
+
+#### FLAG_WINDOW_MOUSE_PASSTHROUGH
+
+Set to support mouse passthrough, only supported when FLAG_WINDOW_UNDECORATED
+
+Language | Symbol
+--- | ---
+C | `ConfigFlags FLAG_WINDOW_MOUSE_PASSTHROUGH;`
+Swift | *unimplemented*
 
 #### FLAG_WINDOW_HIGHDPI
 
@@ -712,7 +731,7 @@ Set to maximize window (expanded to monitor)
 Language | Symbol
 --- | ---
 C | `ConfigFlags FLAG_WINDOW_MAXIMIZED;`
-Swift | ``WindowFlags/maximized``, ``Window/isMaximized``, and ``Window/maximize()``
+Swift | ``WindowFlags/maximized``, ``Window/isMaximized`` and ``Window/maximize()``
 
 #### FLAG_WINDOW_MINIMIZED
 
@@ -721,7 +740,7 @@ Set to minimize window (iconify)
 Language | Symbol
 --- | ---
 C | `ConfigFlags FLAG_WINDOW_MINIMIZED;`
-Swift | ``WindowFlags/minimized``, ``Window/isMinimized``, and ``Window/minimize()``
+Swift | ``WindowFlags/minimized``, ``Window/isMinimized`` and ``Window/minimize()``
 
 #### FLAG_WINDOW_HIDDEN
 
@@ -3222,7 +3241,7 @@ TextureFilter TEXTURE_FILTER_ANISOTROPIC_8X;  // Anisotropic filtering 8x
 TextureFilter TEXTURE_FILTER_ANISOTROPIC_4X;  // Anisotropic filtering 4x
 TextureFilter TEXTURE_FILTER_TRILINEAR;       // Trilinear filtering (linear with mipmaps)
 TextureFilter TEXTURE_FILTER_BILINEAR;        // Linear filtering
-TextureFilter TEXTURE_FILTER_POINT;           // No filter, just pixel aproximation
+TextureFilter TEXTURE_FILTER_POINT;           // No filter, just pixel approximation
 ```
 
 > Note: Filtering considers mipmaps if available in the texture
@@ -3276,7 +3295,7 @@ Swift | ``TextureFilter/bilinear``
 
 #### TEXTURE_FILTER_POINT
 
-No filter, just pixel aproximation
+No filter, just pixel approximation
 
 Language | Symbol
 --- | ---
@@ -3431,22 +3450,32 @@ Swift | *unimplemented*
 ### Color blending modes (pre-defined)
 
 ```mm
-BlendMode BLEND_CUSTOM;          // Belnd textures using custom src/dst factors (use rlSetBlendMode())
-BlendMode BLEND_SUBTRACT_COLORS; // Blend textures subtracting colors (alternative)
-BlendMode BLEND_ADD_COLORS;      // Blend textures adding colors (alternative)
-BlendMode BLEND_MULTIPLIED;      // Blend textures multiplying colors
-BlendMode BLEND_ADDITIVE;        // Blend textures adding colors
-BlendMode BLEND_ALPHA;           // Blend textures considering alpha (default)
+BlendMode BLEND_CUSTOM;            // Blend textures using custom src/dst factors (use rlSetBlendMode())
+BlendMode BLEND_ALPHA_PREMULTIPLY; // Blend premultiplied textures considering alpha
+BlendMode BLEND_SUBTRACT_COLORS;   // Blend textures subtracting colors (alternative)
+BlendMode BLEND_ADD_COLORS;        // Blend textures adding colors (alternative)
+BlendMode BLEND_MULTIPLIED;        // Blend textures multiplying colors
+BlendMode BLEND_ADDITIVE;          // Blend textures adding colors
+BlendMode BLEND_ALPHA;             // Blend textures considering alpha (default)
 ```
 
 #### BLEND_CUSTOM
 
-Belnd textures using custom src/dst factors (use rlSetBlendMode())
+Blend textures using custom src/dst factors (use rlSetBlendMode())
 
 Language | Symbol
 --- | ---
 C | `BlendMode BLEND_CUSTOM;`
 Swift | ``Blend/custom``
+
+#### BLEND_ALPHA_PREMULTIPLY
+
+Blend premultiplied textures considering alpha
+
+Language | Symbol
+--- | ---
+C | `BlendMode BLEND_ALPHA_PREMULTIPLY;`
+Swift | *unimplemented*
 
 #### BLEND_SUBTRACT_COLORS
 
@@ -3741,7 +3770,7 @@ bool IsWindowMaximized(void);                              // Check if window is
 bool IsWindowFocused(void);                                // Check if window is currently focused Note: Only available on desktop
 bool IsWindowResized(void);                                // Check if window has been resized last frame
 bool IsWindowState(unsigned int flag);                     // Check if one specific window flag is enabled
-void SetWindowState(unsigned int flags);                   // Set window configuration state using flags
+void SetWindowState(unsigned int flags);                   // Set window configuration state using flags Note: Only available on desktop
 void ClearWindowState(unsigned int flags);                 // Clear window configuration state flags
 void ToggleFullscreen(void);                               // Toggle window state: fullscreen/windowed Note: Only available on desktop
 void MaximizeWindow(void);                                 // Set window state: maximized, if resizable Note: Only available on desktop
@@ -3753,14 +3782,17 @@ void SetWindowPosition(int x, int y);                      // Set window positio
 void SetWindowMonitor(int monitor);                        // Set monitor for the current window (fullscreen mode)
 void SetWindowMinSize(int width, int height);              // Set window minimum dimensions (for FLAG_WINDOW_RESIZABLE)
 void SetWindowSize(int width, int height);                 // Set window dimensions
+void SetWindowOpacity(float opacity);                      // Set window opacity [0.0f..1.0f] Note: Only available on desktop
 void *GetWindowHandle(void);                               // Get native window handle
 int GetScreenWidth(void);                                  // Get current screen width
 int GetScreenHeight(void);                                 // Get current screen height
+int GetRenderWidth(void);                                  // Get current render width (it considers HiDPI)
+int GetRenderHeight(void);                                 // Get current render height (it considers HiDPI)
 int GetMonitorCount(void);                                 // Get number of connected monitors
 int GetCurrentMonitor(void);                               // Get current connected monitor
 Vector2 GetMonitorPosition(int monitor);                   // Get specified monitor position
-int GetMonitorWidth(int monitor);                          // Get specified monitor width (max available by monitor)
-int GetMonitorHeight(int monitor);                         // Get specified monitor height (max available by monitor)
+int GetMonitorWidth(int monitor);                          // Get specified monitor width (current video mode used by monitor)
+int GetMonitorHeight(int monitor);                         // Get specified monitor height (current video mode used by monitor)
 int GetMonitorPhysicalWidth(int monitor);                  // Get specified monitor physical width in millimetres
 int GetMonitorPhysicalHeight(int monitor);                 // Get specified monitor physical height in millimetres
 int GetMonitorRefreshRate(int monitor);                    // Get specified monitor refresh rate
@@ -3769,6 +3801,8 @@ Vector2 GetWindowScaleDPI(void);                           // Get window scale D
 const char *GetMonitorName(int monitor);                   // Get the human-readable, UTF-8 encoded name of the primary monitor
 void SetClipboardText(const char *text);                   // Set clipboard text content
 const char *GetClipboardText(void);                        // Get clipboard text content
+void EnableEventWaiting(void);                             // Enable waiting for events on EndDrawing(), no automatic event polling
+void DisableEventWaiting(void);                            // Disable waiting for events on EndDrawing(), automatic events polling
 ```
 
 #### InitWindow
@@ -3872,12 +3906,12 @@ Swift | ``WindowFlags/isEnabled``
 
 #### SetWindowState
 
-Set window configuration state using flags
+Set window configuration state using flags Note: Only available on desktop
 
 Language | Symbol
 --- | ---
 C | `void SetWindowState(unsigned int flags);`
-Swift | ``Window/enable(_:)``, ``WindowFlags/isEnabled``, and ``WindowFlags/enable()``
+Swift | ``Window/enable(_:)``, ``WindowFlags/isEnabled`` and ``WindowFlags/enable()``
 
 #### ClearWindowState
 
@@ -3886,7 +3920,7 @@ Clear window configuration state flags
 Language | Symbol
 --- | ---
 C | `void ClearWindowState(unsigned int flags);`
-Swift | ``Window/disable(_:)``, ``WindowFlags/isEnabled``, and ``WindowFlags/disable()``
+Swift | ``Window/disable(_:)``, ``WindowFlags/isEnabled`` and ``WindowFlags/disable()``
 
 #### ToggleFullscreen
 
@@ -3978,6 +4012,15 @@ Language | Symbol
 C | `void SetWindowSize(int width, int height);`
 Swift | ``Window/resize(to:by:)``
 
+#### SetWindowOpacity
+
+Set window opacity [0.0f..1.0f] Note: Only available on desktop
+
+Language | Symbol
+--- | ---
+C | `void SetWindowOpacity(float opacity);`
+Swift | *unimplemented*
+
 #### GetWindowHandle
 
 Get native window handle
@@ -4004,6 +4047,24 @@ Language | Symbol
 --- | ---
 C | `int GetScreenHeight(void);`
 Swift | ``Window/height`` and ``Window/size``
+
+#### GetRenderWidth
+
+Get current render width (it considers HiDPI)
+
+Language | Symbol
+--- | ---
+C | `int GetRenderWidth(void);`
+Swift | *unimplemented*
+
+#### GetRenderHeight
+
+Get current render height (it considers HiDPI)
+
+Language | Symbol
+--- | ---
+C | `int GetRenderHeight(void);`
+Swift | *unimplemented*
 
 #### GetMonitorCount
 
@@ -4034,7 +4095,7 @@ Swift | ``Monitor/position``
 
 #### GetMonitorWidth
 
-Get specified monitor width (max available by monitor)
+Get specified monitor width (current video mode used by monitor)
 
 Language | Symbol
 --- | ---
@@ -4043,7 +4104,7 @@ Swift | ``Monitor/width``
 
 #### GetMonitorHeight
 
-Get specified monitor height (max available by monitor)
+Get specified monitor height (current video mode used by monitor)
 
 Language | Symbol
 --- | ---
@@ -4122,12 +4183,30 @@ Language | Symbol
 C | `const char *GetClipboardText(void);`
 Swift | ``Clipboard/text``
 
+#### EnableEventWaiting
+
+Enable waiting for events on EndDrawing(), no automatic event polling
+
+Language | Symbol
+--- | ---
+C | `void EnableEventWaiting(void);`
+Swift | *unimplemented*
+
+#### DisableEventWaiting
+
+Disable waiting for events on EndDrawing(), automatic events polling
+
+Language | Symbol
+--- | ---
+C | `void DisableEventWaiting(void);`
+Swift | *unimplemented*
+
 ### Custom frame control functions
 
 ```mm
-void SwapScreenBuffer(void); // Swap back buffer with front buffer (screen drawing)
-void PollInputEvents(void);  // Register all input events
-void WaitTime(float ms);     // Wait for some milliseconds (halt program execution)
+void SwapScreenBuffer(void);   // Swap back buffer with front buffer (screen drawing)
+void PollInputEvents(void);    // Register all input events
+void WaitTime(double seconds); // Wait for some time (halt program execution)
 ```
 
 > Note: Those functions are intended for advance users that want full control over the frame processing default EndDrawing() does this job: draws everything + SwapScreenBuffer() + manage frame timming + PollInputEvents() avoid that behaviour and control frame processes manually, enable in config.h: SUPPORT_CUSTOM_FRAME_CONTROL
@@ -4152,11 +4231,11 @@ Swift | *unimplemented*
 
 #### WaitTime
 
-Wait for some milliseconds (halt program execution)
+Wait for some time (halt program execution)
 
 Language | Symbol
 --- | ---
-C | `void WaitTime(float ms);`
+C | `void WaitTime(double seconds);`
 Swift | *unimplemented*
 
 ### Cursor-related functions
@@ -4528,9 +4607,9 @@ Ray GetMouseRay(Vector2 mousePosition, Camera camera);                          
 Matrix GetCameraMatrix(Camera camera);                                              // Get camera transform matrix (view matrix)
 Matrix GetCameraMatrix2D(Camera2D camera);                                          // Get camera 2d transform matrix
 Vector2 GetWorldToScreen(Vector3 position, Camera camera);                          // Get the screen space position for a 3d world space position
+Vector2 GetScreenToWorld2D(Vector2 position, Camera2D camera);                      // Get the world space position for a 2d camera screen space position
 Vector2 GetWorldToScreenEx(Vector3 position, Camera camera, int width, int height); // Get size position for a 3d world space position
 Vector2 GetWorldToScreen2D(Vector2 position, Camera2D camera);                      // Get the screen space position for a 2d camera world space position
-Vector2 GetScreenToWorld2D(Vector2 position, Camera2D camera);                      // Get the world space position for a 2d camera screen space position
 ```
 
 #### GetMouseRay
@@ -4569,6 +4648,15 @@ Language | Symbol
 C | `Vector2 GetWorldToScreen(Vector3 position, Camera camera);`
 Swift | ``Camera3D/toScreen(world:)``
 
+#### GetScreenToWorld2D
+
+Get the world space position for a 2d camera screen space position
+
+Language | Symbol
+--- | ---
+C | `Vector2 GetScreenToWorld2D(Vector2 position, Camera2D camera);`
+Swift | ``Camera2D/toWorld(screen:)``
+
 #### GetWorldToScreenEx
 
 Get size position for a 3d world space position
@@ -4586,15 +4674,6 @@ Language | Symbol
 --- | ---
 C | `Vector2 GetWorldToScreen2D(Vector2 position, Camera2D camera);`
 Swift | ``Camera2D/toScreen(world:)``
-
-#### GetScreenToWorld2D
-
-Get the world space position for a 2d camera screen space position
-
-Language | Symbol
---- | ---
-C | `Vector2 GetScreenToWorld2D(Vector2 position, Camera2D camera);`
-Swift | ``Camera2D/toWorld(screen:)``
 
 ### Timing-related functions
 
@@ -4653,6 +4732,7 @@ void SetTraceLogLevel(int logLevel);                // Set the current threshold
 void *MemAlloc(int size);                           // Internal memory allocator
 void *MemRealloc(void *ptr, int size);              // Internal memory reallocator
 void MemFree(void *ptr);                            // Internal memory free
+void OpenURL(const char *url);                      // Open URL with default system browser (if available)
 ```
 
 #### GetRandomValue
@@ -4680,7 +4760,7 @@ Takes a screenshot of current screen (filename extension defines format)
 Language | Symbol
 --- | ---
 C | `void TakeScreenshot(const char *fileName);`
-Swift | ``Monitor/screenshot(as:)``
+Swift | ``Screen/screenshot(as:)``
 
 #### SetConfigFlags
 
@@ -4698,7 +4778,7 @@ Show trace log messages (LOG_DEBUG, LOG_INFO, LOG_WARNING, LOG_ERROR...)
 Language | Symbol
 --- | ---
 C | `void TraceLog(int logLevel, const char *text, ...);`
-Swift | ``Trace/log(_:_:)``, ``Trace/trace(_:)``, ``Trace/debug(_:)``, ``Trace/info(_:)``, ``Trace/warning(_:)``, ``Trace/error(_:)``, and ``Trace/fatal(_:)``
+Swift | ``Trace/log(_:_:)``, ``Trace/trace(_:)``, ``Trace/debug(_:)``, ``Trace/info(_:)``, ``Trace/warning(_:)``, ``Trace/error(_:)`` and ``Trace/fatal(_:)``
 
 #### SetTraceLogLevel
 
@@ -4735,6 +4815,15 @@ Language | Symbol
 --- | ---
 C | `void MemFree(void *ptr);`
 Swift | ``Allocator/free(_:)``
+
+#### OpenURL
+
+Open URL with default system browser (if available)
+
+Language | Symbol
+--- | ---
+C | `void OpenURL(const char *url);`
+Swift | ``System/open(_:)-y5jl``
 
 ### Set custom callbacks
 
@@ -4796,28 +4885,33 @@ Swift | *unimplemented*
 ### Files management functions
 
 ```mm
-unsigned char *LoadFileData(const char *fileName, unsigned int *bytesRead);     // Load file data as byte array (read)
-void UnloadFileData(unsigned char *data);                                       // Unload file data allocated by LoadFileData()
-bool SaveFileData(const char *fileName, void *data, unsigned int bytesToWrite); // Save data to file from byte array (write), returns true on success
-char *LoadFileText(const char *fileName);                                       // Load text data from file (read), returns a '\0' terminated string
-void UnloadFileText(char *text);                                                // Unload file text data allocated by LoadFileText()
-bool SaveFileText(const char *fileName, char *text);                            // Save text data to file (write), string must be '\0' terminated, returns true on success
-bool FileExists(const char *fileName);                                          // Check if file exists
-bool DirectoryExists(const char *dirPath);                                      // Check if a directory path exists
-bool IsFileExtension(const char *fileName, const char                           // Check file extension (including point: .png, .wav)
-const char *GetFileExtension(const char *fileName);                             // Get pointer to extension for a filename string (includes dot: '.png')
-const char *GetFileName(const char *filePath);                                  // Get pointer to filename for a path string
-const char *GetFileNameWithoutExt(const char *filePath);                        // Get filename string without extension (uses static string)
-const char *GetDirectoryPath(const char *filePath);                             // Get full path for a given fileName with path (uses static string)
-const char *GetPrevDirectoryPath(const char *dirPath);                          // Get previous directory path for a given path (uses static string)
-const char *GetWorkingDirectory(void);                                          // Get current working directory (uses static string)
-char **GetDirectoryFiles(const char *dirPath, int *count);                      // Get filenames in a directory path (memory should be freed)
-void ClearDirectoryFiles(void);                                                 // Clear directory files paths buffers (free memory)
-bool ChangeDirectory(const char *dir);                                          // Change working directory, return true on success
-bool IsFileDropped(void);                                                       // Check if a file has been dropped into window
-char **GetDroppedFiles(int *count);                                             // Get dropped files names (memory should be freed)
-void ClearDroppedFiles(void);                                                   // Clear dropped files paths buffer (free memory)
-long GetFileModTime(const char *fileName);                                      // Get file modification time (last write time)
+unsigned char *LoadFileData(const char *fileName, unsigned int *bytesRead);                    // Load file data as byte array (read)
+void UnloadFileData(unsigned char *data);                                                      // Unload file data allocated by LoadFileData()
+bool SaveFileData(const char *fileName, void *data, unsigned int bytesToWrite);                // Save data to file from byte array (write), returns true on success
+bool ExportDataAsCode(const char *data, unsigned int size, const char *fileName);              // Export data to code (.h), returns true on success
+char *LoadFileText(const char *fileName);                                                      // Load text data from file (read), returns a '\0' terminated string
+void UnloadFileText(char *text);                                                               // Unload file text data allocated by LoadFileText()
+bool SaveFileText(const char *fileName, char *text);                                           // Save text data to file (write), string must be '\0' terminated, returns true on success
+bool FileExists(const char *fileName);                                                         // Check if file exists
+bool DirectoryExists(const char *dirPath);                                                     // Check if a directory path exists
+bool IsFileExtension(const char *fileName, const char *ext);                                   // Check file extension (including point: .png, .wav)
+int GetFileLength(const char *fileName);                                                       // Get file length in bytes (NOTE: GetFileSize() conflicts with windows.h)
+const char *GetFileExtension(const char *fileName);                                            // Get pointer to extension for a filename string (includes dot: '.png')
+const char *GetFileName(const char *filePath);                                                 // Get pointer to filename for a path string
+const char *GetFileNameWithoutExt(const char *filePath);                                       // Get filename string without extension (uses static string)
+const char *GetDirectoryPath(const char *filePath);                                            // Get full path for a given fileName with path (uses static string)
+const char *GetPrevDirectoryPath(const char *dirPath);                                         // Get previous directory path for a given path (uses static string)
+const char *GetWorkingDirectory(void);                                                         // Get current working directory (uses static string)
+const char *GetApplicationDirectory(void);                                                     // Get the directory if the running application (uses static string)
+bool ChangeDirectory(const char *dir);                                                         // Change working directory, return true on success
+bool IsPathFile(const char *path);                                                             // Check if a given path is a file or a directory
+FilePathList LoadDirectoryFiles(const char *dirPath);                                          // Load directory filepaths
+FilePathList LoadDirectoryFilesEx(const char *basePath, const char *filter, bool scanSubdirs); // Load directory filepaths with extension filtering and recursive directory scan
+void UnloadDirectoryFiles(FilePathList files);                                                 // Unload filepaths
+bool IsFileDropped(void);                                                                      // Check if a file has been dropped into window
+FilePathList LoadDroppedFiles(void);                                                           // Load dropped filepaths
+void UnloadDroppedFiles(FilePathList files);                                                   // Unload dropped filepaths
+long GetFileModTime(const char *fileName);                                                     // Get file modification time (last write time)
 ```
 
 #### LoadFileData
@@ -4845,6 +4939,15 @@ Save data to file from byte array (write), returns true on success
 Language | Symbol
 --- | ---
 C | `bool SaveFileData(const char *fileName, void *data, unsigned int bytesToWrite);`
+Swift | *unimplemented*
+
+#### ExportDataAsCode
+
+Export data to code (.h), returns true on success
+
+Language | Symbol
+--- | ---
+C | `bool ExportDataAsCode(const char *data, unsigned int size, const char *fileName);`
 Swift | *unimplemented*
 
 #### LoadFileText
@@ -4898,7 +5001,16 @@ Check file extension (including point: .png, .wav)
 
 Language | Symbol
 --- | ---
-C | `bool IsFileExtension(const char *fileName, const char`
+C | `bool IsFileExtension(const char *fileName, const char *ext);`
+Swift | *unimplemented*
+
+#### GetFileLength
+
+Get file length in bytes (NOTE: GetFileSize() conflicts with windows.h)
+
+Language | Symbol
+--- | ---
+C | `int GetFileLength(const char *fileName);`
 Swift | *unimplemented*
 
 #### GetFileExtension
@@ -4955,22 +5067,13 @@ Language | Symbol
 C | `const char *GetWorkingDirectory(void);`
 Swift | *unimplemented*
 
-#### GetDirectoryFiles
+#### GetApplicationDirectory
 
-Get filenames in a directory path (memory should be freed)
-
-Language | Symbol
---- | ---
-C | `char **GetDirectoryFiles(const char *dirPath, int *count);`
-Swift | *unimplemented*
-
-#### ClearDirectoryFiles
-
-Clear directory files paths buffers (free memory)
+Get the directory if the running application (uses static string)
 
 Language | Symbol
 --- | ---
-C | `void ClearDirectoryFiles(void);`
+C | `const char *GetApplicationDirectory(void);`
 Swift | *unimplemented*
 
 #### ChangeDirectory
@@ -4982,6 +5085,42 @@ Language | Symbol
 C | `bool ChangeDirectory(const char *dir);`
 Swift | *unimplemented*
 
+#### IsPathFile
+
+Check if a given path is a file or a directory
+
+Language | Symbol
+--- | ---
+C | `bool IsPathFile(const char *path);`
+Swift | *unimplemented*
+
+#### LoadDirectoryFiles
+
+Load directory filepaths
+
+Language | Symbol
+--- | ---
+C | `FilePathList LoadDirectoryFiles(const char *dirPath);`
+Swift | *unimplemented*
+
+#### LoadDirectoryFilesEx
+
+Load directory filepaths with extension filtering and recursive directory scan
+
+Language | Symbol
+--- | ---
+C | `FilePathList LoadDirectoryFilesEx(const char *basePath, const char *filter, bool scanSubdirs);`
+Swift | *unimplemented*
+
+#### UnloadDirectoryFiles
+
+Unload filepaths
+
+Language | Symbol
+--- | ---
+C | `void UnloadDirectoryFiles(FilePathList files);`
+Swift | *unimplemented*
+
 #### IsFileDropped
 
 Check if a file has been dropped into window
@@ -4991,22 +5130,22 @@ Language | Symbol
 C | `bool IsFileDropped(void);`
 Swift | *unimplemented*
 
-#### GetDroppedFiles
+#### LoadDroppedFiles
 
-Get dropped files names (memory should be freed)
+Load dropped filepaths
 
 Language | Symbol
 --- | ---
-C | `char **GetDroppedFiles(int *count);`
+C | `FilePathList LoadDroppedFiles(void);`
 Swift | *unimplemented*
 
-#### ClearDroppedFiles
+#### UnloadDroppedFiles
 
-Clear dropped files paths buffer (free memory)
+Unload dropped filepaths
 
 Language | Symbol
 --- | ---
-C | `void ClearDroppedFiles(void);`
+C | `void UnloadDroppedFiles(FilePathList files);`
 Swift | *unimplemented*
 
 #### GetFileModTime
@@ -5021,82 +5160,47 @@ Swift | *unimplemented*
 ### Compression/Encoding functionality
 
 ```mm
-unsigned char *CompressData(unsigned char *data, int dataLength, int *compDataLength);       // Compress data (DEFLATE algorithm)
-unsigned char *DecompressData(unsigned char *compData, int compDataLength, int *dataLength); // Decompress data (DEFLATE algorithm)
-char *EncodeDataBase64(const unsigned char *data, int dataLength, int *outputLength);        // Encode data to Base64 string
-unsigned char *DecodeDataBase64(unsigned char *data, int *outputLength);                     // Decode Base64 string data
+unsigned char *CompressData(const unsigned char *data, int dataSize, int *compDataSize);       // Compress data (DEFLATE algorithm), memory must be MemFree()
+unsigned char *DecompressData(const unsigned char *compData, int compDataSize, int *dataSize); // Decompress data (DEFLATE algorithm), memory must be MemFree()
+char *EncodeDataBase64(const unsigned char *data, int dataSize, int *outputSize);              // Encode data to Base64 string, memory must be MemFree()
+unsigned char *DecodeDataBase64(const unsigned char *data, int *outputSize);                   // Decode Base64 string data, memory must be MemFree()
 ```
 
 #### CompressData
 
-Compress data (DEFLATE algorithm)
+Compress data (DEFLATE algorithm), memory must be MemFree()
 
 Language | Symbol
 --- | ---
-C | `unsigned char *CompressData(unsigned char *data, int dataLength, int *compDataLength);`
+C | `unsigned char *CompressData(const unsigned char *data, int dataSize, int *compDataSize);`
 Swift | ``Serialization/compress(_:)``
 
 #### DecompressData
 
-Decompress data (DEFLATE algorithm)
+Decompress data (DEFLATE algorithm), memory must be MemFree()
 
 Language | Symbol
 --- | ---
-C | `unsigned char *DecompressData(unsigned char *compData, int compDataLength, int *dataLength);`
+C | `unsigned char *DecompressData(const unsigned char *compData, int compDataSize, int *dataSize);`
 Swift | ``Serialization/decompress(_:)``
 
 #### EncodeDataBase64
 
-Encode data to Base64 string
+Encode data to Base64 string, memory must be MemFree()
 
 Language | Symbol
 --- | ---
-C | `char *EncodeDataBase64(const unsigned char *data, int dataLength, int *outputLength);`
+C | `char *EncodeDataBase64(const unsigned char *data, int dataSize, int *outputSize);`
 Swift | ``Serialization/encode(_:)``
 
 #### DecodeDataBase64
 
-Decode Base64 string data
+Decode Base64 string data, memory must be MemFree()
 
 Language | Symbol
 --- | ---
-C | `unsigned char *DecodeDataBase64(unsigned char *data, int *outputLength);`
+C | `unsigned char *DecodeDataBase64(const unsigned char *data, int *outputSize);`
 Swift | ``Serialization/decode(_:)``
-
-### Persistent storage management
-
-```mm
-bool SaveStorageValue(unsigned int position, int value); // Save integer value to storage file (to defined position), returns true on success
-int LoadStorageValue(unsigned int position);             // Load integer value from storage file (from defined position)
-void OpenURL(const char *url);                           // Open URL with default system browser (if available)
-```
-
-#### SaveStorageValue
-
-Save integer value to storage file (to defined position), returns true on success
-
-Language | Symbol
---- | ---
-C | `bool SaveStorageValue(unsigned int position, int value);`
-Swift | *unimplemented*
-
-#### LoadStorageValue
-
-Load integer value from storage file (from defined position)
-
-Language | Symbol
---- | ---
-C | `int LoadStorageValue(unsigned int position);`
-Swift | *unimplemented*
-
-#### OpenURL
-
-Open URL with default system browser (if available)
-
-Language | Symbol
---- | ---
-C | `void OpenURL(const char *url);`
-Swift | ``System/open(_:)-y5jl``
 
 ## Input Handling Functions (Module: core)
 
@@ -5294,7 +5398,8 @@ Vector2 GetMouseDelta(void);                    // Get mouse delta between frame
 void SetMousePosition(int x, int y);            // Set mouse position XY
 void SetMouseOffset(int offsetX, int offsetY);  // Set mouse offset
 void SetMouseScale(float scaleX, float scaleY); // Set mouse scaling
-float GetMouseWheelMove(void);                  // Get mouse wheel movement Y
+float GetMouseWheelMove(void);                  // Get mouse wheel movement for X or Y, whichever is larger
+Vector2 GetMouseWheelMoveV(void);               // Get mouse wheel movement for both X and Y
 void SetMouseCursor(int cursor);                // Set mouse cursor
 ```
 
@@ -5377,7 +5482,7 @@ Set mouse position XY
 Language | Symbol
 --- | ---
 C | `void SetMousePosition(int x, int y);`
-Swift | ``Mouse/position``, ``Mouse/x``, and ``Mouse/y``
+Swift | ``Mouse/position``, ``Mouse/x`` and ``Mouse/y``
 
 #### SetMouseOffset
 
@@ -5399,12 +5504,21 @@ Swift | ``Mouse/scale(by:)``
 
 #### GetMouseWheelMove
 
-Get mouse wheel movement Y
+Get mouse wheel movement for X or Y, whichever is larger
 
 Language | Symbol
 --- | ---
 C | `float GetMouseWheelMove(void);`
 Swift | ``Mouse/wheel``
+
+#### GetMouseWheelMoveV
+
+Get mouse wheel movement for both X and Y
+
+Language | Symbol
+--- | ---
+C | `Vector2 GetMouseWheelMoveV(void);`
+Swift | *unimplemented*
 
 #### SetMouseCursor
 
@@ -5775,7 +5889,7 @@ Draw circle sector outline
 Language | Symbol
 --- | ---
 C | `void DrawCircleSectorLines(Vector2 center, float radius, float startAngle, float endAngle, int segments, Color color);`
-Swift | ``WireRenderer2D/sector(at:radius:from:to:segments:color:)`` and ``WireRenderer2D/sector(at:_:radius:from:to:segments:color:)``
+Swift | ``OutlineRenderer2D/sector(at:radius:from:to:segments:color:)`` and ``OutlineRenderer2D/sector(at:_:radius:from:to:segments:color:)``
 
 #### DrawCircleGradient
 
@@ -5802,7 +5916,7 @@ Draw circle outline
 Language | Symbol
 --- | ---
 C | `void DrawCircleLines(int centerX, int centerY, float radius, Color color);`
-Swift | ``WireRenderer2D/circle(at:_:radius:color:)``
+Swift | ``OutlineRenderer2D/circle(at:_:radius:color:)``
 
 #### DrawEllipse
 
@@ -5820,7 +5934,7 @@ Draw ellipse outline
 Language | Symbol
 --- | ---
 C | `void DrawEllipseLines(int centerX, int centerY, float radiusH, float radiusV, Color color);`
-Swift | ``WireRenderer2D/ellipse(at:_:radius:_:color:)``
+Swift | ``OutlineRenderer2D/ellipse(at:_:radius:_:color:)``
 
 #### DrawRing
 
@@ -5838,7 +5952,7 @@ Draw ring outline
 Language | Symbol
 --- | ---
 C | `void DrawRingLines(Vector2 center, float innerRadius, float outerRadius, float startAngle, float endAngle, int segments, Color color);`
-Swift | ``WireRenderer2D/ring(at:inner:outer:segments:from:to:color:)`` and ``WireRenderer2D/ring(at:_:inner:outer:segments:from:to:color:)``
+Swift | ``OutlineRenderer2D/ring(at:inner:outer:segments:from:to:color:)`` and ``OutlineRenderer2D/ring(at:_:inner:outer:segments:from:to:color:)``
 
 #### DrawRectangle
 
@@ -5910,7 +6024,7 @@ Draw rectangle outline
 Language | Symbol
 --- | ---
 C | `void DrawRectangleLines(int posX, int posY, int width, int height, Color color);`
-Swift | ``WireRenderer2D/rectangle(at:_:size:_:color:)``
+Swift | ``OutlineRenderer2D/rectangle(at:_:size:_:color:)``
 
 #### DrawRectangleLinesEx
 
@@ -5919,7 +6033,7 @@ Draw rectangle outline with extended parameters
 Language | Symbol
 --- | ---
 C | `void DrawRectangleLinesEx(Rectangle rec, float lineThick, Color color);`
-Swift | ``WireRenderer2D/rectangle(at:_:size:_:thickness:color:)``
+Swift | ``OutlineRenderer2D/rectangle(at:_:size:_:thickness:color:)``
 
 #### DrawRectangleRounded
 
@@ -5955,7 +6069,7 @@ Draw triangle outline (vertex in counter-clockwise order!)
 Language | Symbol
 --- | ---
 C | `void DrawTriangleLines(Vector2 v1, Vector2 v2, Vector2 v3, Color color);`
-Swift | ``WireRenderer2D/triangle(_:_:_:color:)`` and ``Renderer2D/triangle(_:_:_:color:)``
+Swift | ``OutlineRenderer2D/triangle(_:_:_:color:)`` and ``Renderer2D/triangle(_:_:_:color:)``
 
 #### DrawTriangleFan
 
@@ -5991,7 +6105,7 @@ Draw a polygon outline of n sides
 Language | Symbol
 --- | ---
 C | `void DrawPolyLines(Vector2 center, int sides, float radius, float rotation, Color color);`
-Swift | ``WireRenderer2D/polygon(at:sides:radius:rotation:color:)``
+Swift | ``OutlineRenderer2D/polygon(at:sides:radius:rotation:color:)``
 
 #### DrawPolyLinesEx
 
@@ -6122,7 +6236,7 @@ Load image from file into CPU memory (RAM)
 Language | Symbol
 --- | ---
 C | `Image LoadImage(const char *fileName);`
-Swift | *unimplemented*
+Swift | ``File/loadAsImage()``
 
 #### LoadImageRaw
 
@@ -6131,7 +6245,7 @@ Load image from RAW file data
 Language | Symbol
 --- | ---
 C | `Image LoadImageRaw(const char *fileName, int width, int height, int format, int headerSize);`
-Swift | *unimplemented*
+Swift | ``File/loadAsRawImage(size:by:format:offset:)``
 
 #### LoadImageAnim
 
@@ -6140,7 +6254,7 @@ Load image sequence from file (frames appended to image.data)
 Language | Symbol
 --- | ---
 C | `Image LoadImageAnim(const char *fileName, int *frames);`
-Swift | *unimplemented*
+Swift | ``File/loadAsAnimation(frames:)``
 
 #### LoadImageFromMemory
 
@@ -6149,7 +6263,7 @@ Load image from memory buffer, fileType refers to extension: i.e. '.png'
 Language | Symbol
 --- | ---
 C | `Image LoadImageFromMemory(const char *fileType, const unsigned char *fileData, int dataSize);`
-Swift | *unimplemented*
+Swift | 
 
 #### LoadImageFromTexture
 
@@ -6158,7 +6272,7 @@ Load image from GPU texture data
 Language | Symbol
 --- | ---
 C | `Image LoadImageFromTexture(Texture2D texture);`
-Swift | *unimplemented*
+Swift | ``Texture/convertToImage()``
 
 #### LoadImageFromScreen
 
@@ -6167,7 +6281,7 @@ Load image from screen buffer and (screenshot)
 Language | Symbol
 --- | ---
 C | `Image LoadImageFromScreen(void);`
-Swift | *unimplemented*
+Swift | ``Screen/screenshot()``
 
 #### UnloadImage
 
@@ -6176,7 +6290,7 @@ Unload image from CPU memory (RAM)
 Language | Symbol
 --- | ---
 C | `void UnloadImage(Image image);`
-Swift | *unimplemented*
+Swift | 
 
 #### ExportImage
 
@@ -6185,7 +6299,7 @@ Export image data to file, returns true on success
 Language | Symbol
 --- | ---
 C | `bool ExportImage(Image image, const char *fileName);`
-Swift | *unimplemented*
+Swift | ``File/write(image:)``
 
 #### ExportImageAsCode
 
@@ -6194,7 +6308,7 @@ Export image as code file defining an array of bytes, returns true on success
 Language | Symbol
 --- | ---
 C | `bool ExportImageAsCode(Image image, const char *fileName);`
-Swift | *unimplemented*
+Swift | 
 
 ### Image generation functions
 
@@ -6215,7 +6329,7 @@ Generate image: plain color
 Language | Symbol
 --- | ---
 C | `Image GenImageColor(int width, int height, Color color);`
-Swift | *unimplemented*
+Swift | ``BuiltinImage/color(size:by:of:)``
 
 #### GenImageGradientV
 
@@ -6224,7 +6338,7 @@ Generate image: vertical gradient
 Language | Symbol
 --- | ---
 C | `Image GenImageGradientV(int width, int height, Color top, Color bottom);`
-Swift | *unimplemented*
+Swift | ``BuiltinImage/gradientV(size:by:from:to:)``
 
 #### GenImageGradientH
 
@@ -6233,7 +6347,7 @@ Generate image: horizontal gradient
 Language | Symbol
 --- | ---
 C | `Image GenImageGradientH(int width, int height, Color left, Color right);`
-Swift | *unimplemented*
+Swift | ``BuiltinImage/gradientH(size:by:from:to:)``
 
 #### GenImageGradientRadial
 
@@ -6242,7 +6356,7 @@ Generate image: radial gradient
 Language | Symbol
 --- | ---
 C | `Image GenImageGradientRadial(int width, int height, float density, Color inner, Color outer);`
-Swift | *unimplemented*
+Swift | ``BuiltinImage/gradientRadial(size:by:density:from:to:)``
 
 #### GenImageChecked
 
@@ -6251,7 +6365,7 @@ Generate image: checked
 Language | Symbol
 --- | ---
 C | `Image GenImageChecked(int width, int height, int checksX, int checksY, Color col1, Color col2);`
-Swift | *unimplemented*
+Swift | ``BuiltinImage/checked(size:by:tiles:_:colors:_:)``
 
 #### GenImageWhiteNoise
 
@@ -6260,7 +6374,7 @@ Generate image: white noise
 Language | Symbol
 --- | ---
 C | `Image GenImageWhiteNoise(int width, int height, float factor);`
-Swift | *unimplemented*
+Swift | ``BuiltinImage/whiteNoise(size:by:factor:)``
 
 #### GenImageCellular
 
@@ -6269,7 +6383,7 @@ Generate image: cellular algorithm, bigger tileSize means bigger cells
 Language | Symbol
 --- | ---
 C | `Image GenImageCellular(int width, int height, int tileSize);`
-Swift | *unimplemented*
+Swift | ``BuiltinImage/cellular(size:by:cell:)``
 
 ### Image manipulation functions
 
@@ -7092,13 +7206,14 @@ Swift | *unimplemented*
 ```mm
 Font GetFontDefault(void);                                                                                                                // Get the default Font
 Font LoadFont(const char *fileName);                                                                                                      // Load font from file into GPU memory (VRAM)
-Font LoadFontEx(const char *fileName, int fontSize, int *fontChars, int glyphCount);                                                      // Load font from file with extended parameters
+Font LoadFontEx(const char *fileName, int fontSize, int *fontChars, int glyphCount);                                                      // Load font from file with extended parameters, use NULL for fontChars and 0 for glyphCount to load the default character set
 Font LoadFontFromImage(Image image, Color key, int firstChar);                                                                            // Load font from Image (XNA style)
 Font LoadFontFromMemory(const char *fileType, const unsigned char *fileData, int dataSize, int fontSize, int *fontChars, int glyphCount); // Load font from memory buffer, fileType refers to extension: i.e. '.ttf'
 GlyphInfo *LoadFontData(const unsigned char *fileData, int dataSize, int fontSize, int *fontChars, int glyphCount, int type);             // Load font data for further use
 Image GenImageFontAtlas(const GlyphInfo *chars, Rectangle **recs, int glyphCount, int fontSize, int padding, int packMethod);             // Generate image font atlas using chars info
 void UnloadFontData(GlyphInfo *chars, int glyphCount);                                                                                    // Unload font chars info data (RAM)
-void UnloadFont(Font font);                                                                                                               // Unload Font from GPU memory (VRAM)
+void UnloadFont(Font font);                                                                                                               // Unload font from GPU memory (VRAM)
+bool ExportFontAsCode(Font font, const char *fileName);                                                                                   // Export font as code file, returns true on success
 ```
 
 #### GetFontDefault
@@ -7121,7 +7236,7 @@ Swift | *unimplemented*
 
 #### LoadFontEx
 
-Load font from file with extended parameters
+Load font from file with extended parameters, use NULL for fontChars and 0 for glyphCount to load the default character set
 
 Language | Symbol
 --- | ---
@@ -7175,11 +7290,20 @@ Swift | *unimplemented*
 
 #### UnloadFont
 
-Unload Font from GPU memory (VRAM)
+Unload font from GPU memory (VRAM)
 
 Language | Symbol
 --- | ---
 C | `void UnloadFont(Font font);`
+Swift | *unimplemented*
+
+#### ExportFontAsCode
+
+Export font as code file, returns true on success
+
+Language | Symbol
+--- | ---
+C | `bool ExportFontAsCode(Font font, const char *fileName);`
 Swift | *unimplemented*
 
 ### Text drawing functions
@@ -7190,6 +7314,7 @@ void DrawText(const char *text, int posX, int posY, int fontSize, Color color); 
 void DrawTextEx(Font font, const char *text, Vector2 position, float fontSize, float spacing, Color tint);                                  // Draw text using font and additional parameters
 void DrawTextPro(Font font, const char *text, Vector2 position, Vector2 origin, float rotation, float fontSize, float spacing, Color tint); // Draw text using Font and pro parameters (rotation)
 void DrawTextCodepoint(Font font, int codepoint, Vector2 position, float fontSize, Color tint);                                             // Draw one character (codepoint)
+void DrawTextCodepoints(Font font, const int *codepoints, int count, Vector2 position, float fontSize, float spacing, Color tint);          // Draw multiple character (codepoint)
 ```
 
 #### DrawFPS
@@ -7235,6 +7360,15 @@ Draw one character (codepoint)
 Language | Symbol
 --- | ---
 C | `void DrawTextCodepoint(Font font, int codepoint, Vector2 position, float fontSize, Color tint);`
+Swift | *unimplemented*
+
+#### DrawTextCodepoints
+
+Draw multiple character (codepoint)
+
+Language | Symbol
+--- | ---
+C | `void DrawTextCodepoints(Font font, const int *codepoints, int count, Vector2 position, float fontSize, float spacing, Color tint);`
 Swift | *unimplemented*
 
 ### Text font info functions
@@ -7295,12 +7429,12 @@ Swift | *unimplemented*
 ### Text codepoints management functions (unicode characters)
 
 ```mm
-int *LoadCodepoints(const char *text, int *count);         // Load all codepoints from a UTF-8 text string, codepoints count returned by parameter
-void UnloadCodepoints(int *codepoints);                    // Unload codepoints data from memory
-int GetCodepointCount(const char *text);                   // Get total number of codepoints in a UTF-8 encoded string
-int GetCodepoint(const char *text, int *bytesProcessed);   // Get next codepoint in a UTF-8 encoded string, 0x3f('?') is returned on failure
-const char *CodepointToUTF8(int codepoint, int *byteSize); // Encode one codepoint into UTF-8 byte array (array length returned as parameter)
-char *TextCodepointsToUTF8(int *codepoints, int length);   // Encode text as codepoints array into UTF-8 text string (WARNING: memory must be freed!)
+int *LoadCodepoints(const char *text, int *count);             // Load all codepoints from a UTF-8 text string, codepoints count returned by parameter
+void UnloadCodepoints(int *codepoints);                        // Unload codepoints data from memory
+int GetCodepointCount(const char *text);                       // Get total number of codepoints in a UTF-8 encoded string
+int GetCodepoint(const char *text, int *bytesProcessed);       // Get next codepoint in a UTF-8 encoded string, 0x3f('?') is returned on failure
+const char *CodepointToUTF8(int codepoint, int *byteSize);     // Encode one codepoint into UTF-8 byte array (array length returned as parameter)
+char *TextCodepointsToUTF8(const int *codepoints, int length); // Encode text as codepoints array into UTF-8 text string (WARNING: memory must be freed!)
 ```
 
 #### LoadCodepoints
@@ -7354,7 +7488,7 @@ Encode text as codepoints array into UTF-8 text string (WARNING: memory must be 
 
 Language | Symbol
 --- | ---
-C | `char *TextCodepointsToUTF8(int *codepoints, int length);`
+C | `char *TextCodepointsToUTF8(const int *codepoints, int length);`
 Swift | *unimplemented*
 
 ### Text strings management functions (no UTF-8 strings, only byte chars)
@@ -7876,15 +8010,14 @@ Swift | *unimplemented*
 ### Mesh management functions
 
 ```mm
-void UploadMesh(Mesh *mesh, bool dynamic);                                               // Upload mesh vertex data in GPU and provide VAO/VBO ids
-void UpdateMeshBuffer(Mesh mesh, int index, void *data, int dataSize, int offset);       // Update mesh vertex data in GPU for a specific buffer index
-void UnloadMesh(Mesh mesh);                                                              // Unload mesh data from CPU and GPU
-void DrawMesh(Mesh mesh, Material material, Matrix transform);                           // Draw a 3d mesh with material and transform
-void DrawMeshInstanced(Mesh mesh, Material material, Matrix *transforms, int instances); // Draw multiple mesh instances with material and different transforms
-bool ExportMesh(Mesh mesh, const char *fileName);                                        // Export mesh data to file, returns true on success
-BoundingBox GetMeshBoundingBox(Mesh mesh);                                               // Compute mesh bounding box limits
-void GenMeshTangents(Mesh *mesh);                                                        // Compute mesh tangents
-void GenMeshBinormals(Mesh *mesh);                                                       // Compute mesh binormals
+void UploadMesh(Mesh *mesh, bool dynamic);                                                     // Upload mesh vertex data in GPU and provide VAO/VBO ids
+void UpdateMeshBuffer(Mesh mesh, int index, const void *data, int dataSize, int offset);       // Update mesh vertex data in GPU for a specific buffer index
+void UnloadMesh(Mesh mesh);                                                                    // Unload mesh data from CPU and GPU
+void DrawMesh(Mesh mesh, Material material, Matrix transform);                                 // Draw a 3d mesh with material and transform
+void DrawMeshInstanced(Mesh mesh, Material material, const Matrix *transforms, int instances); // Draw multiple mesh instances with material and different transforms
+bool ExportMesh(Mesh mesh, const char *fileName);                                              // Export mesh data to file, returns true on success
+BoundingBox GetMeshBoundingBox(Mesh mesh);                                                     // Compute mesh bounding box limits
+void GenMeshTangents(Mesh *mesh);                                                              // Compute mesh tangents
 ```
 
 #### UploadMesh
@@ -7902,7 +8035,7 @@ Update mesh vertex data in GPU for a specific buffer index
 
 Language | Symbol
 --- | ---
-C | `void UpdateMeshBuffer(Mesh mesh, int index, void *data, int dataSize, int offset);`
+C | `void UpdateMeshBuffer(Mesh mesh, int index, const void *data, int dataSize, int offset);`
 Swift | *unimplemented*
 
 #### UnloadMesh
@@ -7929,7 +8062,7 @@ Draw multiple mesh instances with material and different transforms
 
 Language | Symbol
 --- | ---
-C | `void DrawMeshInstanced(Mesh mesh, Material material, Matrix *transforms, int instances);`
+C | `void DrawMeshInstanced(Mesh mesh, Material material, const Matrix *transforms, int instances);`
 Swift | *unimplemented*
 
 #### ExportMesh
@@ -7957,15 +8090,6 @@ Compute mesh tangents
 Language | Symbol
 --- | ---
 C | `void GenMeshTangents(Mesh *mesh);`
-Swift | *unimplemented*
-
-#### GenMeshBinormals
-
-Compute mesh binormals
-
-Language | Symbol
---- | ---
-C | `void GenMeshBinormals(Mesh *mesh);`
 Swift | *unimplemented*
 
 ### Mesh generation functions
@@ -8144,7 +8268,7 @@ Swift | *unimplemented*
 ModelAnimation *LoadModelAnimations(const char *fileName, unsigned int *animCount); // Load model animations from file
 void UpdateModelAnimation(Model model, ModelAnimation anim, int frame);             // Update model animation pose
 void UnloadModelAnimation(ModelAnimation anim);                                     // Unload animation data
-void UnloadModelAnimations(ModelAnimation* animations, unsigned int count);         // Unload animation array data
+void UnloadModelAnimations(ModelAnimation *animations, unsigned int count);         // Unload animation array data
 bool IsModelAnimationValid(Model model, ModelAnimation anim);                       // Check model animation skeleton match
 ```
 
@@ -8181,7 +8305,7 @@ Unload animation array data
 
 Language | Symbol
 --- | ---
-C | `void UnloadModelAnimations(ModelAnimation* animations, unsigned int count);`
+C | `void UnloadModelAnimations(ModelAnimation *animations, unsigned int count);`
 Swift | *unimplemented*
 
 #### IsModelAnimationValid
@@ -8201,7 +8325,6 @@ bool CheckCollisionBoxes(BoundingBox box1, BoundingBox box2);                   
 bool CheckCollisionBoxSphere(BoundingBox box, Vector3 center, float radius);                // Check collision between box and sphere
 RayCollision GetRayCollisionSphere(Ray ray, Vector3 center, float radius);                  // Get collision info between ray and sphere
 RayCollision GetRayCollisionBox(Ray ray, BoundingBox box);                                  // Get collision info between ray and box
-RayCollision GetRayCollisionModel(Ray ray, Model model);                                    // Get collision info between ray and model
 RayCollision GetRayCollisionMesh(Ray ray, Mesh mesh, Matrix transform);                     // Get collision info between ray and mesh
 RayCollision GetRayCollisionTriangle(Ray ray, Vector3 p1, Vector3 p2, Vector3 p3);          // Get collision info between ray and triangle
 RayCollision GetRayCollisionQuad(Ray ray, Vector3 p1, Vector3 p2, Vector3 p3, Vector3 p4);  // Get collision info between ray and quad
@@ -8250,15 +8373,6 @@ Get collision info between ray and box
 Language | Symbol
 --- | ---
 C | `RayCollision GetRayCollisionBox(Ray ray, BoundingBox box);`
-Swift | *unimplemented*
-
-#### GetRayCollisionModel
-
-Get collision info between ray and model
-
-Language | Symbol
---- | ---
-C | `RayCollision GetRayCollisionModel(Ray ray, Model model);`
 Swift | *unimplemented*
 
 #### GetRayCollisionMesh
@@ -8443,10 +8557,11 @@ int GetSoundsPlaying(void);                                                // Ge
 bool IsSoundPlaying(Sound sound);                                          // Check if a sound is currently playing
 void SetSoundVolume(Sound sound, float volume);                            // Set volume for a sound (1.0 is max level)
 void SetSoundPitch(Sound sound, float pitch);                              // Set pitch for a sound (1.0 is base level)
-void WaveFormat(Wave *wave, int sampleRate, int sampleSize, int channels); // Convert wave data to desired format
+void SetSoundPan(Sound sound, float pan);                                  // Set pan for a sound (0.5 is center)
 Wave WaveCopy(Wave wave);                                                  // Copy a wave to a new wave
 void WaveCrop(Wave *wave, int initSample, int finalSample);                // Crop a wave to defined samples range
-float *LoadWaveSamples(Wave wave);                                         // Load samples data from wave as a floats array
+void WaveFormat(Wave *wave, int sampleRate, int sampleSize, int channels); // Convert wave data to desired format
+float *LoadWaveSamples(Wave wave);                                         // Load samples data from wave as a 32bit float data array
 void UnloadWaveSamples(float *samples);                                    // Unload samples data loaded with LoadWaveSamples()
 ```
 
@@ -8540,13 +8655,13 @@ Language | Symbol
 C | `void SetSoundPitch(Sound sound, float pitch);`
 Swift | *unimplemented*
 
-#### WaveFormat
+#### SetSoundPan
 
-Convert wave data to desired format
+Set pan for a sound (0.5 is center)
 
 Language | Symbol
 --- | ---
-C | `void WaveFormat(Wave *wave, int sampleRate, int sampleSize, int channels);`
+C | `void SetSoundPan(Sound sound, float pan);`
 Swift | *unimplemented*
 
 #### WaveCopy
@@ -8567,9 +8682,18 @@ Language | Symbol
 C | `void WaveCrop(Wave *wave, int initSample, int finalSample);`
 Swift | *unimplemented*
 
+#### WaveFormat
+
+Convert wave data to desired format
+
+Language | Symbol
+--- | ---
+C | `void WaveFormat(Wave *wave, int sampleRate, int sampleSize, int channels);`
+Swift | *unimplemented*
+
 #### LoadWaveSamples
 
-Load samples data from wave as a floats array
+Load samples data from wave as a 32bit float data array
 
 Language | Symbol
 --- | ---
@@ -8588,20 +8712,21 @@ Swift | *unimplemented*
 ### Music management functions
 
 ```mm
-Music LoadMusicStream(const char *fileName);                                              // Load music stream from file
-Music LoadMusicStreamFromMemory(const char *fileType, unsigned char *data, int dataSize); // Load music stream from data
-void UnloadMusicStream(Music music);                                                      // Unload music stream
-void PlayMusicStream(Music music);                                                        // Start music playing
-bool IsMusicStreamPlaying(Music music);                                                   // Check if music is playing
-void UpdateMusicStream(Music music);                                                      // Updates buffers for music streaming
-void StopMusicStream(Music music);                                                        // Stop music playing
-void PauseMusicStream(Music music);                                                       // Pause music playing
-void ResumeMusicStream(Music music);                                                      // Resume playing paused music
-void SeekMusicStream(Music music, float position);                                        // Seek music to a position (in seconds)
-void SetMusicVolume(Music music, float volume);                                           // Set volume for music (1.0 is max level)
-void SetMusicPitch(Music music, float pitch);                                             // Set pitch for a music (1.0 is base level)
-float GetMusicTimeLength(Music music);                                                    // Get music time length (in seconds)
-float GetMusicTimePlayed(Music music);                                                    // Get current music time played (in seconds)
+Music LoadMusicStream(const char *fileName);                                                    // Load music stream from file
+Music LoadMusicStreamFromMemory(const char *fileType, const unsigned char *data, int dataSize); // Load music stream from data
+void UnloadMusicStream(Music music);                                                            // Unload music stream
+void PlayMusicStream(Music music);                                                              // Start music playing
+bool IsMusicStreamPlaying(Music music);                                                         // Check if music is playing
+void UpdateMusicStream(Music music);                                                            // Updates buffers for music streaming
+void StopMusicStream(Music music);                                                              // Stop music playing
+void PauseMusicStream(Music music);                                                             // Pause music playing
+void ResumeMusicStream(Music music);                                                            // Resume playing paused music
+void SeekMusicStream(Music music, float position);                                              // Seek music to a position (in seconds)
+void SetMusicVolume(Music music, float volume);                                                 // Set volume for music (1.0 is max level)
+void SetMusicPitch(Music music, float pitch);                                                   // Set pitch for a music (1.0 is base level)
+void SetMusicPan(Music music, float pan);                                                       // Set pan for a music (0.5 is center)
+float GetMusicTimeLength(Music music);                                                          // Get music time length (in seconds)
+float GetMusicTimePlayed(Music music);                                                          // Get current music time played (in seconds)
 ```
 
 #### LoadMusicStream
@@ -8619,7 +8744,7 @@ Load music stream from data
 
 Language | Symbol
 --- | ---
-C | `Music LoadMusicStreamFromMemory(const char *fileType, unsigned char *data, int dataSize);`
+C | `Music LoadMusicStreamFromMemory(const char *fileType, const unsigned char *data, int dataSize);`
 Swift | *unimplemented*
 
 #### UnloadMusicStream
@@ -8712,6 +8837,15 @@ Language | Symbol
 C | `void SetMusicPitch(Music music, float pitch);`
 Swift | *unimplemented*
 
+#### SetMusicPan
+
+Set pan for a music (0.5 is center)
+
+Language | Symbol
+--- | ---
+C | `void SetMusicPan(Music music, float pan);`
+Swift | *unimplemented*
+
 #### GetMusicTimeLength
 
 Get music time length (in seconds)
@@ -8744,7 +8878,11 @@ bool IsAudioStreamPlaying(AudioStream stream);                                  
 void StopAudioStream(AudioStream stream);                                                             // Stop audio stream
 void SetAudioStreamVolume(AudioStream stream, float volume);                                          // Set volume for audio stream (1.0 is max level)
 void SetAudioStreamPitch(AudioStream stream, float pitch);                                            // Set pitch for audio stream (1.0 is base level)
+void SetAudioStreamPan(AudioStream stream, float pan);                                                // Set pan for audio stream (0.5 is centered)
 void SetAudioStreamBufferSizeDefault(int size);                                                       // Default size for new audio streams
+void SetAudioStreamCallback(AudioStream stream, AudioCallback callback);                              // Audio thread callback to request new data
+void AttachAudioStreamProcessor(AudioStream stream, AudioCallback processor);                         // Attach audio stream processor to stream
+void DetachAudioStreamProcessor(AudioStream stream, AudioCallback processor);                         // Detach audio stream processor from stream
 ```
 
 #### LoadAudioStream
@@ -8846,6 +8984,15 @@ Language | Symbol
 C | `void SetAudioStreamPitch(AudioStream stream, float pitch);`
 Swift | *unimplemented*
 
+#### SetAudioStreamPan
+
+Set pan for audio stream (0.5 is centered)
+
+Language | Symbol
+--- | ---
+C | `void SetAudioStreamPan(AudioStream stream, float pan);`
+Swift | *unimplemented*
+
 #### SetAudioStreamBufferSizeDefault
 
 Default size for new audio streams
@@ -8853,5 +9000,32 @@ Default size for new audio streams
 Language | Symbol
 --- | ---
 C | `void SetAudioStreamBufferSizeDefault(int size);`
+Swift | *unimplemented*
+
+#### SetAudioStreamCallback
+
+Audio thread callback to request new data
+
+Language | Symbol
+--- | ---
+C | `void SetAudioStreamCallback(AudioStream stream, AudioCallback callback);`
+Swift | *unimplemented*
+
+#### AttachAudioStreamProcessor
+
+Attach audio stream processor to stream
+
+Language | Symbol
+--- | ---
+C | `void AttachAudioStreamProcessor(AudioStream stream, AudioCallback processor);`
+Swift | *unimplemented*
+
+#### DetachAudioStreamProcessor
+
+Detach audio stream processor from stream
+
+Language | Symbol
+--- | ---
+C | `void DetachAudioStreamProcessor(AudioStream stream, AudioCallback processor);`
 Swift | *unimplemented*
 

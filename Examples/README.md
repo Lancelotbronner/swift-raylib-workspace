@@ -9,6 +9,7 @@ As always contributions are welcome, feel free to send new examples or translate
     - [Input Mouse](#input-mouse)
     - [Input Mouse Wheel](#input-mouse-wheel)
     - [2D Camera](#2d-camera)
+    - [2D Camera Mouse Zoom](#2d-camera-mouse-zoom)
     - [2D Camera Platformer](#2d-camera-platformer)
     - [Letterboxed Window](#letterboxed-window)
     - [Drop Files](#drop-files)
@@ -57,6 +58,12 @@ Written by ![C] [ray], translated by ![Swift] [Lancelot]
 Written by ![C] [ray], translated by ![Swift] [Lancelot]
 
 ![Screenshot of the example](../Assets/Screenshots/2d-camera.png)
+
+### [2D Camera Mouse Zoom](Sources/Core/2D%20Camera%20Mouse%20Zoom/App.swift)
+
+Written by ![C] [ray], translated by ![Swift] [Lancelot]
+
+![Screenshot of the example](../Assets/Screenshots/2d-camera-mouse-zoom.png)
 
 ### [2D Camera Platformer](Sources/Core/2D%20Camera%20Platformer/App.swift)
 

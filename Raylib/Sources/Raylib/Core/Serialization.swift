@@ -16,14 +16,14 @@ public struct Serialization {
 	/// Compress data (DEFLATE algorithm)
 	@inlinable public static func compress(_ data: UnsafeBufferPointer<UInt8>) -> UnsafeBufferPointer<UInt8> {
 		var length: Int32 = 0
-		let pointer = CompressData(.init(mutating: data.baseAddress), data.count.toInt32, &length)
+		let pointer = CompressData(data.baseAddress, data.count.toInt32, &length)
 		return .init(start: pointer, count: length.toInt)
 	}
 	
 	/// Decompress data (DEFLATE algorithm)
 	@inlinable public static func decompress(_ data: UnsafeBufferPointer<UInt8>) -> UnsafeBufferPointer<UInt8> {
 		var length: Int32 = 0
-		let pointer = DecompressData(.init(mutating: data.baseAddress), data.count.toInt32, &length)
+		let pointer = DecompressData(data.baseAddress, data.count.toInt32, &length)
 		return .init(start: pointer, count: length.toInt)
 	}
 	

@@ -48,7 +48,7 @@ public struct Unmanaged<Subject: MemoryManageable> {
 	
 }
 
-//MARK: - Managed Subjectexture
+//MARK: - Managed
 
 public final class Managed<Subject: MemoryManageable> {
 	

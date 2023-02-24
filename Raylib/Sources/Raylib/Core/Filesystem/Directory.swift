@@ -32,19 +32,18 @@ public struct Directory {
 	@inlinable public var contents: [Path] {
 		// TODO: Maybe make a DirectoryContentIterator for lazy processing
 		// TODO: Make a DirectoryRecursiveContentIterator for recursive iteration
-		var count: Int32 = 0
-		let pointer = GetDirectoryFiles(path.underlying, &count)
+		let files = LoadDirectoryFiles(path.underlying)
 		
-		guard pointer?.pointee!.pointee != 0 else {
+		guard files.paths.pointee!.pointee != 0 else {
 			return []
 		}
 		
-		let buffer = UnsafeBufferPointer(start: pointer?.advanced(by: 2), count: count.toInt - 2)
-		let files = buffer.compactMap { pointer in
+		let buffer = UnsafeBufferPointer(start: files.paths?.advanced(by: 2), count: files.count.toInt - 2)
+		let result = buffer.compactMap { pointer in
 			pointer.map { path[$0.toString] }
 		}
-		ClearDirectoryFiles()
-		return files
+		UnloadDirectoryFiles(files)
+		return result
 	}
 	
 	// TODO: Add method to retrieve contents

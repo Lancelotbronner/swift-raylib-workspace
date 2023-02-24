@@ -9,9 +9,9 @@
 
 public protocol Applet {
 	
-	init()
+	init() throws
 	
-	mutating func load()
+	mutating func load() throws
 	mutating func update()
 	func render()
 	func draw()
@@ -30,14 +30,14 @@ extension Applet {
 	
 	//MARK: @main
 	
-	@inlinable public static func main() {
-		var app = Self.init()
+	@inlinable public static func main() throws {
+		var app = try Self.init()
 		
 		if !Window.isReady {
 			Window.create(title: String(describing: Self.self))
 		}
 		
-		app.load()
+		try app.load()
 		
 		Application.run {
 			app.update()

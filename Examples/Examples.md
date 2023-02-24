@@ -65,7 +65,7 @@ All C examples should be reimplemented in Swift.
 [ ] Sprite Explosion
 [ ] Bunnymark
 [ ] Mouse Painting
-[ ] Blend Modes
+[x] Blend Modes
 [ ] Draw Tilled
 [ ] Polygon
 

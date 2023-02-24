@@ -42,18 +42,18 @@ extension Texture {
 	}
 	
 	@inlinable public func update(with image: Image) {
-		UpdateTexture(toRaylib, image.implementation.raylib.data)
+		UpdateTexture(toRaylib, image.underlying.data)
 	}
 	
 	@inlinable public func update(area: Rectangle, with image: Image) {
-		UpdateTextureRec(toRaylib, area.toRaylib, image.implementation.raylib.data)
+		UpdateTextureRec(toRaylib, area.toRaylib, image.underlying.data)
 	}
 	
 	//MARK: Conversion Methods
 	
 	/// Retrieve from GPU
-	@inlinable public func convertToImage() -> Image {
-		LoadImageFromTexture(toRaylib).toManaged.toSwift
+	@inlinable public func retrieve() -> Image {
+		LoadImageFromTexture(toRaylib).toSwift
 	}
 	
 }

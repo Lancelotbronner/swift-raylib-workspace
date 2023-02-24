@@ -56,12 +56,6 @@ public struct Renderer {
 		EndTextureMode()
 	}
 	
-	@inlinable public func target(_ image: inout Image, draw: (inout RendererImage) -> Void) {
-		var renderer = RendererImage(for: image)
-		draw(&renderer)
-		image = renderer.underlying
-	}
-	
 	//MARK: Drawing Mode Methods
 	
 	/// Begin blending mode; End blending mode (reset to default: alpha blending)

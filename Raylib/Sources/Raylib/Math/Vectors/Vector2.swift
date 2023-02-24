@@ -54,6 +54,16 @@ public struct Vector2<Scalar>: Vector {
 	
 }
 
+//MARK: - Literals
+
+extension Vector2: ExpressibleByIntegerLiteral where Scalar: ExpressibleByIntegerLiteral, Scalar.IntegerLiteralType == Scalar {
+	
+	public init(integerLiteral value: Scalar) {
+		self.init(value)
+	}
+	
+}
+
 //MARK: - Conformances
 
 extension Vector2: Equatable where Scalar: Equatable { }

@@ -29,16 +29,23 @@ public struct Timeline {
 		counter = counter &+ 1
 	}
 	
+	@inlinable public mutating func reset() {
+		counter = 0
+	}
+	
 	//MARK: Check Methods
 	
 	@inlinable public func every(frames: Int) -> Bool {
-		guard frames != 0 else { return false }
 		assert(frames > 0, "The number of frames cannot be negative")
 		return counter.toInt % frames == 0
 	}
 	
 	@inlinable public func every(seconds: Double) -> Bool {
 		every(frames: (Time.fps.toDouble * seconds).toInt)
+	}
+	
+	@inlinable public func every(timesPerSecond: Int) -> Bool {
+		every(frames: Time.fps / timesPerSecond)
 	}
 	
 	@inlinable public func every(milliseconds: Int) -> Bool {
@@ -54,6 +61,11 @@ public struct Timeline {
 	
 	@inlinable public func every(seconds: Double, do block: () -> Void) {
 		guard every(seconds: seconds) else { return }
+		block()
+	}
+	
+	@inlinable public func every(timesPerSecond: Int, do block: () -> Void) {
+		guard every(timesPerSecond: timesPerSecond) else { return }
 		block()
 	}
 	

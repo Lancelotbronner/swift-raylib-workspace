@@ -13,9 +13,9 @@ public struct Filesystem {
 	
 	//MARK: Constants
 	
-//	public static var application: Directory {
-//		GetApplicationDirectory().toPath.directory
-//	}
+	public static var application: Directory {
+		GetApplicationDirectory().toPath.directory
+	}
 	
 	public static var current: Directory {
 		GetWorkingDirectory().toPath.directory

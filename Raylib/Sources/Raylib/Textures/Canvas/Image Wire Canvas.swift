@@ -7,17 +7,17 @@
 
 import CRaylib
 
-//MARK: - Image Wire Renderer
+//MARK: - Image Wire Canvas
 
-public struct WireRendererImage {
+public struct WireCanvas {
 	
 	//MARK: Properties
 	
-	@usableFromInline var underlying: Image
+	@usableFromInline var underlying: UnsafeMutablePointer<CRaylib.Image>
 	
 	//MARK: Initialization
 	
-	@usableFromInline init(for image: Image) {
+	@usableFromInline init(to image: UnsafeMutablePointer<CRaylib.Image>) {
 		underlying = image
 	}
 	
@@ -25,9 +25,7 @@ public struct WireRendererImage {
 	
 	/// Draw rectangle lines within an image
 	@inlinable public mutating func rectangle(_ shape: Rectangle, thickness: Int, color: Color) {
-		withUnsafeMutablePointer(to: &underlying.implementation.raylib) { ptr in
-			ImageDrawRectangleLines(ptr, shape.toRaylib, thickness.toInt32, color.toRaylib)
-		}
+		ImageDrawRectangleLines(underlying, shape.toRaylib, thickness.toInt32, color.toRaylib)
 	}
 	
 }

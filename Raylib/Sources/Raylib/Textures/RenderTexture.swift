@@ -44,3 +44,21 @@ public final class RenderTexture {
 	}
 	
 }
+
+//MARK: - Raylib Integration
+
+extension CRaylib.RenderTexture {
+
+	@inlinable public var toSwift: RenderTexture {
+		RenderTexture(underlying: self)
+	}
+
+}
+
+extension RenderTexture {
+
+	@inlinable public var toRaylib: CRaylib.RenderTexture {
+		underlying
+	}
+
+}

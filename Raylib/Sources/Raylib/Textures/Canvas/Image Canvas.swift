@@ -7,24 +7,23 @@
 
 import CRaylib
 
-//MARK: - Image Renderer
+//MARK: - Image Canvas
 
-public struct RendererImage {
+public struct Canvas {
 	
 	//MARK: Properties
 	
-	@usableFromInline var underlying: Image
+	@usableFromInline var underlying: UnsafeMutablePointer<CRaylib.Image>
 	
 	//MARK: Computed Properties
 	
-	@inlinable public var wire: WireRendererImage {
-		get { WireRendererImage(for: underlying) }
-		set { underlying = newValue.underlying }
+	@inlinable public var wire: WireCanvas {
+		WireCanvas(to: underlying)
 	}
 	
 	//MARK: Initialization
 	
-	@usableFromInline init(for image: Image) {
+	@usableFromInline init(to image: UnsafeMutablePointer<CRaylib.Image>) {
 		underlying = image
 	}
 	
@@ -32,18 +31,14 @@ public struct RendererImage {
 	
 	/// Clear image background with given color
 	@inlinable public mutating func clear(to color: Color = Renderer.color) {
-		withUnsafeMutablePointer(to: &underlying.implementation.raylib) { ptr in
-			ImageClearBackground(ptr, color.toRaylib)
-		}
+		ImageClearBackground(underlying, color.toRaylib)
 	}
 	
 	//MARK: Pixel Methods
 	
 	/// Draw pixel within an image
 	@inlinable public mutating func pixel(at x: Int, _ y: Int, color: Color = Renderer.color) {
-		withUnsafeMutablePointer(to: &underlying.implementation.raylib) { ptr in
-			ImageDrawPixel(ptr, x.toInt32, y.toInt32, color.toRaylib)
-		}
+		ImageDrawPixel(underlying, x.toInt32, y.toInt32, color.toRaylib)
 	}
 	
 	/// Draw pixel within an image (Vector version)
@@ -55,9 +50,7 @@ public struct RendererImage {
 	
 	/// Draw line within an image
 	@inlinable public mutating func line(from sx: Int, _ sy: Int, to ex: Int, _ ey: Int, color: Color = Renderer.color) {
-		withUnsafeMutablePointer(to: &underlying.implementation.raylib) { ptr in
-			ImageDrawLine(ptr, sx.toInt32, sy.toInt32, ex.toInt32, ey.toInt32, color.toRaylib)
-		}
+		ImageDrawLine(underlying, sx.toInt32, sy.toInt32, ex.toInt32, ey.toInt32, color.toRaylib)
 	}
 	
 	/// Draw line within an image (Vector version)
@@ -69,9 +62,7 @@ public struct RendererImage {
 	
 	/// Draw circle within an image
 	@inlinable public mutating func circle(at x: Int, _ y: Int, radius: Int, color: Color = Renderer.color) {
-		withUnsafeMutablePointer(to: &underlying.implementation.raylib) { ptr in
-			ImageDrawCircle(ptr, x.toInt32, y.toInt32, radius.toInt32, color.toRaylib)
-		}
+		ImageDrawCircle(underlying, x.toInt32, y.toInt32, radius.toInt32, color.toRaylib)
 	}
 	
 	/// Draw circle within an image (Vector version)
@@ -88,9 +79,7 @@ public struct RendererImage {
 	
 	/// Draw rectangle within an image
 	@inlinable public mutating func rectangle(at x: Int, _ y: Int, size width: Int, _ height: Int, color: Color = Renderer.color) {
-		withUnsafeMutablePointer(to: &underlying.implementation.raylib) { ptr in
-			ImageDrawRectangle(ptr, x.toInt32, y.toInt32, width.toInt32, height.toInt32, color.toRaylib)
-		}
+		ImageDrawRectangle(underlying, x.toInt32, y.toInt32, width.toInt32, height.toInt32, color.toRaylib)
 	}
 	
 	/// Draw rectangle within an image (Vector version)
@@ -107,25 +96,19 @@ public struct RendererImage {
 	
 	/// Draw a source image within a destination image
 	@inlinable public mutating func image(from source: Rectangle, of other: Image, to destination: Rectangle, tint: Color = Renderer.tint) {
-		withUnsafeMutablePointer(to: &underlying.implementation.raylib) { ptr in
-			ImageDraw(ptr, other.toRaylib, source.toRaylib, destination.toRaylib, tint.toRaylib)
-		}
+		ImageDraw(underlying, other.toRaylib, source.toRaylib, destination.toRaylib, tint.toRaylib)
 	}
 	
 	//MARK: Text Methods
 	
 	/// Draw text within an image
 	@inlinable public mutating func text(_ string: String, at x: Int, _ y: Int, size: Int = Renderer.pointSize, color: Color = Renderer.textColor) {
-		withUnsafeMutablePointer(to: &underlying.implementation.raylib) { ptr in
-			ImageDrawText(ptr, string, x.toInt32, y.toInt32, size.toInt32, color.toRaylib)
-		}
+		ImageDrawText(underlying, string, x.toInt32, y.toInt32, size.toInt32, color.toRaylib)
 	}
 	
 	/// Draw text within an image
 	@inlinable public mutating func text(_ string: String, at x: Int, _ y: Int, size: Int = Renderer.pointSize, spacing: Int, using font: Font, color: Color = Renderer.textColor) {
-		withUnsafeMutablePointer(to: &underlying.implementation.raylib) { ptr in
-			ImageDrawTextEx(ptr, font.toRaylib, string, Vector2f(x.toFloat, y.toFloat).toRaylib, size.toFloat, spacing.toFloat, color.toRaylib)
-		}
+		ImageDrawTextEx(underlying, font.toRaylib, string, Vector2f(x.toFloat, y.toFloat).toRaylib, size.toFloat, spacing.toFloat, color.toRaylib)
 	}
 	
 }

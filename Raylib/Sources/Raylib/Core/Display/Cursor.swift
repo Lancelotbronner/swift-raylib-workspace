@@ -59,7 +59,7 @@ public struct Cursor {
 
 //MARK: - Mouse Cursor
 
-public enum MouseCursor {
+public enum MouseCursor: UInt32 {
 	
 	//MARK: Cases
 	

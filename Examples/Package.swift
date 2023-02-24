@@ -45,6 +45,9 @@ let package = Package(
 			.copy("background.png"),
 			.copy("foreground.png"),
 		], ["LICENSE.md"]),
+		.example(.textures, "Rectangle", [
+			.copy("scarfy.png")
+		], ["LICENSE.md"]),
 		
 		// Classic Games
 		.classic("Arkanoid"),

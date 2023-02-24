@@ -14,8 +14,7 @@ public struct Color {
 	//MARK: Constants
 	
 	@inlinable public static var random: Color {
-		let rnd: () -> UInt8 = { .random(in: .min ..< .max) }
-		return .rgb(rnd(), rnd(), rnd())
+		.rgba(UInt32.random(in: 0 ..< 0xFFFFFF))
 	}
 	
 	//MARK: Properties

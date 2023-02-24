@@ -15,17 +15,21 @@ import Raylib
 		(Blend.subtract, "SUBTRACT"),
 	]
 	
-	init() {
+	init() throws {
 		Window.create(800, by: 450, title: "Example - Textures - Blend Modes")
 		Application.target(fps: 60)
 		
-		background = Filesystem
+		background = try Filesystem
 			.file(at: "background.png", from: .module)
 			.loadAsTexture()
 		
-		foreground = Filesystem
+		foreground = try Filesystem
 			.file(at: "foreground.png", from: .module)
 			.loadAsTexture()
+	}
+	
+	func load() {
+		
 	}
 	
 	mutating func update() {
