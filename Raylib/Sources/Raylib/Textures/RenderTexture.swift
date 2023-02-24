@@ -49,7 +49,7 @@ public final class RenderTexture {
 
 extension CRaylib.RenderTexture {
 
-	@inlinable public var toSwift: RenderTexture {
+	@_transparent public var toSwift: RenderTexture {
 		RenderTexture(underlying: self)
 	}
 
@@ -57,7 +57,7 @@ extension CRaylib.RenderTexture {
 
 extension RenderTexture {
 
-	@inlinable public var toRaylib: CRaylib.RenderTexture {
+	@_transparent public var toRaylib: CRaylib.RenderTexture {
 		underlying
 	}
 

@@ -227,7 +227,7 @@ public final class Image {
 
 extension CRaylib.Image {
 
-	@inlinable public var toSwift: Image {
+	@_transparent public var toSwift: Image {
 		Image(underlying: self)
 	}
 
@@ -235,7 +235,7 @@ extension CRaylib.Image {
 
 extension Image {
 
-	@inlinable public var toRaylib: CRaylib.Image {
+	@_transparent public var toRaylib: CRaylib.Image {
 		underlying
 	}
 
