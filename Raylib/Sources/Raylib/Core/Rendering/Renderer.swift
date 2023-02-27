@@ -50,7 +50,7 @@ public struct Renderer {
 		EndDrawing()
 	}
 	
-	@inlinable public func target(_ texture: RenderTexture, draw: () -> Void) {
+	@inlinable public static func target(_ texture: RenderTexture, draw: () -> Void) {
 		BeginTextureMode(texture.underlying)
 		draw()
 		EndTextureMode()
@@ -80,7 +80,7 @@ public struct Renderer {
 	}
 	
 	/// BeginShaderMode; EndShaderMode
-	@inlinable public func shader(_ shader: Shader, draw: () -> Void) {
+	@inlinable public static func shader(_ shader: Shader, draw: () -> Void) {
 		BeginShaderMode(shader.implementation.raylib)
 		draw()
 		EndShaderMode()
@@ -90,7 +90,7 @@ public struct Renderer {
 	
 	/// Begin scissor mode (define screen area for following drawing); End scissor mode
 	@inlinable public static func scissor(at x: Int, _ y: Int, size width: Int, by height: Int, draw: () -> Void) {
-		BeginScissorMode(x.toInt32, y.toInt32 - height.toInt32, width.toInt32, height.toInt32)
+		BeginScissorMode(x.toInt32, y.toInt32, width.toInt32, height.toInt32)
 		draw()
 		EndScissorMode()
 	}

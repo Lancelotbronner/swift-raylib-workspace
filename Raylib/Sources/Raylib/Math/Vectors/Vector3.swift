@@ -14,12 +14,6 @@ public typealias Vector3i = Vector3<Int>
 
 public struct Vector3<Scalar>: Vector {
 	
-	//MARK: Constants
-	
-	@inlinable public static var scalars: [WritableKeyPath<Vector3, Scalar>] {
-		[\.x, \.y, \.z]
-	}
-	
 	//MARK: Properties
 	
 	public var x: Scalar
@@ -39,8 +33,14 @@ public struct Vector3<Scalar>: Vector {
 	}
 	
 	//MARK: Utilities
+
+	@_transparent public static func transform(_ transform: (WritableKeyPath<Vector3<Scalar>, Scalar>) throws -> Void) rethrows {
+		try transform(\.x)
+		try transform(\.y)
+		try transform(\.z)
+	}
 	
-	@inlinable public static func map(_ transform: (WritableKeyPath<Vector3, Scalar>) throws -> Scalar) rethrows -> Vector3 {
+	@_transparent public static func map(_ transform: (WritableKeyPath<Vector3, Scalar>) throws -> Scalar) rethrows -> Vector3 {
 		Vector3(try transform(\.x), try transform(\.y), try transform(\.z))
 	}
 	

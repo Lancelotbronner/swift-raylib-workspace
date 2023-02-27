@@ -24,20 +24,20 @@ extension Renderer2D {
 	}
 	
 	//MARK: Line
-	
-	/// Draw a line
-	@inlinable public static func line(from startX: Int, _ startY: Int, to endX: Int, _ endY: Int, thickness: Float = Renderer.thickness, color: Color = Renderer.color) {
-		DrawLineEx(Vector2(startX.toFloat, startY.toFloat).toRaylib, Vector2f(endX.toFloat, endY.toFloat).toRaylib, thickness, color.toRaylib)
-	}
-	
+
 	/// Draw a line (Vector version)
 	@inlinable public static func line(from start: Vector2f, to end: Vector2f, thickness: Float = Renderer.thickness, color: Color = Renderer.color) {
 		DrawLineEx(start.toRaylib, end.toRaylib, thickness, color.toRaylib)
 	}
+
+	/// Draw a line
+	@inlinable public static func line(from startX: Float, _ startY: Float, to endX: Float, _ endY: Float, thickness: Float = Renderer.thickness, color: Color = Renderer.color) {
+		DrawLineEx(Vector2f(startX, startY).toRaylib, Vector2f(endX.toFloat, endY.toFloat).toRaylib, thickness, color.toRaylib)
+	}
 	
 	/// Draw lines sequence
 	@inlinable public static func lines(_ points: [Vector2f], color: Color = Renderer.color) {
-		points.withUnsafeBufferPointer { buffer in
+		points.withContiguousStorageIfAvailable { buffer in
 			var tmp = buffer.baseAddress!.pointee.toRaylib
 			DrawLineStrip(&tmp, points.count.toInt32, color.toRaylib)
 		}

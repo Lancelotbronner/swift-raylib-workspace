@@ -7,4 +7,7 @@
    <FileRef
       location = "group:Examples">
    </FileRef>
+   <FileRef
+      location = "group:Tools">
+   </FileRef>
 </Workspace>

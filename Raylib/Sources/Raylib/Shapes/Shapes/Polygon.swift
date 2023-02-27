@@ -15,6 +15,7 @@ public struct Polygon {
 	
 	public var position: Vector2f
 	public var sides: Int
+	public var rotation: Float
 	public var radius: Float
 	
 	//MARK: Computed Properties
@@ -29,9 +30,10 @@ public struct Polygon {
 	
 	//MARK: Initialization
 	
-	@inlinable public init(at position: Vector2f, sides: Int, radius: Float) {
+	@inlinable public init(at position: Vector2f, sides: Int, rotation: Float, radius: Float) {
 		self.position = position
 		self.sides = sides
+		self.rotation = rotation
 		self.radius = radius
 	}
 	

@@ -5,14 +5,15 @@ import Raylib
 @main struct BlendModes: Applet {
 	let background: Texture
 	let foreground: Texture
-	var currentModeIndex = 0
+	var index = 0
 	
-	let blendModes: [(Blend, String)] = [
-		(Blend.alpha, "ALPHA"),
-		(Blend.additive, "ADDITIVE"),
-		(Blend.multiplied, "MULTIPLIED"),
-		(Blend.add, "ADD COLORS"),
-		(Blend.subtract, "SUBTRACT"),
+	let modes: [BlendItem] = [
+		BlendItem("ALPHA", Blend.alpha),
+		BlendItem("ADDITIVE", Blend.additive),
+		BlendItem("MULTIPLIED", Blend.multiplied),
+		BlendItem("ADD COLORS", Blend.add),
+		BlendItem("SUBTRACT COLORS", Blend.subtract),
+		BlendItem("ALPHA PREMULTIPLIED", Blend.premultiplied),
 	]
 	
 	init() throws {
@@ -28,31 +29,40 @@ import Raylib
 			.loadAsTexture()
 	}
 	
-	func load() {
-		
-	}
-	
 	mutating func update() {
 		if Keyboard.space.isPressed {
-			currentModeIndex = blendModes.roundRobin(after: currentModeIndex)
+			index = modes.cycle(after: index)
 		}
 	}
 	
 	func draw() {
+		let mode = modes[index]
+
 		Renderer2D.texture(background, at: Window.size / 2 - background.size / 2)
-		
-		// Apply the blend mode and then draw the foreground texture
-		let (mode, name) = blendModes[currentModeIndex]
-		Renderer.blend(mode) {
-			Renderer2D.texture(foreground, at: Window.size / 2 - foreground.size / 2)
-		}
+		mode.draw(texture: foreground)
 		
 		// Draw the texts
 		Renderer.pointSize = 10
 		Renderer.textColor = .gray
 		Renderer2D.text(center: "Press SPACE to change blend modes.", offset: 0, 140)
-		Renderer2D.text(center: "Current: \(name)", offset: 0, 160)
+		Renderer2D.text(center: "Current: \(mode.name)", offset: 0, 160)
 		
 		Renderer2D.text("(c) Cyberpunk Street Environment by Luis Zuno (@ansimuz)", at: Window.width - 330, Window.height - 20)
+	}
+}
+
+struct BlendItem {
+	let name: String
+	let mode: Blend
+
+	init(_ name: String, _ mode: Blend) {
+		self.name = name
+		self.mode = mode
+	}
+
+	func draw(texture: Texture) {
+		Renderer.blend(mode) {
+			Renderer2D.texture(texture, at: Window.size / 2 - texture.size / 2)
+		}
 	}
 }

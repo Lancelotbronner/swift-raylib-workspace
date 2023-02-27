@@ -8,9 +8,15 @@
 import Raylib
 
 @main struct BasicShapes: Applet {
+	var rotation: Float = 0.0
+
 	init() {
 		Window.create(800, by: 450, title: "Example - Shapes - Basic Shapes")
 		Application.target(fps: 60)
+	}
+
+	mutating func update() {
+		rotation += 0.2
 	}
 	
 	func draw() {
@@ -30,14 +36,24 @@ import Raylib
 		
 		// Triangle shapes and lines
 		let triangleX = Window.width.toFloat / 4 * 3
-		Renderer2D.triangle(Vector2f(triangleX, 80), Vector2f(triangleX - 60, 150), Vector2f(triangleX + 60, 150), color: .violet)
-		WireRenderer2D.triangle(Vector2f(triangleX, 160), Vector2f(triangleX - 20, 230), Vector2f(triangleX + 20, 230), color: .darkBlue)
+		Renderer2D.triangle(
+			a: triangleX, 80,
+			b: triangleX - 60, 150,
+			c: triangleX + 60, 150,
+			color: .violet)
+
+		WireRenderer2D.triangle(
+			a: triangleX, 160,
+			b: triangleX - 20, 230,
+			c: triangleX + 20, 230,
+			color: .darkBlue)
 		
 		// Polygon shapes and lines
 		let polygonX = Window.width / 4 * 3
-		Renderer2D.polygon(at: polygonX, 320, sides: 6, radius: 80, color: .brown)
-		WireRenderer2D.polygon(at: polygonX, 320, sides: 6, radius: 80)
+		Renderer2D.polygon(at: polygonX, 330, sides: 6, radius: 80, rotation: .degrees(rotation), color: .brown)
+		WireRenderer2D.polygon(at: polygonX, 330, sides: 6, radius: 90, rotation: .degrees(rotation), color: .brown)
+		WireRenderer2D.polygon(at: polygonX, 330, sides: 6, radius: 85, rotation: .degrees(rotation), thickness: 6, color: .beige)
 		
-		Renderer2D.line(from: 18, 42, to: Window.width - 18, 42, color: .black)
+		Renderer2D.line(from: 18, 42, to: Window.width.toFloat - 18, 42, color: .black)
 	}
 }

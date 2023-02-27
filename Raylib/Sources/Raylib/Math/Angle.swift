@@ -12,27 +12,34 @@ import CRaylib
 public enum Angle<Scalar: FloatingPoint & TrigonometryFunctions>: Comparable {
 	
 	//MARK: Cases
-	
+
+	/// Causes no rotation
 	case zero
-	case circle
+
+	/// Causes a full rotation
+	case unit(Scalar)
+
+	/// Degrees
 	case degrees(Scalar)
+
+	/// Radians
 	case radians(Scalar)
 	
 	//MARK: Computed Properties
 	
-	@inlinable public var toDegrees: Scalar {
+	@_transparent public var toDegrees: Scalar {
 		switch self {
 		case .zero: return 0
-		case .circle: return 360
+		case let .unit(times): return 360 * times
 		case let .degrees(angle): return angle
 		case let .radians(angle): return angle * 180 / .pi
 		}
 	}
 
-	@inlinable public var toRadians: Scalar {
+	@_transparent public var toRadians: Scalar {
 		switch self {
 		case .zero: return 0
-		case .circle: return .pi * 2
+		case let .unit(times): return .pi * 2 * times
 		case let .degrees(angle): return angle * .pi / 180
 		case let .radians(angle): return angle
 		}

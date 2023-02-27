@@ -14,10 +14,9 @@ public protocol Vector {
 	associatedtype Scalar
 	
 	init(_ v: Scalar)
-	
-	static var scalars: [WritableKeyPath<Self, Scalar>] { get }
-	
-	static func map(_ transform: (WritableKeyPath<Self, Scalar>) throws -> Scalar) rethrows -> Self
+
+	@inlinable static func transform(_ transform: (WritableKeyPath<Self, Scalar>) throws -> Void) rethrows
+	@inlinable static func map(_ transform: (WritableKeyPath<Self, Scalar>) throws -> Scalar) rethrows -> Self
 	
 }
 
@@ -26,7 +25,7 @@ extension Vector {
 	//MARK: Utilities
 	
 	@usableFromInline mutating func unary(_ transform: (inout Scalar) throws -> Void) rethrows {
-		for kp in Self.scalars {
+		try Self.transform { kp in
 			try transform(&self[keyPath: kp])
 		}
 	}
@@ -46,7 +45,7 @@ extension Vector {
 	}
 	
 	@usableFromInline mutating func binary(with vector: Self, operation: (inout Scalar, Scalar) throws -> Void) rethrows {
-		for kp in Self.scalars {
+		try Self.transform { kp in
 			try operation(&self[keyPath: kp], vector[keyPath: kp])
 		}
 	}

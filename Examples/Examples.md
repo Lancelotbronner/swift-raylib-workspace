@@ -49,8 +49,7 @@ All C examples should be reimplemented in Swift.
 ## Textures
 
 [x] Logo Raylib
-[ ] Rectangle
-[ ] Source To Destination
+[x] Atlas (texture source and destination rectangles)
 [ ] Image Drawing
 [x] Image Generation
 [ ] Image Loading
@@ -61,6 +60,7 @@ All C examples should be reimplemented in Swift.
 [ ] Particles Blending
 [ ] NPatch Drawing
 [ ] Background Scrolling
+[x] Sprite Animation
 [ ] Sprite Button
 [ ] Sprite Explosion
 [ ] Bunnymark

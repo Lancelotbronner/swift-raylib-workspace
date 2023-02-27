@@ -42,7 +42,7 @@ import Raylib
 		}
 		
 		if Keyboard.c.isPressed {
-			cameraStyleIndex = CameraStyles.all.roundRobin(after: cameraStyleIndex)
+			cameraStyleIndex = CameraStyles.all.cycle(after: cameraStyleIndex)
 		}
 		
 		cameraStyle.update(&camera, for: player)
@@ -202,11 +202,11 @@ enum CameraStyles {
 	}
 	
 	struct SmoothCameraStyle: CameraStyle {
+		let name = "Follow player center, smoothed"
+
 		let minSpeed: Float = 30
 		let minEffectLength: Float = 10
 		let fractionSpeed: Float = 0.8
-		
-		let name = "Follow player center, smoothed"
 		
 		func update(_ camera: inout Camera2D, for player: Player) {
 			camera.offset = Window.size / 2
@@ -221,10 +221,10 @@ enum CameraStyles {
 	}
 	
 	struct EvenOutOnLandingCameraStyle: CameraStyle {
-		let speed: Float = 700
-		
 		let name = "Follow player center horizontally; update player center vertically after landing"
 		
+		let speed: Float = 700
+
 		private var active = false
 		private var target: Float = 0
 		

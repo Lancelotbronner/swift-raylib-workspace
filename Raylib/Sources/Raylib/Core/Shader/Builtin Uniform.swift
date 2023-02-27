@@ -42,7 +42,7 @@ extension BuiltinUniform where T == Vector3f {
 
 /*
  typedef enum {
- 6 SHADER_LOC_MATRIX_MVP,          // Shader location: matrix uniform: model-view-projection
+ SHADER_LOC_MATRIX_MVP,          // Shader location: matrix uniform: model-view-projection
  SHADER_LOC_MATRIX_VIEW,         // Shader location: matrix uniform: view (camera transform)
  SHADER_LOC_MATRIX_PROJECTION,   // Shader location: matrix uniform: projection
  SHADER_LOC_MATRIX_MODEL,        // Shader location: matrix uniform: model (transform)

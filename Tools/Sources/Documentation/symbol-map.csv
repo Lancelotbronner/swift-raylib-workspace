@@ -47,7 +47,7 @@ Vector4 | Vector4f
 Matrix | Matrix4x4f
 Color | Color
 Rectangle | Rectangle
-Image | Texture
+Image | Image
 Texture | Texture
 Texture2D | Texture
 RenderTexture | RenderTexture
@@ -56,6 +56,7 @@ Camera | Camera3D
 Camera3D | Camera3D
 Camera2D | Camera2D
 Shader | Shader
+FilePathList | DroppedPathCollection, DirectoryContents
 
 FLAG_INTERLACED_HINT | WindowFlags/interlaced
 FLAG_MSAA_4X_HINT | WindowFlags/msaa4x
@@ -69,6 +70,7 @@ FLAG_WINDOW_MINIMIZED | WindowFlags/minimized, Window/isMinimized, Window/minimi
 FLAG_WINDOW_HIDDEN | WindowFlags/hidden
 FLAG_WINDOW_UNDECORATED | WindowFlags/undecorated
 FLAG_WINDOW_RESIZABLE | WindowFlags/resizable
+FLAG_WINDOW_MOUSE_PASSTHROUGH | WindowFlags/mousePassthrough
 FLAG_FULLSCREEN_MODE | WindowFlags/fullscreen
 FLAG_VSYNC_HINT | WindowFlags/vsync
 
@@ -255,6 +257,7 @@ BLEND_MULTIPLIED | Blend/multiplied
 BLEND_ADDITIVE | Blend/additive
 BLEND_ADD_COLORS | Blend/add
 BLEND_SUBTRACT_COLORS | Blend/subtract
+BLEND_ALPHA_PREMULTIPLY | Blend/premultiplied
 BLEND_CUSTOM | Blend/custom
 
 InitWindow | Window/create(_:by:title:)

@@ -2,27 +2,27 @@ import Raylib
 
 @main struct ColorPalette: Applet {
 	var palette = [
-		PaletteItem("Dark Gray", .darkGray),
-		PaletteItem("Maroon", .maroon),
-		PaletteItem("Orange", .orange),
-		PaletteItem("Dark Green", .darkGreen),
-		PaletteItem("Dark Blue", .darkBlue),
-		PaletteItem("Dark Purple", .darkPurple),
-		PaletteItem("Dark Brown", .darkBrown),
-		PaletteItem("Gray", .gray),
-		PaletteItem("Red", .red),
-		PaletteItem("Gold", .gold),
-		PaletteItem("Lime", .lime),
-		PaletteItem("Blue", .blue),
-		PaletteItem("Violet", .violet),
-		PaletteItem("Brown", .brown),
-		PaletteItem("Light Gray", .lightGray),
-		PaletteItem("Pink", .pink),
-		PaletteItem("Yellow", .yellow),
-		PaletteItem("Green", .green),
-		PaletteItem("Sky Blue", .skyBlue),
-		PaletteItem("Purple", .purple),
-		PaletteItem("Beige", .beige),
+		PaletteItem("DARK GRAY", .darkGray),
+		PaletteItem("MAROON", .maroon),
+		PaletteItem("ORANGE", .orange),
+		PaletteItem("DARK GREEN", .darkGreen),
+		PaletteItem("DARK BLUE", .darkBlue),
+		PaletteItem("DARK PURPLE", .darkPurple),
+		PaletteItem("DARK BROWN", .darkBrown),
+		PaletteItem("GRAY", .gray),
+		PaletteItem("RED", .red),
+		PaletteItem("GOLD", .gold),
+		PaletteItem("LIME", .lime),
+		PaletteItem("BLUE", .blue),
+		PaletteItem("VIOLET", .violet),
+		PaletteItem("BROWN", .brown),
+		PaletteItem("LIGHT GRAY", .lightGray),
+		PaletteItem("PINK", .pink),
+		PaletteItem("YELLOW", .yellow),
+		PaletteItem("GREEN", .green),
+		PaletteItem("SKY BLUE", .skyBlue),
+		PaletteItem("PURPLE", .purple),
+		PaletteItem("BEIGE", .beige),
 	]
 	
 	init() {
@@ -42,38 +42,45 @@ import Raylib
 		Renderer2D.text("press SPACE to see all colors", at: Window.width - 180, Window.height - 40, size: 10, color: .gray)
 		
 		for item in palette {
-			Renderer2D.rectangle(item.frame, color: item.color.faded(to: item.hovered ? 0.6 : 1))
-			
-			guard Keyboard.space.isDown || item.hovered else { continue }
-			Renderer2D.rectangle(at: item.frame.x.toInt, item.frame.bottom.y.toInt - 26, size: item.frame.width.toInt, 20, color: .black)
-			WireRenderer2D.rectangle(item.frame, thickness: 6, color: .black.faded(to: 0.3))
-			Renderer2D.text(item.name, at: item.frame.right.x.toInt - 12, item.frame.y.toInt + item.frame.height.toInt - 20, size: 10, alignment: .right, color: item.color)
+			item.draw(details: Keyboard.space.isDown)
 		}
 	}
 }
 
 struct PaletteItem {
-	static let size = Vector2f(100, 100)
-	private static var index = 0
+	static let size: Float = 100
+	static var index = 0
 	
 	let name: String
 	let color: Color
 	let position: Vector2f
 	var hovered = false
 	
-	var frame: Rectangle { Rectangle(at: position, size: Self.size) }
+	var frame: Rectangle {
+		Rectangle(at: position.x, position.y, size: Self.size, Self.size)
+	}
 	
 	init(_ name: String, _ color: Color) {
 		self.name = name
 		self.color = color
-		let x = 20 + PaletteItem.size.x * (PaletteItem.index % 7).toFloat + 10 * (PaletteItem.index % 7).toFloat
-		let y = 80 + PaletteItem.size.y * (PaletteItem.index / 7).toFloat + 10 * (PaletteItem.index / 7).toFloat
+
+		let row = (PaletteItem.index / 7).toFloat
+		let column = (PaletteItem.index % 7).toFloat
+		let x = 20 + PaletteItem.size * column + 10 * column
+		let y = 80 + PaletteItem.size * row + 10 * row
 		position = Vector2f(x, y)
+
 		Self.index += 1
 	}
-	
-	func measure(size: Int) -> Int {
-		Text.measure(name, size: size)
+
+	func draw(details: Bool) {
+		Renderer2D.rectangle(frame, color: color.faded(to: hovered ? 0.6 : 1))
+
+		guard details || hovered else { return }
+
+		Renderer2D.rectangle(at: frame.left.x.toInt, frame.bottom.y.toInt - 26, size: PaletteItem.size.toInt, 20, color: .black)
+		WireRenderer2D.rectangle(frame, thickness: 6, color: .black.faded(to: 0.3))
+		Renderer2D.text(name, at: frame.right.x.toInt - 12, frame.bottom.y.toInt - 20, size: 10, alignment: .right, color: color)
 	}
 	
 }

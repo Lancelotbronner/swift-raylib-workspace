@@ -21,7 +21,7 @@ import Raylib
 		Renderer.background = .darkGray
 		Application.target(fps: 60)
 
-		player = Rectangle(at: Vector2f(400, 280), size: Vector2f(40, 40))
+		player = Rectangle(at: 400, 280, size: 40, 40)
 		camera = Camera2D(at: player.position + 20)
 
 		var offset: Float = 0
@@ -61,19 +61,21 @@ import Raylib
 	func draw() {
 		Renderer.camera(camera) {
 			for building in buildings {
-				Renderer2D.rectangle(building.rect, color: building.color)
+				building.draw()
 			}
 
 			Renderer2D.rectangle(player, color: .red)
 
+			let window = Window.size * 10
+			
 			Renderer2D.line(
-				from: camera.target.x.toInt, -Window.height * 10,
-				to: camera.target.x.toInt, Window.height * 10,
+				from: camera.target.x, -window.y,
+				to: camera.target.x, window.y,
 				color: .green)
 
 			Renderer2D.line(
-				from: -Window.width.toInt * 10, camera.target.y.toInt,
-				to: Window.width.toInt * 10, camera.target.y.toInt,
+				from: -window.x, camera.target.y,
+				to: window.x, camera.target.y,
 				color: .green)
 		}
 
@@ -109,5 +111,9 @@ struct Building {
 		let position = Vector2f(-6000 + offset, Window.height.toFloat - 130 - size.y)
 		let color = Color.rgb(.random(in: 200 ... 240), .random(in: 200 ... 240), .random(in: 200 ... 250))
 		return Building(rect: Rectangle(at: position, size: size), color: color)
+	}
+
+	func draw() {
+		Renderer2D.rectangle(rect, color: color)
 	}
 }

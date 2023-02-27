@@ -14,12 +14,6 @@ public typealias Vector2i = Vector2<Int>
 
 public struct Vector2<Scalar>: Vector {
 	
-	//MARK: Constants
-	
-	@inlinable public static var scalars: [WritableKeyPath<Vector2, Scalar>] {
-		[\.x, \.y]
-	}
-	
 	//MARK: Properties
 	
 	public var x: Scalar
@@ -47,19 +41,14 @@ public struct Vector2<Scalar>: Vector {
 	}
 	
 	//MARK: Utilities
-	
-	@inlinable public static func map(_ transform: (WritableKeyPath<Vector2, Scalar>) throws -> Scalar) rethrows -> Vector2 {
-		Vector2(try transform(\.x), try transform(\.y))
+
+	@_transparent public static func transform(_ transform: (WritableKeyPath<Vector2<Scalar>, Scalar>) throws -> Void) rethrows {
+		try transform(\.x)
+		try transform(\.y)
 	}
 	
-}
-
-//MARK: - Literals
-
-extension Vector2: ExpressibleByIntegerLiteral where Scalar: ExpressibleByIntegerLiteral, Scalar.IntegerLiteralType == Scalar {
-	
-	public init(integerLiteral value: Scalar) {
-		self.init(value)
+	@_transparent public static func map(_ transform: (WritableKeyPath<Vector2, Scalar>) throws -> Scalar) rethrows -> Vector2 {
+		Vector2(try transform(\.x), try transform(\.y))
 	}
 	
 }
@@ -121,7 +110,7 @@ extension Vector2 where Scalar: TrigonometryFunctions {
 		var result = Angle.radians(Scalar.atan2(other.y - y, other.x - x))
 		
 		if result < .zero {
-			result += .circle
+			result += .unit(1)
 		}
 		
 		return result

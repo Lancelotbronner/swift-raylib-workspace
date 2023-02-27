@@ -19,11 +19,7 @@ struct DocumentationCommand: ParsableCommand {
 	)
 	
 	//MARK: Methods
-	
-	// TODO: Header Parsing
-	// - Comments above declarations should be parsed as documentation
-	// - Asides as comments above declarations should be owned by the symbol
-	
+
 	// TODO: Cleanup Map
 	// - rename to "repair-map"
 	// - Handle regex search and replace
@@ -64,23 +60,44 @@ struct DocumentationCommand: ParsableCommand {
 		print("Loading resources...")
 		
 		let raylibURL = unwrap(
+			optional: Bundle.module.url(forResource: "raylib-api", withExtension: "json"),
+			failure: "Coudn't find local raylib api, is \"raylib-api.json\" added to package resources?",
+			placeholder: nil)
+
+		let raylibPath = unwrap(
 			optional: Bundle.module.path(forResource: "raylib", ofType: "h"),
-			failure: "Coudn't find local header, is \"raylib.h\" it added to package resources?",
+			failure: "Coudn't find local raylib header, is \"raylib.h\" added to package resources?",
 			placeholder: "")
 		
 		let symbolMapURL = unwrap(
 			optional: Bundle.module.path(forResource: "symbol-map", ofType: "csv"),
-			failure: "Coudn't find symbol map, is \"symbols-map.csv\" it added to package resources?",
+			failure: "Coudn't find symbol map, is \"symbols-map.csv\" added to package resources?",
 			placeholder: "")
 		
 		let cleanupMapURL = unwrap(
 			optional: Bundle.module.path(forResource: "cleanup-map", ofType: "csv"),
-			failure: "Coudn't find cleanup map, is \"cleanup-map.csv\" it added to package resources?",
+			failure: "Coudn't find cleanup map, is \"cleanup-map.csv\" added to package resources?",
 			placeholder: "")
 		
 		ensureNoError("locating resources")
+
+		// parse api
+
+//		let data = try Data(contentsOf: raylibURL!)
+//		let api = try JSONDecoder().decode(RaylibAPI.self, from: data)
+
+//		guard let define = api.defines.first(where: { define in
+//			define.name == "RAYLIB_VERSION"
+//		}) else {
+//			report("Could not locate the RAYLIB_VERSION macro")
+//			return
+//		}
+
+//		let version = define.value.description
+
+		// load header
 		
-		let header = try String(contentsOfFile: raylibURL)
+		let header = try String(contentsOfFile: raylibPath)
 		
 		let linesOfHeader = header.components(separatedBy: .newlines).compactMap { line -> [String]? in
 			let words = line.components(separatedBy: .whitespaces).compactMap { word in
@@ -100,8 +117,8 @@ struct DocumentationCommand: ParsableCommand {
 		stopwatch.reset()
 		print("Finding header version...")
 		
-		guard let rangeOfVersionDefine = header.range(of: "#define RAYLIB_VERSION") else {
-			fatalError("Coudn't find raylib version define, we're looking for a line starting like such: \"#define RAYLIB_VERSION\"")
+		guard let rangeOfVersionDefine = header.range(of: "#define RAYLIB_VERSION ") else {
+			fatalError("Coudn't find raylib version define, we're looking for a line starting like such: \"#define RAYLIB_VERSION \"")
 		}
 		
 		guard let nextEndOfLine = header[rangeOfVersionDefine.upperBound...].firstIndex(of: "\n") else {
@@ -203,6 +220,8 @@ struct DocumentationCommand: ParsableCommand {
 			totalNumberOfSymbols += 1
 			components.append(.symbol(Symbol(title: title, documentation: documentation, declaration: declaration, bindings: bindings(for: title))))
 		}
+
+		var unknownAsides: Set<String> = []
 		
 		func isAside(_ line: [String]) -> String? {
 			let range = line[1 ..< min(line.count, 4)]
@@ -212,11 +231,36 @@ struct DocumentationCommand: ParsableCommand {
 			if range.contains(where: { $0.contains("WARNING") }) {
 				return "Warning"
 			}
+			unknownAsides.insert(line[1])
 			return nil
 		}
 		
 		var i = 0
 		var line: [String] { linesOfHeader[i] }
+
+		func lookForDocumentation() -> String? {
+			var docs = ""
+
+			if let c = line.lastIndex(of: "//") {
+				let result = line[(c + 1)...]
+					.joined(separator: " ")
+					.trimmingCharacters(in: .whitespacesAndNewlines)
+				return result
+			}
+
+			var j = 1
+			while linesOfHeader[i-j].first == "//" {
+				let line = linesOfHeader[i-j]
+					.dropFirst()
+					.joined(separator: " ")
+					.trimmingCharacters(in: .whitespacesAndNewlines)
+				let fragment = " \(docs)".trimmingCharacters(in: .whitespacesAndNewlines)
+				docs = line + fragment
+				j += 1
+			}
+
+			return docs.isEmpty ? nil : docs
+		}
 		
 		while i < linesOfHeader.count {
 			if ["/*", "*"].contains(where: line[0].hasPrefix) {
@@ -243,7 +287,7 @@ struct DocumentationCommand: ParsableCommand {
 					break
 				}
 				
-				append(symbol: line[1], c: "#define \(line[1]);")
+				append(symbol: line[1], c: "#define \(line[1])", lookForDocumentation())
 				
 			case "typedef":
 				switch line[1] {
@@ -334,6 +378,9 @@ struct DocumentationCommand: ParsableCommand {
 			
 			i += 1
 		}
+
+		print("Invalid asides:")
+		print(unknownAsides.formatted())
 		
 		print("Parsed and cleaned \(components.count) document components in \(stopwatch.microsecondsInMilliseconds)ms")
 		
@@ -416,15 +463,17 @@ struct DocumentationCommand: ParsableCommand {
 		let coveragePercentage = Int(Double(coverage) / Double(totalNumberOfSymbols) * 100)
 		
 		var document = """
-			# Cheatsheet
+		# Cheatsheet
 
-			**raylib v\(version)    |    bindings \(coveragePercentage)%**
+		**raylib v\(version)    |    bindings \(coveragePercentage)%**
 
-			This document presents a detailed overview of the raylib cheatsheet along with its corresponding Swift symbol(s).
+		This document presents a detailed overview of the raylib cheatsheet along with its corresponding Swift symbol(s).
 
-			This document currently has a \(coveragePercentage)% coverage, contributions are welcome!
+		This document currently has a \(coveragePercentage)% coverage, contributions are welcome!
 
-			> Note: This file is generated (and badly so), any improvement suggestions are welcome.
+		> Note: This file is generated (and badly so), any improvement suggestions are welcome.
+
+		## Symbols
 		"""
 		
 		document.append("\n\n")
@@ -433,11 +482,11 @@ struct DocumentationCommand: ParsableCommand {
 			
 			switch component {
 			case let .module(value):
-				document.append("## \(value.title)\n\n")
+				document.append("## \(value.title)\n")
 				
 			case let .section(value):
-				document.append("### \(value.title)\n\n")
-				document.append("```mm\n")
+				document.append("### \(value.title)\n")
+				document.append("```c\n")
 				let width = value.symbols.map(\.declaration.count).max() ?? 0
 				for (declaration, documentation) in value.symbols {
 					document.append(declaration)
@@ -448,27 +497,22 @@ struct DocumentationCommand: ParsableCommand {
 					}
 					document.append("\n")
 				}
-				document.append("```\n\n")
+				document.append("```\n")
 				
 			case let .symbol(value):
-				document.append("#### \(value.title)\n\n")
+				document.append("#### \(value.title)\n")
 				document.append(value.documentation ?? "This symbol has no documentation")
-				document.append("\n\nLanguage | Symbol\n --- | ---\n")
-				document.append("C | `\(value.declaration)`\n")
-				document.append("Swift | ")
+				document.append("\nLanguage|Symbol\n---|---\n")
+				document.append("C|`\(value.declaration)`\n")
+				document.append("Swift|")
 				
 				switch value.bindings {
-				case let .some(swift):
-					document.append(swift.map { "``\($0)``" }.formatted())
-					
-				case []:
-					document.append("-")
-					
-				default:
-					document.append("*unimplemented*")
+				case let .some(swift): document.append(swift.map { "``\($0)``" }.formatted())
+				case []: document.append("-")
+				default: document.append("*unimplemented*")
 				}
 				
-				document.append("\n\n")
+				document.append("\n")
 				
 			case let .aside(value):
 				document.append("> \(value.category): \(value.content)\n\n")
@@ -532,7 +576,7 @@ enum Component: CustomStringConvertible, CustomDebugStringConvertible {
 		case let .aside(value): return "\t> \(value.category): \(value.content)"
 		case let .symbol(value):
 			var tmp = value.title
-			tmp += String(repeating: " ", count: 38 - value.title.count)
+			tmp += "\n\t"
 			tmp += "// "
 			tmp += value.documentation ?? "This symbol has no documentation"
 			tmp += "\n\t    C\t\(value.declaration)"

@@ -48,14 +48,13 @@ import Raylib
 	}
 	
 	func render() {
-		target.render { renderer in
-			Renderer2D.clear(to: .raywhite)
+		Renderer.target(target) {
+			Renderer.clear(to: .raywhite)
 			
-			for i in colors.indices {
-				Renderer2D.rectangle(at: 0, (game.y / 10).toInt * i, size: game.x.toInt, (game.y / 10).toInt, color: colors[i])
+			for (i, color) in colors.enumerated() {
+				Renderer2D.rectangle(at: 0, (game.y / 10).toInt * i, size: game.x.toInt, (game.y / 10).toInt, color: color)
 			}
-			
-			Renderer.pointSize = 20
+
 			Renderer2D.text("If executed inside a window,\nyou can resize the window,\nand see the screen scaling!", at: 10, 25, color: .white)
 			Renderer2D.text("Default Mouse: [\(Mouse.x), \(Mouse.y)]", at: 350, 25, color: .green)
 			Renderer2D.text("Virtual Mouse: [\(virtualMouse.x.toInt), \(virtualMouse.y.toInt)]", at: 350, 55, color: .yellow)
@@ -63,7 +62,7 @@ import Raylib
 	}
 	
 	func draw() {
-		Renderer2D.target(target, at: .zero, to: Rectangle(at: -transformation, size: game * scale))
+		Renderer2D.target(target, to: Rectangle(at: -transformation, size: game * scale))
 	}
 	
 }

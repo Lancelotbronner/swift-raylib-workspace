@@ -89,6 +89,15 @@ public struct Window {
 		get { Vector2f(width.toFloat, height.toFloat) }
 		set { SetWindowSize(newValue.x.toInt32, newValue.y.toInt32) }
 	}
+
+	/// Get current screen as a rectangular frame
+	@inlinable public static var frame: Rectangle {
+		get { Rectangle(at: position, size: size) }
+		set {
+			position = newValue.position
+			size = newValue.size
+		}
+	}
 	
 	/// Get window scale DPI factor
 	@inlinable public static var scaleDPI: Vector2f {

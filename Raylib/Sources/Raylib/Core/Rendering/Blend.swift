@@ -32,6 +32,9 @@ public enum Blend {
 	
 	/// Blend textures subtracting colors (alternative)
 	case subtract
+
+	/// Blend premultiplied textures considering alpha
+	case premultiplied
 	
 	/// Blend textures using custom src/dst factors (use rlSetBlendMode())
 	case custom
@@ -46,6 +49,7 @@ public enum Blend {
 		case .multiplied: return BLEND_MULTIPLIED.rawValue
 		case .add: return BLEND_ADD_COLORS.rawValue
 		case .subtract: return BLEND_SUBTRACT_COLORS.rawValue
+		case .premultiplied: return BLEND_ALPHA_PREMULTIPLY.rawValue
 		case .custom: return BLEND_CUSTOM.rawValue
 		}
 	}

@@ -13,11 +13,11 @@ import Raylib
 	var position: Vector2f
 	var speed: Vector2f
 	var paused = false
-	var framesCounter = 0
+	var blink = Timeline()
 	
 	init() {
 		Window.create(800, by: 450, title: "Example - Shapes - Bouncing Ball")
-		Application.target(fps: 60)
+		Application.target(fps: 30)
 		
 		position = Window.size / 2
 		speed = Vector2f(5, 4)
@@ -29,7 +29,7 @@ import Raylib
 		}
 		
 		guard !paused else {
-			framesCounter += 1
+			blink.update()
 			return
 		}
 		
@@ -46,9 +46,9 @@ import Raylib
 	
 	func draw() {
 		Renderer2D.circle(at: position, radius: BALL_RADIUS.toFloat, color: .maroon)
-		Renderer2D.text("PRESS SPACE TO PAUSE", at: 10, Window.height - 25, size: 20, color: .lightGray)
+		Renderer2D.text("PRESS SPACE to PAUSE BALL MOVEMENT", at: 10, Window.height - 25, color: .lightGray)
 		
-		if paused, framesCounter / 30 % 2 == 0 {
+		if paused, blink.intervals(seconds: 0.5) {
 			Renderer2D.text("PAUSED", at: 350, 200, size: 40, color: .gray)
 		}
 		

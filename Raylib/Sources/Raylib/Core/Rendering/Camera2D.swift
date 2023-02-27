@@ -49,12 +49,20 @@ public struct Camera2D {
 	}
 	
 	//MARK: Initialization
-	
-	@inlinable public init(at position: Vector2f, offsetBy offset: Vector2f = Window.size / 2, rotation: Float = 0, zoom: Float = 1) {
-		underlying = .init(offset: position.toRaylib, target: offset.toRaylib, rotation: rotation, zoom: zoom)
+
+	@inlinable public init(at position: Vector2f, offsetBy offset: Vector2f = .zero, rotation: Float = 0, zoom: Float = 1) {
+		underlying = CRaylib.Camera2D(offset: position.toRaylib, target: offset.toRaylib, rotation: rotation, zoom: zoom)
+	}
+
+	@inlinable public init() {
+		self.init(at: .zero)
+	}
+
+	@inlinable public static func centered(on position: Vector2f, rotation: Float = 0, zoom: Float = 1) -> Camera2D {
+		Camera2D(at: position, offsetBy: Window.size / 2)
 	}
 	
-	//MARK: Methods
+	//MARK: Conversion Methods
 	
 	/// Get the screen space position for a world space position
 	@inlinable public func toScreen(world position: Vector2f) -> Vector2f {
@@ -64,6 +72,15 @@ public struct Camera2D {
 	/// Get the world space position for a screen space position
 	@inlinable public func toWorld(screen position: Vector2f) -> Vector2f {
 		GetScreenToWorld2D(position.toRaylib, underlying).toSwift
+	}
+
+	//MARK: Transformation Methods
+
+	@inlinable public mutating func translate(by delta: Vector2f) {
+		let translation = delta * (-1 / underlying.zoom)
+		print("translation: \(translation)")
+		underlying.target.x += translation.x
+		underlying.target.y += translation.y
 	}
 	
 }

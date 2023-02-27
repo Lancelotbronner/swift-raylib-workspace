@@ -14,8 +14,8 @@ import Raylib
 		if Keyboard.s.isPressed {
 			isScissorEnabled.toggle()
 		}
-		
-		area.position = Mouse.position - area.size / 2
+
+		area.center = Mouse.position
 	}
 	
 	func draw() {
@@ -23,8 +23,8 @@ import Raylib
 		Renderer2D.text("Press S to toggle scissor test", at: 10, 10)
 		
 		guard isScissorEnabled else { return }
-		Renderer.scissor(at: area.position, size: area.size) {
-			Renderer2D.rectangle(at: .zero, size: Window.size, color: .red)
+		Renderer.scissor(in: area) {
+			Renderer.clear(to: .red)
 			Renderer2D.text("Move the mouse around to reveal this text!", at: 190, 200, color: .lightGray)
 		}
 	}

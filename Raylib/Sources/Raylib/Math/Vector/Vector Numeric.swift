@@ -19,7 +19,7 @@ extension Vector where Scalar: Numeric {
 	
 	@inlinable public func dot(_ other: Self) -> Scalar {
 		var sum = Scalar.zero
-		for kp in Self.scalars {
+		Self.transform { kp in
 			sum += self[keyPath: kp] * other[keyPath: kp]
 		}
 		return sum
@@ -27,7 +27,7 @@ extension Vector where Scalar: Numeric {
 	
 	@inlinable public func distance(to other: Self) -> Scalar {
 		var sum = Scalar.zero
-		for kp in Self.scalars {
+		Self.transform { kp in
 			let diff = self[keyPath: kp] - other[keyPath: kp]
 			sum += diff * diff
 		}

@@ -74,7 +74,7 @@ public final class Image {
 	
 	/// Convert image data to desired format
 	@inlinable public func convert(to format: PixelFormat) {
-			ImageFormat(&underlying, format.toRaylib.toInt32)
+		ImageFormat(&underlying, format.toRaylib.toInt32)
 	}
 	
 	/// Premultiply alpha channel
@@ -89,7 +89,7 @@ public final class Image {
 	
 	/// Dither image data to 16bpp or lower (Floyd-Steinberg dithering)
 	@inlinable public func dither(_ rbpp: Int, _ gbpp: Int, _ bbpp: Int, _ abpp: Int) {
-			ImageDither(&underlying, rbpp.toInt32, gbpp.toInt32, bbpp.toInt32, abpp.toInt32)
+		ImageDither(&underlying, rbpp.toInt32, gbpp.toInt32, bbpp.toInt32, abpp.toInt32)
 	}
 	
 	//MARK: Resize Methods

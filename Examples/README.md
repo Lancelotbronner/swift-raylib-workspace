@@ -2,28 +2,35 @@
 
 As always contributions are welcome, feel free to send new examples or translate missing ones from [raylib](https://github.com/raysan5/raylib/blob/master/examples) or [raylib games](https://github.com/raysan5/raylib-games/tree/master/classics)!
 
-**Table of Contents**
+## Table of Contents
+
 - 🧱 Core
-    - [Basic Window](#basic-window)
-    - [Input Keys](#input-keys)
-    - [Input Mouse](#input-mouse)
-    - [Input Mouse Wheel](#input-mouse-wheel)
     - [2D Camera](#2d-camera)
     - [2D Camera Mouse Zoom](#2d-camera-mouse-zoom)
     - [2D Camera Platformer](#2d-camera-platformer)
-    - [Letterboxed Window](#letterboxed-window)
+    - [3D First Person](#3d-first-person)
+    - [Basic Window](#basic-window)
     - [Drop Files](#drop-files)
+    - [Input Keys](#input-keys)
+    - [Input Mouse](#input-mouse)
+    - [Input Mouse Wheel](#input-mouse-wheel)
+    - [Letterboxed Window](#letterboxed-window)
+    - [Scissor Test](#scissor-test)
 - 🔺 Shapes
     - [Basic Shapes](#basic-shapes)
     - [Bouncing Ball](#bouncing-ball)
     - [Color Palette](#color-palette)
     - [Following Eyes](#following-eyes)
 - 🖼 Textures
+	- [Atlas](#atlas)
+	- [Blend Modes](#blend-mode)
     - [Image Generation](#image-generation)
     - [Logo Raylib](#logo-raylib)
-    - [Blend Modes](#blend-mode)
+    - [Sprite Animation](#sprite-animation)
 - 👾 Classics
     - [Arkanoid](#arkanoid)
+    - [Platformer](#platformer)
+    - [Snake](#snake)
 
 ## 🧱 Category: Core
 

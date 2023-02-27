@@ -24,6 +24,7 @@ let package = Package(
 		.example(.core, "Input Mouse"),
 		.example(.core, "Input Mouse Wheel"),
 		.example(.core, "2D Camera"),
+		.example(.core, "2D Camera Mouse Zoom"),
 		.example(.core, "2D Camera Platformer"),
 		.example(.core, "Letterboxed Window"),
 		.example(.core, "Drop Files"),
@@ -37,15 +38,18 @@ let package = Package(
 		.example(.shapes, "Following Eyes"),
 		
 		// Textures Module
-		.example(.textures, "Logo Raylib", [
-			.copy("raylib_logo.png")
-		]),
-		.example(.textures, "Image Generation"),
+		.example(.textures, "Atlas", [
+			.copy("scarfy.png")
+		], ["LICENSE.md"]),
 		.example(.textures, "Blend Modes", [
 			.copy("background.png"),
 			.copy("foreground.png"),
 		], ["LICENSE.md"]),
-		.example(.textures, "Rectangle", [
+		.example(.textures, "Image Generation"),
+		.example(.textures, "Logo Raylib", [
+			.copy("logo.png")
+		]),
+		.example(.textures, "Sprite Animation", [
 			.copy("scarfy.png")
 		], ["LICENSE.md"]),
 		

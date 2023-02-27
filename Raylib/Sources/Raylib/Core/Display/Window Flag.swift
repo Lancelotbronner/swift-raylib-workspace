@@ -48,6 +48,9 @@ public struct WindowFlags: OptionSet {
 	
 	/// Set to support HighDPI
 	public static let highDPI = WindowFlags(FLAG_WINDOW_HIGHDPI)
+
+	/// // Set to support mouse passthrough, only supported with ``WindowFlags/undecorated``
+	public static let mousePassthrough = WindowFlags(FLAG_WINDOW_MOUSE_PASSTHROUGH);
 	
 	/// Set to try enabling V-Sync on GPU
 	public static let vsync = WindowFlags(FLAG_VSYNC_HINT)

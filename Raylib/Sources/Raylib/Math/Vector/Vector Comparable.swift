@@ -36,7 +36,7 @@ extension Vector where Scalar: Comparable {
 	}
 	
 	@inlinable public mutating func clamp(between minimum: Self, and maximum: Self) {
-		for kp in Self.scalars {
+		Self.transform { kp in
 			self[keyPath: kp].clamp(between: minimum[keyPath: kp], and: maximum[keyPath: kp])
 		}
 	}
