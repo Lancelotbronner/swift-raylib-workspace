@@ -1,7 +1,7 @@
 
 //MARK: - Thickness
 
-public struct Thickness<Scalar> {
+public struct Edges<Scalar> {
 	
 	//MARK: Properties
 	
@@ -31,7 +31,7 @@ public struct Thickness<Scalar> {
 
 //MARK: - Literals
 
-extension Thickness: ExpressibleByIntegerLiteral where Scalar: ExpressibleByIntegerLiteral, Scalar.IntegerLiteralType == Scalar {
+extension Edges: ExpressibleByIntegerLiteral where Scalar: ExpressibleByIntegerLiteral, Scalar.IntegerLiteralType == Scalar {
 	
 	public init(integerLiteral value: Scalar) {
 		self.init(value)

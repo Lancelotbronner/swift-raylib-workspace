@@ -14,6 +14,10 @@ public final class Image {
 	@usableFromInline var underlying: CRaylib.Image
 	
 	//MARK: Computed Properties
+
+//	@inlinable public var isReady: Bool {
+//		IsImageReady(underlying)
+//	}
 	
 	@inlinable public var width: Int {
 		underlying.width.toInt

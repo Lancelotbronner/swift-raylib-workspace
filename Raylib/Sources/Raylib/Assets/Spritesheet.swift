@@ -7,13 +7,13 @@ public struct Spritesheet {
 	
 	public let rows: Int
 	public let columns: Int
-	public let padding: Thickness<Int>
+	public let padding: Edges<Int>
 	public let spacing: Vector2i
 	public let cell: Vector2i
 	
 	//MARK: Initialization
 	
-	public init(of rows: Int, by columns: Int, within size: Vector2i, padding: Thickness<Int> = 0, spacing: Vector2i = .zero) {
+	public init(of rows: Int, by columns: Int, within size: Vector2i, padding: Edges<Int> = 0, spacing: Vector2i = .zero) {
 		self.rows = rows
 		self.columns = columns
 		self.padding = padding
@@ -24,7 +24,7 @@ public struct Spritesheet {
 		self.cell = Vector2i(horizontal / columns, vertical / rows)
 	}
 	
-	public init(of rows: Int, by columns: Int, tileSize: Vector2i, padding: Thickness<Int> = 0, spacing: Vector2i = .zero) {
+	public init(of rows: Int, by columns: Int, tileSize: Vector2i, padding: Edges<Int> = 0, spacing: Vector2i = .zero) {
 		self.rows = rows
 		self.columns = columns
 		self.padding = padding
