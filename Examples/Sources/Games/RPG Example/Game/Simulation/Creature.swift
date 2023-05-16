@@ -1,6 +1,0 @@
-
-//MARK: - Creature
-
-class Creature {
-	
-}

@@ -1,3 +1,11 @@
-[submodule "Dependencies/raylib"]
-	path = Dependencies/raylib
-	url = https://github.com/raysan5/raylib
+[submodule "raylib"]
+	path = Sources/raylib
+	url = https://github.com/raysan5/raylib.git
+
+[submodule "swift-raylib"]
+	path = Sources/swift-raylib
+	url = https://github.com/Lancelotbronner/swift-raylib.git
+
+[submodule "examples"]
+	path = Sources/examples
+	url = https://github.com/Lancelotbronner/swift-raylib-examples.git
