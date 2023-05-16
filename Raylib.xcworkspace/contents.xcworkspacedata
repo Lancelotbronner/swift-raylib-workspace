@@ -2,12 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Raylib">
+      location = "group:Sources/swift-raylib">
    </FileRef>
    <FileRef
-      location = "group:Examples">
+      location = "group:Sources/examples">
    </FileRef>
    <FileRef
-      location = "group:Tools">
+      location = "group:Sources/tools">
    </FileRef>
 </Workspace>

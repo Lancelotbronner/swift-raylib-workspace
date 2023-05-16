@@ -2,6 +2,8 @@
 
 All C examples should be reimplemented in Swift.
 
+> TODO: Add the remaining examples as issues on swift-raylib-examples
+
 ## Core
 
 [x] Basic Window
