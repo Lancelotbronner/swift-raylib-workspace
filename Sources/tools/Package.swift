@@ -13,7 +13,7 @@ let package = Package(
 	],
 	targets: [
 		.executableTarget(
-			name: "dev-tools",
+			name: "RaylibDevelopmentToolkit",
 			dependencies: [
 				.product(name: "ArgumentParser", package: "swift-argument-parser")
 			],
